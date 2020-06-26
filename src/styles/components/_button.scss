@@ -1,0 +1,21 @@
+.button {
+    background-color: $medium-blue;
+    color: white;
+    font-weight: lighter;
+    font-size: $font-size-large;
+    padding: 1rem $m-size;
+    text-decoration: none;
+    line-height: 1;
+    border-radius: 0.1rem;
+    border-color: fade-out($color: $medium-blue, $amount: 0.9);
+}
+
+.button--link {
+    background: none;
+    border: none;
+    color: white;
+}
+
+.button--secondary {
+    background: #888;
+}
