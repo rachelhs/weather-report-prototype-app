@@ -1,8 +1,8 @@
 {
-  "name": "boilerplate-react-app",
+  "name": "indecision-app",
   "version": "1.0.0",
   "main": "index.js",
-  "author": "Andrew Mead",
+  "author": "rachel",
   "license": "MIT",
   "engines": {
     "node": "13.x"
