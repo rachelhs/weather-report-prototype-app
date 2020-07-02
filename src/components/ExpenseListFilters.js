@@ -20,7 +20,7 @@ class ExpenseListFilters extends React.Component {
             <div className="input-group">
             <div className="input-group__item">
             <input className="text-input" 
-            placeholder="Search expenses"
+            placeholder="Search entries"
             type='text' value={this.props.filters.text} onChange={
                 (e) => {
                     this.props.dispatch(setTextFilter(e.target.value));

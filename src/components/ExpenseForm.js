@@ -50,7 +50,7 @@ export default class ExpenseForm extends React.Component {
             this.setState(() => ({ error: "" }));
             this.props.onSubmit({
                 description: this.state.description,
-                amount: parseFloat(this.state.amount, 10) * 100,
+                amount: parseFloat(this.state.amount, 10),
                 createdAt: this.state.createdAt.valueOf(),
                 note: this.state.note
             });
@@ -71,7 +71,7 @@ export default class ExpenseForm extends React.Component {
                     <input
                         className="text-input"
                         type="text"
-                        placeholder="Amount"
+                        placeholder="Intensity"
                         value={this.state.amount}
                         onChange={this.onAmountChange}
                     />
@@ -85,12 +85,12 @@ export default class ExpenseForm extends React.Component {
                     />
                     <textarea
                         className="textarea"
-                        placeholder="Add a note for your expense (optional)"
+                        placeholder="Add a note (optional)"
                         value={this.state.note}
                         onChange={this.onNoteChange}
                     ></textarea>
                     <div>
-                    <button className="button">Save Expense</button>
+                    <button className="button">Save Entry</button>
                     </div>
                 </form>
         )

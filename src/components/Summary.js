@@ -1,20 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import numeral from 'numeral';
 import selectExpenses from '../selectors/expenses';
 import selectExpensesTotal from '../selectors/expense-total';
 import { Link } from 'react-router-dom';
 
-export const ExpensesSummary = ({ expenseCount, expensesTotal }) => {
-  const expenseWord = expenseCount === 1 ? 'expense' : 'expenses' ;
-  const formattedExpensesTotal = numeral(expensesTotal / 100).format('$0,0.00');
+export const EntrySummary = ({ entryCount }) => {
+  const entryWord = entryCount === 1 ? 'entry' : 'entries' ;
   
   return (
     <div className="page-header">
     <div className="content-container">
-      <h1 className="page-header__title">Viewing <span>{expenseCount}</span> {expenseWord} totalling <span>{formattedExpensesTotal}</span></h1>
+      <h1 className="page-header__title">Viewing <span>{entryCount}</span> {entryWord} </h1>
       <div className="page-header__actions">
-      <Link className="button" to="/create">Add Expense</Link>
+      <Link className="button" to="/create">Add Entry</Link>
       </div>
       </div>
       </div>
@@ -30,4 +28,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(ExpensesSummary);
+export default connect(mapStateToProps)(EntrySummary);
