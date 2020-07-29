@@ -35,12 +35,13 @@ export class LoginEmailForm extends React.Component {
     const { goBackFunction } = this.props
 
     return (
-      <div>
-        <p>Login with your email.</p>
+      <div className='box-layout'>
+      <div className='box-layout__box'>
+      <h1 className='box-layout__title'>Weather Report</h1>
         <form className='form' onSubmit={this.onFormSubmit}>
           <input
             onChange={(ev) => this.setStateProperty(ev.target.value, 'email')}
-            placeholder='Email'
+            placeholder='Username'
             aria-label='Email'
             type='text'
             name='email'
@@ -61,6 +62,7 @@ export class LoginEmailForm extends React.Component {
           { goBackFunction &&
             <button className='button button--secondary' onClick={goBackFunction}>Cancel</button> }
         </form>
+        </div>
       </div>
     )
   }
