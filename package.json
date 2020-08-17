@@ -39,6 +39,7 @@
     "react-addons-shallow-compare": "15.6.0",
     "react-dates": "12.7.0",
     "react-dom": "^16.13.1",
+    "react-lottie": "^1.2.3",
     "react-modal": "^3.11.2",
     "react-redux": "5.0.5",
     "react-router-dom": "^5.2.0",
