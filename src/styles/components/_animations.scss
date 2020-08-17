@@ -1,0 +1,12 @@
+.background-anim {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+}
+
+.foreground-anim {
+    position: absolute;
+    z-index: 2;
+    height: 90%;
+    width: 90%;
+}
