@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Lottie from 'react-lottie'
-import animationData from '../animations/waves.json'
+import animationData from '../animations/sun.json'
 
 class BackgroundAnimation extends Component {
 
@@ -17,10 +17,8 @@ class BackgroundAnimation extends Component {
     };
 
     return(
-      <div>
         <Lottie options={defaultOptions}
         />
-      </div>
     )
   }
 }

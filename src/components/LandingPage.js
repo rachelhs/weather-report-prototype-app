@@ -6,13 +6,13 @@ export class LandingPage extends React.Component {
 
     render() {
         return (
-            <div className='animations-container'>
-                <div className='background-anim'>
-                    <BackgroundAnimation />
-                </div>
-                <div className='foreground-anim'>
-                    <ForegroundAnimation />
-                </div>
+            <div>
+            <div className='background-anim'>
+            <BackgroundAnimation />
+            </div>
+            <div className='foreground-anim'>
+            <ForegroundAnimation />
+            </div>
             </div>
         );
     }
