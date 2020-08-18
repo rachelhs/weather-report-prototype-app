@@ -13,6 +13,12 @@ export class LandingPage extends React.Component {
             <div className='foreground-anim'>
             <ForegroundAnimation />
             </div>
+            <div className='info-box'>
+            <h1 className='info-box-text'>Think About How You Are Feeling</h1>
+            <div className='info-box-button'>
+            <button>next</button>
+            </div>
+            </div>
             </div>
         );
     }
