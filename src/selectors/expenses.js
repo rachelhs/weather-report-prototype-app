@@ -1,12 +1,12 @@
-//get visible expenses
+//get visible entries
 import moment from 'moment';
 
-const getVisibleExpenses = (expenses, { text, sortBy, startDate, endDate }) => {
-    return expenses.filter((expense) => {
-        const createdAtMoment = moment(expense.createdAt);
+const getVisibleEntries = (entries, { text, sortBy, startDate, endDate }) => {
+    return entries.filter((entry) => {
+        const createdAtMoment = moment(entry.createdAt);
         const startDateMatch = startDate ? startDate.isSameOrBefore(createdAtMoment, 'day') : true;
         const endDateMatch = endDate ? endDate.isSameOrAfter(createdAtMoment, 'day') : true;
-        const textMatch = typeof text !== 'string' || expense.description.toLowerCase().includes(text.toLowerCase());
+        const textMatch = typeof text !== 'string' || entry.weatherSymbol.toLowerCase().includes(text.toLowerCase());
 
         return startDateMatch && endDateMatch && textMatch;
     }).sort((a, b) => {
@@ -19,4 +19,4 @@ const getVisibleExpenses = (expenses, { text, sortBy, startDate, endDate }) => {
     });
 };
 
-export default getVisibleExpenses;
+export default getVisibleEntries;

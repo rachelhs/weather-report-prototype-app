@@ -25,7 +25,7 @@ export class ChooseSymbolPage extends React.Component {
             <div className='info-box'>
             <h4 className='info-box-text'>If you were to describe that feeling in a weather symbol, which symbol would it be?</h4>
             <div className='weather-symbols-grid'>
-            <img className = 'symbol' src={rainbow}/>
+            <button><img className = 'symbol' src={rainbow}/></button>
             <img className = 'symbol' src={sun}/>
             <img className = 'symbol' src={bluesky}/>
             <img className = 'symbol' src={fog}/>
