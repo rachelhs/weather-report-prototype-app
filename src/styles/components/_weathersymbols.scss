@@ -1,0 +1,14 @@
+.weather-symbols-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    @media (max-width: $desktop-breakpoint) {
+        margin-top: -50px;
+    }
+}
+
+.symbol {
+    width: 40px;
+    margin: 20px;
+    opacity: 1;
+}
