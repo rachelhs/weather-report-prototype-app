@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import selectExpenses from '../selectors/expenses';
-import selectExpensesTotal from '../selectors/expense-total';
+import selectEntries from '../selectors/entries';
+import selectEntriesTotal from '../selectors/entry-total';
 import { Link } from 'react-router-dom';
 
 export const EntrySummary = ({ entryCount }) => {
@@ -20,11 +20,11 @@ export const EntrySummary = ({ entryCount }) => {
 };
 
 const mapStateToProps = (state) => {
-  const visibleExpenses = selectExpenses(state.expenses, state.filters);
+  const visibleEntries = selectEntries(state.entries, state.filters);
 
   return {
-    expenseCount: visibleExpenses.length,
-    expensesTotal: selectExpensesTotal(visibleExpenses)
+    entryCount: visibleEntries.length,
+    entriesTotal: selectEntriesTotal(visibleEntries)
   };
 };
 
