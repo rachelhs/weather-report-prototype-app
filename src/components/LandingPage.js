@@ -4,6 +4,10 @@ import ForegroundAnimation from './ForegroundAnimation'
 
 export class LandingPage extends React.Component {
 
+    onNext = () => {
+        this.props.history.push('/choosesymbol');
+    };
+
     render() {
         return (
             <div>
@@ -16,7 +20,7 @@ export class LandingPage extends React.Component {
             <div className='info-box'>
             <h1 className='info-box-text'>Think About How You Are Feeling</h1>
             <div className='info-box-button'>
-            <button>next</button>
+            <button onClick={this.onNext}>next</button>
             </div>
             </div>
             </div>

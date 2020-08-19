@@ -9,6 +9,7 @@ import LoginEmailForm from '../components/LoginEmailForm'
 import createHistory from 'history/createBrowserHistory'
 import PrivateRoute from './PrivateRoute'
 import PublicRoute from './PublicRoute'
+import ChooseSymbolPage from '../components/ChooseSymbolPage'
 
 export const history = createHistory();
 
@@ -18,6 +19,7 @@ const AppRouter = () => (
             <Switch>
                 <PublicRoute path="/" component={LoginEmailForm} exact={true} />
                 <PrivateRoute path="/landing" component={LandingPage}/>
+                <PrivateRoute path="/choosesymbol" component={ChooseSymbolPage}/>
                 <PrivateRoute path="/create" component={AddExpensePage} />
                 <PrivateRoute path="/edit/:id" component={EditExpensePage} />
                 <Route path="/help" component={HelpPage} />
