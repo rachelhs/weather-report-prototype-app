@@ -9,6 +9,7 @@ import createHistory from 'history/createBrowserHistory'
 import PrivateRoute from './PrivateRoute'
 import PublicRoute from './PublicRoute'
 import ChooseSymbolPage from '../components/ChooseSymbolPage'
+import ChooseMainWordPage from '../components/ChooseMainWordPage'
 
 export const history = createHistory();
 
@@ -19,6 +20,7 @@ const AppRouter = () => (
                 <PublicRoute path="/" component={LoginEmailForm} exact={true} />
                 <PrivateRoute path="/landing" component={LandingPage}/>
                 <PrivateRoute path="/choosesymbol" component={ChooseSymbolPage}/>
+                <PrivateRoute path="/choosemainword" component={ChooseMainWordPage}/>
                 <PrivateRoute path="/edit/:id" component={EditEntryPage} />
                 <Route path="/help" component={HelpPage} />
                 <Route component={NotFound} />

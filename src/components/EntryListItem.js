@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import moment from 'moment';
 import numeral from 'numeral';
 
-const EntryListItem = ({ id, weatherSymbol, createdAt }) => {
+const EntryListItem = ({ id, weatherSymbol, createdAt, words }) => {
     return (
 
         <Link className="list-item" to={`/edit/${id}`}>

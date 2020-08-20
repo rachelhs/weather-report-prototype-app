@@ -17,6 +17,7 @@ export default class EntryForm extends React.Component {
             weatherSymbol: props.entry ? props.entry.weatherSymbol : '',
             note: props.entry ? props.entry.note : '',
             createdAt: props.entry ? moment(props.entry.createdAt) : moment(),
+            words: [],
             calendarFocused: false,
             error: ''
         }
@@ -28,7 +29,8 @@ export default class EntryForm extends React.Component {
         this.props.onSubmit({
             weatherSymbol: "rainbow",
             createdAt: this.state.createdAt.valueOf(),
-            note: this.state.note
+            note: this.state.note,
+            words: ["word1", "word2", "word3"]
         });
 
     }
@@ -38,7 +40,8 @@ export default class EntryForm extends React.Component {
         this.props.onSubmit({
             weatherSymbol: "sunshine",
             createdAt: this.state.createdAt.valueOf(),
-            note: this.state.note
+            note: this.state.note,
+            words: ["word1", "word2", "word3"]
         });
 
     }
@@ -48,7 +51,8 @@ export default class EntryForm extends React.Component {
         this.props.onSubmit({
             weatherSymbol: "blue sky",
             createdAt: this.state.createdAt.valueOf(),
-            note: this.state.note
+            note: this.state.note,
+            words: ["word1", "word2", "word3"]
         });
 
     }
@@ -58,7 +62,8 @@ export default class EntryForm extends React.Component {
         this.props.onSubmit({
             weatherSymbol: "fog",
             createdAt: this.state.createdAt.valueOf(),
-            note: this.state.note
+            note: this.state.note,
+            words: ["word1", "word2", "word3"]
         });
 
     }
@@ -68,7 +73,8 @@ export default class EntryForm extends React.Component {
         this.props.onSubmit({
             weatherSymbol: "grey cloud",
             createdAt: this.state.createdAt.valueOf(),
-            note: this.state.note
+            note: this.state.note,
+            words: ["word1", "word2", "word3"]
         });
 
     }
@@ -78,7 +84,8 @@ export default class EntryForm extends React.Component {
         this.props.onSubmit({
             weatherSymbol: "dark cloud",
             createdAt: this.state.createdAt.valueOf(),
-            note: this.state.note
+            note: this.state.note,
+            words: ["word1", "word2", "word3"]
         });
 
     }
@@ -88,7 +95,8 @@ export default class EntryForm extends React.Component {
         this.props.onSubmit({
             weatherSymbol: "thunder",
             createdAt: this.state.createdAt.valueOf(),
-            note: this.state.note
+            note: this.state.note,
+            words: ["word1", "word2", "word3"]
         });
 
     }
@@ -98,7 +106,8 @@ export default class EntryForm extends React.Component {
         this.props.onSubmit({
             weatherSymbol: "tidal wave",
             createdAt: this.state.createdAt.valueOf(),
-            note: this.state.note
+            note: this.state.note,
+            words: ["word1", "word2", "word3"]
         });
 
     }
@@ -108,7 +117,8 @@ export default class EntryForm extends React.Component {
         this.props.onSubmit({
             weatherSymbol: "tornado",
             createdAt: this.state.createdAt.valueOf(),
-            note: this.state.note
+            note: this.state.note,
+            words: ["word1", "word2", "word3"]
         });
 
     }
