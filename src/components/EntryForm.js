@@ -117,31 +117,31 @@ export default class EntryForm extends React.Component {
         return (
             <div className='weather-symbols-grid'>
                 <form className='symbol' onSubmit={this.onSubmitR}>
-                        <button><img className='symbol' src={rainbow} /></button>
+                        <button className='symbol-button'><img className='symbol' src={rainbow} /></button>
                 </form>
                 <form className='symbol' onSubmit={this.onSubmitS}>
-                        <button><img className='symbol' src={sun} /></button>
+                        <button className='symbol-button'><img className='symbol' src={sun} /></button>
                 </form>
                 <form className='symbol' onSubmit={this.onSubmitBS}>
-                        <button><img className='symbol' src={bluesky} /></button>
+                        <button className='symbol-button'><img className='symbol' src={bluesky} /></button>
                 </form>
                 <form className='symbol' onSubmit={this.onSubmitF}>
-                        <button><img className='symbol' src={fog} /></button>
+                        <button className='symbol-button'><img className='symbol' src={fog} /></button>
                 </form>
                 <form className='symbol' onSubmit={this.onSubmitGC}>
-                        <button><img className='symbol' src={greycloud} /></button>
+                        <button className='symbol-button'><img className='symbol' src={greycloud} /></button>
                 </form>
                 <form className='symbol' onSubmit={this.onSubmitDC}>
-                        <button><img className='symbol' src={darkcloud} /></button>
+                        <button className='symbol-button'> <img className='symbol' src={darkcloud} /></button>
                 </form>
                 <form className='symbol' onSubmit={this.onSubmitT}>
-                        <button><img className='symbol' src={thunder} /></button>
+                        <button className='symbol-button'><img className='symbol' src={thunder} /></button>
                 </form>
                 <form className='symbol' onSubmit={this.onSubmitTW}>
-                        <button><img className='symbol' src={tidalwave} /></button>
+                        <button className='symbol-button'><img className='symbol' src={tidalwave} /></button>
                 </form>
                 <form className='symbol' onSubmit={this.onSubmitTO}>
-                        <button><img className='symbol' src={tornado} /></button>
+                        <button className='symbol-button'><img className='symbol' src={tornado} /></button>
                 </form>
             </div>
         )
