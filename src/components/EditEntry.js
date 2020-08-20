@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import EntryForm from './EntryForm'
 import { startEditEntry, startRemoveEntry } from '../actions/entries';
