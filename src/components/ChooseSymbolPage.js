@@ -8,7 +8,7 @@ import ForegroundAnimation from './ForegroundAnimation'
 export class ChooseSymbolPage extends React.Component {
     onSubmit = (entry) => {
         this.props.startAddEntry(entry);
-        this.props.history.push('/choosemainword');
+        this.props.history.push('/edit/-MFAEOzkAZxz_n2FpnQl');
     };
     render() {
         return (
