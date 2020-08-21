@@ -1,12 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import EntryFormWords from './EntryFormWords'
+import EntryForm from './EntryForm'
 import { startEditEntry, startRemoveEntry } from '../actions/entries';
 
 export class EditEntryPage extends React.Component {
     onSubmit = (entry) => {
-        this.props.startEditEntry(this.props.entry.id, entry);
-        this.props.history.push('/');
+        // this.props.startEditEntry(this.props.entry.id, entry);
+        // this.props.history.push('/');
+        database.ref('rz5Oy01H4nQ7NAvSqsfHQkQygcl1/entries/MFAEOzkAZxz_n2FpnQl').update({
+            weatherSymbol: "sun"
+        });
     };
     onRemove = () => {
         this.props.startRemoveEntry({ id: this.props.entry.id });
@@ -16,10 +19,10 @@ export class EditEntryPage extends React.Component {
         return (
             <div>
             <div className="page-header">
-            <div className="content-container"><h1 className="page-header__title">Save Entry</h1></div>
+            <div className="content-container"><h1 className="page-header__title">Save</h1></div>
             </div>
             <div className="content-container">
-            <EntryFormWords
+            <EntryForm
                 entry={this.props.entry}
                 onSubmit={this.onSubmit}
             />
