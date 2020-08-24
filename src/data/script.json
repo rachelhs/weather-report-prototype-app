@@ -1,0 +1,20 @@
+[
+    {
+        "intro": {
+            "1": "Think About How You Are Feeling",
+            "2": "If you were to describe that feeling in a weather symbol, which symbol would it be?",
+            "3": "Choose a word that best describes that feeling?"
+    
+        },
+        "emotions": {
+            "Suicidal": "suicidal",
+            "Angry": "low-with-energy",
+            "Outraged": "low-with-energy",
+            "Furious": "low-with-energy",
+            "Greed": "low-with-energy",
+            "Jealousy": "low-with-energy",
+            "Risky": "low-with-energy",
+            "Panic": "low-with-energy"
+        }
+    }
+]

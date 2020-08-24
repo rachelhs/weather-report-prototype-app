@@ -5,7 +5,7 @@
   "author": "rachel",
   "license": "MIT",
   "engines": {
-    "node": "13.x"
+    "node": "<=13.x"
   },
   "scripts": {
     "serve": "live-server public/",
