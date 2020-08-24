@@ -2,29 +2,37 @@ import React from 'react';
 import { connect } from 'react-redux';
 import EntryFormWords from './EntryFormWords'
 import { startEditEntry, startRemoveEntry } from '../actions/entries';
+import BackgroundAnimation from './BackgroundAnimation'
+import ForegroundAnimation from './ForegroundAnimation'
 
 export class EditEntryPage extends React.Component {
     onSubmit = (entry) => {
         this.props.startEditEntry(this.props.entry.id, entry);
         this.props.history.push('/');
     };
-    onRemove = () => {
-        this.props.startRemoveEntry({ id: this.props.entry.id });
+
+    onNext = () => {
         this.props.history.push('/');
     };
+
     render() {
         return (
             <div>
-            <div className="page-header">
-            <div className="content-container"><h1 className="page-header__title">Save Entry</h1></div>
+            <div className='background-anim'>
+            <BackgroundAnimation />
             </div>
-            <div className="content-container">
+            <div className='foreground-anim'>
+            <ForegroundAnimation />
+            </div>
+            <div className='info-box'>
+            <h4 className='info-box-text'>Choose a word that best describes that feeling?</h4>
             <EntryFormWords
                 entry={this.props.entry}
                 onSubmit={this.onSubmit}
             />
-            </div><div className="content-container">
-            <button className="button button--secondary" onClick={this.onRemove}>Remove Entry</button>
+            <div className='info-box-button'>
+            <button onClick={this.onNext}>next</button>
+            </div>
             </div>
             </div>
         );
