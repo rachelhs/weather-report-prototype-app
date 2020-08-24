@@ -11,6 +11,8 @@ export class ChooseSymbolPage extends React.Component {
         this.props.history.push('/edit/-MFAEOzkAZxz_n2FpnQl');
     };
     render() {
+        let script = require('../../src/data/script.json');
+        let question = (script[0].intro[2]);
         return (
             <div>
             <div className='background-anim'>
@@ -20,7 +22,7 @@ export class ChooseSymbolPage extends React.Component {
             <ForegroundAnimation />
             </div>
             <div className='info-box'>
-            <h4 className='info-box-text'>If you were to describe that feeling in a weather symbol, which symbol would it be?</h4>
+            <h4 className='info-box-text'>{ question }</h4>
             <EntryForm
             onSubmit={this.onSubmit}
             />
