@@ -49,52 +49,52 @@ export default class EntryFormSecondaryWords extends React.Component {
         return (
             <div className='word-grid'>
                 <form className='words' onSubmit={this.onSubmitSecondWord('happy')}>
-                    <button className='symbol-button'>happy</button>
+                    <button className={'word-button'}>happy</button>
                 </form>
                 <form className='words' onSubmit={this.onSubmitSecondWord('manic')}>
-                    <button className='symbol-button'>manic</button>
+                    <button className={'word-button'}>manic</button>
                 </form>
                 <form className='words' onSubmit={this.onSubmitSecondWord('over stimulated')}>
-                    <button className='symbol-button'>over stimulated</button>
+                    <button className={'word-button'}>over stimulated</button>
                 </form>
                 <form className='words' onSubmit={this.onSubmitSecondWord('excited')}>
-                    <button className='symbol-button'>excited</button>
+                    <button className='word-button'>excited</button>
                 </form>
                 <form className='words' onSubmit={this.onSubmitSecondWord('love or loved')}>
-                    <button className='symbol-button'>love or loved</button>
+                    <button className='word-button'>love or loved</button>
                 </form>
                 <form className='words' onSubmit={this.onSubmitSecondWord('adventurous')}>
-                    <button className='symbol-button'>adventurous</button>
+                    <button className='word-button'>adventurous</button>
                 </form>
                 <form className='words' onSubmit={this.onSubmitSecondWord('brave')}>
-                    <button className='symbol-button'>brave</button>
+                    <button className='word-button'>brave</button>
                 </form>
                 <form className='words' onSubmit={this.onSubmitSecondWord('confident')}>
-                    <button className='symbol-button'>confident</button>
+                    <button className='word-button'>confident</button>
                 </form>
                 <form className='words' onSubmit={this.onSubmitSecondWord('energetic')}>
-                    <button className='symbol-button'>energetic</button>
+                    <button className='word-button'>energetic</button>
                 </form>
                 <form className='words' onSubmit={this.onSubmitSecondWord('hopeful')}>
-                    <button className='symbol-button'>hopeful</button>
+                    <button className='word-button'>hopeful</button>
                 </form>
                 <form className='words' onSubmit={this.onSubmitSecondWord('creative')}>
-                    <button className='symbol-button'>creative</button>
+                    <button className='word-button'>creative</button>
                 </form>
                 <form className='words' onSubmit={this.onSubmitSecondWord('kind')}>
-                    <button className='symbol-button'>kind</button>
+                    <button className='word-button'>kind</button>
                 </form>
                 <form className='words' onSubmit={this.onSubmitSecondWord('content')}>
-                    <button className='symbol-button'>content</button>
+                    <button className='word-button'>content</button>
                 </form>
                 <form className='words' onSubmit={this.onSubmitSecondWord('nostalgic')}>
-                    <button className='symbol-button'>nostalgic</button>
+                    <button className='word-button'>nostalgic</button>
                 </form>
                 <form className='words' onSubmit={this.onSubmitSecondWord('invincible')}>
-                    <button className='symbol-button'>invincible</button>
+                    <button className='word-button'>invincible</button>
                 </form>
                 <form className='words' onSubmit={this.onSubmitSecondWord('careless')}>
-                    <button className='symbol-button'>careless</button>
+                    <button className='word-button'>careless</button>
                 </form>
             </div>
         )
