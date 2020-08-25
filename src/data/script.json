@@ -3,7 +3,8 @@
         "intro": {
             "1": "Think About How You Are Feeling",
             "2": "If you were to describe that feeling in a weather symbol, which symbol would it be?",
-            "3": "Choose a word that best describes that feeling?"
+            "3": "Choose a word that best describes that feeling?",
+            "4": "Do you want to share anything else you're feeling?"
     
         },
         "emotions": {
