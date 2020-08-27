@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import EntryFormSecondaryWords from './EntryFormSecondaryWords';
 import EntryFormWords from './EntryFormWords'
-import { startEditEntry, startRemoveEntry } from '../actions/entries';
-import BackgroundAnimation from './BackgroundAnimation'
-import ForegroundAnimation from './ForegroundAnimation'
+import { startEditEntry, startRemoveEntry } from '../../actions/entries';
+import BackgroundAnimation from '../Animations/BackgroundAnimation'
+import ForegroundAnimation from '../Animations/ForegroundAnimation'
 
 export class EditEntryPage extends React.Component {
     constructor(props) {
@@ -30,7 +30,7 @@ export class EditEntryPage extends React.Component {
     };
 
     render() {
-        let script = require('../../src/data/script.json');
+        let script = require('../../../src/data/script.json');
         let question1 = (script[0].intro[3]);
         let question2 = (script[0].intro[4]);
         return (

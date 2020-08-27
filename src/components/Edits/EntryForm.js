@@ -1,14 +1,14 @@
 import React from 'react';
 import moment from 'moment';
-import rainbow from '../images/rainbow.png';
-import sun from '../images/sun.png';
-import bluesky from '../images/bluesky.jpeg';
-import fog from '../images/fog.png';
-import greycloud from '../images/greycloud.png';
-import darkcloud from '../images/darkcloud.svg';
-import thunder from '../images/thunder.png';
-import tidalwave from '../images/tidalwave.png';
-import tornado from '../images/tornado.png';
+import rainbow from '../../images/rainbow.png';
+import sun from '../../images/sun.png';
+import bluesky from '../../images/bluesky.jpeg';
+import fog from '../../images/fog.png';
+import greycloud from '../../images/greycloud.png';
+import darkcloud from '../../images/darkcloud.svg';
+import thunder from '../../images/thunder.png';
+import tidalwave from '../../images/tidalwave.png';
+import tornado from '../../images/tornado.png';
 
 export default class EntryForm extends React.Component {
     constructor(props) {
