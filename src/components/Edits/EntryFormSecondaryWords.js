@@ -2,7 +2,7 @@ import React from 'react';
 import moment from 'moment';
 const firebase = require('firebase/app');
 require('firebase/auth');
-import database from '../firebase/firebase';
+import database from '../../firebase/firebase';
 
 export default class EntryFormSecondaryWords extends React.Component {
     constructor(props) {

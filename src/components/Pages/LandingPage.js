@@ -1,6 +1,6 @@
 import React from 'react';
-import BackgroundAnimation from './BackgroundAnimation'
-import ForegroundAnimation from './ForegroundAnimation'
+import BackgroundAnimation from '../Animations/BackgroundAnimation'
+import ForegroundAnimation from '../Animations/ForegroundAnimation'
 
 export class LandingPage extends React.Component {
 
@@ -9,7 +9,7 @@ export class LandingPage extends React.Component {
     };
 
     render() {
-        let script = require('../../src/data/script.json');
+        let script = require('../../../src/data/script.json');
         let question = (script[0].intro[1]);
         return (
             <div>

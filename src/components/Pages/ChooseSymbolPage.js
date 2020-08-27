@@ -1,12 +1,12 @@
 import React from 'react';
-import EntryForm from './EntryForm';
+import EntryForm from '../Edits/EntryForm';
 import { connect } from 'react-redux';
-import { startAddEntry, startEditEntry } from '../actions/entries'
-import BackgroundAnimation from './BackgroundAnimation'
-import ForegroundAnimation from './ForegroundAnimation'
+import { startAddEntry, startEditEntry } from '../../actions/entries'
+import BackgroundAnimation from '../Animations/BackgroundAnimation'
+import ForegroundAnimation from '../Animations/ForegroundAnimation'
 const firebase = require('firebase/app');
 require('firebase/auth');
-import database from '../firebase/firebase';
+import database from '../../firebase/firebase';
 
 export class ChooseSymbolPage extends React.Component {
     onSubmit = (entry) => {
@@ -25,7 +25,7 @@ export class ChooseSymbolPage extends React.Component {
     };
 
     render() {
-        let script = require('../../src/data/script.json');
+        let script = require('../../../src/data/script.json');
         let question = (script[0].intro[2]);
         return (
             <div>

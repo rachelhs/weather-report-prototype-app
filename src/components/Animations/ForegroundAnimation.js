@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Lottie from 'react-lottie'
-import animationData from '../animations/waves.json'
+import animationData from '../../animations/waves.json'
 
 class ForegroundAnimation extends Component {
 
