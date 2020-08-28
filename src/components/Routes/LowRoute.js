@@ -23,34 +23,39 @@ export class LowRoute extends React.Component {
     }
 
     IsLongerThanThreeDays = () => {
+        // get timestamp for now
         const now = Date.now();
-        const threeDaysAgo = now - 259200;
-            //has user updated mood in the previous 3 days?
-            //retrieve entry before the current one
+        // get timestamp for 3 days ago
+        // 259200000 milliseconds in 3 days
+        const threeDaysAgo = now - 259200000;
+            // has user updated mood in the previous 3 days?
+            // retrieve entry before the current one
             const user = firebase.auth().currentUser;
             const uid = user.uid;
             // return two most recent entries
             database.ref(`users/${uid}/entries`)
             .orderByChild('createdAt')
             .limitToLast(2)
-            .on('value', function(snapshot) {
-                snapshot.forEach(function(child) {
+            .on('value', (snapshot) => {
+                snapshot.forEach((child) => {
                     // if timestamp for either entry is older than 3 days
                     let time = child.val().createdAt;
+                    console.log(time);
                     if(time < threeDaysAgo) {
-                        console.log('hello');
                         this.setState({ toggleHowLong: true });
                     }
                 })
             })
-
     }
 
     onNext = () => {
         console.log('next');
         this.setState({ viewNumber: this.state.viewNumber + 1 });
-        this.IsLongerThanThreeDays();
     };
+
+    componentDidMount = () => {
+        this.IsLongerThanThreeDays();
+    }
 
     render() {
         let script = require('../../../src/data/script.json');
@@ -69,8 +74,8 @@ export class LowRoute extends React.Component {
             </div>
             <div className='info-box'>
             {(this.state.viewNumber == 1) ? <h1 className='info-box-text'>{ question1 }</h1> :
-            (this.state.viewNumber == 2 && this.state.toggleHowLong == true) ? <h2>2</h2> : 
-            (this.state.viewNumber == 2 && this.state.toggleHowLong == false) ? <h2>3</h2> :
+            (this.state.viewNumber == 2 && this.state.toggleHowLong == true) ? <h1 className='info-box-text'>{ question2 }</h1> : 
+            (this.state.viewNumber == 2 && this.state.toggleHowLong == false) ? <h1 className='info-box-text'>{ question3 }</h1> :
             ''}
             <div className='info-box-button'>
             <button onClick={this.onNext}>next</button>
