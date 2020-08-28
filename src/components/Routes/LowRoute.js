@@ -62,8 +62,10 @@ export class LowRoute extends React.Component {
     }
 
     onNext = () => {
-        console.log('next');
         this.setState({ viewNumber: this.state.viewNumber + 1 });
+        console.log(this.state.viewNumber);
+        console.log(this.state.toggleHowLong);
+        console.log(this.state.addNote);
     };
 
     onHowLong = (howLong) => {
@@ -164,7 +166,7 @@ export class LowRoute extends React.Component {
                                         </div> :
                                         ((this.state.viewNumber == 5) ||
                                             (this.state.viewNumber == 3 && this.state.toggleHowLong == false && this.state.addNote == false) ||
-                                            (this.state.viewNumber == 4 && (this.state.toggleHowLong == false || this.state.addNote == false))
+                                            (this.state.viewNumber == 4 && (this.state.toggleHowLong == false ^ this.state.addNote == false))
                                         ) ? (this.state.randQues == 0) ? <div><h1>{question1}</h1>
                                             <form onSubmit={this.handlePosSubmit}>
                                                 <input type="text" value={this.state.value} onChange={this.handleNoteChange} />
@@ -176,7 +178,11 @@ export class LowRoute extends React.Component {
                                                         <input type="text" value={this.state.value} onChange={this.handleNoteChange} />
                                                         <button>Submit</button>
                                                     </form>
-                                                </div> :
+                                                </div> : 
+                                                ((this.state.viewNumber == 6) ||
+                                                (this.state.viewNumber == 5 && (this.state.toggleHowLong == false || this.state.addNote == false)) || 
+                                                (this.state.viewNumber == 4 && this.state.toggleHowLong == false && this.state.addNote == false)) ?
+                                                <h1>excercises</h1> :
                                             ''}
                     <div className='info-box-button'>
                         <button onClick={this.onNext}>next</button>
