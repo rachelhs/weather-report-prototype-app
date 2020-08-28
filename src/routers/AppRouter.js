@@ -8,6 +8,7 @@ import createHistory from 'history/createBrowserHistory'
 import PrivateRoute from './PrivateRoute'
 import PublicRoute from './PublicRoute'
 import ChooseSymbolPage from '../components/Pages/ChooseSymbolPage'
+import LowRoute from '../components/Routes/LowRoute'
 
 export const history = createHistory();
 
@@ -19,6 +20,7 @@ const AppRouter = () => (
                 <PrivateRoute path="/landing" component={LandingPage}/>
                 <PrivateRoute path="/choosesymbol" component={ChooseSymbolPage}/>
                 <PrivateRoute path="/edit/:id" component={EditEntryPage} />
+                <PrivateRoute path="/5" component={LowRoute} />
                 <Route component={NotFound} />
             </Switch>
         </div>

@@ -26,7 +26,7 @@ export class EditEntryPage extends React.Component {
     };
 
     onFinal = () => {
-        this.props.history.push('/');
+        this.props.history.push('/5');
     };
 
     render() {
