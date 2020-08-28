@@ -41,7 +41,7 @@ export class LowRoute extends React.Component {
                     // if timestamp for either entry is older than 3 days
                     let time = child.val().createdAt;
                     console.log(time);
-                    if(time < threeDaysAgo) {
+                    if(time > threeDaysAgo) {
                         this.setState({ toggleHowLong: true });
                     }
                 })
@@ -51,6 +51,20 @@ export class LowRoute extends React.Component {
     onNext = () => {
         console.log('next');
         this.setState({ viewNumber: this.state.viewNumber + 1 });
+    };
+
+    onHowLong = (howLong) => {
+        console.log('button clicked');
+        const user = firebase.auth().currentUser;
+        const uid = user.uid;
+        let name = '';
+        //get id for the current entry
+        database.ref(`users/${uid}/entries`).orderByChild('createdAt').limitToLast(1).on('child_added', (snapshot) => {
+            name = snapshot.key;
+            database.ref(`users/${uid}/entries/${name}`).update({
+                howLong: howLong
+            })
+        })
     };
 
     componentDidMount = () => {
@@ -74,9 +88,14 @@ export class LowRoute extends React.Component {
             </div>
             <div className='info-box'>
             {(this.state.viewNumber == 1) ? <h1 className='info-box-text'>{ question1 }</h1> :
-            (this.state.viewNumber == 2 && this.state.toggleHowLong == true) ? <h1 className='info-box-text'>{ question2 }</h1> : 
+            (this.state.viewNumber == 2 && this.state.toggleHowLong == true) ? 
+            <div><h1 className='info-box-text'>{ question2 }</h1>
+            <button onClick={ () => this.onHowLong('today')}>today</button>
+            <button onClick={ () => this.onHowLong('a few days')}>a few days</button>
+            <button onClick={ () => this.onHowLong('a week')}>a week</button>
+            <button onClick={ () => this.onHowLong('longer')}>longer</button></div> : 
             (this.state.viewNumber == 2 && this.state.toggleHowLong == false) ? <h1 className='info-box-text'>{ question3 }</h1> :
-            ''}
+            (this.state.viewNumber == 3 && this.state.toggleHowLong == true) ? <h1 className='info-box-text'>{ question3 }</h1> : ''}
             <div className='info-box-button'>
             <button onClick={this.onNext}>next</button>
             </div>
