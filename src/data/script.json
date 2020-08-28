@@ -16,6 +16,24 @@
             "Jealousy": "low-with-energy",
             "Risky": "low-with-energy",
             "Panic": "low-with-energy"
-        }
+        },
+        "low": {
+            "1": "I'm sorry you are feeling like this",
+            "2": "How long have you felt like this?",
+            "3": "Is there anything you are aware of that has made you feel like this?",
+            "4": "Do you want to do another exercise?"
+        },
+        "questions": {
+            "1": "What one small positive thing could you do to make yourself feel better?",
+            "2": "What thing helped you cope in the past?"
+        },
+        "exercises": {
+            "1": "insert grounding exercise here",
+            "2": "insert breathing exercise here",
+            "3": "insert meditation exercise here"
+        },
+        "feedback": {
+            "statement": "feedback statement"
+        } 
     }
 ]
