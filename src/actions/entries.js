@@ -15,9 +15,10 @@ export const startAddEntry = (entryData = {}) => {
       createdAt = 0,
       mainWord = '',
       secondWord = '',
-      thirdWord = ''
+      thirdWord = '',
+      howLong = ''
     } = entryData;
-    const entry = { weatherSymbol, note, createdAt, mainWord, secondWord, thirdWord };
+    const entry = { weatherSymbol, note, createdAt, mainWord, secondWord, thirdWord, howLong };
 
     return database.ref(`users/${uid}/entries`).push(entry).then((ref) => {
       dispatch(addEntry({
