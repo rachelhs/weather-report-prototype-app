@@ -17,14 +17,22 @@ export class LowRoute extends React.Component {
             viewNumber: 1,
             toggleHowLong: false,
             addNote: false,
-            value: ''
+            value: '',
+            randQues: 0
         };
 
         this.onNext = this.onNext.bind(this);
         this.IsLongerThanThreeDays = this.IsLongerThanThreeDays.bind(this);
         this.onYes = this.onYes.bind(this);
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleNoteChange = this.handleNoteChange.bind(this);
+        this.handleNoteSubmit = this.handleNoteSubmit.bind(this);
+        this.selectQuestion = this.selectQuestion.bind(this);
+    }
+
+    selectQuestion = () => {
+        // replace 2 with number of questions
+        const rand = Math.floor(Math.random() * Math.floor(2));
+        this.setState({ randQues: rand });
     }
 
     IsLongerThanThreeDays = () => {
@@ -77,7 +85,7 @@ export class LowRoute extends React.Component {
         this.setState({ addNote: true });
     }
 
-    handleSubmit = (e) => {
+    handleNoteSubmit = (e) => {
         // stops page refreshing
         e.preventDefault();
         console.log('submit');
@@ -93,20 +101,40 @@ export class LowRoute extends React.Component {
         })
     }
 
-    handleChange = (e) => {
+    handlePosSubmit = (e) => {
+        // stops page refreshing
+        e.preventDefault();
+        console.log('submit');
+        const user = firebase.auth().currentUser;
+        const uid = user.uid;
+        database.ref(`users/${uid}/positiveThings`).push(this.state.value);
+    }
+
+    handleCopeSubmit = (e) => {
+        // stops page refreshing
+        e.preventDefault();
+        console.log('submit');
+        const user = firebase.auth().currentUser;
+        const uid = user.uid;
+        database.ref(`users/${uid}/helpedCope`).push(this.state.value);
+    }
+
+    handleNoteChange = (e) => {
         this.setState({ value: e.target.value });
     }
 
     componentDidMount = () => {
         this.IsLongerThanThreeDays();
+        this.selectQuestion();
     }
 
     render() {
         let script = require('../../../src/data/script.json');
-        let question1 = (script[0].low[1]);
-        let question2 = (script[0].low[2]);
-        let question3 = (script[0].low[3]);
-        let question4 = (script[0].low[4]);
+        let text1 = (script[0].low[1]);
+        let text2 = (script[0].low[2]);
+        let text3 = (script[0].low[3]);
+        let question1 = (script[0].questions[1]);
+        let question2 = (script[0].questions[2]);
 
         return (
             <div>
@@ -117,24 +145,39 @@ export class LowRoute extends React.Component {
                     <ForegroundAnimation />
                 </div>
                 <div className='info-box'>
-                    {(this.state.viewNumber == 1) ? <h1 className='info-box-text'>{question1}</h1> :
+                    {(this.state.viewNumber == 1) ? <h1 className='info-box-text'>{text1}</h1> :
                         (this.state.viewNumber == 2 && this.state.toggleHowLong == true) ?
-                            <div><h1 className='info-box-text'>{question2}</h1>
+                            <div><h1 className='info-box-text'>{text2}</h1>
                                 <button onClick={() => this.onHowLong('today')}>today</button>
                                 <button onClick={() => this.onHowLong('a few days')}>a few days</button>
                                 <button onClick={() => this.onHowLong('a week')}>a week</button>
                                 <button onClick={() => this.onHowLong('longer')}>longer</button></div> :
-                            (this.state.viewNumber == 2 && this.state.toggleHowLong == false) ? <div><h1 className='info-box-text'>{question3}</h1><button onClick={() => this.onYes()}>yes</button><button>no</button></div> :
-                                (this.state.viewNumber == 3 && this.state.toggleHowLong == true) ? <div><h1 className='info-box-text'>{question3}</h1><button onClick={() => this.onYes()}>yes</button><button>no</button></div> :
+                            (this.state.viewNumber == 2 && this.state.toggleHowLong == false) ? <div><h1 className='info-box-text'>{text3}</h1><button onClick={() => this.onYes()}>yes</button><button>no</button></div> :
+                                (this.state.viewNumber == 3 && this.state.toggleHowLong == true) ? <div><h1 className='info-box-text'>{text3}</h1><button onClick={() => this.onYes()}>yes</button><button>no</button></div> :
                                     ((this.state.viewNumber == 3 && this.state.toggleHowLong == false && this.state.addNote == true) ||
                                         (this.state.viewNumber == 4 && this.state.toggleHowLong == true && this.state.addNote == true)) ?
                                         <div>
-                                            <form onSubmit={this.handleSubmit}>
-                                                <input type="text" value={this.state.value} onChange={this.handleChange}/>
+                                            <form onSubmit={this.handleNoteSubmit}>
+                                                <input type="text" value={this.state.value} onChange={this.handleNoteChange} />
                                                 <button>Submit</button>
                                             </form>
-                                            </div> :
-                                        ''}
+                                        </div> :
+                                        ((this.state.viewNumber == 5) ||
+                                            (this.state.viewNumber == 3 && this.state.toggleHowLong == false && this.state.addNote == false) ||
+                                            (this.state.viewNumber == 4 && (this.state.toggleHowLong == false || this.state.addNote == false))
+                                        ) ? (this.state.randQues == 0) ? <div><h1>{question1}</h1>
+                                            <form onSubmit={this.handlePosSubmit}>
+                                                <input type="text" value={this.state.value} onChange={this.handleNoteChange} />
+                                                <button>Submit</button>
+                                            </form>
+                                        </div> :
+                                                <div><h1>{question2}</h1>
+                                                    <form onSubmit={this.handleCopeSubmit}>
+                                                        <input type="text" value={this.state.value} onChange={this.handleNoteChange} />
+                                                        <button>Submit</button>
+                                                    </form>
+                                                </div> :
+                                            ''}
                     <div className='info-box-button'>
                         <button onClick={this.onNext}>next</button>
                     </div>
