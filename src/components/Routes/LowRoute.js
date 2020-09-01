@@ -3,7 +3,8 @@ import BackgroundAnimation from '../Animations/BackgroundAnimation'
 import ForegroundAnimation from '../Animations/ForegroundAnimation'
 const firebase = require('firebase/app');
 require('firebase/auth');
-import database from '../../firebase/firebase';
+//functions
+import { isLongerThanThreeDays } from '../../actions/functions-in-routes';
 
 //get asked questions 1 and 2
 //excercises - 3 x replays - grateful, positive memory, things you like about yourself
@@ -17,35 +18,8 @@ export class LowRoute extends React.Component {
             viewNumber: 1,
             toggleHowLong: false
         };
-
-        this.onNext = this.onNext.bind(this);
-        this.IsLongerThanThreeDays = this.IsLongerThanThreeDays.bind(this);
-    }
-
-    IsLongerThanThreeDays = () => {
-        // get timestamp for now
-        const now = Date.now();
-        // get timestamp for 3 days ago
-        // 259200000 milliseconds in 3 days
-        const threeDaysAgo = now - 259200000;
-            // has user updated mood in the previous 3 days?
-            // retrieve entry before the current one
-            const user = firebase.auth().currentUser;
-            const uid = user.uid;
-            // return two most recent entries
-            database.ref(`users/${uid}/entries`)
-            .orderByChild('createdAt')
-            .limitToLast(2)
-            .on('value', (snapshot) => {
-                snapshot.forEach((child) => {
-                    // if timestamp for either entry is older than 3 days
-                    let time = child.val().createdAt;
-                    console.log(time);
-                    if(time < threeDaysAgo) {
-                        this.setState({ toggleHowLong: true });
-                    }
-                })
-            })
+        this.onNext = this.onNext.bind(isLongerThanThreeDays(firebase.auth().currentUser));
+        // this.isLongerThanThreeDays = this.isLongerThanThreeDays.bind(this);
     }
 
     onNext = () => {
@@ -54,7 +28,9 @@ export class LowRoute extends React.Component {
     };
 
     componentDidMount = () => {
-        this.IsLongerThanThreeDays();
+        // console.log('tooglebefore', toogleHowLong);
+        isLongerThanThreeDays(firebase.auth().currentUser);
+        // console.log('toogleafter', toogleHowLong);
     }
 
     render() {
@@ -65,22 +41,24 @@ export class LowRoute extends React.Component {
         let question4 = (script[0].low[4]);
 
         return (
-            <div>
-            <div className='background-anim'>
-            <BackgroundAnimation />
-            </div>
-            <div className='foreground-anim'>
-            <ForegroundAnimation />
-            </div>
-            <div className='info-box'>
-            {(this.state.viewNumber == 1) ? <h1 className='info-box-text'>{ question1 }</h1> :
-            (this.state.viewNumber == 2 && this.state.toggleHowLong == true) ? <h1 className='info-box-text'>{ question2 }</h1> : 
-            (this.state.viewNumber == 2 && this.state.toggleHowLong == false) ? <h1 className='info-box-text'>{ question3 }</h1> :
-            ''}
-            <div className='info-box-button'>
-            <button onClick={this.onNext}>next</button>
-            </div>
-            </div>
+            <div className='background-box'>
+                <div className='background-anim'>
+                    <BackgroundAnimation />
+                </div>
+                <div className='foreground-anim'>
+                    <ForegroundAnimation />
+                </div>
+                <div className='info-box'>
+                    {
+                        (this.state.viewNumber == 1) ? <h1 className='info-box-text'>{ question1 }</h1> :
+                        (this.state.viewNumber == 2 && this.state.toggleHowLong == true) ? <h1 className='info-box-text'>{ question2 }</h1> : 
+                        (this.state.viewNumber == 2 && this.state.toggleHowLong == false) ? <h1 className='info-box-text'>{ question3 }</h1> :
+                        ''
+                    }
+                    <div className='info-box-button'>
+                        <button className='next-button' onClick={this.onNext}>next</button>
+                    </div>
+                </div>
             </div>
         );
     }

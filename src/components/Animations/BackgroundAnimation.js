@@ -12,8 +12,7 @@ class BackgroundAnimation extends Component {
       animationData: animationData,
       rendererSettings: {
         preserveAspectRatio: 'xMidYMid slice'
-      }
-
+      },
     };
 
     return(
