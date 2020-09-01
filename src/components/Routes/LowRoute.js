@@ -139,7 +139,7 @@ export class LowRoute extends React.Component {
         let question2 = (script[0].questions[2]);
 
         return (
-            <div>
+            <div className='background-box'>
                 <div className='background-anim'>
                     <BackgroundAnimation />
                 </div>
@@ -150,10 +150,10 @@ export class LowRoute extends React.Component {
                     {(this.state.viewNumber == 1) ? <h1 className='info-box-text'>{text1}</h1> :
                         (this.state.viewNumber == 2 && this.state.toggleHowLong == true) ?
                             <div><h1 className='info-box-text'>{text2}</h1>
-                                <button onClick={() => this.onHowLong('today')}>today</button>
-                                <button onClick={() => this.onHowLong('a few days')}>a few days</button>
-                                <button onClick={() => this.onHowLong('a week')}>a week</button>
-                                <button onClick={() => this.onHowLong('longer')}>longer</button></div> :
+                                <button className='next-button' onClick={() => this.onHowLong('today')}>today</button>
+                                <button className='next-button' onClick={() => this.onHowLong('a few days')}>a few days</button>
+                                <button className='next-button' onClick={() => this.onHowLong('a week')}>a week</button>
+                                <button className='next-button' onClick={() => this.onHowLong('longer')}>longer</button></div> :
                             (this.state.viewNumber == 2 && this.state.toggleHowLong == false) ? <div><h1 className='info-box-text'>{text3}</h1><button onClick={() => this.onYes()}>yes</button><button>no</button></div> :
                                 (this.state.viewNumber == 3 && this.state.toggleHowLong == true) ? <div><h1 className='info-box-text'>{text3}</h1><button onClick={() => this.onYes()}>yes</button><button>no</button></div> :
                                     ((this.state.viewNumber == 3 && this.state.toggleHowLong == false && this.state.addNote == true) ||
@@ -161,7 +161,7 @@ export class LowRoute extends React.Component {
                                         <div>
                                             <form onSubmit={this.handleNoteSubmit}>
                                                 <input type="text" value={this.state.value} onChange={this.handleNoteChange} />
-                                                <button>Submit</button>
+                                                <button className='next-button'>Submit</button>
                                             </form>
                                         </div> :
                                         ((this.state.viewNumber == 5) ||
@@ -170,13 +170,13 @@ export class LowRoute extends React.Component {
                                         ) ? (this.state.randQues == 0) ? <div><h1>{question1}</h1>
                                             <form onSubmit={this.handlePosSubmit}>
                                                 <input type="text" value={this.state.value} onChange={this.handleNoteChange} />
-                                                <button>Submit</button>
+                                                <button className='next-button'>Submit</button>
                                             </form>
                                         </div> :
                                                 <div><h1>{question2}</h1>
                                                     <form onSubmit={this.handleCopeSubmit}>
                                                         <input type="text" value={this.state.value} onChange={this.handleNoteChange} />
-                                                        <button>Submit</button>
+                                                        <button className='next-button'>Submit</button>
                                                     </form>
                                                 </div> : 
                                                 ((this.state.viewNumber == 6) ||
@@ -185,7 +185,7 @@ export class LowRoute extends React.Component {
                                                 <h1>excercises</h1> :
                                             ''}
                     <div className='info-box-button'>
-                        <button onClick={this.onNext}>next</button>
+                        <button className='next-button' onClick={this.onNext}>next</button>
                     </div>
                 </div>
             </div>
