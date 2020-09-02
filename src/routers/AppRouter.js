@@ -10,6 +10,8 @@ import PrivateRoute from './PrivateRoute'
 import PublicRoute from './PublicRoute'
 import ChooseSymbolPage from '../components/Pages/ChooseSymbolPage'
 import LowRoute from '../components/Routes/LowRoute'
+import MediumLowRoute from '../components/Routes/MediumLowRoute'
+import Routes from '../components/Routes/AllRoutes'
 
 export const history = createHistory();
 
@@ -22,7 +24,10 @@ const AppRouter = () => (
                 <PrivateRoute path="/home" component={ HomePage }/>
                 <PrivateRoute path="/choosesymbol" component={ChooseSymbolPage}/>
                 <PrivateRoute path="/edit/:id" component={EditEntryPage} />
-                <PrivateRoute path="/5" component={LowRoute} />
+                <PrivateRoute path="/6" component={ MediumLowRoute } />
+                <PrivateRoute path="/5" component={ LowRoute } />
+                <PrivateRoute path="/allRoutes" component={ Routes } />
+
                 <Route component={NotFound} />
             </Switch>
         </div>
