@@ -34,26 +34,31 @@ export class EditEntryPage extends React.Component {
         let question1 = (script[0].intro[3]);
         let question2 = (script[0].intro[4]);
         return (
-            <div>
-            <div className='background-anim'>
-            <BackgroundAnimation />
-            </div>
-            <div className='foreground-anim'>
-            <ForegroundAnimation />
-            </div>
-            <div className='info-box'>
-            {(this.state.viewOne) ? <h4 className='info-box-text'>{question1}</h4> :
-            <h4 className='info-box-text'>{question2}</h4>
-        }
-            {(this.state.viewOne) ? <div><EntryFormWords entry={this.props.entry} onSubmit={this.onSubmit} /> 
-            <div className='info-box-button'>
-            <button onClick={this.onNext}>next</button>
-            </div></div> : <div><EntryFormSecondaryWords entry={this.props.entry} onSubmit={this.onSubmit} /> 
-            <div className='info-box-button'>
-            <button onClick={this.onFinal}>next</button>
-            </div>
-            </div>    }
-            </div>
+            <div className='background-box'>
+                <div className='background-anim'>
+                    <BackgroundAnimation />
+                </div>
+                <div className='foreground-anim'>
+                    <ForegroundAnimation />
+                </div>
+                <div className='info-box info-box-words'>
+                    {
+                        (this.state.viewOne) ? <h2 className='info-box-text'>{question1}</h2> : <h2 className='info-box-text'>{question2}</h2>
+                    }
+                    {
+                        (this.state.viewOne) ? <div><EntryFormWords entry={this.props.entry} onSubmit={this.onSubmit} /> 
+                        <div className='info-box-button'>
+                            <button onClick={this.onNext}>next</button>
+                        </div>
+                        </div> : 
+                        <div><EntryFormSecondaryWords entry={this.props.entry} onSubmit={this.onSubmit} /> 
+
+                            <div className='info-box-button'>
+                                <button className='next-button' onClick={this.onFinal}>next</button>
+                            </div>
+                        </div>
+                    }
+                </div>
             </div>
         );
     }

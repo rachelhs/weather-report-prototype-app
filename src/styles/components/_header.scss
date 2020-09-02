@@ -1,5 +1,5 @@
 .header {
-    background-color: $dark-blue;
+    background-color: $dark-purple;
 }
 
 .header__content {
@@ -15,4 +15,11 @@
     h1 {
         margin: 0;
     }
+}
+
+.logout-button {
+    background-color: white;
+    border: none;
+    width: 80px;
+    padding: 4px;
 }
