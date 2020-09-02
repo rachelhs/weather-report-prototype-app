@@ -3,6 +3,7 @@
     z-index: 1;
     width: 100%;
     height: calc(100vh - 44px);
+    z-index: -5;
 }
 
 .foreground-anim {
@@ -10,4 +11,17 @@
     z-index: 2;
     width: 100%;
     height: calc(100vh - 44px);
+    z-index: -5;
+}
+
+.fish-anim {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: rotate(270deg);
+}
+
+.background-div {
+    color: red;
+    z-index: 300;
 }

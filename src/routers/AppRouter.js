@@ -1,6 +1,7 @@
 import { Router, Route, Switch } from 'react-router-dom'
 import React from 'react';
 import LandingPage from '../components/Pages/LandingPage'
+import HomePage from '../components/Home/HomePage'
 import EditEntryPage from '../components/Edits/EditEntry'
 import NotFound from '../components/Pages/NotFound'
 import LoginEmailForm from '../components/Login/LoginEmailForm'
@@ -18,6 +19,7 @@ const AppRouter = () => (
             <Switch>
                 <PublicRoute path="/" component={LoginEmailForm} exact={true} />
                 <PrivateRoute path="/landing" component={LandingPage}/>
+                <PrivateRoute path="/home" component={ HomePage }/>
                 <PrivateRoute path="/choosesymbol" component={ChooseSymbolPage}/>
                 <PrivateRoute path="/edit/:id" component={EditEntryPage} />
                 <PrivateRoute path="/5" component={LowRoute} />

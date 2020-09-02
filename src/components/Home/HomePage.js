@@ -1,25 +1,35 @@
 import React from 'react';
 import BackgroundAnimation from '../Animations/BackgroundAnimation'
 import ForegroundAnimation from '../Animations/ForegroundAnimation'
+import animatedFish from '../../animations/fish.json';
+import Lottie from 'react-lottie'
 
-export class HomePage extends React.Component {
+export default function HomePage() {
+    const defaultOptions = {
+        loop: true,
+        autoplay: true,
+        animationData: animatedFish,
+        rendererSettings: {
+          preserveAspectRatio: "xMidYMid slice"
+        }
+      };
 
-    render() {
-
-        return (
-            <div>
+    return (
+        <div>
             <div className='background-anim'>
-            <BackgroundAnimation />
+                <BackgroundAnimation />
             </div>
             <div className='foreground-anim'>
-            <ForegroundAnimation />
+                <ForegroundAnimation />
             </div>
-            <div className='info-box'>
-            <h1 className='info-box-text'>HOME</h1>
-            </div>
-            </div>
-        );
-    }
+            <a className='fish-anim' href="#" onclick="console.log('The link was clicked.')">
+                <Lottie 
+                options={defaultOptions}
+                height={400}
+                width={400}
+                zIndex={100}
+                />
+            </a>
+        </div>
+    );
 }
-
-export default HomePage;

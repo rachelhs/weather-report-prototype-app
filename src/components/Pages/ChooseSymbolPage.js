@@ -28,20 +28,20 @@ export class ChooseSymbolPage extends React.Component {
         let script = require('../../../src/data/script.json');
         let question = (script[0].intro[2]);
         return (
-            <div>
-            <div className='background-anim'>
-            <BackgroundAnimation />
+            <div className='background-box'>
+                <div className='background-anim'>
+                    <BackgroundAnimation />
+                </div>
+                <div className='foreground-anim'>
+                    <ForegroundAnimation />
+                </div>
+                <div className='info-box'>
+                    <h2 className='info-box-text'>{ question }</h2>
+                    <EntryForm
+                        onSubmit={this.onSubmit}
+                    />
+                </div>
             </div>
-            <div className='foreground-anim'>
-            <ForegroundAnimation />
-            </div>
-            <div className='info-box'>
-            <h4 className='info-box-text'>{ question }</h4>
-            <EntryForm
-            onSubmit={this.onSubmit}
-            />
-            </div>
-        </div>
         );
     }
 }

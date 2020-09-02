@@ -1,7 +1,7 @@
 .list-header {
     background: $off-white;
     border: 1px solid darken($color: $off-white, $amount: 7%);
-    color: $grey;
+    color: $dark-purple;
     display: flex;
     justify-content: space-between;
     padding: $s-size $m-size;
@@ -19,7 +19,7 @@
     flex-direction: column;
     padding: $s-size;
     text-decoration: none;
-    color: $dark-grey;
+    color: $dark-purple;
     border: 1px solid darken($color: $off-white, $amount: 7%);
     border-top: none;
     transition: background .3s ease;
@@ -37,7 +37,7 @@
 .list-item--message {
     align-items: center;
     justify-content: center;
-    color: $grey;
+    color: $dark-purple;
     padding: $m-size;
     &:hover {
         background: none;
@@ -50,7 +50,7 @@
 }
 
 .list-item__subtitle {
-    color: $grey;
+    color: $dark-purple;
     font-size: $font-size-small;
 }
 
