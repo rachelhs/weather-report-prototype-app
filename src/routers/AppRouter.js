@@ -23,6 +23,7 @@ const AppRouter = () => (
                 <PrivateRoute path="/choosesymbol" component={ChooseSymbolPage}/>
                 <PrivateRoute path="/edit/:id" component={EditEntryPage} />
                 <PrivateRoute path="/5" component={LowRoute} />
+                <PrivateRoute path="/home" component={HomePage} />
                 <Route component={NotFound} />
             </Switch>
         </div>
