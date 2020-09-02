@@ -145,7 +145,7 @@ export class LowRoute extends React.Component {
     componentDidMount = () => {
         this.IsLongerThanThreeDays();
         this.selectQuestion();
-        const exercise = ChooseExercise(['gratitude']);
+        const exercise = ChooseExercise(['breathing', 'meditating', 'grounding', 'gratitude', 'positive', 'selflike']);
         this.setState({ exercise: exercise });
     }
 

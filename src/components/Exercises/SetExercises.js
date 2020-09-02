@@ -1,5 +1,7 @@
 import { Breathing, Meditating, Grounding } from './TextBasedExercises';
-import Gratitude from './ReplayExercises';
+import Gratitude from './ReplayGratitude';
+import PositiveMemory from './ReplayPosMemories';
+import LikeAboutSelf from './ReplayLikeAboutSelf';
 import React from 'react';
 
 export const SetExercises = (exercise) => {
@@ -14,5 +16,11 @@ export const SetExercises = (exercise) => {
     }
     if (exercise == 'gratitude') {
         return <Gratitude />;
+    }
+    if (exercise == 'positive') {
+        return <PositiveMemory />
+    }
+    if (exercise === 'selflike') {
+        return <LikeAboutSelf />
     }
 }
