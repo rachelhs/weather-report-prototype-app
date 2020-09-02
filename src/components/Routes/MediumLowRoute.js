@@ -10,7 +10,7 @@ class MediumLowRoute extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {LongerThanThree:"start"}
+        this.state = {LongerThanThree: false}
       }
 
     componentWillMount() {

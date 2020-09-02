@@ -6,9 +6,11 @@ import { FadeIn } from '../../actions/route-functions'
 export class IsLonger extends React.Component {
     constructor(props) {
       super(props);
-      this.state = {LongerThanThree:"start"}
+      this.state = {LongerThanThree: false,
+                    HowLongAnswered: false
+    }
       this.IsLongerThanThreeDays = this.IsLongerThanThreeDays.bind(this);
-      this.onNext = this.onNext.bind(this);
+      this.onHowLongAnswered = this.onHowLongAnswered.bind(this);
     }
   
     componentDidMount() {
@@ -35,23 +37,27 @@ export class IsLonger extends React.Component {
                     let time = child.val().createdAt;
                     console.log('time', time);
                     if (time < threeDaysAgo) {
-                        this.setState({ LongerThanThree: "true" });
+                        this.setState({ LongerThanThree: true});
                     } else {
-                        this.setState({ LongerThanThree: "false" });
+                        this.setState({ LongerThanThree: false });
                     }
                 })
             })
             // console.log('state', this.state.LongerThanThree )
         }
 
+    onHowLongAnswered = () => {
+        this.setState({ HowLongAnswered: true });
+    }
+
     render() {
         let script = require('../../data/script.json');
       return (
         <FadeIn delay={5000}>
-            {this.state.toggleHowLong ? (
+            {this.state.LongerThanThree ? (
             <div className='info-box'>
                 <h1>{script[0].low[2]}</h1>
-                <button className='next-button' onClick={this.onNext}>next</button>
+                <button className='next-button' onClick={this.onHowLongAnswered}>next</button>
             </div>
             ) : (
             <div className='info-box'>
