@@ -4,6 +4,8 @@ import ForegroundAnimation from '../Animations/ForegroundAnimation'
 const firebase = require('firebase/app');
 require('firebase/auth');
 import database from '../../firebase/firebase';
+import { ChooseExercise } from '../Exercises/ChooseExercise';
+import { SetExercises } from '../Exercises/SetExercises';
 
 //get asked questions 1 and 2
 //excercises - 3 x replays - grateful, positive memory, things you like about yourself
@@ -20,7 +22,8 @@ export class LowRoute extends React.Component {
             value: '',
             valuePos: '',
             valueCope: '',
-            randQues: 0
+            randQues: 0,
+            exercise: ''
         };
 
         this.onNext = this.onNext.bind(this);
@@ -142,6 +145,8 @@ export class LowRoute extends React.Component {
     componentDidMount = () => {
         this.IsLongerThanThreeDays();
         this.selectQuestion();
+        const exercise = ChooseExercise(['gratitude']);
+        this.setState({ exercise: exercise });
     }
 
     render() {
@@ -196,7 +201,7 @@ export class LowRoute extends React.Component {
                                                 ((this.state.viewNumber == 6) ||
                                                 (this.state.viewNumber == 5 && (this.state.toggleHowLong == false || this.state.addNote == false)) || 
                                                 (this.state.viewNumber == 4 && this.state.toggleHowLong == false && this.state.addNote == false)) ?
-                                                <h1>excercises</h1> :
+                                                <div>{SetExercises(this.state.exercise)}</div> :
                                             ''}
                     <div className='info-box-button'>
                         <button className='next-button' onClick={this.onNext}>next</button>
