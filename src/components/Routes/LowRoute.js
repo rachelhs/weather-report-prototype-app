@@ -18,6 +18,8 @@ export class LowRoute extends React.Component {
             toggleHowLong: false,
             addNote: false,
             value: '',
+            valuePos: '',
+            valueCope: '',
             randQues: 0
         };
 
@@ -27,6 +29,10 @@ export class LowRoute extends React.Component {
         this.handleNoteChange = this.handleNoteChange.bind(this);
         this.handleNoteSubmit = this.handleNoteSubmit.bind(this);
         this.selectQuestion = this.selectQuestion.bind(this);
+        this.handlePosSubmit = this.handlePosSubmit.bind(this);
+        this.handleCopeSubmit = this.handleCopeSubmit.bind(this);
+        this.handlePosChange = this.handlePosChange.bind(this);
+        this.handleCopeChange = this.handleCopeChange.bind(this);
     }
 
     selectQuestion = () => {
@@ -109,7 +115,7 @@ export class LowRoute extends React.Component {
         console.log('submit');
         const user = firebase.auth().currentUser;
         const uid = user.uid;
-        database.ref(`users/${uid}/positiveThings`).push(this.state.value);
+        database.ref(`users/${uid}/positiveThings`).push(this.state.valuePos);
     }
 
     handleCopeSubmit = (e) => {
@@ -118,7 +124,15 @@ export class LowRoute extends React.Component {
         console.log('submit');
         const user = firebase.auth().currentUser;
         const uid = user.uid;
-        database.ref(`users/${uid}/helpedCope`).push(this.state.value);
+        database.ref(`users/${uid}/helpedCope`).push(this.state.valueCope);
+    }
+
+    handleCopeChange = (e) => {
+        this.setState({ valueCope: e.target.value });
+    }
+
+    handlePosChange = (e) => {
+        this.setState({ valuePos: e.target.value });
     }
 
     handleNoteChange = (e) => {
@@ -169,13 +183,13 @@ export class LowRoute extends React.Component {
                                             (this.state.viewNumber == 4 && (this.state.toggleHowLong == false ^ this.state.addNote == false))
                                         ) ? (this.state.randQues == 0) ? <div><h1>{question1}</h1>
                                             <form onSubmit={this.handlePosSubmit}>
-                                                <input type="text" value={this.state.value} onChange={this.handleNoteChange} />
+                                                <input type="text" value={this.state.valuePos} onChange={this.handlePosChange} />
                                                 <button>Submit</button>
                                             </form>
                                         </div> :
                                                 <div><h1>{question2}</h1>
                                                     <form onSubmit={this.handleCopeSubmit}>
-                                                        <input type="text" value={this.state.value} onChange={this.handleNoteChange} />
+                                                        <input type="text" value={this.state.valueCope} onChange={this.handleCopeChange} />
                                                         <button>Submit</button>
                                                     </form>
                                                 </div> : 
