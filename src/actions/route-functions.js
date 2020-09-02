@@ -1,35 +1,42 @@
 import React, { useState } from 'react';
 import BackgroundAnimation from '../components/Animations/BackgroundAnimation'
 import ForegroundAnimation from '../components/Animations/ForegroundAnimation'
+const firebase = require('firebase/app');
+import database from '../firebase/firebase';
 
-// export function isLongerThanThreeDays(n) {
-//     let isLonger = "start";
-//     // get timestamp for now
-//     const now = Date.now();
-//     // get timestamp for 3 days ago (259200000 milliseconds)
-//     const threeDaysAgo = now - 259200000;
-//     console.log('3 days', threeDaysAgo)
-//     // has user updated mood in the previous 3 days? - retrieve entry before the current one
-//     const uid = n.uid;
-//     // return two most recent entries
-//     database.ref(`users/${uid}/entries`)
-//     .orderByChild('createdAt')
-//     .limitToLast(2)
-//     .on('value', (snapshot) => {
-//         snapshot.forEach((child) => {
-//             let time = child.val().createdAt;
-//             console.log(time);
-//             if (time < threeDaysAgo) {
-//                 console.log('true')
-//                 return "less than threeDaysAgo"
-//             }
-//             else {
-//                 console.log('false')
-//                 return "more than 3 day than one"
-//             }
-//         })
-//     })
-// }
+
+export async function isLongerThanThreeDays(n) {
+    // get timestamp for now
+    const now = Date.now();
+    // get timestamp for 3 days ago (259200000 milliseconds)
+    const threeDaysAgo = now - 259200000;
+    console.log('3 days', threeDaysAgo)
+    // has user updated mood in the previous 3 days? - retrieve entry before the current one
+    const uid = n.uid;
+    // return two most recent entries
+    await database.ref(`users/${uid}/entries`)
+    .orderByChild('createdAt')
+    .limitToLast(2)
+    .on('value', (snapshot) => {
+        snapshot.forEach((child) => {
+            let time = child.val().createdAt;
+            let isLonger = '';
+            console.log(time);
+            if (time < threeDaysAgo) {
+                console.log('true')
+                //return Promise.resolve("less than threeDaysAgo");
+                isLonger = "less than"
+            }
+            else {
+                console.log('false')
+                //return Promise.resolve("more than threeDaysAgo");
+                isLonger = "more than"
+            }
+        })
+    })
+    let result = await isLonger;
+    return result;
+}
 
 
 export function doSomething(num) {

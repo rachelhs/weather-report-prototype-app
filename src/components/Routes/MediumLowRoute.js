@@ -8,6 +8,11 @@ require('firebase/auth');
 
 class MediumLowRoute extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {LongerThanThree:"start"}
+      }
+
     componentWillMount() {
         // var x = isLongerThanThreeDays(firebase.auth().currentUser)
         // console.log('x', x)
@@ -22,10 +27,11 @@ class MediumLowRoute extends React.Component {
             <div className='background-box'>
                 <AnimationsCombined />
                 <div className='info-box'>
-                    <FadeOut delay={3000}>
+                    <FadeOut delay={500}>
                         <LowAcknowledgement />
                     </FadeOut>
                     <IsLonger user={user} />
+                    {console.log(this.state.LongerThanThree)}
                     {/* <FadeIn delay={5000}>
                         <h1>What had led you to feeling this way?</h1>
                     </FadeIn> */}
