@@ -8,6 +8,7 @@ export class IsLonger extends React.Component {
       super(props);
       this.state = {LongerThanThree:"start"}
       this.IsLongerThanThreeDays = this.IsLongerThanThreeDays.bind(this);
+      this.onNext = this.onNext.bind(this);
     }
   
     componentDidMount() {
@@ -40,7 +41,7 @@ export class IsLonger extends React.Component {
                     }
                 })
             })
-            console.log('state', this.state.LongerThanThree )
+            // console.log('state', this.state.LongerThanThree )
         }
 
     render() {
