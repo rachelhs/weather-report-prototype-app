@@ -1,40 +1,45 @@
-const firebase = require('firebase/app');
-import database from '../firebase/firebase';
-
 import React, { useState } from 'react';
 import BackgroundAnimation from '../components/Animations/BackgroundAnimation'
 import ForegroundAnimation from '../components/Animations/ForegroundAnimation'
 
-export function isLongerThanThreeDays(n) {
+// export function isLongerThanThreeDays(n) {
+//     let isLonger = "start";
+//     // get timestamp for now
+//     const now = Date.now();
+//     // get timestamp for 3 days ago (259200000 milliseconds)
+//     const threeDaysAgo = now - 259200000;
+//     console.log('3 days', threeDaysAgo)
+//     // has user updated mood in the previous 3 days? - retrieve entry before the current one
+//     const uid = n.uid;
+//     // return two most recent entries
+//     database.ref(`users/${uid}/entries`)
+//     .orderByChild('createdAt')
+//     .limitToLast(2)
+//     .on('value', (snapshot) => {
+//         snapshot.forEach((child) => {
+//             let time = child.val().createdAt;
+//             console.log(time);
+//             if (time < threeDaysAgo) {
+//                 console.log('true')
+//                 return "less than threeDaysAgo"
+//             }
+//             else {
+//                 console.log('false')
+//                 return "more than 3 day than one"
+//             }
+//         })
+//     })
+// }
 
-    // const [toggleHowLong, setToggleHowLong] = useState(0);
 
-    // get timestamp for now
-    const now = Date.now();
-    // get timestamp for 3 days ago
-    // 259200000 milliseconds
-    const threeDaysAgo = now - 259200000;
-    // has user updated mood in the previous 3 days?
-    // retrieve entry before the current one
-    const user = n
-    const uid = user.uid;
-    // return two most recent entries
-    database.ref(`users/${uid}/entries`)
-    .orderByChild('createdAt')
-    .limitToLast(2)
-    .on('value', (snapshot) => {
-        snapshot.forEach((child) => {
-            // if timestamp for either entry is older than 3 days
-            let time = child.val().createdAt;
-            console.log(time);
-            if (time < threeDaysAgo) {
-                this.setState({
-                    toggleHowLong: true
-                })
-            }
-        })
-    })
-}
+export function doSomething(num) {
+    if (num > 1) {
+        return "bigger than one"
+    } else {
+        return "smaller than one"
+    }
+   }
+   
 
 export class AnimationsCombined extends React.Component {
     render() {
