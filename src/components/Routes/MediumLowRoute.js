@@ -1,20 +1,23 @@
 import React from 'react';
-import { LowAcknowledgement, AnimationsCombined, FadeOut, FadeIn, isLongerThanThreeDays} from '../../actions/route-functions'
+import { LowAcknowledgement, AnimationsCombined, FadeOut, FadeIn, doSomething, isLongerThanThreeDays} from '../../actions/route-functions'
+import { IsLonger } from '../FunctionalRouteComponents/IsLonger'
 
 const firebase = require('firebase/app');
 require('firebase/auth');
-import database from '../../firebase/firebase';
 
 
 class MediumLowRoute extends React.Component {
 
     componentWillMount() {
-        isLongerThanThreeDays(firebase.auth().currentUser)
-        console.log('return', isLongerThanThreeDays(firebase.auth().currentUser))
+        // var x = isLongerThanThreeDays(firebase.auth().currentUser)
+        // console.log('x', x)
+        var number = doSomething(1)
+        console.log('variable', number)
     }
 
 
     render() {
+        let user = firebase.auth().currentUser
         return (
             <div className='background-box'>
                 <AnimationsCombined />
@@ -22,7 +25,7 @@ class MediumLowRoute extends React.Component {
                     <FadeOut delay={3000}>
                         <LowAcknowledgement />
                     </FadeOut>
-                    {/* <p>{this.state.toggleHowLong}</p> */}
+                    <IsLonger user={user} />
                     {/* <FadeIn delay={5000}>
                         <h1>What had led you to feeling this way?</h1>
                     </FadeIn> */}
