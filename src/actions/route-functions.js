@@ -2,7 +2,6 @@
 const firebase = require('firebase/app');
 import database from '../firebase/firebase';
 
-
 //is longer than 3 days function
 export function isLongerThanThreeDays(cb) {
     const now = Date.now(); // get timestamp for now
