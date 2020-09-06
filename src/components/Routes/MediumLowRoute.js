@@ -1,6 +1,7 @@
 import React from 'react';
 import { LowAcknowledgement, AnimationsCombined, FadeOut, FadeIn, HowLongHaveYouFeltLikeThis } from '../SharedComponents/SharedComponents';
 import { isLongerThanThreeDays } from '../../actions/route-functions';
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 class MediumLowRoute extends React.Component {
 
