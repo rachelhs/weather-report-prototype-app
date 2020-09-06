@@ -1,0 +1,43 @@
+[    
+    {
+        "regularLogin": {
+            "1": "Think about how you are feeling right now ",
+            "2": "If you were to describe that feeling in a weather symbol, which symbol would it be?",
+            "3": "Choose a word that best describes that feeling?",
+            "4": "Do you want to share anything else you're feeling?"
+    
+        }
+    },
+    {
+        "firstTimeLogin": {
+            "1": "This app is a tool to help you through a process of self-reflection. Will help you lead yourself through a process of self reflection to build resilience. This will be a conversation with yourselves. The more you put in the more you get out!",
+            "2": "We found that most people want to care for something other than themselves. So care for this environment by adding your daily weather",
+            "3": "Choose a word that best describes that feeling?",
+            "4": "Do you want to share anything else you're feeling?"
+        }
+    },
+    {
+        "emotions": {
+            "Suicidal": "suicidal",
+            "Angry": "low-with-energy",
+            "Outraged": "low-with-energy",
+            "Furious": "low-with-energy",
+            "Greed": "low-with-energy",
+            "Jealousy": "low-with-energy",
+            "Risky": "low-with-energy",
+            "Panic": "low-with-energy"
+        }
+    },
+    {
+        "mediumLow": {
+            "1": "I’m sorry you are feeling like this",
+            "2": "How long have you felt like this?",
+            "3": "Is there anything you are aware of that has made you feel like this?",
+            "4": "What’s one small thing you can do to make yourself feel better?",
+            "5": "What’s one thing a friend would say they like about you?",
+            "6": "A feeling is not who you are",
+            "7": "It is ok to rest today"
+        }
+    }
+]
+
