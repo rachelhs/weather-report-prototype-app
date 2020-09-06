@@ -1,8 +1,7 @@
 // FILE CONTAINING COMPONENTS WHICH ARE SHARED ACROSS PATHS
-import React, { useState } from 'react';
+import React from 'react';
 import BackgroundAnimation from '../../components/Animations/BackgroundAnimation'
 import ForegroundAnimation from '../../components/Animations/ForegroundAnimation'
-import ReactSixteenAdapter from 'enzyme-adapter-react-16';
 
 // words
 export class LowAcknowledgement extends React.Component {
