@@ -2,43 +2,59 @@
 import React from 'react';
 import BackgroundAnimation from '../../components/Animations/BackgroundAnimation'
 import ForegroundAnimation from '../../components/Animations/ForegroundAnimation'
+const data = require('../../data/data.json');
+const firebase = require('firebase/app');
+require('firebase/auth');
+import database from '../../firebase/firebase';
 
 // words
 export class LowAcknowledgement extends React.Component {
     render() {
-        let script = require('../../data/script.json');
         return (
-            <h1 className="lowAcknowledge">{script[0].low[1]}</h1>
+            <h1 className="lowAcknowledge">{ data[3].shared.acknowledge }</h1>
         )
     }
 }
 
 export class HowLongHaveYouFeltLikeThis extends React.Component {
 
-  onHowLong = (howLong) => {
-    console.log('button clicked');
-    const user = firebase.auth().currentUser;
-    const uid = user.uid;
-    let name = '';
-    //get id for the current entry
-    database.ref(`users/${uid}/entries`).orderByChild('createdAt').limitToLast(1).on('child_added', (snapshot) => {
-        name = snapshot.key;
-        database.ref(`users/${uid}/entries/${name}`).update({
-        howLong: howLong
+    onHowLong = (howLong) => {
+        const user = firebase.auth().currentUser;
+        const uid = user.uid;
+        let name = '';
+        //get id for the current entry
+        database.ref(`users/${uid}/entries`).orderByChild('createdAt').limitToLast(1).on('child_added', (snapshot) => {
+            name = snapshot.key;
+            database.ref(`users/${uid}/entries/${name}`).update({
+            howLong: howLong
+            })
         })
-    })
-};
+    };
 
     render() {
-        let script = require('../../data/script.json');
         return (
           <div>
-            <h1 className='info-box-text'>{script[0].low[2]}</h1>
-            <button className='next-button' onClick={() => this.onHowLong('today')}>today</button>
-            <button className='next-button' onClick={() => this.onHowLong('a few days')}>a few days</button>
-            <button className='next-button' onClick={() => this.onHowLong('a week')}>a week</button>
-            <button className='next-button' onClick={() => this.onHowLong('longer')}>longer</button>
+            <h1 className='info-box-text'>{ data[3].shared.howLong }</h1>
+            <div className='button-container'>
+                <button className='next-button' onClick={() => this.onHowLong('today')} onClick={this.props.buttonClick}>today</button>
+                <button className='next-button' onClick={() => this.onHowLong('a few days')} onClick={this.props.buttonClick}>a few days</button>
+                <button className='next-button' onClick={() => this.onHowLong('a week')} onClick={this.props.buttonClick}>a week</button>
+                <button className='next-button' onClick={() => this.onHowLong('longer')} onClick={this.props.buttonClick}>longer</button>
+            </div>
           </div>
+        )
+    }
+}
+
+export class ReasonForFeelings extends React.Component {
+
+    render() {
+        return (
+            <div>
+                <h1>{ data[3].shared.reason }</h1>
+                <button className='next-button' onClick={(e) => this.props.onClick("increment")}>Increment</button>
+                <button className='next-button' onClick={(e) => this.props.onClick("decrement")}>Decrement</button>
+            </div>
         )
     }
 }
@@ -59,86 +75,3 @@ export class AnimationsCombined extends React.Component {
     }
 }
 
-export class FadeOut extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {visible:true}
-    }
-  
-    componentWillReceiveProps(nextProps) {
-      // reset the timer if children are changed
-      if (nextProps.children !== this.props.children) {
-        this.setTimer();
-        this.setState({visible: true});
-      }
-    }
-  
-    componentDidMount() {
-      this.setTimer();
-    }
-  
-    setTimer() {
-      // clear any existing timer
-      if (this._timer != null) {
-        clearTimeout(this._timer)
-      }
-  
-      // hide after `delay` milliseconds
-      this._timer = setTimeout(function(){
-        this.setState({visible: false});
-        this._timer = null;
-      }.bind(this), this.props.delay);
-    }
-  
-    componentWillUnmount() {
-      clearTimeout(this._timer);
-    }
-  
-    render() {
-      return this.state.visible
-        ? <div>{this.props.children}</div>
-        : <div className="fadeOut">{this.props.children}</div>;
-    }
-}
-
-export class FadeIn extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {visible:true}
-    }
-  
-    componentWillReceiveProps(nextProps) {
-      // reset the timer if children are changed
-      if (nextProps.children !== this.props.children) {
-        this.setTimer();
-        this.setState({visible: true});
-      }
-    }
-  
-    componentDidMount() {
-      this.setTimer();
-    }
-  
-    setTimer() {
-      // clear any existing timer
-      if (this._timer != null) {
-        clearTimeout(this._timer)
-      }
-  
-      // hide after `delay` milliseconds
-      this._timer = setTimeout(function(){
-        this.setState({visible: false});
-        this._timer = null;
-      }.bind(this), this.props.delay);
-    }
-  
-    componentWillUnmount() {
-      clearTimeout(this._timer);
-    }
-  
-    render() {
-      return this.state.visible
-        ? <span/>
-        : <div className="fadeIn">{this.props.children}</div>;
-    }
-}

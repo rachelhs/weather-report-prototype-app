@@ -11,7 +11,6 @@ import PublicRoute from './PublicRoute'
 import ChooseSymbolPage from '../components/Pages/ChooseSymbolPage'
 import LowRoute from '../components/Routes/LowRoute'
 import MediumLowRoute from '../components/Routes/MediumLowRoute'
-import AnimationPractise from '../components/Routes/AnimationPractise'
 
 import Routes from '../components/Routes/AllRoutes'
 
@@ -27,7 +26,6 @@ const AppRouter = () => (
                 <PrivateRoute path="/choosesymbol" component={ChooseSymbolPage}/>
                 <PrivateRoute path="/edit/:id" component={EditEntryPage} />
                 <PrivateRoute path="/6" component={ MediumLowRoute } />
-                <PrivateRoute path="/practise" component={ AnimationPractise } />
                 <PrivateRoute path="/5" component={ LowRoute } />
                 <PrivateRoute path="/allRoutes" component={ Routes } />
 
