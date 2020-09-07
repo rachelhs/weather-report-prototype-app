@@ -5,7 +5,7 @@
 
 .fade-appear-active{
     opacity: 1;
-    transition: opacity 1s ease-in;
+    transition: opacity 2s ease-in;
 }
 
 /* The display-enter will be enacted immediately when the element enters the DOM */
@@ -16,7 +16,7 @@
   /*  The display-enter-active will apply once the display-enter is done implementing */
 .fade-enter-active {
     opacity: 1;
-    transition: opacity 1s ease-in;
+    transition: opacity 2s ease-in;
 }
 
 .fade-enter-done {
