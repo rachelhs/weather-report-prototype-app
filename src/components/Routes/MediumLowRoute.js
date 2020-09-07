@@ -1,5 +1,5 @@
 import React from 'react';
-import { LowAcknowledgement, AnimationsCombined, FadeOut, FadeIn, HowLongHaveYouFeltLikeThis, ReasonForFeelings } from '../SharedComponents/SharedComponents';
+import { LowAcknowledgement, AnimationsCombined, HowLongHaveYouFeltLikeThis, ReasonForFeelings, ReasonForFeelingsInput } from '../SharedComponents/SharedComponents';
 import { isLongerThanThreeDays } from '../../actions/route-functions';
 import { CSSTransition } from "react-transition-group";
 import '../../styles/animation.css';
@@ -9,49 +9,50 @@ class MediumLowRoute extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            acknowledge: true,
-            LongerThanThree: null,
-            counter: 0
+            showAcknowledge: true,
+            showHowLong: null,
+            showReasonForFeeling: null,
+            showRandomQuestions: null,
+            knowReasonForFeeling: null,
         }
-        this.updateCounter = this.updateCounter.bind(this);
       }
 
-    componentDidMount() { // method called once all elements on the page are rendered
-        setTimeout( () => { this.setState({ acknowledge: false }) }, 3000)
+    // method called as soon as all elements on the page are rendered & changed showAcknowledge to false after 3 seconds. This will hide the statement.
+    componentDidMount() { 
+        setTimeout( () => { this.setState({ showAcknowledge: false }) }, 3000)
     }
 
-    threeDayFunction() { //method called once first acknowledgement exits screen
+    // called onexit of showAcknowledge
+    threeDayFunction() { 
         isLongerThanThreeDays(res => {
-            this.setState({ LongerThanThree: res, acknowledge: false })
+            res ? this.setState({ showHowLong: true, showAcknowledge: false }) : this.setState({ showReasonForFeeling: true, showAcknowledge: false })
         })
     }
 
-    isLongerCompleted(event) {
-        this.setState({isLongerCompleted: true, LongerThanThree: false })
-        console.log(this.state.isLongerCompleted)
-    }
+    // called from button click on the how long have you been feeling this way component. This then hides the div.
+    answeredHowLong() { this.setState({ showHowLong: false }) }
+    
+    //called onexit of HowLongHaveYouFeltLikeThis component - trigged from state changing to false in answeredHowLong()
+    showReasonForFeeling() { this.setState({ showReasonForFeeling: true }) }
 
-    updateCounter(type){
-        var count = this.state.counter;
-        console.log('type', type)
-        console.log('count', count)
-        // type=="increment"? count++: count — ;
-        // this.setState({counter: count});
-        }
-        
-
+    // called from button click on the do you know why you feel like this div. This sets state for whether user knows why they feel the way they do & either way, will hide the div
+    answeredReasonKnown(reasonKnown){ reasonKnown ? this.setState({ knowReasonForFeeling: true, showReasonForFeeling: false }) : this.setState({ knowReasonForFeeling: false, showReasonForFeeling: false }) }
+    
+    // called onexit from ReasonForFeelings component, trigged from answeredReasonKnown() function above. This function will either show the input box or go onto the random questions section
+    afterReasonForFeeling() { this.state.knowReasonForFeeling ? this.setState({ showReasonInput: true}) : this.setState({ showRandomQuestions: true }) }
+    
+    // called when user pressed submit on the answered reason input, This will hide the div
+    answeredReasonInput() { this.setState({ showReasonInput: false, showRandomQuestions: true }) }
+    
     render() {
-        let longerAndReason = this.state.LongerThanThree ? <HowLongHaveYouFeltLikeThis buttonClick={this.isLongerCompleted.bind(this)} /> : <ReasonForFeelings onClick={this.updateCounter}/>
         return (        
             <div className='background-box'>
                 <AnimationsCombined />
                 <div className='info-box'>   
-                    <CSSTransition in={this.state.acknowledge} timeout={3000} classNames="fade" unmountOnExit appear onExited={() => this.threeDayFunction()}>
-                            <LowAcknowledgement />
-                    </CSSTransition>
-                    <CSSTransition in={this.state.LongerThanThree} timeout={2000} classNames="fade" mountOnEnter>
-                            { longerAndReason }
-                    </CSSTransition>             
+                    <CSSTransition in={this.state.showAcknowledge} timeout={3000} classNames="fade" unmountOnExit appear onExited={() => this.threeDayFunction()}><LowAcknowledgement /></CSSTransition>
+                    <CSSTransition in={this.state.showHowLong} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.showReasonForFeeling()}><HowLongHaveYouFeltLikeThis buttonClick={this.answeredHowLong.bind(this)}/></CSSTransition>
+                    <CSSTransition in={this.state.showReasonForFeeling} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.afterReasonForFeeling()}><ReasonForFeelings onClick={this.answeredReasonKnown.bind(this)} /></CSSTransition>
+                    <CSSTransition in={this.state.showReasonInput} timeout={2000} classNames="fade" unmountOnExit><ReasonForFeelingsInput buttonClick={this.answeredReasonInput.bind(this)} /></CSSTransition>
                 </div>
             </div>
         );
