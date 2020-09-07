@@ -37,13 +37,11 @@
     },
     {
         "mediumLow": {
-            "1": "I’m sorry you are feeling like this",
-            "2": "How long have you felt like this?",
-            "3": "Is there anything you are aware of that has made you feel like this?",
-            "4": "What’s one small thing you can do to make yourself feel better?",
-            "5": "What’s one thing a friend would say they like about you?",
-            "6": "A feeling is not who you are",
-            "7": "It is ok to rest today"
+            "questions": {
+                "posThing": "What’s one small thing you can do to make yourself feel better?",
+                "friendLike": "What’s one thing a friend would say they like about you?"
+            },
+            "positiveStatements": ["A feeling is not who you are", "It is ok to rest today"]
         }
     }
 ]
