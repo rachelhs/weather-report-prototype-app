@@ -1,64 +1,46 @@
 import React from 'react';
 import { LowAcknowledgement, AnimationsCombined, FadeOut, FadeIn, HowLongHaveYouFeltLikeThis } from '../SharedComponents/SharedComponents';
 import { isLongerThanThreeDays } from '../../actions/route-functions';
-import { TransitionGroup, CSSTransition } from "react-transition-group";
+import { CSSTransition } from "react-transition-group";
+import './animation.css';
+import cx from 'classnames';
 
 class MediumLowRoute extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            Acknowledge: true,
+            acknowledge: true,
             LongerThanThree: false
         }
       }
 
     componentDidMount() {
-        isLongerThanThreeDays(res => {
-            this.setState({
-                LongerThanThree: res,
-                Acknowledge: false
+        setTimeout( () => { 
+            isLongerThanThreeDays(res => {
+                this.setState({
+                    acknowledge: false,
+                    LongerThanThree: res
+                })
+                console.log('isLongerThanThreeDays result', res)
             })
-            console.log('result', res)
-          }, 4000);
-      }
-
-
-    onHowLongAnswered = () => {
-        this.setState({ HowLongAnswered: true });
-        console.log('clicked next', this.state.HowLongAnswered)
+        }, 3000)
     }
 
 
     render() {
-        console.log('LongerThanThree', this.state.LongerThanThree)
-        console.log('Acknowledge', this.state.Acknowledge)
-
-        let text;
-        if (this.state.Acknowledge) {
-            text = 
-            <FadeOut delay={2000}>
-                <LowAcknowledgement />
-            </FadeOut>
-        }
-        if (this.state.LongerThanThree) {
-            text = 
-            <FadeIn delay={2000}>
-                <HowLongHaveYouFeltLikeThis />
-            </FadeIn>
-        };
-        // if (!this.state.LongerThanThree || this.state.HowLongAnswered){
-        //     text = 
-        //     <div className='info-box'>
-        //         <h1>{script[0].low[3]}</h1>
-        //         <button className='next-button' onClick={this.onHowLongAnswered}>next</button>
-        //     </div>
-        // }
+        console.log('longer than three', this.state.LongerThanThree)
         return (
             <div className='background-box'>
                 <AnimationsCombined />
                 <div className='info-box'>   
-                    {text}
+                    <CSSTransition in={this.state.acknowledge} timeout={2000} classNames="fade" unmountOnExit appear>
+                            <LowAcknowledgement />
+                    </CSSTransition>
+                    <CSSTransition in={this.state.LongerThanThree} timeout={2000} classNames="fade" unmountOnExit appear>
+                            <HowLongHaveYouFeltLikeThis />
+                    </CSSTransition>              
+
                 </div>
             </div>
         );
