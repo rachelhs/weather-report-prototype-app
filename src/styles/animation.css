@@ -1,0 +1,36 @@
+.fade-appear {
+    opacity: 0;
+}
+
+
+.fade-appear-active{
+    opacity: 1;
+    transition: opacity 2s ease-in;
+}
+
+/* The display-enter will be enacted immediately when the element enters the DOM */
+.fade-enter {
+    opacity: 0;
+}
+  
+  /*  The display-enter-active will apply once the display-enter is done implementing */
+.fade-enter-active {
+    opacity: 1;
+    transition: opacity 2s ease-in;
+}
+
+.fade-enter-done {
+    opacity: 1;
+}
+  
+  /* display-exit will trigger when the display state turns false */
+.fade-exit {
+    opacity: 1;
+}
+  
+  /* followed by the display-exit-active, after which the list element will leave the DOM. */
+.fade-exit-active {
+    opacity: 0;
+    transition: opacity 2s ease-in;
+
+}
