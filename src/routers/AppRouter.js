@@ -28,7 +28,7 @@ const AppRouter = () => (
                 <PrivateRoute path="/6" component={ MediumLowRoute } />
                 <PrivateRoute path="/5" component={ LowRoute } />
                 <PrivateRoute path="/allRoutes" component={ Routes } />
-
+                <PrivateRoute path="/home" component={HomePage} />
                 <Route component={NotFound} />
             </Switch>
         </div>
