@@ -60,6 +60,21 @@ export class ReasonForFeelings extends React.Component {
     }
 }
 
+//Do you want to do another exercise
+export class AnotherExerciseQuestion extends React.Component {
+    render() {
+        return (
+            <div>
+                <h1 className='info-box-title'>{ data[3].shared.anotherExercise }</h1>
+                <div className='button-container'>
+                    <button className='next-button' onClick={(e) => this.props.onClick(true)}>Yes</button>
+                    <button className='next-button' onClick={(e) => this.props.onClick(false)}>No</button>
+                </div>
+            </div>
+        )
+    }
+}
+
 // Is there anything you are aware of that has made you feel like this INPUT BOX
 export class ReasonForFeelingsInput extends React.Component {
     constructor(props) {
@@ -165,18 +180,6 @@ export class FriendsLikeQuestion extends React.Component {
         )
     }
 }
-
-// print out a random positive statement
-// export class RandomPositiveStatementsLow extends React.Component {
-//     render() {
-//         const positiveArray = data[4].mediumLow.positiveStatements;
-//         const random = Math.floor(Math.random()*positiveArray.length);
-//         return (
-//             <h1 className='info-box-title'>{positiveArray[random]}</h1>
-//         )
-//     }
-// }
-
 
 // other components
 export class AnimationsCombined extends React.Component {
