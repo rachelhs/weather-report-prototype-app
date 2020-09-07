@@ -7,7 +7,7 @@ const firebase = require('firebase/app');
 require('firebase/auth');
 import database from '../../firebase/firebase';
 
-// words
+//I’m sorry you are feeling like this
 export class LowAcknowledgement extends React.Component {
     render() {
         return (
@@ -16,8 +16,8 @@ export class LowAcknowledgement extends React.Component {
     }
 }
 
+// How long have you felt like this? Today, a few days, a week, longer
 export class HowLongHaveYouFeltLikeThis extends React.Component {
-
     onHowLong = (howLong) => {
         const user = firebase.auth().currentUser;
         const uid = user.uid;
@@ -30,7 +30,6 @@ export class HowLongHaveYouFeltLikeThis extends React.Component {
             })
         })
     };
-
     render() {
         return (
           <div>
@@ -46,8 +45,8 @@ export class HowLongHaveYouFeltLikeThis extends React.Component {
     }
 }
 
+//Is there anything you are aware of that has made you feel like this QUESTION
 export class ReasonForFeelings extends React.Component {
-
     render() {
         return (
             <div>
@@ -61,6 +60,7 @@ export class ReasonForFeelings extends React.Component {
     }
 }
 
+// Is there anything you are aware of that has made you feel like this INPUT BOX
 export class ReasonForFeelingsInput extends React.Component {
     constructor(props) {
         super(props);
@@ -69,13 +69,11 @@ export class ReasonForFeelingsInput extends React.Component {
     }
 
     handleNoteSubmit = (e) => {
-        // stops page refreshing
         e.preventDefault();
         console.log('submit');
         const user = firebase.auth().currentUser;
         const uid = user.uid;
         let name = '';
-        //get id for the current entry
         database.ref(`users/${uid}/entries`).orderByChild('createdAt').limitToLast(1).on('child_added', (snapshot) => {
             name = snapshot.key;
             database.ref(`users/${uid}/entries/${name}`).update({
@@ -100,6 +98,84 @@ export class ReasonForFeelingsInput extends React.Component {
         )
     }
 }
+
+// What’s one small thing you can do to make yourself feel better?
+export class PositiveThingQuestion extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { valuePos: '' };
+        this.handlePosSubmit = this.handlePosSubmit.bind(this);
+    }
+
+    handlePosSubmit = (e) => {
+        e.preventDefault();
+        console.log('submit');
+        const user = firebase.auth().currentUser;
+        const uid = user.uid;
+        database.ref(`users/${uid}/positiveThings`).push(this.state.valuePos);
+    }
+
+    handlePosChange = (e) => {
+        this.setState({ valuePos: e.target.value });
+    }
+
+    render() {
+        return (
+            <div>
+                <h1 className='info-box-title'>{ data[4].mediumLow.questions.posThing }</h1>
+                <form className='button-container' onSubmit={this.handlePosSubmit}>
+                    <input className='free-form-input' type="text" value={this.state.value} onChange={this.handlePosChange} />
+                    <button className='next-button free-form-submit' onClick={this.props.buttonClick}>Submit</button>
+                </form>
+            </div> 
+        )
+    }
+}
+
+// What’s one thing a friend would say they like about you?
+export class FriendsLikeQuestion extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { friendsLike: '' };
+        this.handleFriendsSubmit = this.handleFriendsSubmit.bind(this);
+    }
+
+    handleFriendsSubmit = (e) => {
+        // stops page refreshing
+        e.preventDefault();
+        console.log('submit');
+        const user = firebase.auth().currentUser;
+        const uid = user.uid;
+        database.ref(`users/${uid}/friendsLike`).push(this.state.friendsLike);
+    }
+
+    handleFriendsChange = (e) => {
+        this.setState({ valuePos: e.target.value });
+    }
+
+    render() {
+        return (
+            <div>
+                <h1 className='info-box-title'>{ data[4].mediumLow.questions.friendLike }</h1>
+                <form className='button-container' onSubmit={this.handleFriendsSubmit}>
+                    <input className='free-form-input' type="text" value={this.state.value} onChange={this.handleFriendsChange} />
+                    <button className='next-button free-form-submit' onClick={this.props.buttonClick}>Submit</button>
+                </form>
+            </div> 
+        )
+    }
+}
+
+// print out a random positive statement
+// export class RandomPositiveStatementsLow extends React.Component {
+//     render() {
+//         const positiveArray = data[4].mediumLow.positiveStatements;
+//         const random = Math.floor(Math.random()*positiveArray.length);
+//         return (
+//             <h1 className='info-box-title'>{positiveArray[random]}</h1>
+//         )
+//     }
+// }
 
 
 // other components

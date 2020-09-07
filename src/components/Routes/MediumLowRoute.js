@@ -1,8 +1,9 @@
 import React from 'react';
-import { LowAcknowledgement, AnimationsCombined, HowLongHaveYouFeltLikeThis, ReasonForFeelings, ReasonForFeelingsInput } from '../SharedComponents/SharedComponents';
-import { isLongerThanThreeDays } from '../../actions/route-functions';
+import { LowAcknowledgement, AnimationsCombined, HowLongHaveYouFeltLikeThis, ReasonForFeelings, ReasonForFeelingsInput, PositiveThingQuestion, FriendsLikeQuestion } from '../SharedComponents/SharedComponents';
+import { isLongerThanThreeDays, randomQuestionNumber } from '../../actions/route-functions';
 import { CSSTransition } from "react-transition-group";
 import '../../styles/animation.css';
+const data = require('../../data/data.json');
 
 class MediumLowRoute extends React.Component {
 
@@ -14,12 +15,21 @@ class MediumLowRoute extends React.Component {
             showReasonForFeeling: null,
             showRandomQuestions: null,
             knowReasonForFeeling: null,
+            randQues: 0,
+            randPositive: null,
+            showRandomPositiveStatement: false
         }
       }
 
     // method called as soon as all elements on the page are rendered & changed showAcknowledge to false after 3 seconds. This will hide the statement.
     componentDidMount() { 
+        // set timeout to say I’m sorry you are feeling like this
         setTimeout( () => { this.setState({ showAcknowledge: false }) }, 3000)
+        // random function for random questions
+        this.setState({ randQues: randomQuestionNumber(2) });
+        // random function for random positive statements
+        const positiveArray = data[4].mediumLow.positiveStatements;
+        this.setState({ randPositive: randomQuestionNumber(positiveArray.length) });
     }
 
     // called onexit of showAcknowledge
@@ -42,9 +52,20 @@ class MediumLowRoute extends React.Component {
     afterReasonForFeeling() { this.state.knowReasonForFeeling ? this.setState({ showReasonInput: true}) : this.setState({ showRandomQuestions: true }) }
     
     // called when user pressed submit on the answered reason input, This will hide the div
-    answeredReasonInput() { this.setState({ showReasonInput: false, showRandomQuestions: true }) }
+    answeredReasonInput() { this.setState({ showReasonInput: false }) }
+
+    // called onexit from ReasonForFeelingsInput component - once the user had clicked submit
+    showRandQuestion() { this.setState({ showRandomQuestions: true })}
+
+    // called on button submit when user has answered random question in randomQuestion component. Then hides the random question component.
+    answeredRandomQuestion() { this.setState({ showRandomQuestions: false }) }
+
+    //called onexit from randomQuestion component. Shows random positive statements
+    showRandomPositiveStatement() { this.setState({ showRandomPositiveStatement: true })}
+
     
     render() {
+        const randomQuestion = this.state.randQues == 0 ? <PositiveThingQuestion buttonClick={this.answeredRandomQuestion.bind(this)} /> : <FriendsLikeQuestion buttonClick={this.answeredRandomQuestion.bind(this)} />;
         return (        
             <div className='background-box'>
                 <AnimationsCombined />
@@ -52,7 +73,10 @@ class MediumLowRoute extends React.Component {
                     <CSSTransition in={this.state.showAcknowledge} timeout={3000} classNames="fade" unmountOnExit appear onExited={() => this.threeDayFunction()}><LowAcknowledgement /></CSSTransition>
                     <CSSTransition in={this.state.showHowLong} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.showReasonForFeeling()}><HowLongHaveYouFeltLikeThis buttonClick={this.answeredHowLong.bind(this)}/></CSSTransition>
                     <CSSTransition in={this.state.showReasonForFeeling} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.afterReasonForFeeling()}><ReasonForFeelings onClick={this.answeredReasonKnown.bind(this)} /></CSSTransition>
-                    <CSSTransition in={this.state.showReasonInput} timeout={2000} classNames="fade" unmountOnExit><ReasonForFeelingsInput buttonClick={this.answeredReasonInput.bind(this)} /></CSSTransition>
+                    <CSSTransition in={this.state.showReasonInput} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.showRandQuestion()}><ReasonForFeelingsInput buttonClick={this.answeredReasonInput.bind(this)} /></CSSTransition>
+                    <CSSTransition in={this.state.showRandomQuestions} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.showRandomPositiveStatement()}>{ randomQuestion }</CSSTransition>
+                    <CSSTransition in={this.state.showRandomPositiveStatement} timeout={2000} classNames="fade" unmountOnExit><h1 className='info-box-title'>{ data[4].mediumLow.positiveStatements[this.state.randPositive]}</h1></CSSTransition>
+
                 </div>
             </div>
         );

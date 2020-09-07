@@ -20,3 +20,23 @@ export function isLongerThanThreeDays(cb) {
         })
     })
 }
+
+//set random question
+
+export function randomQuestionNumber(num) {
+    const rand = Math.floor(Math.random() * Math.floor(num));
+    return rand
+}
+
+
+// print out a random positive statement
+// export function RandomPositiveStatementsLow(num) {
+
+//     render() {
+//         const positiveArray = data[4].mediumLow.positiveStatements;
+//         let random = Math.floor(Math.random()*positiveArray.length);
+//         return (
+//             <h1 className='info-box-title'>{positiveArray[random]}</h1>
+//         )
+//     }
+// }
