@@ -4,6 +4,8 @@ import ForegroundAnimation from '../Animations/ForegroundAnimation'
 const firebase = require('firebase/app');
 require('firebase/auth');
 import database from '../../firebase/firebase';
+import { ChooseExercise } from '../Exercises/ChooseExercise';
+import { SetExercises } from '../Exercises/SetExercises';
 
 //get asked questions 1 and 2
 //excercises - 3 x replays - grateful, positive memory, things you like about yourself
@@ -18,7 +20,11 @@ export class LowRoute extends React.Component {
             toggleHowLong: false,
             addNote: false,
             value: '',
-            randQues: 0
+            valuePos: '',
+            valueCope: '',
+            randQues: 0,
+            exercise: '',
+            moreExercises: true
         };
 
         this.onNext = this.onNext.bind(this);
@@ -27,6 +33,11 @@ export class LowRoute extends React.Component {
         this.handleNoteChange = this.handleNoteChange.bind(this);
         this.handleNoteSubmit = this.handleNoteSubmit.bind(this);
         this.selectQuestion = this.selectQuestion.bind(this);
+        this.handlePosSubmit = this.handlePosSubmit.bind(this);
+        this.handleCopeSubmit = this.handleCopeSubmit.bind(this);
+        this.handlePosChange = this.handlePosChange.bind(this);
+        this.handleCopeChange = this.handleCopeChange.bind(this);
+        this.moreExercises = this.moreExercises.bind(this);
     }
 
     selectQuestion = () => {
@@ -109,7 +120,7 @@ export class LowRoute extends React.Component {
         console.log('submit');
         const user = firebase.auth().currentUser;
         const uid = user.uid;
-        database.ref(`users/${uid}/positiveThings`).push(this.state.value);
+        database.ref(`users/${uid}/positiveThings`).push(this.state.valuePos);
     }
 
     handleCopeSubmit = (e) => {
@@ -118,16 +129,43 @@ export class LowRoute extends React.Component {
         console.log('submit');
         const user = firebase.auth().currentUser;
         const uid = user.uid;
-        database.ref(`users/${uid}/helpedCope`).push(this.state.value);
+        database.ref(`users/${uid}/helpedCope`).push(this.state.valueCope);
+    }
+
+    handleCopeChange = (e) => {
+        this.setState({ valueCope: e.target.value });
+    }
+
+    handlePosChange = (e) => {
+        this.setState({ valuePos: e.target.value });
     }
 
     handleNoteChange = (e) => {
         this.setState({ value: e.target.value });
     }
 
+    moreExercises = (input) => {
+        if (input == 'yes') {
+            this.setState({ moreExercises: true });
+            let exercise = ChooseExercise(['breathing', 'meditating', 'grounding', 'gratitude', 'positive', 'selflike']);
+            this.setState({ exercise: exercise });
+            // go back
+            this.setState({ viewNumber: 6 });
+        }
+        else {
+            this.setState({ moreExercises: false });
+        }
+    }
+
+    goHome = () => {
+        this.props.history.push('/home');
+    }
+
     componentDidMount = () => {
         this.IsLongerThanThreeDays();
         this.selectQuestion();
+        let exercise = ChooseExercise(['breathing', 'meditating', 'grounding', 'gratitude', 'positive', 'selflike']);
+        this.setState({ exercise: exercise });
     }
 
     render() {
@@ -135,8 +173,10 @@ export class LowRoute extends React.Component {
         let text1 = (script[0].low[1]);
         let text2 = (script[0].low[2]);
         let text3 = (script[0].low[3]);
+        let text4 = (script[0].low[4])
         let question1 = (script[0].questions[1]);
         let question2 = (script[0].questions[2]);
+        let feedback = (script[0].feedback[1]);
 
         return (
             <div className='background-box'>
@@ -169,21 +209,26 @@ export class LowRoute extends React.Component {
                                             (this.state.viewNumber == 4 && (this.state.toggleHowLong == false ^ this.state.addNote == false))
                                         ) ? (this.state.randQues == 0) ? <div><h1>{question1}</h1>
                                             <form onSubmit={this.handlePosSubmit}>
-                                                <input type="text" value={this.state.value} onChange={this.handleNoteChange} />
+                                                <input type="text" value={this.state.valuePos} onChange={this.handlePosChange} />
                                                 <button className='next-button'>Submit</button>
                                             </form>
                                         </div> :
                                                 <div><h1>{question2}</h1>
                                                     <form onSubmit={this.handleCopeSubmit}>
-                                                        <input type="text" value={this.state.value} onChange={this.handleNoteChange} />
-                                                        <button className='next-button'>Submit</button>
+                                                        <input type="text" value={this.state.valueCope} onChange={this.handleCopeChange} />
+                                                        <button>Submit</button>
                                                     </form>
-                                                </div> : 
-                                                ((this.state.viewNumber == 6) ||
-                                                (this.state.viewNumber == 5 && (this.state.toggleHowLong == false || this.state.addNote == false)) || 
+                                                </div> :
+                                            ((this.state.viewNumber == 6) ||
+                                                (this.state.viewNumber == 5 && (this.state.toggleHowLong == false || this.state.addNote == false)) ||
                                                 (this.state.viewNumber == 4 && this.state.toggleHowLong == false && this.state.addNote == false)) ?
-                                                <h1>excercises</h1> :
-                                            ''}
+                                                <div>{SetExercises(this.state.exercise)}</div> :
+                                                ((this.state.viewNumber == 7) ||
+                                                    (this.state.viewNumber == 6 && (this.state.toggleHowLong == false || this.state.addNote == false)) ||
+                                                    (this.state.viewNumber == 5 && this.state.toggleHowLong == false && this.state.addNote == false)) ?
+                                                    <div><h1>{text4}</h1><button onClick={() => this.moreExercises('yes')}>yes</button>
+                                                        <button onClick={() => this.moreExercises('no')}>no</button></div> : 
+                                                        (this.state.moreExercises == false) ? <div><h1>{feedback}</h1><button onClick={() => this.goHome()}>home</button></div> : ''}
                     <div className='info-box-button'>
                         <button className='next-button' onClick={this.onNext}>next</button>
                     </div>
