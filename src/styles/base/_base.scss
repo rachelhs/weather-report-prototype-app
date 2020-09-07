@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400&family=Lato&family=Noto+Sans+JP&family=Open+Sans:wght@300;400&family=Roboto&family=Vollkorn&display=swap');
+
 * {
     box-sizing: border-box;
 }
@@ -7,15 +9,31 @@ html {
 }
 
 body {
-    font-family: Helvetica, Arial, sans-serif;
     font-size: $m-size;
     background-color: white;
-    color: $dark-grey;
+    color: $dark-purple;
     line-height: 1.6;
 }
 
+p {
+    font-family: 'Lato', sans-serif;
+}
+
+h1 {
+    font-family: 'Karla', sans-serif;
+    font-weight: 600;
+}
+
+h2 {
+    font-family: 'Karla', sans-serif;
+    font-weight: 600;
+}
+
 button {
+    z-index: 101;
     cursor: pointer;
+    font-family: 'Open Sans', sans-serif;
+    letter-spacing: 0.6px;
 }
 
 button:disabled {
