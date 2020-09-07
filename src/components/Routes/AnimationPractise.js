@@ -1,52 +1,45 @@
-import React, { Component } from 'react';
-import { Transition } from "react-transition-group";
+import React, {Component} from 'react';
+import cx from 'classnames';
+import './index.css';
+import {CSSTransition} from 'react-transition-group';
 
-export default class Practise extends Component {
+class AnimationPractise extends Component {
+  state = {
+    display: true,
+  };
 
-    constructor() {
-        super();
-        this.state = {
-            bool: false
-        }
-      }
-
-    toogle = () => {
-        this.setState(prevState => ({
-            bool: !prevState.bool
-        }))
-    }
-
-    render() {
-        const defaultStyle = {
-            transition: `opacity 400ms ease-in-out`,
-            opacity: 0,
-        }
-        const transitionStyle = {
-            entering: { opacity: 0 },
-            entered: { opacity: 1 },
-            exiting: { opacity: 1 },
-            exited: { display: "none" }
-        };
-        console.log('bool', this.state.bool)
-        const { toogle, state: { bool }} = this
-        return (
-            <div>
-                <button onClick={ toogle }>Fade</button>
-                <Transition
-                    in={ bool }
-                    timeout={ 400}
-                    onExiting={ node => {console.dir(node) }}>
-                    {status => (
-                        <div style={{
-                            ...defaultStyle,
-                            ...transitionStyle[status]
-                        }}>
-                            This text should fade in and out
-                            {console.log(status)}
-                        </div>
-                    )}
-                </Transition>
+  toggle = () => {
+    this.setState(prevstate => ({
+      display: !prevstate.display,
+    }));
+  };
+  
+  render() {
+    return (
+      <div className="container">
+        <button 
+          className={cx('toggler', {
+            'toggler--active': this.state.display,
+          })}
+          onClick={this.toggle}>Show</button>
+        <CSSTransition
+            in={this.state.display}
+            timeout={350}
+            classNames="display"
+            unmountOnExit
+            appear
+            >
+            <div className="menu">
+                <ul className="list">
+                <li className="list-item">Rajat</li>
+                <li className="list-item">Writes about React</li>
+                <li className="list-item">Loves Pizza</li>
+                </ul>
             </div>
-        );
-    }
+            </CSSTransition>
+      </div>
+    )
+  }
 }
+
+export default AnimationPractise;
