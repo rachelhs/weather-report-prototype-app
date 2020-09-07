@@ -29,6 +29,13 @@
         }
     },
     {
+        "shared" : {
+            "acknowledge": "I’m sorry you are feeling like this",
+            "howLong": "How long have you felt like this?",
+            "reason": "Is there anything you are aware of that has made you feel like this?"
+        }
+    },
+    {
         "mediumLow": {
             "1": "I’m sorry you are feeling like this",
             "2": "How long have you felt like this?",
