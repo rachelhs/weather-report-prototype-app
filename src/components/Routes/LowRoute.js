@@ -1,6 +1,6 @@
 import React from 'react';
 import { LowAcknowledgement, AnimationsCombined, HowLongHaveYouFeltLikeThis, ReasonForFeelings, ReasonForFeelingsInput, PositiveThingQuestion, HelpedCopeQuestion, AnotherExerciseQuestion, FeedbackStatement } from '../SharedComponents/SharedComponents';
-import { isLongerThanThreeDays, randomQuestionNumber } from '../../actions/route-functions';
+import { isLongerThanThreeDays, randomQuestionNumber, chooseAnotherRandomExercise } from '../../actions/route-functions';
 import { CSSTransition } from "react-transition-group";
 import { ChooseExercise } from '../Exercises/ChooseExercise';
 import { SetExercises } from '../Exercises/SetExercises';
@@ -77,13 +77,9 @@ class LowRoute extends React.Component {
     // called when user presses 'yes' or 'no' to another question
     answeredAnotherExerciseQuestion(another) {another ? (this.chooseAnotherExercise()) : this.setState({ showAnotherExerciseQuestion: false, yesAnotherExercise: false })}
     
+    // returns a random exercise that isn't the same as the one just seen
     chooseAnotherExercise() {
-        let exerciseArray = ['breathing', 'meditating', 'grounding', 'gratitude', 'positive', 'selflike'];
-        for (let i = 0; i < exerciseArray.length; i++) {
-            if (exerciseArray[i] === this.state.exercise) {
-                exerciseArray.splice(i, 1);
-            }
-        }
+        let exerciseArray = chooseAnotherRandomExercise(['breathing', 'meditating', 'grounding', 'gratitude', 'positive', 'selflike'], this.state.exercise);
         this.setState({ showAnotherExerciseQuestion: false, yesAnotherExercise: true });
         let exercise = ChooseExercise(exerciseArray);
         this.setState({ exercise: exercise });

@@ -32,6 +32,16 @@ export function randomQuestionNumber(num) {
     return rand
 }
 
+export function chooseAnotherRandomExercise(exerciseArray, lastExercise) {
+    console.log('choose another ...');
+    for (let i = 0; i < exerciseArray.length; i++) {
+        if (exerciseArray[i] === lastExercise) {
+            exerciseArray.splice(i, 1);
+        }
+    }
+    return exerciseArray;
+}
+
 
 // print out a random positive statement
 // export function RandomPositiveStatementsLow(num) {
