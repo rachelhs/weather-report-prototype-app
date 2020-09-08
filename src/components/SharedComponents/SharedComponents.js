@@ -75,6 +75,20 @@ export class AnotherExerciseQuestion extends React.Component {
     }
 }
 
+//Feedback Statement
+export class FeedbackStatement extends React.Component {
+    render() {
+        return (
+            <div>
+                <h1 className='info-box-title'>{ data[3].shared.feedbackStatement }</h1>
+                <div className='button-container'>
+                <button className='next-button' onClick={(e) => this.props.onClick(true)}>home</button>
+                </div>
+            </div>
+        )
+    }
+}
+
 // Is there anything you are aware of that has made you feel like this INPUT BOX
 export class ReasonForFeelingsInput extends React.Component {
     constructor(props) {

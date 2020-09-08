@@ -1,11 +1,10 @@
 import React from 'react';
-import { LowAcknowledgement, AnimationsCombined, HowLongHaveYouFeltLikeThis, ReasonForFeelings, ReasonForFeelingsInput, PositiveThingQuestion, HelpedCopeQuestion } from '../SharedComponents/SharedComponents';
+import { LowAcknowledgement, AnimationsCombined, HowLongHaveYouFeltLikeThis, ReasonForFeelings, ReasonForFeelingsInput, PositiveThingQuestion, HelpedCopeQuestion, AnotherExerciseQuestion, FeedbackStatement } from '../SharedComponents/SharedComponents';
 import { isLongerThanThreeDays, randomQuestionNumber } from '../../actions/route-functions';
 import { CSSTransition } from "react-transition-group";
 import { ChooseExercise } from '../Exercises/ChooseExercise';
 import { SetExercises } from '../Exercises/SetExercises';
 import '../../styles/animation.css';
-const data = require('../../data/data.json');
 
 class LowRoute extends React.Component {
 
@@ -67,15 +66,41 @@ class LowRoute extends React.Component {
     showRandomExercise() {
         this.setState({ showRandomExercises: true })
     }
-
+    // called on 'next' button click when user has seen an exercise
     seenExercise() {
         this.setState({ showRandomExercises: false })
     }
-
+    // called on onexit after a random exercise and asks user if they want another
     askAnotherExerciseQuestion() {
         this.setState({ showAnotherExerciseQuestion: true })
     }
+    // called when user presses 'yes' or 'no' to another question
+    answeredAnotherExerciseQuestion(another) {another ? (this.chooseAnotherExercise()) : this.setState({ showAnotherExerciseQuestion: false, yesAnotherExercise: false })}
     
+    chooseAnotherExercise() {
+        let exerciseArray = ['breathing', 'meditating', 'grounding', 'gratitude', 'positive', 'selflike'];
+        for (let i = 0; i < exerciseArray.length; i++) {
+            if (exerciseArray[i] === this.state.exercise) {
+                exerciseArray.splice(i, 1);
+            }
+        }
+        this.setState({ showAnotherExerciseQuestion: false, yesAnotherExercise: true });
+        let exercise = ChooseExercise(exerciseArray);
+        this.setState({ exercise: exercise });
+    }
+    // goes back to random exercises if user has previously clicked yes
+    afterAskAnotherQuestion() {this.state.yesAnotherExercise ? this.setState({ showRandomExercises: true }): this.setState({ showRandomExercise: false, showFeedbackStatement: true })}
+
+    // triggered when user clicks to go home
+    clickedHome() {
+        this.setState({ showFeedbackStatement: false })
+    }
+
+    // goes to home page
+    goHome() {
+        this.props.history.push('/home');
+    }
+
     render() {
         const randomQuestion = this.state.randQues == 0 ? <PositiveThingQuestion buttonClick={this.answeredRandomQuestion.bind(this)} /> : <HelpedCopeQuestion buttonClick={this.answeredRandomQuestion.bind(this)} />;
         return (        
@@ -87,8 +112,9 @@ class LowRoute extends React.Component {
                     <CSSTransition in={this.state.showReasonForFeeling} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.afterReasonForFeeling()}><ReasonForFeelings onClick={this.answeredReasonKnown.bind(this)} /></CSSTransition>
                     <CSSTransition in={this.state.showReasonInput} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.showRandQuestion()}><ReasonForFeelingsInput buttonClick={this.answeredReasonInput.bind(this)} /></CSSTransition>
                     <CSSTransition in={this.state.showRandomQuestions} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.showRandomExercise()}>{ randomQuestion }</CSSTransition>
-                    <CSSTransition in={this.state.showRandomExercises} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.askAnotherExerciseQuestion()}><div>{SetExercises(this.state.exercise)}<button onClick={this.seenExercise}>next</button></div></CSSTransition>
-                    <CSSTransition in={this.state.showAnotherExerciseQuestion} timeout={2000} classNames="fade" unmountOnExit><div><h1>sdfsd</h1></div></CSSTransition>
+                    <CSSTransition in={this.state.showRandomExercises} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.askAnotherExerciseQuestion()}><div className='info-box-button'><div>{SetExercises(this.state.exercise)}</div><button className='next-button' onClick={this.seenExercise}>next</button></div></CSSTransition>
+                    <CSSTransition in={this.state.showAnotherExerciseQuestion} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.afterAskAnotherQuestion()}><div><AnotherExerciseQuestion onClick={this.answeredAnotherExerciseQuestion.bind(this)} /></div></CSSTransition>
+                    <CSSTransition in={this.state.showFeedbackStatement} timeout={2000} className="fade" unmountOnExit onExited={() => this.goHome()}><FeedbackStatement onClick={this.clickedHome.bind(this)} /></CSSTransition>
                 </div>
             </div>
         );
