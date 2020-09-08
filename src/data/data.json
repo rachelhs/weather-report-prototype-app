@@ -44,6 +44,14 @@
             },
             "positiveStatements": ["A feeling is not who you are", "It is ok to rest today"]
         }
+    },
+    {
+        "low" : {
+            "questions": {
+                "posThing": "What’s one small thing you can do to make yourself feel better?",
+                "helpedCope": "What things helped you cope in the past?"
+            }
+        }
     }
 ]
 
