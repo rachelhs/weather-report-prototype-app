@@ -181,6 +181,40 @@ export class FriendsLikeQuestion extends React.Component {
     }
 }
 
+// What things helped you cope in the past?
+export class HelpedCopeQuestion extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { helpedCope: '' };
+        this.handleCopedSubmit = this.handleCopedSubmit.bind(this);
+    }
+
+    handleCopedSubmit = (e) => {
+        // stops page refreshing
+        e.preventDefault();
+        console.log('submit');
+        const user = firebase.auth().currentUser;
+        const uid = user.uid;
+        database.ref(`users/${uid}/helpedCope`).push(this.state.helpedCope);
+    }
+
+    handleCopedChange = (e) => {
+        this.setState({ valuePos: e.target.value });
+    }
+
+    render() {
+        return (
+            <div>
+                <h1 className='info-box-title'>{ data[5].low.questions.helpedCope }</h1>
+                <form className='button-container' onSubmit={this.handleCopedSubmit}>
+                    <input className='free-form-input' type="text" value={this.state.value} onChange={this.handleCopedChange} />
+                    <button className='next-button free-form-submit' onClick={this.props.buttonClick}>Submit</button>
+                </form>
+            </div> 
+        )
+    }
+}
+
 // other components
 export class AnimationsCombined extends React.Component {
     render() {
