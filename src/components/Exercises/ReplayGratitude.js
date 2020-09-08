@@ -2,7 +2,7 @@ import React from 'react';
 const firebase = require('firebase/app');
 require('firebase/auth');
 import database from '../../firebase/firebase';
-
+const data = require('../../data/data.json');
 
 export default class Gratitude extends React.Component {
 
@@ -51,7 +51,10 @@ export default class Gratitude extends React.Component {
     
     {
         return (
-            <h1>{this.state.randomGratitude}</h1>
+            <div>
+            <h1 className='info-box-title'>{data[3].shared.gratitudeReplayStatement}</h1>
+            <h1 className='info-box-title'>{this.state.randomGratitude}</h1>
+            </div>
         )
     }
 }

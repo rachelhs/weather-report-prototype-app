@@ -2,7 +2,7 @@ import React from 'react';
 const firebase = require('firebase/app');
 require('firebase/auth');
 import database from '../../firebase/firebase';
-
+const data = require('../../data/data.json');
 
 export default class LikeAboutSelf extends React.Component {
 
@@ -51,7 +51,10 @@ export default class LikeAboutSelf extends React.Component {
     
     {
         return (
-            <h1>{this.state.randomLike}</h1>
+            <div>
+            <h1 className='info-box-title'>{data[3].shared.likeReplayStatement}</h1>
+            <h1 className='info-box-title'>{this.state.randomLike}</h1>
+            </div>
         )
     }
 }
