@@ -14,8 +14,12 @@ export function isLongerThanThreeDays(cb) {
         snapshot.forEach((child) => {
             let time = child.val().createdAt;
             if (time < threeDaysAgo) {
-              cb(true)
-              return
+                cb(true)
+                return
+            }
+            else {
+                cb(false)
+                return
             }
         })
     })
