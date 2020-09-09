@@ -117,6 +117,21 @@ export class ContactSupportersQuestion extends React.Component {
     }
 }
 
+// Asks if the exercise helped and takes note of what it was
+export class AskIfHelped extends React.Component {
+    render() {
+        return (
+            <div>
+                <h1 className='info-box-title'>{data[6].veryLow.questions.exHelped}</h1>
+                <div className='button-container'>
+                    <button className='next-button' onClick={(e) => this.props.onClick(true)}>Yes</button>
+                    <button className='next-button' onClick={(e) => this.props.onClick(false)}>No</button>
+                </div>
+            </div>
+        )
+    }
+}
+
 //Feedback Statement
 export class FeedbackStatement extends React.Component {
     render() {

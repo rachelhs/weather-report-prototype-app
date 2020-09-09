@@ -40,7 +40,8 @@
             "likeReplayStatement": "[CHECK THIS] Recently, you said that this is something you like about yourself",
             "posReplayStatement": "[CHECK THIS] Recently, you saved this as a positive memory",
             "safeQuestion": "Are you keeping yourself safe?",
-            "support": "Have you contacted your supporters?"
+            "support": "Have you contacted your supporters?",
+            "contentReplayStatement": "[CHECK THIS] Recently, you made this note"
         }
     },
     {
@@ -66,7 +67,8 @@
                 "safe": "Are you keeping yourself safe?",
                 "posThing": "What’s one small thing you can do to make yourself feel better?",
                 "contacted": "Have you contacted your supporters?",
-                "support": "It can really help to get some personal or professional help on this"
+                "support": "It can really help to get some personal or professional help on this",
+                "exHelped": "Did this help?"
             }
         }
     },
