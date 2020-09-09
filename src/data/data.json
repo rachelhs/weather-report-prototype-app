@@ -31,13 +31,15 @@
     {
         "shared" : {
             "acknowledge": "I’m sorry you are feeling like this",
+            "lowerAcknowledge": "I'm sorry you are feeling like this, it can be difficult to have these feelings",
             "howLong": "How long have you felt like this?",
             "reason": "Is there anything you are aware of that has made you feel like this?",
             "anotherExercise": "Do you want to do another exercise?",
             "feedbackStatement": "Feedback Statement",
             "gratitudeReplayStatement": "[CHECK THIS] Recently, you said that this makes you feel gratitude",
             "likeReplayStatement": "[CHECK THIS] Recently, you said that this is something you like about yourself",
-            "posReplayStatement": "[CHECK THIS] Recently, you saved this as a positive memory"
+            "posReplayStatement": "[CHECK THIS] Recently, you saved this as a positive memory",
+            "safeQuestion": "Are you keeping yourself safe?"
         }
     },
     {
@@ -54,6 +56,23 @@
             "questions": {
                 "posThing": "What’s one small thing you can do to make yourself feel better?",
                 "helpedCope": "What things helped you cope in the past?"
+            }
+        }
+    },
+    {
+        "veryLow" : {
+            "questions": {
+                "safe": "Are you keeping yourself safe?",
+                "posThing": "What’s one small thing you can do to make yourself feel better?",
+                "contacted": "Have you contacted your supporters?"
+            }
+        }
+    },
+    {
+        "firstAid" : {
+            "questions": {
+                "help": "What might help?",
+                "need": "What do you think you need right now?"
             }
         }
     }

@@ -6,12 +6,22 @@ const data = require('../../data/data.json');
 const firebase = require('firebase/app');
 require('firebase/auth');
 import database from '../../firebase/firebase';
+import { CSSTransition } from 'react-transition-group';
 
-//I’m sorry you are feeling like this
+// I’m sorry you are feeling like this
 export class LowAcknowledgement extends React.Component {
     render() {
         return (
             <h1 className='info-box-title'>{ data[3].shared.acknowledge }</h1>
+        )
+    }
+}
+
+// I’m sorry you are feeling like this
+export class VeryLowAcknowledgement extends React.Component {
+    render() {
+        return (
+            <h1 className='info-box-title'>{ data[3].shared.lowerAcknowledge }</h1>
         )
     }
 }
@@ -66,6 +76,21 @@ export class AnotherExerciseQuestion extends React.Component {
         return (
             <div>
                 <h1 className='info-box-title'>{ data[3].shared.anotherExercise }</h1>
+                <div className='button-container'>
+                    <button className='next-button' onClick={(e) => this.props.onClick(true)}>Yes</button>
+                    <button className='next-button' onClick={(e) => this.props.onClick(false)}>No</button>
+                </div>
+            </div>
+        )
+    }
+}
+
+// Are you keeping yourself safe?
+export class SafeQuestion extends React.Component {
+    render() {
+        return (
+            <div>
+                <h1 className='info-box-title'>{ data[3].shared.safeQuestion }</h1>
                 <div className='button-container'>
                     <button className='next-button' onClick={(e) => this.props.onClick(true)}>Yes</button>
                     <button className='next-button' onClick={(e) => this.props.onClick(false)}>No</button>
@@ -225,6 +250,43 @@ export class HelpedCopeQuestion extends React.Component {
                     <button className='next-button free-form-submit' onClick={this.props.buttonClick}>Submit</button>
                 </form>
             </div> 
+        )
+    }
+}
+
+// First Aid Kit
+export class FirstAidKit extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {showQuestions: true}
+    }
+
+    componentDidMount() {
+        // set timeout for prompts
+        setTimeout( () => { this.setState({ showQuestions: false }) }, 3000)
+    }
+
+    showOptions () {
+        this.setState({ showQuestions: false,
+                        showOptions: true })
+    }
+
+    render () {
+        return (
+            <div>
+            <CSSTransition in={this.state.showQuestions} timeout={2000} classNames="fade" unmountOnExit appear onExited={() => this.showOptions()}>
+            <div><h1 className='info-box-title'>{ data[7].firstAid.questions.help }</h1><h1 className='info-box-title'>{ data[7].firstAid.questions.need }</h1></div></CSSTransition>
+            <CSSTransition in={this.state.showOptions} timeout={2000} classNames="fade" unmountOnExit>
+            <div className='button-container-vertical'>
+            <button className='next-button'>Grounding Exercise</button>
+            <button className='next-button'>Reach out to Supporters / Roots</button>
+            <button className='next-button'>Reach out to GP / Support Worker</button>
+            <button className='next-button'>Call Bristol Mental Health Crisis Team: 0300 555 0334</button>
+            <button className='next-button'>Ring 999 or go to A & E</button>
+            </div>
+            </CSSTransition>
+            </div>
         )
     }
 }
