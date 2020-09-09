@@ -5,10 +5,6 @@ import { Link } from 'react-router-dom';
  
 export class AllRoutesPage extends React.Component {
 
-    onNext = () => {
-        this.props.history.push('/choosesymbol');
-    };
-
     render() {
         let script = require('../../data/script.json');
         let question = (script[0].intro[1]);
@@ -26,8 +22,11 @@ export class AllRoutesPage extends React.Component {
                         <Link to="/5">Low</Link>
                     </div>
                     <div className='info-box-button'>
-                        <Link to="/4">Medium Low</Link>
+                        <Link to="/6">Medium Low</Link>
                     </div>
+                    <div className='info-box-button'>
+                    <Link to="/7">Very Low</Link>
+                </div>
 
                 </div>
             </div>
