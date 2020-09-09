@@ -102,6 +102,21 @@ export class SafeQuestion extends React.Component {
     }
 }
 
+// Have you contacted your supporters?
+export class ContactSupportersQuestion extends React.Component {
+    render() {
+        return (
+            <div>
+                <h1 className='info-box-title'>{data[3].shared.support}</h1>
+                <div className='button-container'>
+                    <button className='next-button' onClick={(e) => this.props.onClick(true)}>Yes</button>
+                    <button className='next-button' onClick={(e) => this.props.onClick(false)}>No</button>
+                </div>
+            </div>
+        )
+    }
+}
+
 //Feedback Statement
 export class FeedbackStatement extends React.Component {
     render() {
@@ -265,14 +280,21 @@ export class FirstAidKit extends React.Component {
             showQuestions: true,
             showModalGrounding: false,
             showModal999: false,
-            content: '',
-            contentText: ''
+            showModalCrisis: false,
+            showModalRoots: false,
+            showModalGP: false
         }
 
         this.handleOpenModalGrounding = this.handleOpenModalGrounding.bind(this);
         this.handleCloseModalGrounding = this.handleCloseModalGrounding.bind(this);
         this.handleOpenModal999 = this.handleOpenModal999.bind(this);
         this.handleCloseModal999 = this.handleCloseModal999.bind(this);
+        this.handleOpenModalCrisis = this.handleOpenModalCrisis.bind(this);
+        this.handleCloseModalCrisis = this.handleCloseModalCrisis.bind(this);
+        this.handleOpenModalRoots = this.handleOpenModalRoots.bind(this);
+        this.handleCloseModalRoots = this.handleCloseModalRoots.bind(this);
+        this.handleOpenModalGP = this.handleOpenModalGP.bind(this);
+        this.handleCloseModalGP = this.handleCloseModalGP.bind(this);
     }
 
     handleOpenModalGrounding() {
@@ -283,12 +305,36 @@ export class FirstAidKit extends React.Component {
         this.setState({ showModalGrounding: false });
     }
 
+    handleOpenModalRoots() {
+        this.setState({ showModalRoots: true });
+    }
+
+    handleCloseModalRoots() {
+        this.setState({ showModalRoots: false });
+    }
+
     handleOpenModal999() {
         this.setState({ showModal999: true });
     }
 
     handleCloseModal999() {
         this.setState({ showModal999: false });
+    }
+
+    handleOpenModalCrisis() {
+        this.setState({ showModalCrisis: true });
+    }
+
+    handleCloseModalCrisis() {
+        this.setState({ showModalCrisis: false });
+    }
+
+    handleOpenModalGP() {
+        this.setState({ showModalCrisis: true });
+    }
+
+    handleCloseModalGP() {
+        this.setState({ showModalCrisis: false });
     }
 
     componentDidMount() {
@@ -311,31 +357,96 @@ export class FirstAidKit extends React.Component {
                 <CSSTransition in={this.state.showOptions} timeout={2000} classNames="fade" unmountOnExit>
                     <div className='button-container-vertical'>
                         <button onClick={this.handleOpenModalGrounding} className='next-button'>Grounding Exercise</button>
-                        <button className='next-button'>Reach out to Supporters / Roots</button>
-                        <button className='next-button'>Reach out to GP / Support Worker</button>
-                        <button className='next-button'>Call Bristol Mental Health Crisis Team: 0300 555 0334</button>
+                        <button onClick={this.handleOpenModalRoots} className='next-button'>Reach out to Supporters / Roots</button>
+                        <button onClick={this.handleOpenModalGP} className='next-button'>Reach out to GP / Support Worker</button>
+                        <button onClick={this.handleOpenModalCrisis} className='next-button'>Call Bristol Mental Health Crisis Team: 0300 555 0334</button>
                         <button onClick={this.handleOpenModal999} className='next-button'>Ring 999 or go to A & E</button>
 
-                        <ReactModal 
-                        isOpen={this.state.showModalGrounding}
-                        contentLabel="Minimal Modal Example"
-                        ariaHideApp={false}
-                     >
-                       <button onClick={this.handleCloseModalGrounding}>X</button>
-                       {SetExercises('grounding')}
-                     </ReactModal>
+                        <ReactModal
+                            isOpen={this.state.showModalGrounding}
+                            ariaHideApp={false}
+                        >
+                            <button onClick={this.handleCloseModalGrounding}>X</button>
+                            {SetExercises('grounding')}
+                        </ReactModal>
 
-                     <ReactModal 
-                     isOpen={this.state.showModal999}
-                     contentLabel="Minimal Modal Example"
-                     ariaHideApp={false}
-                  >
-                    <button onClick={this.handleCloseModal999}>X</button>
-                    <h1 className='info-box-title'>{data[7].firstAid.options.ae}</h1>
-                  </ReactModal>
+                        <ReactModal
+                            isOpen={this.state.showModalRoots}
+                            ariaHideApp={false}
+                        >
+                            <button onClick={this.handleCloseModalRoots}>X</button>
+                            <AllRoots />
+                        </ReactModal>
+
+                        <ReactModal
+                            isOpen={this.state.showModalGP}
+                            ariaHideApp={false}
+                        >
+                            <button onClick={this.handleCloseModalGP}>X</button>
+                            <h1 className='info-box-title'>{data[7].firstAid.options.GP}</h1>
+                        </ReactModal>
+
+                        <ReactModal
+                            isOpen={this.state.showModalCrisis}
+                            ariaHideApp={false}
+                        >
+                            <button onClick={this.handleCloseModalCrisis}>X</button>
+                            <h1 className='info-box-title'>{data[7].firstAid.options.crisisTeam}</h1>
+                        </ReactModal>
+
+                        <ReactModal
+                            isOpen={this.state.showModal999}
+                            ariaHideApp={false}
+                        >
+                            <button onClick={this.handleCloseModal999}>X</button>
+                            <h1 className='info-box-title'>{data[7].firstAid.options.ae}</h1>
+                        </ReactModal>
 
                     </div>
                 </CSSTransition>
+            </div>
+        )
+    }
+}
+
+// called when user selects that they haven't contacted their supporters
+export class Contact extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            showText: true,
+            showAnchors: false
+        }
+
+        this.showText = this.showText.bind(this);
+    }
+
+    componentDidMount() {
+        // set timeout for prompts
+        setTimeout(() => { this.setState({ showText: false }) }, 3000)
+    }
+
+    showText() {
+        this.setState({ showAnchors: true })
+    }
+
+    render() {
+        return (
+            <div>
+                <CSSTransition in={this.state.showText} timeout={2000} classNames="fade" unmountOnExit appear onExited={() => this.showText()}><h1 className='info-box-title'>{data[6].veryLow.questions.support}</h1></CSSTransition>
+                <CSSTransition in={this.state.showAnchors} timeout={2000} classNames="fade" unmountOnExit><AllRoots /></CSSTransition>
+            </div>
+        )
+    }
+}
+
+// show list of roots (anchors)
+export class AllRoots extends React.Component {
+    render() {
+        return (
+            <div className='info-box'>
+                <h1>[NEEDS DOING - LIST OF ROOTS GOES HERE]</h1>
             </div>
         )
     }

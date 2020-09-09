@@ -39,7 +39,8 @@
             "gratitudeReplayStatement": "[CHECK THIS] Recently, you said that this makes you feel gratitude",
             "likeReplayStatement": "[CHECK THIS] Recently, you said that this is something you like about yourself",
             "posReplayStatement": "[CHECK THIS] Recently, you saved this as a positive memory",
-            "safeQuestion": "Are you keeping yourself safe?"
+            "safeQuestion": "Are you keeping yourself safe?",
+            "support": "Have you contacted your supporters?"
         }
     },
     {
@@ -64,7 +65,8 @@
             "questions": {
                 "safe": "Are you keeping yourself safe?",
                 "posThing": "What’s one small thing you can do to make yourself feel better?",
-                "contacted": "Have you contacted your supporters?"
+                "contacted": "Have you contacted your supporters?",
+                "support": "It can really help to get some personal or professional help on this"
             }
         }
     },
@@ -76,7 +78,9 @@
             }, 
                 "groundingEx": "Insert Grounding Ex here",
             "options": {
-                "ae": "Ring 999 or go to A & E"
+                "crisisTeam": "Call Bristol Mental Health Crisis Team: 0300 555 0334",
+                "ae": "Ring 999 or go to A & E",
+                "GP": "Reach out to GP / Support Worker"
             }
             
         }
