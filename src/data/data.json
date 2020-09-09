@@ -73,7 +73,12 @@
             "questions": {
                 "help": "What might help?",
                 "need": "What do you think you need right now?"
+            }, 
+                "groundingEx": "Insert Grounding Ex here",
+            "options": {
+                "ae": "Ring 999 or go to A & E"
             }
+            
         }
     }
 ]
