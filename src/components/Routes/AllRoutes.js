@@ -2,7 +2,7 @@ import React from 'react';
 import BackgroundAnimation from '../Animations/BackgroundAnimation'
 import ForegroundAnimation from '../Animations/ForegroundAnimation'
 import { Link } from 'react-router-dom';
- 
+
 export class AllRoutesPage extends React.Component {
 
     render() {
@@ -17,7 +17,7 @@ export class AllRoutesPage extends React.Component {
                     <ForegroundAnimation />
                 </div>
                 <div className='info-box'>
-                    <h1 className='info-box-text'>{ question }</h1>
+                    <h1 className='info-box-text'>{question}</h1>
                     <div className='info-box-button'>
                         <Link to="/5">Low</Link>
                     </div>
@@ -25,9 +25,11 @@ export class AllRoutesPage extends React.Component {
                         <Link to="/6">Medium Low</Link>
                     </div>
                     <div className='info-box-button'>
-                    <Link to="/7">Very Low</Link>
-                </div>
-
+                        <Link to="/7">Very Low</Link>
+                    </div>
+                    <div className='info-box-button'>
+                        <Link to="/8">Low but with Energy</Link>
+                    </div>
                 </div>
             </div>
         );

@@ -1,6 +1,6 @@
 import React from 'react';
-import { LowAcknowledgement, AnimationsCombined, HowLongHaveYouFeltLikeThis, ReasonForFeelings, ReasonForFeelingsInput, PositiveThingQuestion, HelpedCopeQuestion, AnotherExerciseQuestion, FeedbackStatement } from '../SharedComponents/SharedComponents';
-import { isLongerThanThreeDays, randomQuestionNumber, chooseAnotherRandomExercise } from '../../actions/route-functions';
+import { VeryLowAcknowledgement, AnimationsCombined, HowLongHaveYouFeltLikeThis, ReasonForFeelings, PositiveThingQuestion, ReasonForFeelingsInput, AnotherExerciseQuestion, FeedbackStatement, SafeQuestion, FirstAidKit, ContactSupportersQuestion, Contact, AskIfHelped } from '../SharedComponents/SharedComponents';
+import { isLongerThanThreeDays, chooseAnotherRandomExercise } from '../../actions/route-functions';
 import { CSSTransition } from "react-transition-group";
 import { ChooseExercise } from '../Exercises/ChooseExercise';
 import { SetExercises } from '../Exercises/SetExercises';
@@ -16,11 +16,13 @@ class VeryLowRoute extends React.Component {
             showReasonForFeeling: null,
             showRandomQuestions: null,
             knowReasonForFeeling: null,
-            randQues: 0,
+            randQues: null,
             showRandomExercises: null,
             exercise: 'meditating',
+            firstAid: null
         }
         this.seenExercise = this.seenExercise.bind(this);
+        this.decideFirstAid = this.decideFirstAid.bind(this);
       }
 
     // method called as soon as all elements on the page are rendered & changed showAcknowledge to false after 3 seconds. This will hide the statement.
@@ -28,9 +30,10 @@ class VeryLowRoute extends React.Component {
         // set timeout to say I’m sorry you are feeling like this
         setTimeout( () => { this.setState({ showAcknowledge: false }) }, 3000)
         // random function for random questions
-        this.setState({ randQues: randomQuestionNumber(2) });
+        let question = ChooseExercise(['supporters', 'smallPos', 'safe']);
+        this.setState({ randQues: question });
         // setting exercise
-        let exercise = ChooseExercise(['breathing', 'meditating', 'grounding', 'gratitude', 'positive', 'selflike']);
+        let exercise = ChooseExercise(['stretching', 'gratitude', 'content', 'meditating', 'grounding']);
         this.setState({ exercise: exercise });
     }
 
@@ -62,6 +65,23 @@ class VeryLowRoute extends React.Component {
     // called on button submit when user has answered random question in randomQuestion component. Then hides the random question component.
     answeredRandomQuestion() { this.setState({ showRandomQuestions: false }) }
 
+    answeredSafeQuestion(answer) { answer ? (this.setState({ showRandomQuestions: false, firstAid: false })) : (this.setState({ showRandomQuestions: false, firstAid: true }))}
+
+    decideFirstAid() {
+        if (this.state.firstAid) {
+            this.setState({ showFirstAid: true })
+        }
+        else if (this.state.contact) {
+            this.setState({ showContact: true })
+        }
+        else {
+            this.setState({ showFirstAid: false, showRandomExercises: true })
+        }
+    }
+
+    // called after user stated if they have contacted their supporters
+    answeredContactQuestion(answer) { answer ? (this.setState({ showRandomQuestions: false, contact: false })) : (this.setState({ showRandomQuestions: false, contact: true })) }
+
     // called onexit of random positive statement & shows random exercise
     showRandomExercise() {
         this.setState({ showRandomExercises: true })
@@ -87,6 +107,10 @@ class VeryLowRoute extends React.Component {
     // goes back to random exercises if user has previously clicked yes
     afterAskAnotherQuestion() {this.state.yesAnotherExercise ? this.setState({ showRandomExercises: true }): this.setState({ showRandomExercise: false, showFeedbackStatement: true })}
 
+    askIfHelped() {this.setState({showAskIfHelped: true})}
+
+    afterAnsweredIfHelped() {this.setState({showAskIfHelped: false})}
+
     // triggered when user clicks to go home
     clickedHome() {
         this.setState({ showFeedbackStatement: false })
@@ -98,17 +122,19 @@ class VeryLowRoute extends React.Component {
     }
 
     render() {
-        const randomQuestion = this.state.randQues == 0 ? <PositiveThingQuestion buttonClick={this.answeredRandomQuestion.bind(this)} /> : <HelpedCopeQuestion buttonClick={this.answeredRandomQuestion.bind(this)} />;
         return (        
             <div className='background-box'>
                 <AnimationsCombined />
                 <div className='info-box'>   
-                    <CSSTransition in={this.state.showAcknowledge} timeout={3000} classNames="fade" unmountOnExit appear onExited={() => this.threeDayFunction()}><LowAcknowledgement /></CSSTransition>
+                    <CSSTransition in={this.state.showAcknowledge} timeout={3000} classNames="fade" unmountOnExit appear onExited={() => this.threeDayFunction()}><VeryLowAcknowledgement /></CSSTransition>
                     <CSSTransition in={this.state.showHowLong} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.showReasonForFeeling()}><HowLongHaveYouFeltLikeThis buttonClick={this.answeredHowLong.bind(this)}/></CSSTransition>
                     <CSSTransition in={this.state.showReasonForFeeling} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.afterReasonForFeeling()}><ReasonForFeelings onClick={this.answeredReasonKnown.bind(this)} /></CSSTransition>
                     <CSSTransition in={this.state.showReasonInput} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.showRandQuestion()}><ReasonForFeelingsInput buttonClick={this.answeredReasonInput.bind(this)} /></CSSTransition>
-                    <CSSTransition in={this.state.showRandomQuestions} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.showRandomExercise()}>{ randomQuestion }</CSSTransition>
-                    <CSSTransition in={this.state.showRandomExercises} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.askAnotherExerciseQuestion()}><div className='info-box-button'><div>{SetExercises(this.state.exercise)}</div><button className='next-button' onClick={this.seenExercise}>next</button></div></CSSTransition>
+                    <CSSTransition in={this.state.showRandomQuestions} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.decideFirstAid()}>{this.state.randQues === 'safe' ? <SafeQuestion onClick={this.answeredSafeQuestion.bind(this)}/> : ((this.state.randQues === 'smallPos') ? <PositiveThingQuestion buttonClick={this.answeredRandomQuestion.bind(this)}/> : <ContactSupportersQuestion onClick={this.answeredContactQuestion.bind(this)} />)}</CSSTransition>
+                    <CSSTransition in={this.state.showFirstAid} timeout={2000} classNames="fade" unmountOnExit>{<FirstAidKit />}</CSSTransition>
+                    <CSSTransition in={this.state.showContact} timeout={2000} className="fade" unmountOnExit><Contact /></CSSTransition>
+                    <CSSTransition in={this.state.showRandomExercises} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.askIfHelped()}><div className='info-box-button'><div>{SetExercises(this.state.exercise)}</div><button className='next-button' onClick={this.seenExercise}>next</button></div></CSSTransition>
+                    <CSSTransition in={this.state.showAskIfHelped} timeout={1000} className="fade" unmountOnExit onExited={()=> this.askAnotherExerciseQuestion()}><AskIfHelped exercise={this.state.exercise} onClick={this.afterAnsweredIfHelped.bind(this)}/></CSSTransition>
                     <CSSTransition in={this.state.showAnotherExerciseQuestion} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.afterAskAnotherQuestion()}><div><AnotherExerciseQuestion onClick={this.answeredAnotherExerciseQuestion.bind(this)} /></div></CSSTransition>
                     <CSSTransition in={this.state.showFeedbackStatement} timeout={2000} className="fade" unmountOnExit onExited={() => this.goHome()}><FeedbackStatement onClick={this.clickedHome.bind(this)} /></CSSTransition>
                 </div>
