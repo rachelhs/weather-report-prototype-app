@@ -119,13 +119,33 @@ export class ContactSupportersQuestion extends React.Component {
 
 // Asks if the exercise helped and takes note of what it was
 export class AskIfHelped extends React.Component {
+
+    constructor(props) {
+        super(props);
+    }
+
+    addToDatabase(res) {
+        const user = firebase.auth().currentUser;
+        const uid = user.uid;
+        let name = '';
+        let exercise = this.props.exercise;
+        //get id for current entry
+        database.ref(`users/${uid}/entries`).orderByChild('createdAt').limitToLast(1).on('child_added', function (snapshot) {
+            name = snapshot.key;
+            database.ref(`users/${uid}/entries/${name}/exercises/${exercise}`).update({
+                res
+            })
+        })
+    }
+
     render() {
         return (
             <div>
                 <h1 className='info-box-title'>{data[6].veryLow.questions.exHelped}</h1>
                 <div className='button-container'>
-                    <button className='next-button' onClick={(e) => this.props.onClick(true)}>Yes</button>
-                    <button className='next-button' onClick={(e) => this.props.onClick(false)}>No</button>
+                    <button className='next-button' onClick={(e) => {this.props.onClick(true); this.addToDatabase('yes');}}>Yes</button>
+                    <button className='next-button' onClick={(e) => {this.props.onClick(true); this.addToDatabase('no');}}>No</button>
+                    <button className='next-button' onClick={(e) => {this.props.onClick(true); this.addToDatabase('a bit');}}>A Bit</button>
                 </div>
             </div>
         )
