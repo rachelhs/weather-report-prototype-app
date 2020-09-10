@@ -29,6 +29,7 @@ const AppRouter = () => (
                 <PrivateRoute path="/5" component={ LowRoute } />
                 <PrivateRoute path="/6" component={ MediumLowRoute } />
                 <PrivateRoute path="/7" component={ VeryLowRoute } />
+                <PrivateRoute path="/8" component={ VeryLowRoute } />
                 <PrivateRoute path="/allRoutes" component={ Routes } />
                 <PrivateRoute path="/home" component={HomePage} />
                 <Route component={NotFound} />
