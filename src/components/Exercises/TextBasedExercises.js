@@ -11,3 +11,7 @@ export const Meditating = () => {
 export const Grounding = () => {
     return <h1 className='info-box-title'>insert grounding exercise here</h1>
 }
+
+export const Stretching = () => {
+    return <h1 className='info-box-title'>insert stretching exercise here</h1>
+}
