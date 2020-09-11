@@ -46,12 +46,43 @@ export function chooseAnotherRandomExercise(exerciseArray, lastExercise) {
 export function expressedSuicidalRecently(cb) {
     const uid = firebase.auth().currentUser.uid;
     let counter = 0;
+    const now = Date.now(); // get timestamp for now
+    const sevenDaysAgo = now - 604800000; // get timestamp for 7 days ago (604800000 milliseconds)
     database.ref(`users/${uid}/entries`)
         .limitToLast(21) // last 21 entries is max possible in a week
         .once('value', (snapshot) => {
             snapshot.forEach((child) => {
                 let mainWord = child.val().mainWord;
-                if (mainWord === 'suicidal') {
+                let createdAt = child.val().createdAt;
+                if ((createdAt >= sevenDaysAgo) && mainWord === 'suicidal') {
+                    counter += 1;
+                }
+            })
+            if(counter >= 3) {
+                cb(true)
+                return
+            }
+            else {
+                cb(false)
+                return
+            }
+        })
+}
+
+// functions which checks if a user has inputed a red word as mainWord x times in the last week
+export function expressedTooHighRecently(cb) {
+    const uid = firebase.auth().currentUser.uid;
+    let counter = 0;
+    const now = Date.now(); // get timestamp for now
+    const sevenDaysAgo = now - 604800000; // get timestamp for 7 days ago (604800000 milliseconds)
+    database.ref(`users/${uid}/entries`)
+        .limitToLast(21) // last 21 entries is max possible in a week
+        .once('value', (snapshot) => {
+            snapshot.forEach((child) => {
+                let mainWord = child.val().mainWord;
+                let createdAt = child.val().createdAt;
+                // ignore if not in the last 7 days
+                if ((createdAt >= sevenDaysAgo) && mainWord === 'manic' || 'over stimulated' || 'invincible') {
                     counter += 1;
                 }
             })
