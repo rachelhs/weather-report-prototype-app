@@ -8,7 +8,7 @@ import { SetExercises } from '../Exercises/SetExercises';
 import '../../styles/animation.css';
 const data = require('../../data/data.json');
 
-class Nothing extends React.Component {
+class OkRoute extends React.Component {
 
     constructor(props) {
         super(props);
@@ -101,4 +101,4 @@ class Nothing extends React.Component {
     }
 }
 
-export default Nothing;
+export default OkRoute;
