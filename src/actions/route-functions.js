@@ -14,9 +14,43 @@ export function isLongerThanThreeDays(cb) {
         snapshot.forEach((child) => {
             let time = child.val().createdAt;
             if (time < threeDaysAgo) {
-              cb(true)
-              return
+                cb(true)
+                return
+            }
+            else {
+                cb(false)
+                return
             }
         })
     })
 }
+
+//set random question
+
+export function randomQuestionNumber(num) {
+    const rand = Math.floor(Math.random() * Math.floor(num));
+    return rand
+}
+
+export function chooseAnotherRandomExercise(exerciseArray, lastExercise) {
+    console.log('choose another ...');
+    for (let i = 0; i < exerciseArray.length; i++) {
+        if (exerciseArray[i] === lastExercise) {
+            exerciseArray.splice(i, 1);
+        }
+    }
+    return exerciseArray;
+}
+
+
+// print out a random positive statement
+// export function RandomPositiveStatementsLow(num) {
+
+//     render() {
+//         const positiveArray = data[4].mediumLow.positiveStatements;
+//         let random = Math.floor(Math.random()*positiveArray.length);
+//         return (
+//             <h1 className='info-box-title'>{positiveArray[random]}</h1>
+//         )
+//     }
+// }
