@@ -1,5 +1,7 @@
 import React from 'react';
-import { VeryLowAcknowledgement, AnimationsCombined, HowLongHaveYouFeltLikeThis, ReasonForFeelings, PositiveThingQuestion, ReasonForFeelingsInput, AnotherExerciseQuestion, FeedbackStatement, SafeQuestion, FirstAidKit, ContactSupportersQuestion, Contact, AskIfHelped } from '../SharedComponents/SharedComponents';
+import { Acknowledgement, AnimationsCombined, HowLongHaveYouFeltLikeThis, ReasonForFeelings, ReasonForFeelingsInput, AnotherExerciseQuestion, FeedbackStatement, Contact, AskIfHelped } from '../SharedComponents/SharedComponents';
+import { PositiveThingQuestion, SafeQuestion, ContactSupportersQuestion  } from '../SharedComponents/MentalHealthQuestions';
+import { FirstAidKit } from '../SharedComponents/FirstAidKit';
 import { isLongerThanThreeDays, chooseAnotherRandomExercise } from '../../actions/route-functions';
 import { CSSTransition } from "react-transition-group";
 import { ChooseExercise } from '../Exercises/ChooseExercise';
@@ -11,6 +13,7 @@ class VeryLowRoute extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            route: 'veryLow',
             showAcknowledge: true,
             showHowLong: null,
             showReasonForFeeling: null,
@@ -126,7 +129,7 @@ class VeryLowRoute extends React.Component {
             <div className='background-box'>
                 <AnimationsCombined />
                 <div className='info-box'>   
-                    <CSSTransition in={this.state.showAcknowledge} timeout={3000} classNames="fade" unmountOnExit appear onExited={() => this.threeDayFunction()}><VeryLowAcknowledgement /></CSSTransition>
+                    <CSSTransition in={this.state.showAcknowledge} timeout={3000} classNames="fade" unmountOnExit appear onExited={() => this.threeDayFunction()}><Acknowledgement dataFromParent = {this.state.route}/></CSSTransition>
                     <CSSTransition in={this.state.showHowLong} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.showReasonForFeeling()}><HowLongHaveYouFeltLikeThis buttonClick={this.answeredHowLong.bind(this)}/></CSSTransition>
                     <CSSTransition in={this.state.showReasonForFeeling} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.afterReasonForFeeling()}><ReasonForFeelings onClick={this.answeredReasonKnown.bind(this)} /></CSSTransition>
                     <CSSTransition in={this.state.showReasonInput} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.showRandQuestion()}><ReasonForFeelingsInput buttonClick={this.answeredReasonInput.bind(this)} /></CSSTransition>
@@ -136,7 +139,7 @@ class VeryLowRoute extends React.Component {
                     <CSSTransition in={this.state.showRandomExercises} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.askIfHelped()}><div className='info-box-button'><div>{SetExercises(this.state.exercise)}</div><button className='next-button' onClick={this.seenExercise}>next</button></div></CSSTransition>
                     <CSSTransition in={this.state.showAskIfHelped} timeout={1000} className="fade" unmountOnExit onExited={()=> this.askAnotherExerciseQuestion()}><AskIfHelped exercise={this.state.exercise} onClick={this.afterAnsweredIfHelped.bind(this)}/></CSSTransition>
                     <CSSTransition in={this.state.showAnotherExerciseQuestion} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.afterAskAnotherQuestion()}><div><AnotherExerciseQuestion onClick={this.answeredAnotherExerciseQuestion.bind(this)} /></div></CSSTransition>
-                    <CSSTransition in={this.state.showFeedbackStatement} timeout={2000} className="fade" unmountOnExit onExited={() => this.goHome()}><FeedbackStatement onClick={this.clickedHome.bind(this)} /></CSSTransition>
+                    <CSSTransition in={this.state.showFeedbackStatement} timeout={2000} className="fade" unmountOnExit onExited={() => this.goHome()}><FeedbackStatement dataFromParent = {this.state.route} onClick={this.clickedHome.bind(this)} /></CSSTransition>
                 </div>
             </div>
         );
