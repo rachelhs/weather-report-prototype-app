@@ -12,7 +12,13 @@ import ChooseSymbolPage from '../components/Pages/ChooseSymbolPage'
 import LowRoute from '../components/Routes/LowRoute'
 import MediumLowRoute from '../components/Routes/MediumLowRoute'
 import VeryLowRoute from '../components/Routes/VeryLowRoute'
+<<<<<<< HEAD
 import SuicidalRoute from '../components/Routes/SuicidalRoute'
+=======
+import NothingRoute from '../components/Routes/NothingRoute'
+import OkRoute from '../components/Routes/OkRoute'
+
+>>>>>>> bda31659ad5ac2b1979ae58b4ae04148c5e1394f
 
 import Routes from '../components/Routes/AllRoutes'
 
@@ -25,8 +31,15 @@ const AppRouter = () => (
                 <PublicRoute path="/" component={ LoginEmailForm } exact={true} />
                 <PrivateRoute path="/landing" component={ LandingPage }/>
                 <PrivateRoute path="/home" component={ HomePage }/>
+<<<<<<< HEAD
                 <PrivateRoute path="/choosesymbol" component={ ChooseSymbolPage }/>
                 <PrivateRoute path="/edit/:id" component={ EditEntryPage } />
+=======
+                <PrivateRoute path="/choosesymbol" component={ChooseSymbolPage}/>
+                <PrivateRoute path="/edit/:id" component={EditEntryPage} />
+                <PrivateRoute path="/3" component={ OkRoute } />
+                <PrivateRoute path="/4" component={ NothingRoute } />
+>>>>>>> bda31659ad5ac2b1979ae58b4ae04148c5e1394f
                 <PrivateRoute path="/5" component={ LowRoute } />
                 <PrivateRoute path="/6" component={ MediumLowRoute } />
                 <PrivateRoute path="/7" component={ VeryLowRoute } />
