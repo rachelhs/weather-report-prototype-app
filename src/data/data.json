@@ -98,7 +98,9 @@
                     "samaritans": "999 / Samaritans. Once you've rung 999 or Samaritans it would be a good idea to ring one of your supporters to let them know what's happening.",
                     "help": "That's Good. Are you getting the help you need?",
                     "crisis": "Call crisis team. If you need a referral to the crisis team you will need to contact your GP",
-                    "crisis2": "If the crisis team can't help immediately and you are still at risk please ring 999 or Samaritans"
+                    "crisis2": "If the crisis team can't help immediately and you are still at risk please ring 999 or Samaritans",
+                    "spoken": "Have you spoken to anyone about how you feel?",
+                    "reach": "It could help to reach out to one of your anchors"
                 }
             }
         }

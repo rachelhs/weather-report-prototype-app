@@ -82,6 +82,21 @@ export class ReasonForFeelings extends React.Component {
     }
 }
 
+// Have you spoken to anyone about how you feel QUESTION
+export class SpokenToQ extends React.Component {
+    render() {
+        return (
+            <div>
+                <h1 className='info-box-title'>{data[8].suicidal.questions.spoken}</h1>
+                <div className='button-container'>
+                    <button className='next-button' onClick={(e) => this.props.onClick(true)}>Yes</button>
+                    <button className='next-button' onClick={(e) => this.props.onClick(false)}>No</button>
+                </div>
+            </div>
+        )
+    }
+}
+
 // Are you at risk of harming yourself QUESTION
 export class RiskOfHarm extends React.Component {
     render() {
@@ -590,8 +605,9 @@ export class Contact extends React.Component {
 export class AllRoots extends React.Component {
     render() {
         return (
-            <div className='info-box'>
-                <h1>[NEEDS DOING - LIST OF ROOTS GOES HERE]</h1>
+            <div>
+                <h1 className='info-box-title'>{data[8].suicidal.questions.reach}</h1>
+                <h1 className='info-box-title'>[NEEDS DOING - LIST OF ROOTS GOES HERE]</h1>
             </div>
         )
     }
@@ -601,7 +617,8 @@ export class AllRoots extends React.Component {
 export class AllRootsWithNext extends React.Component {
     render() {
         return (
-            <div className='info-box'>
+            <div>
+                <h1 className='info-box-title'>{data[8].suicidal.questions.reach}</h1>
                 <h1 className='info-box-title'>[NEEDS DOING - LIST OF ROOTS GOES HERE]</h1>
                 <div className='button-container'>
                     <button className='next-button' onClick={(e) => this.props.onClick(true)}>next</button>

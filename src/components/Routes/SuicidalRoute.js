@@ -1,5 +1,5 @@
 import React from 'react';
-import { AnimationsCombined, SuicidalAcknowledgement, HowLongHaveYouFeltLikeThis, RiskOfHarm, PlanQ, PlanningQ, FeelingsPassStatement, Samaritans, AllRootsWithNext, GettingHelpQ, FeedbackStatement, Crisis } from '../SharedComponents/SharedComponents';
+import { AnimationsCombined, SuicidalAcknowledgement, HowLongHaveYouFeltLikeThis, RiskOfHarm, PlanQ, PlanningQ, FeelingsPassStatement, Samaritans, AllRootsWithNext, GettingHelpQ, FeedbackStatement, Crisis, SpokenToQ } from '../SharedComponents/SharedComponents';
 import { isLongerThanThreeDays, expressedSuicidalRecently } from '../../actions/route-functions';
 import { CSSTransition } from "react-transition-group";
 import '../../styles/animation.css';
@@ -147,7 +147,18 @@ class SuicidalRoute extends React.Component {
         this.setState({ showSamaritans: true })
     }
 
+    processSpokenToQ(res) {
+        res ? this.setState({ haveSpokenQ: false, spoken: true }) : this.setState({ haveSpokenQ: false, help: true })
+    }
 
+    actionAfterSpokenTo() {
+        if (this.state.spoken) {
+            this.setState({showGettingHelp: true})
+        }
+        else if(this.state.help) {
+            this.setState({showAnchors: true})
+        }
+    }
 
     render() {
         return (
@@ -167,7 +178,7 @@ class SuicidalRoute extends React.Component {
                     <CSSTransition in={this.state.showAnchors} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.showGettingHelp() }}><AllRootsWithNext onClick={this.leaveAnchors.bind(this)} /></CSSTransition>
                     <CSSTransition in={this.state.showGettingHelp} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterHelpQ() }}><GettingHelpQ onClick={this.leaveGettingHelpQ.bind(this)}/></CSSTransition>
 
-                    <CSSTransition in={this.state.haveSpokenQ} timeout={2000} classNames="fade" unmountOnExit><h1>have spoken</h1></CSSTransition>
+                    <CSSTransition in={this.state.haveSpokenQ} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterSpokenTo() }}><SpokenToQ onClick={this.processSpokenToQ.bind(this)}/></CSSTransition>
                     <CSSTransition in={this.state.showFeedback} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.goHome()}><FeedbackStatement onClick={this.clickedHome.bind(this)} /></CSSTransition>
 
                 </div>
