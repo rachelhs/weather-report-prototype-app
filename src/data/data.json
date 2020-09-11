@@ -30,8 +30,6 @@
     },
     {
         "shared" : {
-            "acknowledge": "I’m sorry you are feeling like this",
-            "lowerAcknowledge": "I'm sorry you are feeling like this, it can be difficult to have these feelings",
             "howLong": "How long have you felt like this?",
             "reason": "Is there anything you are aware of that has made you feel like this?",
             "positiveChange": "How can you positively change your situation?",
@@ -42,6 +40,13 @@
             "safeQuestion": "Are you keeping yourself safe?",
             "support": "Have you contacted your supporters?",
             "contentReplayStatement": "[CHECK THIS] Recently, you made this note",
+            "acknowledge": {
+                "low": "I’m sorry you are feeling like this",
+                "mediumLow": "I’m sorry you are feeling like this",
+                "veryLow": "I’m sorry you are feeling like this, it can be difficult to have these feelings",
+                "lowWithEnergy": "I’m sorry you are feeling like this, it can be difficult to have these feelings",
+                "suicidal": "I’m sorry you’re feeling like this, it can be difficult to sit with this feeling and have these feelings."
+            },
             "feedbackStatements": {
                 "nothing": ["Sometimes we just have to sit with these difficult feelings, and know that they will pass, just like the weather", "You are not your feelings, tomorrow will come. Just because I’m feeling nothing, doesn’t mean I am nothing"],
                 "veryLow": ["feedback v low statement 1", "feedback v low statement 2"],
