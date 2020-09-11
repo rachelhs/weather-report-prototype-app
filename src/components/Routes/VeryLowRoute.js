@@ -11,6 +11,7 @@ class VeryLowRoute extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            route: 'veryLow',
             showAcknowledge: true,
             showHowLong: null,
             showReasonForFeeling: null,
@@ -136,7 +137,7 @@ class VeryLowRoute extends React.Component {
                     <CSSTransition in={this.state.showRandomExercises} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.askIfHelped()}><div className='info-box-button'><div>{SetExercises(this.state.exercise)}</div><button className='next-button' onClick={this.seenExercise}>next</button></div></CSSTransition>
                     <CSSTransition in={this.state.showAskIfHelped} timeout={1000} className="fade" unmountOnExit onExited={()=> this.askAnotherExerciseQuestion()}><AskIfHelped exercise={this.state.exercise} onClick={this.afterAnsweredIfHelped.bind(this)}/></CSSTransition>
                     <CSSTransition in={this.state.showAnotherExerciseQuestion} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.afterAskAnotherQuestion()}><div><AnotherExerciseQuestion onClick={this.answeredAnotherExerciseQuestion.bind(this)} /></div></CSSTransition>
-                    <CSSTransition in={this.state.showFeedbackStatement} timeout={2000} className="fade" unmountOnExit onExited={() => this.goHome()}><FeedbackStatement onClick={this.clickedHome.bind(this)} /></CSSTransition>
+                    <CSSTransition in={this.state.showFeedbackStatement} timeout={2000} className="fade" unmountOnExit onExited={() => this.goHome()}><FeedbackStatement dataFromParent = {this.state.route} onClick={this.clickedHome.bind(this)} /></CSSTransition>
                 </div>
             </div>
         );

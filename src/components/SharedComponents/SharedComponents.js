@@ -2,6 +2,7 @@
 import React from 'react';
 import BackgroundAnimation from '../../components/Animations/BackgroundAnimation'
 import ForegroundAnimation from '../../components/Animations/ForegroundAnimation'
+import { randomQuestionNumber  } from '../../actions/route-functions';
 const data = require('../../data/data.json');
 const firebase = require('firebase/app');
 require('firebase/auth');
@@ -154,10 +155,22 @@ export class AskIfHelped extends React.Component {
 
 //Feedback Statement
 export class FeedbackStatement extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            randFeedbackStatement: null
+        }
+      }
+
+    componentDidMount() { 
+        const feedbackArray = data[3]['shared']['feedbackStatements'][this.props.dataFromParent]
+        this.setState({ randFeedbackStatement: randomQuestionNumber(feedbackArray.length) });
+    }
     render() {
         return (
             <div>
-                <h1 className='info-box-title'>{data[3].shared.feedbackStatement}</h1>
+                <h1 className='info-box-title'>{data[3]['shared']['feedbackStatements'][this.props.dataFromParent][this.state.randFeedbackStatement]}</h1>
                 <div className='button-container'>
                     <button className='next-button' onClick={(e) => this.props.onClick(true)}>home</button>
                 </div>
@@ -265,6 +278,39 @@ export class FriendsLikeQuestion extends React.Component {
                 <h1 className='info-box-title'>{data[4].mediumLow.questions.friendLike}</h1>
                 <form className='button-container' onSubmit={this.handleFriendsSubmit}>
                     <input className='free-form-input' type="text" value={this.state.value} onChange={this.handleFriendsChange} />
+                    <button className='next-button free-form-submit' onClick={this.props.buttonClick}>Submit</button>
+                </form>
+            </div>
+        )
+    }
+}
+
+// What’s one small thing you can do to make yourself feel better?
+export class PositiveChangeQuestion extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { valuePos: '' };
+        this.handlepositiveChangeSubmit = this.handlepositiveChangeSubmit.bind(this);
+    }
+
+    handlepositiveChangeSubmit = (e) => {
+        e.preventDefault();
+        console.log('submit');
+        const user = firebase.auth().currentUser;
+        const uid = user.uid;
+        database.ref(`users/${uid}/positiveChange`).push(this.state.valuePos);
+    }
+
+    handlepositiveChange = (e) => {
+        this.setState({ valuePos: e.target.value });
+    }
+
+    render() {
+        return (
+            <div>
+                <h1 className='info-box-title'>{data[3].shared.positiveChange}</h1>
+                <form className='button-container' onSubmit={this.handlepositiveChangeSubmit}>
+                    <input className='free-form-input' type="text" value={this.state.value} onChange={this.handlepositiveChange} />
                     <button className='next-button free-form-submit' onClick={this.props.buttonClick}>Submit</button>
                 </form>
             </div>

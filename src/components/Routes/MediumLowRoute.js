@@ -12,6 +12,7 @@ class MediumLowRoute extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            route: 'mediumLow',
             showAcknowledge: true,
             showHowLong: null,
             showReasonForFeeling: null,
@@ -134,7 +135,7 @@ class MediumLowRoute extends React.Component {
                     <CSSTransition in={this.state.showRandomPositiveStatement} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.showRandomExercise()}><h1 className='info-box-title'>{ data[4].mediumLow.positiveStatements[this.state.randPositive]}</h1></CSSTransition>
                     <CSSTransition in={this.state.showRandomExercises} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.askAnotherExerciseQuestion()}><div className='info-box-button'><div>{SetExercises(this.state.exercise)}</div><button className='next-button' onClick={this.seenExercise.bind(this)}>next</button></div></CSSTransition>
                     <CSSTransition in={this.state.showAnotherExerciseQuestion} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.afterAskAnotherQuestion()}><div><AnotherExerciseQuestion onClick={this.answeredAnotherExerciseQuestion.bind(this)} /></div></CSSTransition>
-                    <CSSTransition in={this.state.showFeedbackStatement} timeout={2000} className="fade" unmountOnExit onExited={() => this.goHome()}><FeedbackStatement onClick={this.clickedHome.bind(this)} /></CSSTransition>
+                    <CSSTransition in={this.state.showFeedbackStatement} timeout={2000} className="fade" unmountOnExit onExited={() => this.goHome()}><FeedbackStatement dataFromParent = {this.state.route} onClick={this.clickedHome.bind(this)} /></CSSTransition>
                 </div>
             </div>
         );
