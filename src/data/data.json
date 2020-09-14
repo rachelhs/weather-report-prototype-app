@@ -52,7 +52,8 @@
                 "nothing": ["Sometimes we just have to sit with these difficult feelings, and know that they will pass, just like the weather", "You are not your feelings, tomorrow will come. Just because I’m feeling nothing, doesn’t mean I am nothing"],
                 "veryLow": ["feedback v low statement 1", "feedback v low statement 2"],
                 "mediumLow": ["feedback medium low statement 1", "feedback medium low statement 2"],
-                "low": ["feedback low statement 1", "feedback low statement 2"]
+                "low": ["feedback low statement 1", "feedback low statement 2"],
+                "suicidal": ["feedback suicidal statement 1", "feedback suicidal statement 2"]
             }
         }
     },

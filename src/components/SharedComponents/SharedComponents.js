@@ -76,7 +76,7 @@ export class Acknowledgement extends React.Component {
 export class SuicidalAcknowledgement extends React.Component {
     render() {
         return (
-            <h1 className='info-box-title'>{data[3].shared.suicidalAcknowledge}</h1>
+            <h1 className='info-box-title'>{data[3].shared.acknowledge.suicidal}</h1>
         )
     }
 }
