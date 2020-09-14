@@ -1,5 +1,6 @@
 import React from 'react';
-import { AnimationsCombined, SuicidalAcknowledgement, HowLongHaveYouFeltLikeThis, RiskOfHarm, PlanQ, PlanningQ, FeelingsPassStatement, Samaritans, AllRootsWithNext, GettingHelpQ, FeedbackStatement, Crisis, SpokenToQ } from '../SharedComponents/SharedComponents';
+import { AnimationsCombined, HowLongHaveYouFeltLikeThis, RiskOfHarm, PlanQ, PlanningQ, FeelingsPassStatement, Samaritans, AllRootsWithNext, Crisis } from '../SharedComponents/SharedComponents';
+import { SpokenToQ, GettingHelpQ } from '../SharedComponents/MentalHealthQuestions'
 import { isLongerThanThreeDays, expressedTooHighRecently } from '../../actions/route-functions';
 import { CSSTransition } from "react-transition-group";
 import '../../styles/animation.css';
@@ -10,12 +11,10 @@ class TooHighRoute extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            acknowledge: null,
             howLong: null,
             areYouAtRisk: null,
             harm: null
         }
-        this.showAcknowledge = this.showAcknowledge.bind(this);
         this.actionAfterHarm = this.actionAfterHarm.bind(this);
         this.actionAfterPlanning = this.actionAfterPlanning.bind(this);
     }
@@ -26,7 +25,8 @@ class TooHighRoute extends React.Component {
         setTimeout(() => { this.setState({ acknowledge: false }) }, 3000)
 
         expressedTooHighRecently(res => {
-            res ? this.setState({ acknowledge: true }) : this.setState({ acknowledge: false })
+            res ? this.setState({ acknowledge: true, areYouAtRisk: true }) : this.setState({ acknowledge: false })
+            console.log('too high', res);
         })
         this.threeDayFunction()
     }
@@ -35,11 +35,8 @@ class TooHighRoute extends React.Component {
     threeDayFunction() {
         isLongerThanThreeDays(res => {
             res ? this.setState({ howLong: true }) : this.setState({ howLong: false, acknowledge: true })
+            console.log('three days', res);
         })
-    }
-
-    showAcknowledge() {
-        this.setState({ acknowledge: true })
     }
 
     answeredHowLong() {
@@ -165,22 +162,20 @@ class TooHighRoute extends React.Component {
             <div className='background-box'>
                 <AnimationsCombined />
                 <div className='info-box'>
-                    <CSSTransition in={this.state.howLong} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.showAcknowledge() }}><HowLongHaveYouFeltLikeThis buttonClick={this.answeredHowLong.bind(this)} /></CSSTransition>
-                    <CSSTransition in={this.state.acknowledge} timeout={2000} onEnter={() => { this.triggerTimeout() }} unmountOnExit classNames="fade" onExited={() => this.areYouAtRisk()}><SuicidalAcknowledgement /></CSSTransition>
-                    <CSSTransition in={this.state.areYouAtRisk} timeout={2000} onExited={() => { this.triggerAfterHarm() }} classNames="fade" unmountOnExit><RiskOfHarm onClick={this.actionAfterHarm.bind(this)} /></CSSTransition>
-                    <CSSTransition in={this.state.showPlanQ} timeout={2000} onExited={() => { this.triggerAfterPlan() }} classNames="fade" unmountOnExit><PlanQ onClick={this.actionAfterPlan.bind(this)}/></CSSTransition>
-                    <CSSTransition in={this.state.showPlanningQ} timeout={2000} onExited={() => { this.triggerAfterPlanning() }} classNames="fade" unmountOnExit><PlanningQ onClick={this.actionAfterPlanning.bind(this)} /></CSSTransition>
-                    <CSSTransition in={this.state.showFeelingsPass} timeout={2000} onEnter={() => { this.triggerTimeout() }} onExited={() => { this.showCrisisTeam() }} classNames="fade" unmountOnExit><FeelingsPassStatement /></CSSTransition>
-                    <CSSTransition in={this.state.showSamaritans} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.showAnchors() }}><Samaritans onClick={this.actionAfterSamaritans.bind(this)}/></CSSTransition>
+                <CSSTransition in={this.state.howLong} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.areYouAtRisk() }}><HowLongHaveYouFeltLikeThis buttonClick={this.answeredHowLong.bind(this)} /></CSSTransition>
+                <CSSTransition in={this.state.areYouAtRisk} timeout={2000} onExited={() => { this.triggerAfterHarm() }} classNames="fade" unmountOnExit><RiskOfHarm onClick={this.actionAfterHarm.bind(this)} /></CSSTransition>
+                <CSSTransition in={this.state.showPlanQ} timeout={2000} onExited={() => { this.triggerAfterPlan() }} classNames="fade" unmountOnExit><PlanQ onClick={this.actionAfterPlan.bind(this)}/></CSSTransition>
+                <CSSTransition in={this.state.showPlanningQ} timeout={2000} onExited={() => { this.triggerAfterPlanning() }} classNames="fade" unmountOnExit><PlanningQ onClick={this.actionAfterPlanning.bind(this)} /></CSSTransition>
+                <CSSTransition in={this.state.showFeelingsPass} timeout={2000} onEnter={() => { this.triggerTimeout() }} onExited={() => { this.showCrisisTeam() }} classNames="fade" unmountOnExit><FeelingsPassStatement /></CSSTransition>
+                <CSSTransition in={this.state.showSamaritans} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.showAnchors() }}><Samaritans onClick={this.actionAfterSamaritans.bind(this)}/></CSSTransition>
 
-                    <CSSTransition in={this.state.showCrisisTeam} timeout={2000} classNames="fade" unmountOnExit onExited={() => {this.showSamaritans()}}><Crisis onClick={this.leaveCrisis.bind(this)} /></CSSTransition>
+                <CSSTransition in={this.state.showCrisisTeam} timeout={2000} classNames="fade" unmountOnExit onExited={() => {this.showSamaritans()}}><Crisis onClick={this.leaveCrisis.bind(this)} /></CSSTransition>
 
-                    <CSSTransition in={this.state.showAnchors} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.showGettingHelp() }}><AllRootsWithNext onClick={this.leaveAnchors.bind(this)} /></CSSTransition>
-                    <CSSTransition in={this.state.showGettingHelp} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterHelpQ() }}><GettingHelpQ onClick={this.leaveGettingHelpQ.bind(this)}/></CSSTransition>
+                <CSSTransition in={this.state.showAnchors} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.showGettingHelp() }}><AllRootsWithNext onClick={this.leaveAnchors.bind(this)} /></CSSTransition>
+                <CSSTransition in={this.state.showGettingHelp} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterHelpQ() }}><GettingHelpQ onClick={this.leaveGettingHelpQ.bind(this)}/></CSSTransition>
 
-                    <CSSTransition in={this.state.haveSpokenQ} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterSpokenTo() }}><SpokenToQ onClick={this.processSpokenToQ.bind(this)}/></CSSTransition>
-                    <CSSTransition in={this.state.showFeedback} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.goHome()}><FeedbackStatement onClick={this.clickedHome.bind(this)} /></CSSTransition>
-
+                <CSSTransition in={this.state.haveSpokenQ} timeout={2000} classNames="fade" unmountOnExit><SpokenToQ onClick={this.processSpokenToQ.bind(this)}/></CSSTransition>
+                
                 </div>
             </div>
         );

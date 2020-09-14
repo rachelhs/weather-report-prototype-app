@@ -168,3 +168,33 @@ export class ContactSupportersQuestion extends React.Component {
         )
     }
 }
+
+// Are you getting the help you need QUESTION
+export class GettingHelpQ extends React.Component {
+    render() {
+        return (
+            <div>
+                <h1 className='info-box-title'>{data[8].suicidal.questions.help}</h1>
+                <div className='button-container'>
+                    <button className='next-button' onClick={(e) => this.props.onClick(true)}>Yes</button>
+                    <button className='next-button' onClick={(e) => this.props.onClick(false)}>No</button>
+                </div>
+            </div>
+        )
+    }
+}
+
+// Have you spoken to anyone about how you feel QUESTION
+export class SpokenToQ extends React.Component {
+    render() {
+        return (
+            <div>
+                <h1 className='info-box-title'>{data[8].suicidal.questions.spoken}</h1>
+                <div className='button-container'>
+                    <button className='next-button' onClick={(e) => this.props.onClick(true)}>Yes</button>
+                    <button className='next-button' onClick={(e) => this.props.onClick(false)}>No</button>
+                </div>
+            </div>
+        )
+    }
+}
