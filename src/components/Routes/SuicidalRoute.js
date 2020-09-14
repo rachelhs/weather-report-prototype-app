@@ -1,15 +1,16 @@
 import React from 'react';
-import { AnimationsCombined, SuicidalAcknowledgement, HowLongHaveYouFeltLikeThis, RiskOfHarm, PlanQ, PlanningQ, FeelingsPassStatement, Samaritans, AllRootsWithNext, GettingHelpQ, FeedbackStatement, Crisis, SpokenToQ } from '../SharedComponents/SharedComponents';
+import { AnimationsCombined, SuicidalAcknowledgement, HowLongHaveYouFeltLikeThis, RiskOfHarm, PlanQ, PlanningQ, FeelingsPassStatement, Samaritans, AllRootsWithNext, FeedbackStatement, Crisis } from '../SharedComponents/SharedComponents';
 import { isLongerThanThreeDays, expressedSuicidalRecently } from '../../actions/route-functions';
+import { SpokenToQ, GettingHelpQ } from '../SharedComponents/MentalHealthQuestions';
 import { CSSTransition } from "react-transition-group";
 import '../../styles/animation.css';
-import Feedback from 'react-bootstrap/esm/Feedback';
 
 class SuicidalRoute extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
+            route: 'suicidal',
             acknowledge: null,
             howLong: null,
             areYouAtRisk: null,
@@ -179,7 +180,7 @@ class SuicidalRoute extends React.Component {
                     <CSSTransition in={this.state.showGettingHelp} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterHelpQ() }}><GettingHelpQ onClick={this.leaveGettingHelpQ.bind(this)}/></CSSTransition>
 
                     <CSSTransition in={this.state.haveSpokenQ} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterSpokenTo() }}><SpokenToQ onClick={this.processSpokenToQ.bind(this)}/></CSSTransition>
-                    <CSSTransition in={this.state.showFeedback} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.goHome()}><FeedbackStatement onClick={this.clickedHome.bind(this)} /></CSSTransition>
+                    <CSSTransition in={this.state.showFeedback} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.goHome()}><FeedbackStatement dataFromParent = {this.state.route} onClick={this.clickedHome.bind(this)} /></CSSTransition>
 
                 </div>
             </div>
