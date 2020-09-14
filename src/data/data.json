@@ -48,6 +48,7 @@
                 "suicidal": "I’m sorry you’re feeling like this, it can be difficult to sit with this feeling and have these feelings."
             },
             "feedbackStatements": {
+                "tooHigh": ["feedback too high statement 1", "feedback too high statement 2"],
                 "nothing": ["Sometimes we just have to sit with these difficult feelings, and know that they will pass, just like the weather", "You are not your feelings, tomorrow will come. Just because I’m feeling nothing, doesn’t mean I am nothing"],
                 "veryLow": ["feedback v low statement 1", "feedback v low statement 2"],
                 "mediumLow": ["feedback medium low statement 1", "feedback medium low statement 2"],
