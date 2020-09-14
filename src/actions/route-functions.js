@@ -82,7 +82,7 @@ export function expressedTooHighRecently(cb) {
                 let mainWord = child.val().mainWord;
                 let createdAt = child.val().createdAt;
                 // ignore if not in the last 7 days
-                if ((createdAt >= sevenDaysAgo) && mainWord === 'manic' || 'over stimulated' || 'invincible') {
+                if ((createdAt >= sevenDaysAgo) && (mainWord === 'manic' || 'invincible' || 'over stimulated')) {
                     counter += 1;
                 }
             })
