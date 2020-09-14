@@ -4,6 +4,7 @@ import PositiveMemory from './ReplayPosMemories';
 import LikeAboutSelf from './ReplayLikeAboutSelf';
 import ReplayContent from './ReplayContent';
 import ReplayAnchors from './ReplayAnchors';
+import ReplayCare from './ReplayCare';
 import React from 'react';
 
 export const SetExercises = (exercise) => {
@@ -39,5 +40,8 @@ export const SetExercises = (exercise) => {
     }
     if (exercise === 'anchors') {
         return <ReplayAnchors />
+    }
+    if (exercise === 'selfcare') {
+        return <ReplayCare />
     }
 }
