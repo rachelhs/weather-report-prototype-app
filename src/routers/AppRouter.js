@@ -14,7 +14,8 @@ import MediumLowRoute from '../components/Routes/MediumLowRoute'
 import VeryLowRoute from '../components/Routes/VeryLowRoute'
 import NothingRoute from '../components/Routes/NothingRoute'
 import OkRoute from '../components/Routes/OkRoute'
-
+import SuicidalRoute from '../components/Routes/SuicidalRoute'
+import TooHighRoute from '../components/Routes/TooHigh'
 
 import Routes from '../components/Routes/AllRoutes'
 
@@ -24,20 +25,22 @@ const AppRouter = () => (
     <Router history={history}>
         <div>
             <Switch>
-                <PublicRoute path="/" component={LoginEmailForm} exact={true} />
-                <PrivateRoute path="/landing" component={LandingPage}/>
+                <PublicRoute path="/" component={ LoginEmailForm } exact={true} />
+                <PrivateRoute path="/landing" component={ LandingPage }/>
                 <PrivateRoute path="/home" component={ HomePage }/>
                 <PrivateRoute path="/choosesymbol" component={ChooseSymbolPage}/>
                 <PrivateRoute path="/edit/:id" component={EditEntryPage} />
+                <PrivateRoute path="/1" component={ TooHighRoute } />
                 <PrivateRoute path="/3" component={ OkRoute } />
                 <PrivateRoute path="/4" component={ NothingRoute } />
                 <PrivateRoute path="/5" component={ LowRoute } />
                 <PrivateRoute path="/6" component={ MediumLowRoute } />
                 <PrivateRoute path="/7" component={ VeryLowRoute } />
                 <PrivateRoute path="/8" component={ VeryLowRoute } />
+                <PrivateRoute path="/9" component={ SuicidalRoute } />
                 <PrivateRoute path="/allRoutes" component={ Routes } />
-                <PrivateRoute path="/home" component={HomePage} />
-                <Route component={NotFound} />
+                <PrivateRoute path="/home" component={ HomePage } />
+                <Route component={ NotFound } />
             </Switch>
         </div>
     </Router>

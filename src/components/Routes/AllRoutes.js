@@ -30,6 +30,9 @@ export class AllRoutesPage extends React.Component {
                     <div className='info-box-button'>
                         <Link to="/8">Low but with Energy</Link>
                     </div>
+                    <div className='info-box-button'>
+                        <Link to="/9">Suicidal</Link>
+                    </div>
                 </div>
             </div>
         );
