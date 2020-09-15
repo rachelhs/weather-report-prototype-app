@@ -2,12 +2,14 @@
 const data = require('../../data/data.json');
 const firebase = require('firebase/app');
 require('firebase/auth');
-import React from 'react';
+import React, {useState} from 'react';
+import moment from 'moment';
 import BackgroundAnimation from '../../components/Animations/BackgroundAnimation'
 import ForegroundAnimation from '../../components/Animations/ForegroundAnimation'
 import { randomQuestionNumber  } from '../../actions/route-functions';
 import database from '../../firebase/firebase';
 import { CSSTransition } from 'react-transition-group';
+import { storage } from "../../firebase/firebase";
 
 //Is there anything you are aware of that has made you feel like this QUESTION
 export class ReasonForFeelings extends React.Component {
@@ -53,9 +55,9 @@ export class ReasonForFeelingsInput extends React.Component {
     render() {
         return (
             <div>
-                <h1 className='info-box-title'>Write a note to yourself about what had led you to feel this way</h1>
-                <form className='button-container' onSubmit={this.handleNoteSubmit}>
-                    <input className='free-form-input' type="text" value={this.state.value} onChange={this.handleNoteChange} />
+                <h1 className='info-box-title'>{data[3].shared.reason}</h1>
+                <form className='button-container-vertical' onSubmit={this.handleNoteSubmit}>
+                    <textarea className='free-form-input input-paragraph' type="text" value={this.state.value} onChange={this.handleNoteChange} />
                     <button className='next-button free-form-submit' onClick={this.props.buttonClick}>Submit</button>
                 </form>
             </div>
@@ -226,6 +228,106 @@ export class AnotherExerciseQuestion extends React.Component {
         )
     }
 }
+
+//Would you like to be reminded of this in the future
+export class SetReminder extends React.Component {
+    render() {
+        return (
+            <div>
+                <h1 className='info-box-title'>{data[3].shared.reminderQuestion}</h1>
+                <div className='button-container'>
+                    <button className='next-button' onClick={(e) => this.props.onClick(true)}>Yes</button>
+                    <button className='next-button' onClick={(e) => this.props.onClick(false)}>No</button>
+                </div>
+            </div>
+        )
+    }
+}
+
+
+//Ask whether user wants to upload a photo
+export class TakePhoto extends React.Component {
+    render() {
+        return (
+            <div>
+                <h1 className='info-box-title'>{data[3].shared.photoAsk}</h1>
+                <div className='button-container'>
+                    <button className='next-button' onClick={(e) => this.props.onClick(true)}>Yes</button>
+                    <button className='next-button' onClick={(e) => this.props.onClick(false)}>No</button>
+                </div>
+            </div>
+        )
+    }
+}
+
+//UpLOAD a PHOTO
+export class ReactFirebaseFileUpload extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { 
+            image: null,
+            url: "nothing",
+            progress: 0,
+            createdAt: props.entry ? moment(props.entry.createdAt) : moment()
+        };
+    }
+
+  
+    handleChange = (e) => {
+      if (e.target.files[0]) {
+        this.setState({ image: e.target.files[0] });
+      }
+    };
+  
+    handleUpload = () => {
+        const user = firebase.auth().currentUser;
+        const uid = user.uid;
+        const uploadTask = storage.ref(`images/${this.state.image.name}`).put(this.state.image);
+        uploadTask.on(
+            "state_changed",
+            snapshot => {
+                const progress = Math.round(
+                (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                );
+                this.setState({ progress: progress });
+            },
+            error => {
+                console.log(error);
+            },
+            () => {
+                storage
+                .ref("images")
+                .child(this.state.image.name)
+                .getDownloadURL()
+                .then(url => {
+                    this.setState({ url: url });
+                    console.log('url', this.state.url)
+                    const data = {
+                        url: this.state.url,
+                        savedOn: this.state.createdAt.valueOf()
+                    }
+                    database.ref(`users/${uid}/images`).push(data)
+                });
+            }
+        );
+    };
+
+    render() {
+        const feedback = this.state.progress == 100 ? <h2>Thank you for uploading this memory</h2> : <h2></h2>;
+        return (
+        <div>
+            {/* <progress value={this.state.progress} max="100" /> */}
+            <input type="file" onChange={this.handleChange} />
+            <button onClick={this.handleUpload}>Upload</button>
+            { feedback }
+            <div className='button-container'>
+                <button className='next-button' onClick={(e) => this.props.onClick(true)}>Next</button>
+            </div>
+        </div>
+        );
+    }
+  };
+
 
 // Asks if the exercise helped and takes note of what it was
 export class AskIfHelped extends React.Component {
