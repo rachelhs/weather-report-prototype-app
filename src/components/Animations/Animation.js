@@ -3,6 +3,10 @@ import Lottie from 'react-lottie'
 import waves from '../../animations/waves.json'
 import sun from '../../animations/sun.json'
 import fish from '../../animations/fish.json'
+import environment from '../../animations/environment'
+import growing from '../../animations/growing'
+import plant from '../../animations/plant'
+
 
 class Animation extends Component {
 
@@ -26,6 +30,15 @@ class Animation extends Component {
         }        
         if (this.props.animation === 'fish') {
             this.setState({ animationData: fish })
+        }
+        if (this.props.animation === 'environment') {
+            this.setState({ animationData: environment })
+        }
+        if (this.props.animation === 'growing') {
+            this.setState({ animationData: growing })
+        }
+        if (this.props.animation === 'plant') {
+            this.setState({ animationData: plant })
         }
     }
 

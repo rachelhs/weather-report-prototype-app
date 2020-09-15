@@ -383,10 +383,6 @@ export class AnimationsLayered extends React.Component {
     constructor(props) {
         super(props);
     }
-    componentDidMount() {
-        console.log(this.props.animations);
-        console.log(this.props.animations[0]);
-    }
 
     render() {
         return (
