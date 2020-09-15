@@ -21,7 +21,7 @@ class MediumLowRoute extends React.Component {
             knowReasonForFeeling: null,
             randQues: 0,
             randPositive: null,
-            showRandomPositiveStatement: true,
+            showRandomPositiveStatement: null,
             showRandomExercises: null,
             exercise: '',
         }
@@ -38,7 +38,7 @@ class MediumLowRoute extends React.Component {
         const positiveArray = data[4].mediumLow.positiveStatements;
         this.setState({ randPositive: randomQuestionNumber(positiveArray.length) });
         // setting exercise
-        let exercise = ChooseExercise(['breathing', 'meditating', 'grounding', 'gratitude', 'positive', 'selflike']);
+        let exercise = ChooseExercise(['meditating', 'gratitude', 'positive', 'selflike', 'selfcare']);
         this.setState({ exercise: exercise });
         setTimeout( () => { this.setState({ showRandomPositiveStatement: false }) }, 3000)
 
@@ -103,7 +103,7 @@ class MediumLowRoute extends React.Component {
     
     // returns a random exercise that isn't the same as the one just seen
     chooseAnotherExercise() {
-        let exerciseArray = chooseAnotherRandomExercise(['breathing', 'meditating', 'grounding', 'gratitude', 'positive', 'selflike'], this.state.exercise);
+        let exerciseArray = chooseAnotherRandomExercise(['meditating', 'gratitude', 'positive', 'selflike', 'selfcare'], this.state.exercise);
         this.setState({ showAnotherExerciseQuestion: false, yesAnotherExercise: true });
         let exercise = ChooseExercise(exerciseArray);
         this.setState({ exercise: exercise });

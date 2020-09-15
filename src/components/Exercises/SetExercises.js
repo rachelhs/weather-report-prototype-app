@@ -1,8 +1,10 @@
-import { Breathing, Meditating, Grounding, Stretching } from './TextBasedExercises';
+import { Breathing, Meditating, Grounding, Stretching, SafePlace, LessStimulation } from './TextBasedExercises';
 import Gratitude from './ReplayGratitude';
 import PositiveMemory from './ReplayPosMemories';
 import LikeAboutSelf from './ReplayLikeAboutSelf';
 import ReplayContent from './ReplayContent';
+import ReplayAnchors from './ReplayAnchors';
+import ReplayCare from './ReplayCare';
 import React from 'react';
 
 export const SetExercises = (exercise) => {
@@ -18,6 +20,12 @@ export const SetExercises = (exercise) => {
     if (exercise == 'stretching') {
         return Stretching();
     }
+    if (exercise == 'safePlace') {
+        return SafePlace();
+    }
+    if (exercise == 'lessStimulation') {
+        return LessStimulation();
+    }
     if (exercise == 'gratitude') {
         return <Gratitude />
     }
@@ -29,5 +37,11 @@ export const SetExercises = (exercise) => {
     }
     if (exercise === 'content') {
         return <ReplayContent />
+    }
+    if (exercise === 'anchors') {
+        return <ReplayAnchors />
+    }
+    if (exercise === 'selfcare') {
+        return <ReplayCare />
     }
 }

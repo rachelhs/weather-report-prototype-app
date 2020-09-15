@@ -217,6 +217,21 @@ export class GratefulQuestion extends React.Component {
     }
 }
 
+// Are you getting the help you need QUESTION
+export class GettingHelpQ extends React.Component {
+    render() {
+        return (
+            <div>
+                <h1 className='info-box-title'>{data[8].suicidal.questions.help}</h1>
+                <div className='button-container'>
+                    <button className='next-button' onClick={(e) => this.props.onClick(true)}>Yes</button>
+                    <button className='next-button' onClick={(e) => this.props.onClick(false)}>No</button>
+                </div>
+            </div>
+        )
+    }
+}
+
 // What 3 things do you do to take care of yourself to keep you well? (eg, shower etc.)
 export class TakeCareQuestion
  extends React.Component {
@@ -261,6 +276,20 @@ export class TakeCareQuestion
                     <input className='free-form-input-vertical' placeholder="3" type="text" onChange={this.handletakeCareThree} />
                     <button className='next-button free-form-submit' onClick={this.props.buttonClick}>NEXT</button>
                 </form>
+            </div>
+        )
+    }
+}
+// Have you spoken to anyone about how you feel QUESTION
+export class SpokenToQ extends React.Component {
+    render() {
+        return (
+            <div>
+                <h1 className='info-box-title'>{data[8].suicidal.questions.spoken}</h1>
+                <div className='button-container'>
+                    <button className='next-button' onClick={(e) => this.props.onClick(true)}>Yes</button>
+                    <button className='next-button' onClick={(e) => this.props.onClick(false)}>No</button>
+                </div>
             </div>
         )
     }

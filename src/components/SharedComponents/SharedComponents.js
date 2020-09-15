@@ -74,9 +74,19 @@ export class Acknowledgement extends React.Component {
     }
 }
 
+// I’m sorry you are feeling like this ...
+export class SuicidalAcknowledgement extends React.Component {
+    render() {
+        return (
+            <h1 className='info-box-title'>{data[3].shared.acknowledge.suicidal}</h1>
+        )
+    }
+}
+
 // How long have you felt like this? Today, a few days, a week, longer
 export class HowLongHaveYouFeltLikeThis extends React.Component {
     onHowLong = (howLong) => {
+        console.log('function called');
         const user = firebase.auth().currentUser;
         const uid = user.uid;
         let name = '';
@@ -93,16 +103,116 @@ export class HowLongHaveYouFeltLikeThis extends React.Component {
             <div>
                 <h1 className='info-box-title'>{data[3].shared.howLong}</h1>
                 <div className='button-container'>
-                    <button className='next-button' onClick={() => this.onHowLong('today')} onClick={this.props.buttonClick}>today</button>
-                    <button className='next-button' onClick={() => this.onHowLong('a few days')} onClick={this.props.buttonClick}>a few days</button>
-                    <button className='next-button' onClick={() => this.onHowLong('a week')} onClick={this.props.buttonClick}>a week</button>
-                    <button className='next-button' onClick={() => this.onHowLong('longer')} onClick={this.props.buttonClick}>longer</button>
+                    <button className='next-button' onClick={(e) => { this.onHowLong('today'); this.props.buttonClick(true) }}>today</button>
+                    <button className='next-button' onClick={(e) => { this.onHowLong('a few'); this.props.buttonClick(true) }}>a few days</button>
+                    <button className='next-button' onClick={(e) => { this.onHowLong('a week'); this.props.buttonClick(true) }}>a week</button>
+                    <button className='next-button' onClick={(e) => { this.onHowLong('longer'); this.props.buttonClick(true) }}>longer</button>
                 </div>
             </div>
         )
     }
 }
 
+
+// Have you spoken to anyone about how you feel QUESTION
+export class SpokenToQ extends React.Component {
+    render() {
+        return (
+            <div>
+                <h1 className='info-box-title'>{data[8].suicidal.questions.spoken}</h1>
+                <div className='button-container'>
+                    <button className='next-button' onClick={(e) => this.props.onClick(true)}>Yes</button>
+                    <button className='next-button' onClick={(e) => this.props.onClick(false)}>No</button>
+                </div>
+            </div>
+        )
+    }
+}
+
+// Are you at risk of harming yourself QUESTION
+export class RiskOfHarm extends React.Component {
+    render() {
+        return (
+            <div>
+                <h1 className='info-box-title'>{data[8].suicidal.questions.risk}</h1>
+                <div className='button-container'>
+                    <button className='next-button' onClick={(e) => this.props.onClick(true)}>Yes</button>
+                    <button className='next-button' onClick={(e) => this.props.onClick(false)}>No</button>
+                </div>
+            </div>
+        )
+    }
+}
+
+// Do you have a plan QUESTION
+export class PlanQ extends React.Component {
+    render() {
+        return (
+            <div>
+                <h1 className='info-box-title'>{data[8].suicidal.questions.plan}</h1>
+                <div className='button-container'>
+                    <button className='next-button' onClick={(e) => this.props.onClick(true)}>Yes</button>
+                    <button className='next-button' onClick={(e) => this.props.onClick(false)}>No</button>
+                </div>
+            </div>
+        )
+    }
+}
+
+// Are you planning on acting QUESTION
+export class PlanningQ extends React.Component {
+    render() {
+        return (
+            <div>
+                <h1 className='info-box-title'>{data[8].suicidal.questions.act}</h1>
+                <div className='button-container'>
+                    <button className='next-button' onClick={(e) => this.props.onClick(true)}>Yes</button>
+                    <button className='next-button' onClick={(e) => this.props.onClick(false)}>No</button>
+                </div>
+            </div>
+        )
+    }
+}
+
+// Feelings pass Statement
+export class FeelingsPassStatement extends React.Component {
+    render() {
+        return (
+            <div>
+                <h1 className='info-box-title'>{data[8].suicidal.questions.pass}</h1>
+            </div>
+        )
+    }
+}
+
+// 999 / samaritans statement with next button
+export class Samaritans extends React.Component {
+    render() {
+        return (
+            <div>
+                <h1 className='info-box-title'>{data[8].suicidal.questions.samaritans}</h1>
+                <div className='button-container'>
+                    <button className='next-button' onClick={(e) => this.props.onClick(true)}>OK</button>
+                </div>
+            </div>
+        )
+    }
+}
+
+// Crisis team statement with next button
+export class Crisis extends React.Component {
+    render() {
+        return (
+            <div>
+                <h1 className='info-box-title'>{data[8].suicidal.questions.crisis}</h1>
+                <h1 className='info-box-title'>{data[8].suicidal.questions.crisis2}</h1>
+                <div className='button-container'>
+                    <button className='next-button' onClick={(e) => this.props.onClick(true)}>OK</button>
+                </div>
+            </div>
+        )
+    }
+}
 
 //Do you want to do another exercise
 export class AnotherExerciseQuestion extends React.Component {
@@ -245,9 +355,9 @@ export class AskIfHelped extends React.Component {
             <div>
                 <h1 className='info-box-title'>{data[6].veryLow.questions.exHelped}</h1>
                 <div className='button-container'>
-                    <button className='next-button' onClick={(e) => {this.props.onClick(true); this.addToDatabase('yes');}}>Yes</button>
-                    <button className='next-button' onClick={(e) => {this.props.onClick(true); this.addToDatabase('no');}}>No</button>
-                    <button className='next-button' onClick={(e) => {this.props.onClick(true); this.addToDatabase('a bit');}}>A Bit</button>
+                    <button className='next-button' onClick={(e) => { this.props.onClick(true); this.addToDatabase('yes'); }}>Yes</button>
+                    <button className='next-button' onClick={(e) => { this.props.onClick(true); this.addToDatabase('no'); }}>No</button>
+                    <button className='next-button' onClick={(e) => { this.props.onClick(true); this.addToDatabase('a bit'); }}>A Bit</button>
                 </div>
             </div>
         )
@@ -316,8 +426,24 @@ export class Contact extends React.Component {
 export class AllRoots extends React.Component {
     render() {
         return (
-            <div className='info-box'>
-                <h1>[NEEDS DOING - LIST OF ROOTS GOES HERE]</h1>
+            <div>
+                <h1 className='info-box-title'>{data[8].suicidal.questions.reach}</h1>
+                <h1 className='info-box-title'>[NEEDS DOING - LIST OF ROOTS GOES HERE]</h1>
+            </div>
+        )
+    }
+}
+
+// show list of roots (anchors) and with a next button
+export class AllRootsWithNext extends React.Component {
+    render() {
+        return (
+            <div>
+                <h1 className='info-box-title'>{data[8].suicidal.questions.reach}</h1>
+                <h1 className='info-box-title'>[NEEDS DOING - LIST OF ROOTS GOES HERE]</h1>
+                <div className='button-container'>
+                    <button className='next-button' onClick={(e) => this.props.onClick(true)}>next</button>
+                </div>
             </div>
         )
     }
