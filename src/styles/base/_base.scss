@@ -20,6 +20,8 @@ p {
 }
 
 h1 {
+    text-align: center;
+    font-size: 30px;
     font-family: 'Karla', sans-serif;
     font-weight: 600;
 }
@@ -27,6 +29,12 @@ h1 {
 h2 {
     font-family: 'Karla', sans-serif;
     font-weight: 600;
+    size: 10px;
+}
+
+input {
+    font-family: 'Karla', sans-serif;
+    font-weight: 600; 
 }
 
 button {
