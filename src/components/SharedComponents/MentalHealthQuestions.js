@@ -217,6 +217,102 @@ export class GratefulQuestion extends React.Component {
     }
 }
 
+// What What 3 things do you enjoy?
+export class EnjoyQuestion extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            enjoyOne: '',
+            enjoyTwo: '',
+            enjoyThree: '' 
+        };
+        this.handleEnjoyQuestionSubmit = this.handleEnjoyQuestionSubmit.bind(this);
+    }
+
+    handleEnjoyQuestionSubmit = (e) => {
+        e.preventDefault();
+        const user = firebase.auth().currentUser;
+        const uid = user.uid;
+        database.ref(`users/${uid}/enjoy`).push(this.state.enjoyOne);
+        database.ref(`users/${uid}/enjoy`).push(this.state.enjoyTwo);
+        database.ref(`users/${uid}/enjoy`).push(this.state.enjoyThree);
+    }
+
+    handleEnjoyOne = (e) => {
+        this.setState({ enjoyOne: e.target.value });
+    }
+
+    handleEnjoyTwo = (e) => {
+        this.setState({ enjoyTwo: e.target.value });
+    }
+
+    handleEnjoyThree = (e) => {
+        this.setState({ enjoyThree: e.target.value });
+    }
+
+    render() {
+        return (
+            <div>
+                <h1 className='info-box-title'>{data[3].shared.enjoyQuestion}</h1>
+                <form className='button-container-vertical' onSubmit={this.handleEnjoyQuestionSubmit}>
+                    <input className='free-form-input-vertical' placeholder="1" type="text" onChange={this.handleEnjoyOne} />
+                    <input className='free-form-input-vertical' placeholder="2" type="text" onChange={this.handleEnjoyTwo} />
+                    <input className='free-form-input-vertical' placeholder="3" type="text" onChange={this.handleEnjoyThree} />
+                    <button className='next-button free-form-submit' onClick={this.props.buttonClick}>NEXT</button>
+                </form>
+            </div>
+        )
+    }
+}
+
+// What 3 things do you like about yourself?
+export class LikeAboutYourselfQuestion extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            likeOne: '',
+            likeTwo: '',
+            likeThree: '' 
+        };
+        this.handleLikeQuestionSubmit = this.handleLikeQuestionSubmit.bind(this);
+    }
+
+    handleLikeQuestionSubmit = (e) => {
+        e.preventDefault();
+        const user = firebase.auth().currentUser;
+        const uid = user.uid;
+        database.ref(`users/${uid}/likeAboutSelf`).push(this.state.likeOne);
+        database.ref(`users/${uid}/likeAboutSelf`).push(this.state.likeTwo);
+        database.ref(`users/${uid}/likeAboutSelf`).push(this.state.likeThree);
+    }
+
+    handleLikeOne = (e) => {
+        this.setState({ likeOne: e.target.value });
+    }
+
+    handleLikeTwo = (e) => {
+        this.setState({ likeTwo: e.target.value });
+    }
+
+    handleLikeThree = (e) => {
+        this.setState({ likeThree: e.target.value });
+    }
+
+    render() {
+        return (
+            <div>
+                <h1 className='info-box-title'>{data[3].shared.likeAboutYourselfQuestion}</h1>
+                <form className='button-container-vertical' onSubmit={this.handleLikeQuestionSubmit}>
+                    <input className='free-form-input-vertical' placeholder="1" type="text" onChange={this.handleLikeOne} />
+                    <input className='free-form-input-vertical' placeholder="2" type="text" onChange={this.handleLikeTwo} />
+                    <input className='free-form-input-vertical' placeholder="3" type="text" onChange={this.handleLikeThree} />
+                    <button className='next-button free-form-submit' onClick={this.props.buttonClick}>NEXT</button>
+                </form>
+            </div>
+        )
+    }
+}
+
 // Are you getting the help you need QUESTION
 export class GettingHelpQ extends React.Component {
     render() {

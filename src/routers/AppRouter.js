@@ -14,6 +14,7 @@ import MediumLowRoute from '../components/Routes/MediumLowRoute'
 import VeryLowRoute from '../components/Routes/VeryLowRoute'
 import NothingRoute from '../components/Routes/NothingRoute'
 import OkRoute from '../components/Routes/OkRoute'
+import HighRoute from '../components/Routes/HighRoute'
 import SuicidalRoute from '../components/Routes/SuicidalRoute'
 import TooHighRoute from '../components/Routes/TooHigh'
 import Onboarding from '../components/Onboarding/onboarding'
@@ -33,6 +34,7 @@ const AppRouter = () => (
                 <PrivateRoute path="/edit/:id" component={EditEntryPage} />
                 <PrivateRoute path="/onboarding" component={ Onboarding } />
                 <PrivateRoute path="/1" component={ TooHighRoute } />
+                <PrivateRoute path="/2" component={ HighRoute } />
                 <PrivateRoute path="/3" component={ OkRoute } />
                 <PrivateRoute path="/4" component={ NothingRoute } />
                 <PrivateRoute path="/5" component={ LowRoute } />
