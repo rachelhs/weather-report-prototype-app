@@ -16,6 +16,7 @@ import NothingRoute from '../components/Routes/NothingRoute'
 import OkRoute from '../components/Routes/OkRoute'
 import SuicidalRoute from '../components/Routes/SuicidalRoute'
 import TooHighRoute from '../components/Routes/TooHigh'
+import Onboarding from '../components/Onboarding/onboarding'
 
 import Routes from '../components/Routes/AllRoutes'
 
@@ -30,6 +31,7 @@ const AppRouter = () => (
                 <PrivateRoute path="/home" component={ HomePage }/>
                 <PrivateRoute path="/choosesymbol" component={ChooseSymbolPage}/>
                 <PrivateRoute path="/edit/:id" component={EditEntryPage} />
+                <PrivateRoute path="/onboarding" component={ Onboarding } />
                 <PrivateRoute path="/1" component={ TooHighRoute } />
                 <PrivateRoute path="/3" component={ OkRoute } />
                 <PrivateRoute path="/4" component={ NothingRoute } />

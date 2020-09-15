@@ -6,6 +6,7 @@ import React, {useState} from 'react';
 import moment from 'moment';
 import BackgroundAnimation from '../../components/Animations/BackgroundAnimation'
 import ForegroundAnimation from '../../components/Animations/ForegroundAnimation'
+import Animation from '../../components/Animations/Animation'
 import { randomQuestionNumber  } from '../../actions/route-functions';
 import database from '../../firebase/firebase';
 import { CSSTransition } from 'react-transition-group';
@@ -449,6 +450,20 @@ export class AllRootsWithNext extends React.Component {
     }
 }
 
+// Generalised piece of text with next buttonß
+export class TextWithNext extends React.Component {
+    render() {
+        return (
+            <div>
+                <h1 className='info-box-title'>{this.props.text}</h1>
+                <div className='button-container'>
+                    <button className='next-button' onClick={(e) => this.props.onClick(true)}>Next</button>
+                </div>
+            </div>
+        )
+    }
+}
+
 // other components
 export class AnimationsCombined extends React.Component {
     render() {
@@ -465,3 +480,22 @@ export class AnimationsCombined extends React.Component {
     }
 }
 
+export class AnimationsLayered extends React.Component {
+
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <span>
+                {this.props.animations[0] ? <div className='anim-0'><Animation animation={this.props.animations[0]} /></div> : ''}
+                {this.props.animations[1] ? <div className='anim-1'><Animation animation={this.props.animations[1]} /></div> : ''}
+                {this.props.animations[2] ? <div className='anim-2'><Animation animation={this.props.animations[2]} /></div> : ''}
+                {this.props.animations[3] ? <div className='anim-3'><Animation animation={this.props.animations[3]} /></div> : ''}
+                {this.props.animations[4] ? <div className='anim-4'><Animation animation={this.props.animations[4]} /></div> : ''}
+                {this.props.animations[5] ? <div className='anim-5'><Animation animation={this.props.animations[5]} /></div> : ''}
+            </span>
+        )
+    }
+}
