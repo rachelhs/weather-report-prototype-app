@@ -34,3 +34,38 @@
     transition: opacity 2s ease-in;
 
 }
+
+.transform-up-appear {
+    opacity: 0;
+}
+
+
+.transform-up-appear-active{
+    opacity: 1;
+    transition: opacity 2s ease-in;
+}
+
+.transform-up-enter-done {
+    transform: translateY(-257%);
+    transition: transform 1s ease-in-out;
+}
+
+.transform-up-exit-active {
+    transform: translateY(-257%);
+}
+
+
+/* The display-enter will be enacted immediately when the element enters the DOM */
+.fade-fast-enter {
+    opacity: 0;
+}
+  
+  /*  The display-enter-active will apply once the display-enter is done implementing */
+.fade-fast-enter-active {
+    opacity: 1;
+    transition: opacity 1s ease-in;
+}
+
+.fade-fast-enter-done {
+    opacity: 1;
+}

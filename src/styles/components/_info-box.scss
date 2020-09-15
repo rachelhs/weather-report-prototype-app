@@ -6,6 +6,19 @@
     height: calc(100% - 48px);
 }
 
+.info-box-login {
+    // border: 1px solid $green;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    padding: 5%;
+    width: 100%;
+    max-width: 400px;
+}
+
 .info-box {
     // border: 1px solid $green;
     margin: 0 auto;
@@ -14,7 +27,15 @@
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    padding: 40px;
+    padding: 5%;
+    width: 100%;
+    max-width: 600px;
+}
+
+@media only screen and (min-width: 768px) {
+    .info-box { 
+        width: 100%
+    }
 }
 
 .info-box-replays {
