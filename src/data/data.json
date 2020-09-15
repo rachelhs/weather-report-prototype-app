@@ -36,6 +36,8 @@
             "anotherExercise": "Do you want to do another exercise?",
             "gratefulQuestion": "What are 3 things you are grateful for?",
             "takeCareQuestion": "What 3 things do you do to take care of yourself to keep you well? (eg, shower etc.)",
+            "enjoyQuestion": "What 3 things do you enjoy?",
+            "likeAboutYourselfQuestion": "What 3 things do you like about yourself?",
             "gratitudeReplayStatement": "[CHECK THIS] Recently, you said that this makes you feel gratitude",
             "likeReplayStatement": "[CHECK THIS] Recently, you said that this is something you like about yourself",
             "posReplayStatement": "[CHECK THIS] Recently, you saved this as a positive memory",
@@ -53,6 +55,7 @@
             },
             "feedbackStatements": {
                 "ok": ["feedback statement ok route"],
+                "high": ["feeback statement high 1", "feeback statement high 2"],
                 "tooHigh": ["feedback too high statement 1", "feedback too high statement 2"],
                 "nothing": ["Sometimes we just have to sit with these difficult feelings, and know that they will pass, just like the weather", "You are not your feelings, tomorrow will come. Just because I’m feeling nothing, doesn’t mean I am nothing"],
                 "veryLow": ["feedback v low statement 1", "feedback v low statement 2"],

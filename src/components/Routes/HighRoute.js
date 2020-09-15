@@ -1,17 +1,17 @@
 import React from 'react';
 import { AnimationsCombined, ReasonForFeelings, ReasonForFeelingsInput, FeedbackStatement, SetReminder, TakePhoto, ReactFirebaseFileUpload } from '../SharedComponents/SharedComponents';
-import { GratefulQuestion, TakeCareQuestion } from '../SharedComponents/MentalHealthQuestions';
+import { LikeAboutYourselfQuestion, EnjoyQuestion } from '../SharedComponents/MentalHealthQuestions';
 import { randomQuestionNumber  } from '../../actions/route-functions';
 import { CSSTransition } from "react-transition-group";
 import '../../styles/animation.css';
 const data = require('../../data/data.json');
 
-class OkRoute extends React.Component {
+class HighRoute extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            route: 'ok',
+            route: 'high',
             showReasonForFeeling: true,
             knowReasonForFeeling: null,
             randQues: null,
@@ -56,7 +56,7 @@ class OkRoute extends React.Component {
     goHome() { this.props.history.push('/home') }
 
     render() {
-        const randomQuestion = this.state.randQues == 0 ? <GratefulQuestion buttonClick={this.answeredRandomQuestion.bind(this)} /> : <TakeCareQuestion buttonClick={this.answeredRandomQuestion.bind(this)} />;
+        const randomQuestion = this.state.randQues == 0 ? <LikeAboutYourselfQuestion buttonClick={this.answeredRandomQuestion.bind(this)} /> : <EnjoyQuestion buttonClick={this.answeredRandomQuestion.bind(this)} />;
 
         return (        
             <div className='background-box'>
@@ -80,4 +80,4 @@ class OkRoute extends React.Component {
     }
 }
 
-export default OkRoute;
+export default HighRoute;
