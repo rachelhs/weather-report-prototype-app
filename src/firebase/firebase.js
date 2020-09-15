@@ -1,4 +1,6 @@
 const firebase = require('firebase/app');
+import "firebase/storage";
+
 require('firebase/auth');
 require('firebase/database');
 
@@ -21,4 +23,6 @@ const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 const createUser = (email, password) => firebase.auth().createUserWithEmailAndPassword(email, password)
 const logInUser = (email, password) => firebase.auth().signInWithEmailAndPassword(email, password)
 
-export { firebase, googleAuthProvider, createUser, logInUser, database as default };
+const storage = firebase.storage();
+
+export { firebase, googleAuthProvider, storage, createUser, logInUser, database as default };
