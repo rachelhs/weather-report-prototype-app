@@ -294,3 +294,50 @@ export class SpokenToQ extends React.Component {
         )
     }
 }
+
+// Add in Roots (Anchors)
+export class AddAnchor extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { 
+            nameValue: '',
+            anchors: {
+            name: '',
+            number: 0
+        } };
+        this.anchorsSubmit = this.anchorsSubmit.bind(this);
+    }
+
+    anchorsSubmit = (e) => {
+        // stops page refreshing
+        e.preventDefault();
+        console.log('submit');
+        const user = firebase.auth().currentUser;
+        const uid = user.uid;
+        database.ref(`users/${uid}/anchors`).push(this.state.anchors);
+    }
+
+    anchorsChangeName = (e) => {
+        let anchors = {...this.state.anchors};
+        anchors.name = e.target.value;
+        this.setState({ anchors });
+    }
+
+    anchorsChangeNumber = (e) => {
+        let anchors = {...this.state.anchors};
+        anchors.number = e.target.value;
+        this.setState({ anchors });
+    }
+
+    render() {
+        return (
+            <div>
+                <form className='button-container' onSubmit={this.anchorsSubmit}>
+                    <input className='free-form-input' type="text" placeholder="name" onChange={this.anchorsChangeName} />
+                    <input className='free-form-input' type="text" placeholder="number" onChange={this.anchorsChangeNumber} />
+                    <button className='next-button free-form-submit' onClick={this.props.buttonClick}>Add</button>
+                </form>
+            </div>
+        )
+    }
+}

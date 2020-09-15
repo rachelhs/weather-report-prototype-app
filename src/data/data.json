@@ -120,6 +120,19 @@
                     "reach": "It could help to reach out to one of your anchors"
                 }
             }
+        },
+        {
+            "onboarding": {
+                "intro": "Introduction to Weather Report. Introduce weather as a visual metaphor for mental health.",
+                "bestPerson": "You're the best person to understand how you're feeling. This app is a tool to help you through a process of self-reflection to build resilience. This will be a conversation with yourselves. The more you put in the more you get out!",
+                "care": "We found that most people want to care for something other than themselves. So care for this environment, by adding daily weather",
+                "river": "Introduction to the river",
+                "plant": "Introduction to the plant",
+                "environment": "Introduction to the environment",
+                "seed": "Introduce Lily plant growing from seed, adding roots",
+                "roots": "Add a couple of Roots (Anchors)",
+                "feeling": "Introduction to how you are feeling and weather effect on environment"
+            }
         }
 ]
 
