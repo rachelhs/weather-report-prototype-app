@@ -168,3 +168,100 @@ export class ContactSupportersQuestion extends React.Component {
         )
     }
 }
+
+// What three things are you grateful for?
+export class GratefulQuestion extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            gratefulOne: '',
+            gratefulTwo: '',
+            gratefulThree: '' 
+        };
+        this.handlegratefulQuestionSubmit = this.handlegratefulQuestionSubmit.bind(this);
+    }
+
+    handlegratefulQuestionSubmit = (e) => {
+        e.preventDefault();
+        const user = firebase.auth().currentUser;
+        const uid = user.uid;
+        database.ref(`users/${uid}/grateful`).push(this.state.gratefulOne);
+        database.ref(`users/${uid}/grateful`).push(this.state.gratefulTwo);
+        database.ref(`users/${uid}/grateful`).push(this.state.gratefulThree);
+    }
+
+    handlegratefulOne = (e) => {
+        this.setState({ gratefulOne: e.target.value });
+    }
+
+    handlegratefulTwo = (e) => {
+        this.setState({ gratefulTwo: e.target.value });
+    }
+
+    handlegratefulThree = (e) => {
+        this.setState({ gratefulThree: e.target.value });
+    }
+
+    render() {
+        return (
+            <div>
+                <h1 className='info-box-title'>{data[3].shared.gratefulQuestion}</h1>
+                <form className='button-container-vertical' onSubmit={this.handlegratefulQuestionSubmit}>
+                    <input className='free-form-input-vertical' placeholder="1" type="text" onChange={this.handlegratefulOne} />
+                    <input className='free-form-input-vertical' placeholder="2" type="text" onChange={this.handlegratefulTwo} />
+                    <input className='free-form-input-vertical' placeholder="3" type="text" onChange={this.handlegratefulThree} />
+                    <button className='next-button free-form-submit' onClick={this.props.buttonClick}>NEXT</button>
+                </form>
+            </div>
+        )
+    }
+}
+
+// What 3 things do you do to take care of yourself to keep you well? (eg, shower etc.)
+export class TakeCareQuestion
+ extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            takeCareOne: '',
+            takeCareTwo: '',
+            takeCareThree: ''  
+        };
+        this.handleTakeCareQuestionSubmit = this.handleTakeCareQuestionSubmit.bind(this);
+    }
+
+    handleTakeCareQuestionSubmit = (e) => {
+        e.preventDefault();
+        const user = firebase.auth().currentUser;
+        const uid = user.uid;
+        database.ref(`users/${uid}/takeCare`).push(this.state.takeCareOne);
+        database.ref(`users/${uid}/takeCare`).push(this.state.takeCareTwo);
+        database.ref(`users/${uid}/takeCare`).push(this.state.takeCareThree);
+    }
+
+    handletakeCareOne = (e) => {
+        this.setState({ takeCareOne: e.target.value });
+    }
+
+    handletakeCareTwo = (e) => {
+        this.setState({ takeCareTwo: e.target.value });
+    }
+
+    handletakeCareThree = (e) => {
+        this.setState({ takeCareThree: e.target.value });
+    }
+
+    render() {
+        return (
+            <div>
+                <h1 className='info-box-title'>{data[3].shared.takeCareQuestion}</h1>
+                <form className='button-container-vertical' onSubmit={this.handleTakeCareQuestionSubmit}>
+                    <input className='free-form-input-vertical' placeholder="1" type="text" onChange={this.handletakeCareOne} />
+                    <input className='free-form-input-vertical' placeholder="2" type="text" onChange={this.handletakeCareTwo} />
+                    <input className='free-form-input-vertical' placeholder="3" type="text" onChange={this.handletakeCareThree} />
+                    <button className='next-button free-form-submit' onClick={this.props.buttonClick}>NEXT</button>
+                </form>
+            </div>
+        )
+    }
+}
