@@ -5,6 +5,7 @@ import { startAddEntry, startEditEntry } from '../../actions/entries'
 import BackgroundAnimation from '../Animations/BackgroundAnimation'
 import ForegroundAnimation from '../Animations/ForegroundAnimation'
 const firebase = require('firebase/app');
+const data = require('../../data/data.json');
 require('firebase/auth');
 import database from '../../firebase/firebase';
 
@@ -26,7 +27,6 @@ export class ChooseSymbolPage extends React.Component {
 
     render() {
         let script = require('../../../src/data/script.json');
-        let question = (script[0].intro[2]);
         return (
             <div className='background-box'>
                 <div className='background-anim'>
@@ -36,7 +36,7 @@ export class ChooseSymbolPage extends React.Component {
                     <ForegroundAnimation />
                 </div>
                 <div className='info-box'>
-                    <h2 className='info-box-text'>{ question }</h2>
+                    <h3 className='info-box-text'>{ data[0].regularLogin[2] }</h3>
                     <EntryForm
                         onSubmit={this.onSubmit}
                     />

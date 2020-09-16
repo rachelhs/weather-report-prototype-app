@@ -71,7 +71,7 @@ export class LoginEmailForm extends React.Component {
                     <CSSTransition in={this.state.showLogin} timeout={1000} classNames="fade-fast" unmountOnExit>
 
                         <form className='form' onSubmit={this.onFormSubmit}>
-                            <div class="wrap-input100 validate-input">
+                            <div class="wrap-input100">
                                 <input
                                     onChange={(ev) => this.setStateProperty(ev.target.value, 'email')}
                                     placeholder='Username*'
@@ -92,7 +92,7 @@ export class LoginEmailForm extends React.Component {
                                     type={isPasswordShown ? "text" : "password"}
                                     name='password'
                                     required = '*Required'
-                                    className='form-input'
+                                    className='form-input validate-input'
                                 />
                                 <i
                                     className={isPasswordShown ? "fas fa-eye-slash password-icon" : "fas fa-eye password-icon"}

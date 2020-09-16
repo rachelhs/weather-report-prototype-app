@@ -4,6 +4,7 @@
     font-size: $font-size-large;
     font-weight: 300;
     border: none;
+    width: 100%
 }
 
 input.form-input:focus {
@@ -19,3 +20,17 @@ input.form-input:focus {
     height: 10rem;
 }
 
+.wrap-input100 {
+    width: 100%;
+    position: relative;
+    margin-bottom: 37px;
+    border: 1px solid #cacccd;
+}
+
+.form-input.validate-input {
+    width: 80%
+}
+
+.validate-input {
+    position: relative;
+}
