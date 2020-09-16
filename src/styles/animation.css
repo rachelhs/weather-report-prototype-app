@@ -45,13 +45,9 @@
     transition: opacity 2s ease-in;
 }
 
-.transform-up-enter-done {
-    transform: translateY(-257%);
-    transition: transform 1s ease-in-out;
-}
-
 .transform-up-exit-active {
     transform: translateY(-257%);
+    transition: transform 1s ease-in-out;
 }
 
 
