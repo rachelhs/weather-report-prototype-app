@@ -18,7 +18,7 @@ export class LandingPage extends React.Component {
                 <div className='foreground-anim'>
                     <ForegroundAnimation />
                 </div>
-                <div className='info-box'>
+                <div className='info-box-landing'>
                     <h1 className='info-box-text-padding-top'>{ data[0].regularLogin[1] }</h1>
                     <div className="button-container">
                         <button className='next-button' onClick={this.onNext}>NEXT</button>

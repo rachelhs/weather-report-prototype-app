@@ -5,6 +5,7 @@ import EntryFormWords from './EntryFormWords'
 import { startEditEntry, startRemoveEntry } from '../../actions/entries';
 import BackgroundAnimation from '../Animations/BackgroundAnimation'
 import ForegroundAnimation from '../Animations/ForegroundAnimation'
+const data = require('../../data/data.json');
 
 export class EditEntryPage extends React.Component {
     constructor(props) {
@@ -30,9 +31,6 @@ export class EditEntryPage extends React.Component {
     };
 
     render() {
-        let script = require('../../../src/data/script.json');
-        let question1 = (script[0].intro[3]);
-        let question2 = (script[0].intro[4]);
         return (
             <div className='background-box'>
                 <div className='background-anim'>
@@ -41,20 +39,20 @@ export class EditEntryPage extends React.Component {
                 <div className='foreground-anim'>
                     <ForegroundAnimation />
                 </div>
-                <div className='info-box info-box-words'>
+                <div className='info-box-landing info-box-words'>
                     {
-                        (this.state.viewOne) ? <h2 className='info-box-text'>{question1}</h2> : <h2 className='info-box-text'>{question2}</h2>
+                        (this.state.viewOne) ? <h3 className='info-box-text-small-padding'>{ data[0].regularLogin[3] }</h3> : <h3 className='info-box-text-small-padding'>{ data[0].regularLogin[4] }</h3>
                     }
                     {
                         (this.state.viewOne) ? <div><EntryFormWords entry={this.props.entry} onSubmit={this.onSubmit} /> 
                         <div className='info-box-button'>
-                            <button onClick={this.onNext}>next</button>
+                            <button className='next-button' onClick={this.onNext}>NEXT</button>
                         </div>
                         </div> : 
                         <div><EntryFormSecondaryWords entry={this.props.entry} onSubmit={this.onSubmit} /> 
 
                             <div className='info-box-button'>
-                                <button className='next-button' onClick={this.onFinal}>next</button>
+                                <button className='next-button' onClick={this.onFinal}>NEXT</button>
                             </div>
                         </div>
                     }

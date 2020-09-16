@@ -1,19 +1,7 @@
 .word-grid {
     display: flex;
     justify-content: center;
-    margin-left: -40px;
     flex-wrap: wrap;
-    margin-top: -40px;
-    @media (max-width: $desktop-breakpoint) {
-        margin-top: -50px;
-    }
-}
-
-.words {
-    width: 20%;
-    height: 20px;
-    opacity: 1;
-    margin: 25px;
 }
 
 .word-button {
