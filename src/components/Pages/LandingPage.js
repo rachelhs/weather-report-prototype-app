@@ -1,6 +1,7 @@
 import React from 'react';
 import BackgroundAnimation from '../Animations/BackgroundAnimation'
 import ForegroundAnimation from '../Animations/ForegroundAnimation'
+const data = require('../../data/data.json');
 
 export class LandingPage extends React.Component {
 
@@ -9,8 +10,6 @@ export class LandingPage extends React.Component {
     };
 
     render() {
-        let script = require('../../../src/data/script.json');
-        let question = (script[0].intro[1]);
         return (
             <div className='background-box'>
                 <div className='background-anim'>
@@ -20,9 +19,9 @@ export class LandingPage extends React.Component {
                     <ForegroundAnimation />
                 </div>
                 <div className='info-box'>
-                    <h1 className='info-box-text'>{ question }</h1>
-                    <div className='info-box-button'>
-                        <button className='next-button' onClick={this.onNext}>next</button>
+                    <h1 className='info-box-text-padding-top'>{ data[0].regularLogin[1] }</h1>
+                    <div className="button-container">
+                        <button className='next-button' onClick={this.onNext}>NEXT</button>
                     </div>
                 </div>
             </div>
