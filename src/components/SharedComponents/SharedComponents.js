@@ -59,7 +59,7 @@ export class ReasonForFeelingsInput extends React.Component {
                 <h1 className='info-box-title'>{data[3].shared.reason}</h1>
                 <form className='button-container-vertical' onSubmit={this.handleNoteSubmit}>
                     <textarea className='free-form-input input-paragraph' type="text" value={this.state.value} onChange={this.handleNoteChange} />
-                    <button className='next-button free-form-submit' onClick={this.props.buttonClick}>Submit</button>
+                    <button className='next-button free-form-submit center' onClick={this.props.buttonClick}>Submit</button>
                 </form>
             </div>
         )

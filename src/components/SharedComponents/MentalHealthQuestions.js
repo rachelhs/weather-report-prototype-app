@@ -30,9 +30,11 @@ export class PositiveThingQuestion extends React.Component {
         return (
             <div>
                 <h1 className='info-box-title'>{data[4].mediumLow.questions.posThing}</h1>
-                <form className='button-container' onSubmit={this.handlePosSubmit}>
+                <form onSubmit={this.handlePosSubmit}>
                     <input className='free-form-input' type="text" value={this.state.value} onChange={this.handlePosChange} />
-                    <button className='next-button free-form-submit' onClick={this.props.buttonClick}>Submit</button>
+                    <div className='button-container'>
+                        <button className='next-button free-form-submit' onClick={this.props.buttonClick}>Submit</button>
+                    </div>
                 </form>
             </div>
         )
@@ -63,9 +65,11 @@ export class FriendsLikeQuestion extends React.Component {
         return (
             <div>
                 <h1 className='info-box-title'>{data[4].mediumLow.questions.friendLike}</h1>
-                <form className='button-container' onSubmit={this.handleFriendsSubmit}>
+                <form onSubmit={this.handleFriendsSubmit}>
                     <input className='free-form-input' type="text" value={this.state.value} onChange={this.handleFriendsChange} />
-                    <button className='next-button free-form-submit' onClick={this.props.buttonClick}>Submit</button>
+                    <div className='button-container'>
+                        <button className='next-button free-form-submit' onClick={this.props.buttonClick}>Submit</button>
+                    </div>
                 </form>
             </div>
         )
@@ -97,7 +101,7 @@ export class PositiveChangeQuestion extends React.Component {
             <div>
                 <h1 className='info-box-title'>{data[3].shared.positiveChange}</h1>
                 <form className='button-container' onSubmit={this.handlepositiveChangeSubmit}>
-                    <input className='free-form-input' type="text" value={this.state.value} onChange={this.handlepositiveChange} />
+                    <input className='free-form-input-vertical' type="text" value={this.state.value} onChange={this.handlepositiveChange} />
                     <button className='next-button free-form-submit' onClick={this.props.buttonClick}>Submit</button>
                 </form>
             </div>
@@ -109,35 +113,52 @@ export class PositiveChangeQuestion extends React.Component {
 export class HelpedCopeQuestion extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { helpedCope: '' };
+        this.state = {
+            helpedCopeOne: '',
+            helpedCopeTwo: '',
+            helpedCopeThree: '' 
+        };
         this.handleCopedSubmit = this.handleCopedSubmit.bind(this);
     }
 
     handleCopedSubmit = (e) => {
-        // stops page refreshing
         e.preventDefault();
-        console.log('submit');
         const user = firebase.auth().currentUser;
         const uid = user.uid;
-        database.ref(`users/${uid}/helpedCope`).push(this.state.helpedCope);
+        database.ref(`users/${uid}/helpedCope`).push(this.state.helpedCopeOne);
+        database.ref(`users/${uid}/helpedCope`).push(this.state.helpedCopeTwo);
+        database.ref(`users/${uid}/helpedCope`).push(this.state.helpedCopeThree);
     }
 
-    handleCopedChange = (e) => {
-        this.setState({ valuePos: e.target.value });
+    handlehelpedCopeOne = (e) => {
+        this.setState({ helpedCopeOne: e.target.value });
+    }
+
+    handlehelpedCopeTwo = (e) => {
+        this.setState({ helpedCopeTwo: e.target.value });
+    }
+
+    handlehelpedCopeThree = (e) => {
+        this.setState({ helpedCopeThree: e.target.value });
     }
 
     render() {
         return (
             <div>
                 <h1 className='info-box-title'>{data[5].low.questions.helpedCope}</h1>
-                <form className='button-container' onSubmit={this.handleCopedSubmit}>
-                    <input className='free-form-input' type="text" value={this.state.value} onChange={this.handleCopedChange} />
-                    <button className='next-button free-form-submit' onClick={this.props.buttonClick}>Submit</button>
+                <form className='button-container-vertical' onSubmit={this.handleCopedSubmit}>
+                    <input className='free-form-input-vertical' placeholder="1" type="text" onChange={this.handlehelpedCopeOne} />
+                    <input className='free-form-input-vertical' placeholder="2" type="text" onChange={this.handlehelpedCopeTwo} />
+                    <input className='free-form-input-vertical' placeholder="3" type="text" onChange={this.handlehelpedCopeThree} />
+                    <div className='button-container'>
+                        <button className='next-button free-form-submit' onClick={this.props.buttonClick}>NEXT</button>
+                    </div>
                 </form>
             </div>
         )
     }
 }
+
 
 // Are you keeping yourself safe?
 export class SafeQuestion extends React.Component {

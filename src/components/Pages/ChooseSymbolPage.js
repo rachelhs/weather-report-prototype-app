@@ -35,7 +35,7 @@ export class ChooseSymbolPage extends React.Component {
                 <div className='foreground-anim'>
                     <ForegroundAnimation />
                 </div>
-                <div className='info-box'>
+                <div className='info-box-landing'>
                     <h3 className='info-box-text'>{ data[0].regularLogin[2] }</h3>
                     <EntryForm
                         onSubmit={this.onSubmit}
