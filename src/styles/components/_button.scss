@@ -52,17 +52,29 @@ button:disabled {
     font-family: 'Roboto', sans-serif;
     letter-spacing: 2px;
     font-weight: 600;
+    margin: 5px;
 }
 
-@media only screen and (max-width: 767px) {
-    .next-button { 
-        position: fixed;
-        bottom: 60px;
-        right: calc(50% - 40px) 
-    }
+.info-box-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
 }
+
+// @media only screen and (max-width: 767px) {
+//     .next-button { 
+//         position: fixed;
+//         bottom: 30px;
+//         right: calc(50% - 40px) 
+//     }
+// }
 
 .button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.info-button-box {
     display: flex;
     justify-content: center;
 }
@@ -71,4 +83,8 @@ button:disabled {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.center {
+    margin: 0 auto;
 }

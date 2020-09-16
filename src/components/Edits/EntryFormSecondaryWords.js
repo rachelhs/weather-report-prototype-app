@@ -49,52 +49,52 @@ export default class EntryFormSecondaryWords extends React.Component {
         return (
             <div className='word-grid'>
                 <form className='words' onSubmit={this.onSubmitSecondWord('happy')}>
-                    <button className={'word-button'}>happy</button>
+                    <button className={'symbol-button-border'}>happy</button>
                 </form>
                 <form className='words' onSubmit={this.onSubmitSecondWord('manic')}>
-                    <button className={'word-button'}>manic</button>
+                    <button className={'symbol-button-border'}>manic</button>
                 </form>
                 <form className='words' onSubmit={this.onSubmitSecondWord('over stimulated')}>
-                    <button className={'word-button'}>over stimulated</button>
+                    <button className={'symbol-button-border'}>over stimulated</button>
                 </form>
                 <form className='words' onSubmit={this.onSubmitSecondWord('excited')}>
-                    <button className='word-button'>excited</button>
+                    <button className='symbol-button-border'>excited</button>
                 </form>
                 <form className='words' onSubmit={this.onSubmitSecondWord('love or loved')}>
-                    <button className='word-button'>love or loved</button>
+                    <button className='symbol-button-border'>love or loved</button>
                 </form>
                 <form className='words' onSubmit={this.onSubmitSecondWord('adventurous')}>
-                    <button className='word-button'>adventurous</button>
+                    <button className='symbol-button-border'>adventurous</button>
                 </form>
                 <form className='words' onSubmit={this.onSubmitSecondWord('brave')}>
-                    <button className='word-button'>brave</button>
+                    <button className='symbol-button-border'>brave</button>
                 </form>
                 <form className='words' onSubmit={this.onSubmitSecondWord('confident')}>
-                    <button className='word-button'>confident</button>
+                    <button className='symbol-button-border'>confident</button>
                 </form>
                 <form className='words' onSubmit={this.onSubmitSecondWord('energetic')}>
-                    <button className='word-button'>energetic</button>
+                    <button className='symbol-button-border'>energetic</button>
                 </form>
                 <form className='words' onSubmit={this.onSubmitSecondWord('hopeful')}>
-                    <button className='word-button'>hopeful</button>
+                    <button className='symbol-button-border'>hopeful</button>
                 </form>
                 <form className='words' onSubmit={this.onSubmitSecondWord('creative')}>
-                    <button className='word-button'>creative</button>
+                    <button className='symbol-button-border'>creative</button>
                 </form>
                 <form className='words' onSubmit={this.onSubmitSecondWord('kind')}>
-                    <button className='word-button'>kind</button>
+                    <button className='symbol-button-border'>kind</button>
                 </form>
                 <form className='words' onSubmit={this.onSubmitSecondWord('content')}>
-                    <button className='word-button'>content</button>
+                    <button className='symbol-button-border'>content</button>
                 </form>
                 <form className='words' onSubmit={this.onSubmitSecondWord('nostalgic')}>
-                    <button className='word-button'>nostalgic</button>
+                    <button className='symbol-button-border'>nostalgic</button>
                 </form>
                 <form className='words' onSubmit={this.onSubmitSecondWord('invincible')}>
-                    <button className='word-button'>invincible</button>
+                    <button className='symbol-button-border'>invincible</button>
                 </form>
                 <form className='words' onSubmit={this.onSubmitSecondWord('careless')}>
-                    <button className='word-button'>careless</button>
+                    <button className='symbol-button-border'>careless</button>
                 </form>
             </div>
         )
