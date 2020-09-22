@@ -24,7 +24,7 @@ export default class Gratitude extends React.Component {
         let rand = 0;
         let entry = '';
 
-        database.ref(`users/${uid}/positiveThings`)
+        database.ref(`users/${uid}/grateful`)
         .on('value', (snapshot) => {
             // get list of keys for each entry
             snapshot.forEach((childSnapshot) => {
@@ -33,7 +33,7 @@ export default class Gratitude extends React.Component {
             // pick a random entry
             rand = Math.floor(Math.random() * listOfKeys.length);
             const randKey = listOfKeys[rand];
-            database.ref(`users/${uid}/positiveThings/${randKey}`)
+            database.ref(`users/${uid}/grateful/${randKey}`)
             .on('value', (childSnapshot) => {
                 console.log(childSnapshot.val());
                 entry = childSnapshot.val();
