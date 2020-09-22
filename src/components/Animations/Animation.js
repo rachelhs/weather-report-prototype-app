@@ -2,10 +2,11 @@ import React, { Component } from 'react'
 import Lottie from 'react-lottie'
 import waves from '../../animations/waves.json'
 import sun from '../../animations/sun.json'
-import fish from '../../animations/fish.json'
+import fish from '../../animations/Fish2.json'
 import environment from '../../animations/environment'
 import growing from '../../animations/growing'
 import plant from '../../animations/plant'
+import HappyBackground from '../../animations/02_Happy_Weather_River_v8.json' 
 
 
 class Animation extends Component {
@@ -40,6 +41,9 @@ class Animation extends Component {
         if (this.props.animation === 'plant') {
             this.setState({ animationData: plant })
         }
+        if (this.props.animation === 'happyBackground') {
+            this.setState({ animationData: HappyBackground })
+        }
     }
 
     render() {
@@ -55,6 +59,7 @@ class Animation extends Component {
 
         return (
             <Lottie options={defaultOptions}
+            speed={0.1}
             />
         )
     }
