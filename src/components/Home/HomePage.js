@@ -7,36 +7,33 @@ class HomePage extends React.Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            Fish: true
+        }
     }
 
-    // clickedFish() {
-    //     console.log("fish clicked")
-    // }
-    
+    showFish() {
+        //Math.floor(Math.random() * (max - min) ) + min;
+        const rand = Math.floor(Math.random() * (10000 - 3000) ) + 3000;
+        setTimeout( () => { this.setState({ Fish: true }) }, rand)
+    }
+
+    hideFish() {
+        const rand = Math.floor(Math.random() * (10000 - 3000) ) + 3000;
+        setTimeout( () => { this.setState({ Fish: false }) }, rand)
+    }
+
     render() {
-        // const defaultOptions = {
-        //     loop: true,
-        //     autoplay: true,
-        //     animationData: animatedFish,
-        //     rendererSettings: {
-        //     preserveAspectRatio: "xMidYMid slice"
-        //     }
-        // };
+
         return (
             <div>
-            <AnimationsLayered animations={['happyBackground', 'fish']} />
+                {this.state.Fish ? <AnimationsLayered animations={['happyBackground', 'fish']} /> :
+                    <AnimationsLayered animations={['happyBackground']} />
+                }
+                {this.state.Fish ? this.hideFish() : this.showFish()}
             </div>
         );
     }
 }
 
 export default HomePage;
-
-// <a className='fish-anim' href="#" onClick={this.clickedFish.bind(this)}>
-// <Lottie 
-// options={defaultOptions}
-// height={400}
-// width={400}
-// zIndex={100}
-// />
-// </a>
