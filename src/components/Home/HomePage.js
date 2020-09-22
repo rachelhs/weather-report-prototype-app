@@ -2,6 +2,7 @@ import React from 'react';
 import { AnimationsLayered } from '../SharedComponents/SharedComponents'
 import Animation from '../../components/Animations/Animation'
 import ReactModal from 'react-modal';
+import AllGratitudes from '../SharedComponents/HomeComponents'
 
 class HomePage extends React.Component {
 
@@ -11,7 +12,8 @@ class HomePage extends React.Component {
             Fish: false,
             showModalFish: false,
             showModalPlant: false,
-            showModalPebble: false
+            showModalPebble: false,
+            modalOpen: false
         }
         this.handleOpenModalFish = this.handleOpenModalFish.bind(this);
         this.handleCloseModalFish = this.handleCloseModalFish.bind(this);
@@ -26,71 +28,92 @@ class HomePage extends React.Component {
     componentDidMount() {
         let rand = Math.random() * (10000 - 3000) + 3000
         let intervalId = setInterval(() => {
-          this.setState(prevState => {
-            if (prevState.Fish === true) {
-              return {
-                Fish: false
-              };
-            } else {
-              return {
-                Fish: true
-              };
-            }
-          });
+            this.setState(prevState => {
+                if (prevState.Fish === true) {
+                    return {
+                        Fish: false
+                    };
+                } else {
+                    return {
+                        Fish: true
+                    };
+                }
+            });
+
         }, rand);
-    
+
         this.setState({
-          intervalId
+            intervalId
         });
-      }
-    
-      componentWillUnmount() {
+    }
+
+    componentWillUnmount() {
         clearInterval(this.state.intervalId);
-      }
+    }
 
     // opens and closes the modals
     handleOpenModalFish() {
-        this.setState({ showModalFish: true });
+        this.setState({
+            showModalFish: true,
+            modalOpen: true
+        });
     }
 
     handleCloseModalFish() {
-        this.setState({ showModalFish: false });
+        this.setState({
+            showModalFish: false,
+            modalOpen: false
+        });
     }
 
     handleOpenModalPlant() {
-        this.setState({ showModalPlant: true });
+        this.setState({
+            showModalPlant: true,
+            modalOpen: true
+        });
     }
 
     handleCloseModalPlant() {
-        this.setState({ showModalPlant: false });
+        this.setState({
+            showModalPlant: false,
+            modalOpen: false
+        });
     }
 
     handleOpenModalPebble() {
-        this.setState({ showModalPebble: true });
+        this.setState({
+            showModalPebble: true,
+            modalOpen: true
+        });
     }
 
     handleCloseModalPebble() {
-        this.setState({ showModalPebble: false });
+        this.setState({
+            showModalPebble: false,
+            modalOpen: false
+        });
     }
 
     render() {
         return (
             <div>
                 <AnimationsLayered animations={['happyBackground']} />
-                <button onClick={this.handleOpenModalPlant} className='clickablePlant'></button>
-                <button onClick={this.handleOpenModalPebble} className='clickablePebble'></button>
-                {this.state.Fish && <div className='anim-2'><button onClick={this.handleOpenModalFish} className='clickableFish'></button>
+                {this.state.modalOpen ? '' : <button onClick={this.handleOpenModalPlant} className='clickablePlant'></button>}
+                {this.state.modalOpen ? '' : <button onClick={this.handleOpenModalPebble} className='clickablePebble'></button>}
+                {(this.state.Fish && this.state.modalOpen) ? '' : <div className='anim-2'><button onClick={this.handleOpenModalFish} className='clickableFish'></button>
                     <Animation animation='fish' /></div>}
 
                 <ReactModal
+                    className='modal'
                     isOpen={this.state.showModalFish}
                     ariaHideApp={false}
                 >
                     <button onClick={this.handleCloseModalFish}>X</button>
-                    <h1>fish modal</h1>
+                    <AllGratitudes />
                 </ReactModal>
 
                 <ReactModal
+                    className='modal'
                     isOpen={this.state.showModalPlant}
                     ariaHideApp={false}
                 >
@@ -99,6 +122,7 @@ class HomePage extends React.Component {
                 </ReactModal>
 
                 <ReactModal
+                    className='modal'
                     isOpen={this.state.showModalPebble}
                     ariaHideApp={false}
                 >

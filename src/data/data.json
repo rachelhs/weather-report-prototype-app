@@ -136,6 +136,12 @@
                 "roots": "Add a couple of Roots (Anchors)",
                 "feeling": "Introduction to how you are feeling and weather effect on environment"
             }
+        },
+        {
+            "home": {
+                "fish": "Things you’re grateful for",
+                "addToFish": "Would you like to add anything to your list?"
+            }
         }
 ]
 
