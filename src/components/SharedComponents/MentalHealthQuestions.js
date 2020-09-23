@@ -19,7 +19,9 @@ export class PositiveThingQuestion extends React.Component {
         console.log('submit');
         const user = firebase.auth().currentUser;
         const uid = user.uid;
+        if(this.state.valuePos !== ''){
         database.ref(`users/${uid}/positiveThings`).push(this.state.valuePos);
+        }
     }
 
     handlePosChange = (e) => {
@@ -54,7 +56,9 @@ export class FriendsLikeQuestion extends React.Component {
         console.log('submit');
         const user = firebase.auth().currentUser;
         const uid = user.uid;
+        if(this.state.friendsLike !== ''){
         database.ref(`users/${uid}/friendsLike`).push(this.state.friendsLike);
+        }
     }
 
     handleFriendsChange = (e) => {
@@ -89,7 +93,9 @@ export class PositiveChangeQuestion extends React.Component {
         console.log('submit');
         const user = firebase.auth().currentUser;
         const uid = user.uid;
+        if(this.state.valuePos !== ''){
         database.ref(`users/${uid}/positiveChange`).push(this.state.valuePos);
+        }
     }
 
     handlepositiveChange = (e) => {
@@ -116,7 +122,7 @@ export class HelpedCopeQuestion extends React.Component {
         this.state = {
             helpedCopeOne: '',
             helpedCopeTwo: '',
-            helpedCopeThree: '' 
+            helpedCopeThree: ''
         };
         this.handleCopedSubmit = this.handleCopedSubmit.bind(this);
     }
@@ -125,9 +131,16 @@ export class HelpedCopeQuestion extends React.Component {
         e.preventDefault();
         const user = firebase.auth().currentUser;
         const uid = user.uid;
-        database.ref(`users/${uid}/helpedCope`).push(this.state.helpedCopeOne);
+        // only push if non empty
+        if (this.state.helpedCopeOne !== '') {
+            database.ref(`users/${uid}/helpedCope`).push(this.state.helpedCopeOne);
+        }
+        if (this.state.helpedCopeTwo !== '') {
         database.ref(`users/${uid}/helpedCope`).push(this.state.helpedCopeTwo);
+        }
+        if (this.state.helpedCopeThree !== '') {
         database.ref(`users/${uid}/helpedCope`).push(this.state.helpedCopeThree);
+        }
     }
 
     handlehelpedCopeOne = (e) => {
@@ -197,7 +210,7 @@ export class GratefulQuestion extends React.Component {
         this.state = {
             gratefulOne: '',
             gratefulTwo: '',
-            gratefulThree: '' 
+            gratefulThree: ''
         };
         this.handlegratefulQuestionSubmit = this.handlegratefulQuestionSubmit.bind(this);
     }
@@ -206,9 +219,15 @@ export class GratefulQuestion extends React.Component {
         e.preventDefault();
         const user = firebase.auth().currentUser;
         const uid = user.uid;
+        if(this.state.gratefulOne !== ''){
         database.ref(`users/${uid}/grateful`).push(this.state.gratefulOne);
+        }
+        if (this.state.gratefulTwo !== ''){
         database.ref(`users/${uid}/grateful`).push(this.state.gratefulTwo);
+        }
+        if (this.state.gratefulThree !== ''){
         database.ref(`users/${uid}/grateful`).push(this.state.gratefulThree);
+        }
     }
 
     handlegratefulOne = (e) => {
@@ -245,7 +264,7 @@ export class EnjoyQuestion extends React.Component {
         this.state = {
             enjoyOne: '',
             enjoyTwo: '',
-            enjoyThree: '' 
+            enjoyThree: ''
         };
         this.handleEnjoyQuestionSubmit = this.handleEnjoyQuestionSubmit.bind(this);
     }
@@ -254,9 +273,15 @@ export class EnjoyQuestion extends React.Component {
         e.preventDefault();
         const user = firebase.auth().currentUser;
         const uid = user.uid;
+        if(this.state.enjoyOne !== ''){
         database.ref(`users/${uid}/enjoy`).push(this.state.enjoyOne);
+        }
+        if(this.state.enjoyTwo !== ''){
         database.ref(`users/${uid}/enjoy`).push(this.state.enjoyTwo);
+        }
+        if(this.state.enjoyThree !== ''){
         database.ref(`users/${uid}/enjoy`).push(this.state.enjoyThree);
+        }
     }
 
     handleEnjoyOne = (e) => {
@@ -293,7 +318,7 @@ export class LikeAboutYourselfQuestion extends React.Component {
         this.state = {
             likeOne: '',
             likeTwo: '',
-            likeThree: '' 
+            likeThree: ''
         };
         this.handleLikeQuestionSubmit = this.handleLikeQuestionSubmit.bind(this);
     }
@@ -302,9 +327,15 @@ export class LikeAboutYourselfQuestion extends React.Component {
         e.preventDefault();
         const user = firebase.auth().currentUser;
         const uid = user.uid;
+        if(this.state.likeOne !== ''){
         database.ref(`users/${uid}/likeAboutSelf`).push(this.state.likeOne);
+        }
+        if(this.state.likeTwo !== '') { 
         database.ref(`users/${uid}/likeAboutSelf`).push(this.state.likeTwo);
+        }
+        if(this.state.likeThree !== ''){
         database.ref(`users/${uid}/likeAboutSelf`).push(this.state.likeThree);
+        }
     }
 
     handleLikeOne = (e) => {
@@ -351,13 +382,13 @@ export class GettingHelpQ extends React.Component {
 
 // What 3 things do you do to take care of yourself to keep you well? (eg, shower etc.)
 export class TakeCareQuestion
- extends React.Component {
+    extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             takeCareOne: '',
             takeCareTwo: '',
-            takeCareThree: ''  
+            takeCareThree: ''
         };
         this.handleTakeCareQuestionSubmit = this.handleTakeCareQuestionSubmit.bind(this);
     }
@@ -366,9 +397,15 @@ export class TakeCareQuestion
         e.preventDefault();
         const user = firebase.auth().currentUser;
         const uid = user.uid;
+        if(this.state.takeCareOne !== '') {
         database.ref(`users/${uid}/takeCare`).push(this.state.takeCareOne);
+        }
+        if(this.state.takeCareTwo !== '') {
         database.ref(`users/${uid}/takeCare`).push(this.state.takeCareTwo);
+        }
+        if(this.state.takeCareThree !== '') {
         database.ref(`users/${uid}/takeCare`).push(this.state.takeCareThree);
+        }
     }
 
     handletakeCareOne = (e) => {
@@ -416,12 +453,13 @@ export class SpokenToQ extends React.Component {
 export class AddAnchor extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { 
+        this.state = {
             nameValue: '',
             anchors: {
-            name: '',
-            number: 0
-        } };
+                name: '',
+                number: 0
+            }
+        };
         this.anchorsSubmit = this.anchorsSubmit.bind(this);
     }
 
@@ -431,17 +469,19 @@ export class AddAnchor extends React.Component {
         console.log('submit');
         const user = firebase.auth().currentUser;
         const uid = user.uid;
+        if (this.state.anchors.name !== ''){
         database.ref(`users/${uid}/anchors`).push(this.state.anchors);
+        }
     }
 
     anchorsChangeName = (e) => {
-        let anchors = {...this.state.anchors};
+        let anchors = { ...this.state.anchors };
         anchors.name = e.target.value;
         this.setState({ anchors });
     }
 
     anchorsChangeNumber = (e) => {
-        let anchors = {...this.state.anchors};
+        let anchors = { ...this.state.anchors };
         anchors.number = e.target.value;
         this.setState({ anchors });
     }
