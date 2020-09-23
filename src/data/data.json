@@ -136,6 +136,33 @@
                 "roots": "Add a couple of Roots (Anchors)",
                 "feeling": "Introduction to how you are feeling and weather effect on environment"
             }
+        },
+        {
+            "words": {
+                "rainbow": ["Happy", "Manic", "Over stimulated", "Excited", "Loved or Love", "Adventurous", "Brave", "Confident", "Energetic", "Hopeful", "Creative", "Kind", "Content", "Nostalgic", "Invincible", "Careless"],
+                "sun": ["Happy","Excited","Loved or Love","Adventurous","Confident","Energetic","Hopeful","Creative","Content","Playful","Stimulated","OK","Relaxed","Calm","Dazed"],
+                "bluesky": ["Gentle","Neutral","OK","Content","Relaxed","Calm","Nothing","Blocked","Dazed","Stuck"],
+                "fog": ["Nothing","Blocked","Dazed","Stuck","Anxious","Neutral","OK","Relaxed","Calm","Confused","Impatient"],
+                "greycloud": ["Nothing","Blocked","Dazed","Stuck","Anxious","Neutral","OK","Gentle","Isolated","Lonely","Nervous","Uneasy","Stupid","Lazy","Unhappy","Worried","Low"],
+                "darkcloud": ["Anxious","Regret","Scared","Unhappy","Worried","Lonely","Sad","Lost","Miserable","Empty","Hurt","Exhausted","Gentle","Neutral","Relentless","Rejected","Awful","Depressed"],
+                "rain": ["Anxious","Distressed","Lost","Miserable","Awful","Crushed","Bleak","Broken","Panic","Desperate","Depressed"],
+                "tornado": ["Angry","Outraged","Furious","Greed","Jealousy","Risky","Panic","Crushed","Desperate","Broken","Anxious","Depressed","Manic","Overwhelmed","Excited","Adventurous","Energetic"],
+                "tidalwave": ["Suicidal","Shame","Risky","Panic","Anxious","Angry","Bleak","Broken","Desperate","Worthless","Humiliated","Depressed","Manic","Overwhelmed"]
+            },
+            "secondaryWords": {
+                "happy": ["Content","Calm","Over stimulated","Anxious","Impatient","Uneasy","Nervous","Worried","Exhausted","Depressed","Jealousy","Risky","Excited","Adventurous","Energetic","Overwhelmed"],
+                "manic": ["Over stimulated","Excited","Adventurous","Brave","Confident","Careless","Distressed","Stimulated","Anxious","Depressed","Furious","Impatient","Dazed","Risky","Uneasy","Exhausted"],
+                "over-stimulated": ["Manic","Excited","Adventurous","Brave","Overwhelmed","Careless","Distressed","Stimulated","Anxious","Depressed","Furious","Impatient","Dazed","Risky","Uneasy","Exhausted"],
+                "excited": ["Happy","Overwhelmed","Brave","Confident","Risky","Hopeful","Invincible","Careless","OK","Calm","Dazed","Anxious","Calm","Impatient","Nervous","Empty","Exhausted","Gentle","Worried","Bleak","Depressed"],
+                "lovedOrLove": ["Shame","Risky","Panic","Broken","Manic","Overwhelmed","Jealousy","Excited","OK","Gentle","Nervous","Scared","Worried","Sad","Anxious","Depressed","Dazed","Content","Relaxed","Calm","Confident","Hopeful","Happy"],
+                "adventurous": ["Over stimulated","Excited","Confident","Energetic","Creative","Invincible","Careless","Content","Relaxed","Calm","Anxious","Impatient","Nervous","Regret","Lost","Exhausted","Desperate","Depressed","Furious","Risky"],
+                "brave": ["Over stimulated","Excited","Confident","Energetic","Creative","Invincible","Careless","Content","Relaxed","Calm","Anxious","Impatient","Nervous","Regret","Lost","Exhausted","Desperate","Depressed","Furious","Risky"],
+                "confident": ["Happy","Energetic","Hopeful","Creative","Invincible","Content","Relaxed","Calm","Dazed","Anxious","Impatient","Lonely","Scared","Sad","Exhausted","Depressed","Lost","Greed","Risky","Overwhelmed"],
+                "energetic": ["Happy","Overwhelmed","Brave","Confident","Risky","Hopeful","Invincible","Careless","OK","Calm","Dazed","Anxious","Calm","Impatient","Nervous","Empty","Exhausted","Gentle","Worried","Bleak","Depressed"],
+                "hopeful": ["Distressed","Greed","Anxious","Depressed","Overwhelmed","Excited","Shame","Risky","Anxious","Calm","Impatient","Stuck","OK","Uneasy","Regret","Neutral","Happy","Loved or Love","Confident"],
+                "creative": ["Happy","Manic","Adventurous","Confident","Content","Invincible","Careless","OK","Relaxed","Dazed","Anxious","Impatient","Lonely","Nervous","Sad","Exhausted","Depressed","Desperate","Risky","Overwhelmed"]
+            },
+            "symbols" : ["rainbow.png", "sun.png", "bluesky.jpeg", "fog.png", "greycloud.png", "darkcloud.svg", "thunder.png", "tidalwave.png", "tornado.png"]
         }
 ]
 
