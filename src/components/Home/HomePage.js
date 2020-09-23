@@ -1,7 +1,7 @@
 import React from 'react';
 import { AnimationsLayered } from '../SharedComponents/SharedComponents'
 import Animation from '../../components/Animations/Animation'
-import { FishModal } from '../SharedComponents/HomeComponents'
+import { FishModal, AnchorsModal, PebblesModal } from '../SharedComponents/HomeComponents'
 
 class HomePage extends React.Component {
 
@@ -45,7 +45,8 @@ class HomePage extends React.Component {
         return (
             <div>
                 <AnimationsLayered animations={['happyBackground']} />
-
+                <AnchorsModal />
+                <PebblesModal />
                 {(this.state.Fish) ? <div className='anim-2'><Animation animation='fish' /></div> : ''}
                 <FishModal fishAppears={this.state.Fish} />
             </div>
