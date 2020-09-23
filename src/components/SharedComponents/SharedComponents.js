@@ -464,6 +464,20 @@ export class TextWithNext extends React.Component {
     }
 }
 
+// Generalised piece of text with props word on button
+export class TextWithButton extends React.Component {
+    render() {
+        return (
+            <div>
+                <h1 className='info-box-title'>{this.props.text}</h1>
+                <div className='button-container'>
+                    <button className='next-button' onClick={(e) => this.props.onClick(true)}>{this.props.buttonText}</button>
+                </div>
+            </div>
+        )
+    }
+}
+
 // other components
 export class AnimationsCombined extends React.Component {
     render() {
