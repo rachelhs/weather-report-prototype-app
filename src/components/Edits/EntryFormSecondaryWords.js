@@ -3,6 +3,7 @@ import moment from 'moment';
 const firebase = require('firebase/app');
 require('firebase/auth');
 import database from '../../firebase/firebase';
+const data = require('../../data/data.json');
 
 export default class EntryFormSecondaryWords extends React.Component {
     constructor(props) {
@@ -48,54 +49,11 @@ export default class EntryFormSecondaryWords extends React.Component {
     render() {
         return (
             <div className='word-grid'>
-                <form className='words' onSubmit={this.onSubmitSecondWord('happy')}>
-                    <button className={'symbol-button-border'}>happy</button>
-                </form>
-                <form className='words' onSubmit={this.onSubmitSecondWord('manic')}>
-                    <button className={'symbol-button-border'}>manic</button>
-                </form>
-                <form className='words' onSubmit={this.onSubmitSecondWord('over stimulated')}>
-                    <button className={'symbol-button-border'}>over stimulated</button>
-                </form>
-                <form className='words' onSubmit={this.onSubmitSecondWord('excited')}>
-                    <button className='symbol-button-border'>excited</button>
-                </form>
-                <form className='words' onSubmit={this.onSubmitSecondWord('love or loved')}>
-                    <button className='symbol-button-border'>love or loved</button>
-                </form>
-                <form className='words' onSubmit={this.onSubmitSecondWord('adventurous')}>
-                    <button className='symbol-button-border'>adventurous</button>
-                </form>
-                <form className='words' onSubmit={this.onSubmitSecondWord('brave')}>
-                    <button className='symbol-button-border'>brave</button>
-                </form>
-                <form className='words' onSubmit={this.onSubmitSecondWord('confident')}>
-                    <button className='symbol-button-border'>confident</button>
-                </form>
-                <form className='words' onSubmit={this.onSubmitSecondWord('energetic')}>
-                    <button className='symbol-button-border'>energetic</button>
-                </form>
-                <form className='words' onSubmit={this.onSubmitSecondWord('hopeful')}>
-                    <button className='symbol-button-border'>hopeful</button>
-                </form>
-                <form className='words' onSubmit={this.onSubmitSecondWord('creative')}>
-                    <button className='symbol-button-border'>creative</button>
-                </form>
-                <form className='words' onSubmit={this.onSubmitSecondWord('kind')}>
-                    <button className='symbol-button-border'>kind</button>
-                </form>
-                <form className='words' onSubmit={this.onSubmitSecondWord('content')}>
-                    <button className='symbol-button-border'>content</button>
-                </form>
-                <form className='words' onSubmit={this.onSubmitSecondWord('nostalgic')}>
-                    <button className='symbol-button-border'>nostalgic</button>
-                </form>
-                <form className='words' onSubmit={this.onSubmitSecondWord('invincible')}>
-                    <button className='symbol-button-border'>invincible</button>
-                </form>
-                <form className='words' onSubmit={this.onSubmitSecondWord('careless')}>
-                    <button className='symbol-button-border'>careless</button>
-                </form>
+                {data[10].secondaryWords.happy.map((note) => (
+                    <form className='words' onSubmit={this.onSubmitSecondWord({note})}>
+                        <button className='symbol-button-border'>{note}</button>
+                    </form>
+                ))}
             </div>
         )
     }
