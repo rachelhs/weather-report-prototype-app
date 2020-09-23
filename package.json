@@ -28,6 +28,7 @@
     "babel-polyfill": "6.26.0",
     "babel-preset-env": "1.5.2",
     "babel-preset-react": "6.24.1",
+    "bootstrap": "^4.5.2",
     "classnames": "^2.2.6",
     "css-loader": "^3.5.3",
     "express": "4.15.4",
