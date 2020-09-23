@@ -140,7 +140,9 @@
         {
             "home": {
                 "fish": "Things you’re grateful for",
-                "addToFish": "Would you like to add anything to your list?"
+                "addToFish": "Would you like to add anything to your list?",
+                "anchors": "Here are your anchors / roots",
+                "addToAnchors": "Would you like to add an anchor?"
             }
         }
 ]
