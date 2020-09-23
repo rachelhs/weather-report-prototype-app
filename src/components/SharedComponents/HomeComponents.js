@@ -4,9 +4,10 @@ const firebase = require('firebase/app');
 import database from '../../firebase/firebase';
 let listOfGrateful = [];
 let listOfAnchors = [];
+let listOfPebbles = [];
 import { TextWithButton } from '../SharedComponents/SharedComponents'
 import { Button, Modal } from 'react-bootstrap';
-import { AddAnchor } from '../SharedComponents/MentalHealthQuestions'
+import { AddAnchor, PositiveThingQuestion } from '../SharedComponents/MentalHealthQuestions'
 
 // What are you grateful for?
 export class OneGratefulQuestion extends React.Component {
@@ -212,7 +213,7 @@ export class PebblesModal extends React.Component {
         this.state = {
             show: null,
             modalsOpen: false,
-            listOfGrateful: [],
+            listOfPebbles: [],
             addButtonClicked: false
         }
     }
@@ -231,36 +232,36 @@ export class PebblesModal extends React.Component {
     }
 
     componentDidMount() {
-        this.getListOfGratitudes();
+        this.getListOfPebbles();
     }
 
-    getListOfGratitudes = () => {
-        listOfGrateful = [];
+    getListOfPebbles = () => {
+        listOfPebbles = [];
         const user = firebase.auth().currentUser;
         const uid = user.uid;
 
-        database.ref(`users/${uid}/grateful`)
+        database.ref(`users/${uid}/positiveThings`)
             .on('value', (snapshot) => {
                 console.log(snapshot)
                 // get list of keys for each entry
                 snapshot.forEach((childSnapshot) => {
-                    let gratitude = childSnapshot.val();
-                    listOfGrateful.push(gratitude);
+                    let pebbles = childSnapshot.val();
+                    listOfPebbles.push(pebbles);
                 })
-                this.setState({ listOfGrateful: listOfGrateful })
+                this.setState({ listOfPebbles: listOfPebbles })
             })
     }
 
-    toggleAddGratitude(res) {
-        res ? (this.setState({ toggleAddGratitude: true, addGratitudeQuestion: false, addButtonClicked: true }), listOfGrateful = []) : this.setState({ toggleAddGratitude: false })
+    toggleAddPebble(res) {
+        res ? (this.setState({ toggleAddPebble: true, addButtonClicked: true }), listOfPebbles = []) : this.setState({ toggleAddPebble: false })
     }
 
     render() {
-        let renderedOutput = this.state.listOfGrateful.map((item, index) => <h1 key={index}>{item}</h1>)
+        let renderedOutput = this.state.listOfPebbles.map((item, index) => <h1 key={index}>{item}</h1>)
 
         return (
             <div>
-                <Button className='clickablePebble' variant="primary" onClick={this.handleShow.bind(this)}></Button>
+                {this.state.modalsOpen ? '' : <Button className='clickablePebble' variant="primary" onClick={this.handleShow.bind(this)}></Button>}
                 <Modal
                     show={this.state.show}
                     onHide={this.handleClose}
@@ -271,13 +272,13 @@ export class PebblesModal extends React.Component {
                     <Modal.Header closeButton>
                     </Modal.Header>
 
-                    <Modal.Title className='modal-title'><h1 className='info-box-title'>{data[10].home.fish}</h1>
+                    <Modal.Title className='modal-title'><h1 className='info-box-title'>{data[10].home.pebbles}</h1>
                     </Modal.Title>
                     <Modal.Body>
                         {renderedOutput}
-                        {this.state.addButtonClicked ? <h1>{data[10].home.addToFish}</h1> : <TextWithButton buttonText='add' text={data[10].home.addToFish} onClick={this.toggleAddGratitude.bind(this)} />}
-                        {this.state.toggleAddGratitude ? <OneGratefulQuestion /> : ''}
-                    </Modal.Body>
+                        {this.state.addButtonClicked ? <h1>{data[10].home.addToPebbles}</h1> : <TextWithButton buttonText='add' text={data[10].home.addToPebbles} onClick={this.toggleAddPebble.bind(this)} />}
+                        {this.state.toggleAddPebble ? <PositiveThingQuestion /> : ''}
+                        </Modal.Body>
                     <Modal.Footer>
                     </Modal.Footer>
                 </Modal>
