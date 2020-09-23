@@ -108,8 +108,8 @@ class HomePage extends React.Component {
                     isOpen={this.state.showModalFish}
                     ariaHideApp={false}
                 >
-                    <button onClick={this.handleCloseModalFish}>X</button>
                     <AllGratitudes />
+                    <button className='modalButton' onClick={this.handleCloseModalFish}>X</button>
                 </ReactModal>
 
                 <ReactModal
