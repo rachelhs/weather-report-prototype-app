@@ -10,7 +10,8 @@ export default class AllGratitudes extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            toggleAddGratitude: false
+            toggleAddGratitude: false,
+            addGratitudeQuestion: true
         }
     }
 
@@ -37,7 +38,7 @@ export default class AllGratitudes extends React.Component {
     }
 
     toggleAddGratitude(res) {
-        res ? this.setState({ toggleAddGratitude: true }) : this.setState({ toggleAddGratitude: false })
+        res ? this.setState({ toggleAddGratitude: true, addGratitudeQuestion: false }) : this.setState({ toggleAddGratitude: false })
     }
 
     render()  {
@@ -48,7 +49,7 @@ export default class AllGratitudes extends React.Component {
             <div>
             <h1 className='info-box-title'>{data[10].home.fish}</h1>
             {renderedOutput}
-            <TextWithButton buttonText='add' text={data[10].home.addToFish} onClick={this.toggleAddGratitude.bind(this)}/>
+            {this.state.addGratitudeQuestion ? <TextWithButton buttonText='add' text={data[10].home.addToFish} onClick={this.toggleAddGratitude.bind(this)}/> : ''}
             {this.state.toggleAddGratitude ? <OneGratefulQuestion /> : ''}
             </div>
         )
