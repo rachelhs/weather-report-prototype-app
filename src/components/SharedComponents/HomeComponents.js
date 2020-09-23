@@ -144,7 +144,9 @@ export class FishModal extends React.Component {
 
         return (
             <div>
-                {this.state.modalsOpen ? '' : <Button className='clickableFish' variant="primary" onClick={this.handleShow.bind(this)}></Button>}
+                {console.log(this.props.fishAppears)}
+                {console.log(this.state.modalsOpen)}
+                {(this.state.modalsOpen === false && this.props.fishAppears === true) ? <Button className='clickableFish' variant="primary" onClick={this.handleShow.bind(this)}></Button> : ''}
 
                 <Modal
                     show={this.state.show}
