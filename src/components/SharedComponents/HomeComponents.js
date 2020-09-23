@@ -5,6 +5,7 @@ import database from '../../firebase/firebase';
 let listOfGrateful = [];
 let listOfAnchors = [];
 let listOfPebbles = [];
+let hideOtherButtons = null;
 import { TextWithButton } from '../SharedComponents/SharedComponents'
 import { Button, Modal } from 'react-bootstrap';
 import { AddAnchor, PositiveThingQuestion } from '../SharedComponents/MentalHealthQuestions'
@@ -78,7 +79,6 @@ export class FishModal extends React.Component {
 
         database.ref(`users/${uid}/grateful`)
             .on('value', (snapshot) => {
-                console.log(snapshot)
                 // get list of keys for each entry
                 snapshot.forEach((childSnapshot) => {
                     let gratitude = childSnapshot.val();
@@ -159,7 +159,6 @@ export class AnchorsModal extends React.Component {
 
         database.ref(`users/${uid}/anchors`)
             .on('value', (snapshot) => {
-                console.log(snapshot)
                 // get list of keys for each entry
                 snapshot.forEach((childSnapshot) => {
                     let names = childSnapshot.val().name;
@@ -180,7 +179,7 @@ export class AnchorsModal extends React.Component {
 
         return (
             <div>
-                {this.state.modalsOpen ? '' : <Button className='clickablePlant' variant="primary" onClick={this.handleShow.bind(this)}></Button>}
+                {(this.state.modalsOpen) ? '' : <Button className='clickablePlant' variant="primary" onClick={this.handleShow.bind(this)}></Button>}
                 <Modal
                     show={this.state.show}
                     onHide={this.handleClose}
@@ -242,7 +241,6 @@ export class PebblesModal extends React.Component {
 
         database.ref(`users/${uid}/positiveThings`)
             .on('value', (snapshot) => {
-                console.log(snapshot)
                 // get list of keys for each entry
                 snapshot.forEach((childSnapshot) => {
                     let pebbles = childSnapshot.val();
@@ -267,7 +265,6 @@ export class PebblesModal extends React.Component {
                     onHide={this.handleClose}
                     backdrop="static"
                     keyboard={false}
-                    dialogClassName="modal-dialog modal-dialog-centered"
                 >
                     <Modal.Header closeButton>
                     </Modal.Header>
