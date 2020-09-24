@@ -107,6 +107,7 @@ button:disabled {
 
 .clickableFish {
     position: absolute;
+    z-index: 0;
     width: 25px;
     height: 25px;
     border-radius:50%;
@@ -124,6 +125,7 @@ button:disabled {
 
 .clickablePlant {
     position: absolute;
+    z-index: 0;
     width: 25px;
     height: 25px;
     border-radius:50%;
@@ -141,6 +143,7 @@ button:disabled {
 
 .clickablePebble {
     position: absolute;
+    z-index: 0;
     width: 25px;
     height: 25px;
     border-radius:50%;
