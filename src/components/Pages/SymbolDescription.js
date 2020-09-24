@@ -1,5 +1,4 @@
 import React from 'react';
-import moment from 'moment';
 const data = require('../../data/data.json');
 import { AnimationsCombined } from '../SharedComponents/SharedComponents';
 import { BackButton } from '../../actions/route-functions';
