@@ -136,6 +136,32 @@
                 "roots": "Add a couple of Roots (Anchors)",
                 "feeling": "Introduction to how you are feeling and weather effect on environment"
             }
+        },
+        {
+            "words": {
+                "rainbow": ["Happy", "Manic", "Over stimulated", "Excited", "Loved or Love", "Adventurous", "Brave", "Confident", "Energetic", "Hopeful", "Creative", "Kind", "Content", "Nostalgic", "Invincible", "Careless"],
+                "sun": ["Happy","Excited","Loved or Love","Adventurous","Confident","Energetic","Hopeful","Creative","Content","Playful","Stimulated","OK","Relaxed","Calm","Dazed"],
+                "bluesky": ["Gentle","Neutral","OK","Content","Relaxed","Calm","Nothing","Blocked","Dazed","Stuck"],
+                "fog": ["Nothing","Blocked","Dazed","Stuck","Anxious","Neutral","OK","Relaxed","Calm","Confused","Impatient"],
+                "greycloud": ["Nothing","Blocked","Dazed","Stuck","Anxious","Neutral","OK","Gentle","Isolated","Lonely","Nervous","Uneasy","Stupid","Lazy","Unhappy","Worried","Low"],
+                "darkcloud": ["Anxious","Regret","Scared","Unhappy","Worried","Lonely","Sad","Lost","Miserable","Empty","Hurt","Exhausted","Gentle","Neutral","Relentless","Rejected","Awful","Depressed"],
+                "thunder": ["Anxious","Distressed","Lost","Miserable","Awful","Crushed","Bleak","Broken","Panic","Desperate","Depressed"],
+                "tornado": ["Angry","Outraged","Furious","Greed","Jealousy","Risky","Panic","Crushed","Desperate","Broken","Anxious","Depressed","Manic","Overwhelmed","Excited","Adventurous","Energetic"],
+                "tidalwave": ["Suicidal","Shame","Risky","Panic","Anxious","Angry","Bleak","Broken","Desperate","Worthless","Humiliated","Depressed","Manic","Overwhelmed"]
+            },
+            "secondaryWords": ["Overwhelmed","Anxious","Depressed","Uneasy","Worried","Careless","Exhausted","Risky","Bleak","Nothing","OK","Dazed","Creative","Calm","Hopeful","Happy","Angry"],
+            "symbols" : ["rainbow", "sun", "bluesky", "fog", "greycloud", "darkcloud", "thunder", "tidalwave", "tornado"],
+            "categories": {
+                "one":["Invincible","Manic","Over stimulated","Overwhelmed","Flighty","Panic","Careless"],
+                "two": ["Ecstatic","Loved or Love","Happy","Adventurous","Excited","Brave","Confident","Playful","Curious","Energetic","Feisty","Hopeful","Creative","Kind","Stimulated","Pleased"],
+                "three": ["Gentle","Neutral","OK","Content","Relaxed","Calm","Nostalgic"],
+                "four": ["Nothing","Blocked","Dazed","Stuck"],
+                "five": ["Confused","Impatient","Isolated","Lonely","Nervous","Uneasy","Stupid","Lazy","Unhappy","Worried","Regret","Low","Scared","Anxious"],
+                "six": ["Sad","Lost","Miserable","Empty","Hurt","Exhausted","Relentless","Rejected","Awful","Distressed","Depressed"],
+                "seven": ["Crushed","Bleak","Broken","Desperate","Worthless","Humiliated","Shame","Alienated"],
+                "eight": ["Angry","Outraged","Furious","Greed","Jealousy","Risky","Panic"],
+                "nine": ["Suicidal"]
+            }
         }
 ]
 
