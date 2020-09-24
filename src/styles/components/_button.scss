@@ -53,6 +53,22 @@ button:disabled {
     letter-spacing: 2px;
     font-weight: 600;
     margin: 5px;
+    text-decoration: none;
+    text-align: center;
+    line-height: 40px;
+}
+
+.back-button {
+    background: transparent;
+    border: none;
+    border-radius: 0.5rem;
+    width: 80px;
+    height: 40px;
+    color: #545775;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 2px;
+    font-weight: 600;
+    margin: 5px;
 }
 
 .info-box-button {

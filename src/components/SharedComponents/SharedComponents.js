@@ -37,7 +37,6 @@ export class ReasonForFeelingsInput extends React.Component {
 
     handleNoteSubmit = (e) => {
         e.preventDefault();
-        console.log('submit');
         const user = firebase.auth().currentUser;
         const uid = user.uid;
         let name = '';
@@ -87,7 +86,6 @@ export class SuicidalAcknowledgement extends React.Component {
 // How long have you felt like this? Today, a few days, a week, longer
 export class HowLongHaveYouFeltLikeThis extends React.Component {
     onHowLong = (howLong) => {
-        console.log('function called');
         const user = firebase.auth().currentUser;
         const uid = user.uid;
         let name = '';
@@ -302,7 +300,6 @@ export class ReactFirebaseFileUpload extends React.Component {
                 .getDownloadURL()
                 .then(url => {
                     this.setState({ url: url });
-                    console.log('url', this.state.url)
                     const data = {
                         url: this.state.url,
                         savedOn: this.state.createdAt.valueOf()
