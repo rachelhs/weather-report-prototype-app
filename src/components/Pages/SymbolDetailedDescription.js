@@ -20,7 +20,7 @@ export default class SymbolDetailedDescription extends React.Component {
     }
 
     addWords(word) {
-        var joined = this.state.secondaryWords.concat(word.word);
+        let joined = this.state.secondaryWords.concat(word.word);
         if (this.state.secondaryWords.length > 1) {
             this.state.secondaryWords.push(word.word)
             this.state.secondaryWords.shift()
