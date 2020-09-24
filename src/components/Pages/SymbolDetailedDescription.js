@@ -2,7 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import database from '../../firebase/firebase';
 import { AnimationsCombined } from '../SharedComponents/SharedComponents';
-import { BackButton } from '../../actions/route-functions';
+import { BackButton, GetKeyByValue } from '../../actions/route-functions';
 require('firebase/auth');
 const firebase = require('firebase/app');
 const data = require('../../data/data.json');
@@ -35,34 +35,45 @@ export default class SymbolDetailedDescription extends React.Component {
         const uid = user.uid;
         let day = this.state.day.valueOf()
         let dayFormatted = day.split("/").join("-");
+        // work out path to route user based on main word 
+        let route = GetKeyByValue(data[10].categories,this.state.mainWord);
         database.ref(`users/${uid}/weatherReports/${dayFormatted}/${this.state.createdAt.valueOf()}`).update({
             weather: this.state.weatherSymbol,
             mainword: this.state.mainWord,
             secondarywords: this.state.secondaryWords,
             createdAt: this.state.createdAt.valueOf(),
         })
-        // switch (this.state.mainWord) {
-        //     case 0:
-        //       day = "Sunday";
-        //       break;
-        //     case 1:
-        //       day = "Monday";
-        //       break;
-        //     case 2:
-        //        day = "Tuesday";
-        //       break;
-        //     case 3:
-        //       day = "Wednesday";
-        //       break;
-        //     case 4:
-        //       day = "Thursday";
-        //       break;
-        //     case 5:
-        //       day = "Friday";
-        //       break;
-        //     case 6:
-        //       day = "Saturday";
-        // }
+        switch(route) {
+            case "one":
+                this.props.history.push('/1');
+                break;
+            case "two":
+                this.props.history.push('/3');
+                break;
+            case "three":
+                this.props.history.push('/3');
+                break;
+            case "four":
+                this.props.history.push('/4');
+                break;
+            case "five":
+                this.props.history.push('/5');
+                break; 
+            case "six":
+                this.props.history.push('/6');
+                break; 
+            case "seven":
+                this.props.history.push('/7');
+                break; 
+            case "eight":
+                this.props.history.push('/8');
+                break; 
+            case "nine":
+                this.props.history.push('9');
+                break; 
+            default:
+                this.props.history.push('/landing');
+        }
     }
 
     render() {

@@ -2,7 +2,6 @@ import { Router, Route, Switch } from 'react-router-dom'
 import React from 'react';
 import LandingPage from '../components/Pages/LandingPage'
 import HomePage from '../components/Home/HomePage'
-import EditEntryPage from '../components/Edits/EditEntry'
 import NotFound from '../components/Pages/NotFound'
 import LoginEmailForm from '../components/Login/LoginEmailForm'
 import createHistory from 'history/createBrowserHistory'
@@ -35,7 +34,6 @@ const AppRouter = () => (
                 <PrivateRoute path="/choosesymbol" component={ChooseSymbolPage}/>
                 <PrivateRoute path="/symbol-description" component={SymbolDescription}/>
                 <PrivateRoute path="/symbol-more-detail" component={SymbolDetailedDescription}/>
-                <PrivateRoute path="/edit/:id" component={EditEntryPage} />
                 <PrivateRoute path="/onboarding" component={ Onboarding } />
                 <PrivateRoute path="/1" component={ TooHighRoute } />
                 <PrivateRoute path="/2" component={ HighRoute } />
