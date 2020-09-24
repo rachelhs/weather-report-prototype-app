@@ -113,3 +113,7 @@ export function BackButton({ children }) {
     )
 }
 
+
+export function GetKeyByValue(object, value) {
+    return Object.keys(object).find(key => object[key].includes(value));
+}

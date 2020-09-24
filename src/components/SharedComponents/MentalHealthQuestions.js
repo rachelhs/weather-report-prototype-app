@@ -16,7 +16,6 @@ export class PositiveThingQuestion extends React.Component {
 
     handlePosSubmit = (e) => {
         e.preventDefault();
-        console.log('submit');
         const user = firebase.auth().currentUser;
         const uid = user.uid;
         database.ref(`users/${uid}/positiveThings`).push(this.state.valuePos);
@@ -51,7 +50,6 @@ export class FriendsLikeQuestion extends React.Component {
 
     handleFriendsSubmit = (e) => {
         e.preventDefault();
-        console.log('submit');
         const user = firebase.auth().currentUser;
         const uid = user.uid;
         database.ref(`users/${uid}/friendsLike`).push(this.state.friendsLike);
@@ -86,7 +84,6 @@ export class PositiveChangeQuestion extends React.Component {
 
     handlepositiveChangeSubmit = (e) => {
         e.preventDefault();
-        console.log('submit');
         const user = firebase.auth().currentUser;
         const uid = user.uid;
         database.ref(`users/${uid}/positiveChange`).push(this.state.valuePos);
@@ -428,7 +425,6 @@ export class AddAnchor extends React.Component {
     anchorsSubmit = (e) => {
         // stops page refreshing
         e.preventDefault();
-        console.log('submit');
         const user = firebase.auth().currentUser;
         const uid = user.uid;
         database.ref(`users/${uid}/anchors`).push(this.state.anchors);

@@ -19,15 +19,13 @@ export default class SymbolDescription extends React.Component {
     }
 
     render() {
-        console.log('weather', this.state.weatherSymbol)
-        console.log('mainword', this.state.mainWord)
         return (
             <div className='background-box'>
                 <AnimationsCombined />
                 <div className='info-box-landing info-box-words'>
                     <h3 className='info-box-text-small-padding'>{ data[0].regularLogin[3] }</h3>
                     <div className='word-grid'>
-                        {data[10].words.rainbow.map((word) => (
+                        {data[10]['words'][this.state.weatherSymbol].map((word) => (
                             <div className='words' key={word}>
                                 <button 
                                 className={this.state.mainWord === word ? 'active-symbol-button-border' : 'symbol-button-border'}
