@@ -1,6 +1,8 @@
 // FILE CONTAINING FUNCTIONS WHICH ARE SHARED ACROSS PATHS
+import React from 'react';
 const firebase = require('firebase/app');
 import database from '../firebase/firebase';
+import { useHistory } from 'react-router-dom'
 
 //is longer than 3 days function
 export function isLongerThanThreeDays(cb) {
@@ -101,20 +103,17 @@ export function expressedTooHighRecently(cb) {
         })
 }
 
+// back button
+export function BackButton({ children }) {
+    let history = useHistory()
+    return (
+      <button className='back-button' type="button" onClick={() => history.goBack()}>
+        BACK
+      </button>
+    )
+}
 
 
-
-
-
-
-// print out a random positive statement
-// export function RandomPositiveStatementsLow(num) {
-
-//     render() {
-//         const positiveArray = data[4].mediumLow.positiveStatements;
-//         let random = Math.floor(Math.random()*positiveArray.length);
-//         return (
-//             <h1 className='info-box-title'>{positiveArray[random]}</h1>
-//         )
-//     }
-// }
+export function GetKeyByValue(object, value) {
+    return Object.keys(object).find(key => object[key].includes(value));
+}

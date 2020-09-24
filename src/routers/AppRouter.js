@@ -2,7 +2,6 @@ import { Router, Route, Switch } from 'react-router-dom'
 import React from 'react';
 import LandingPage from '../components/Pages/LandingPage'
 import HomePage from '../components/Home/HomePage'
-import EditEntryPage from '../components/Edits/EditEntry'
 import NotFound from '../components/Pages/NotFound'
 import LoginEmailForm from '../components/Login/LoginEmailForm'
 import createHistory from 'history/createBrowserHistory'
@@ -18,6 +17,8 @@ import HighRoute from '../components/Routes/HighRoute'
 import SuicidalRoute from '../components/Routes/SuicidalRoute'
 import TooHighRoute from '../components/Routes/TooHigh'
 import Onboarding from '../components/Onboarding/onboarding'
+import SymbolDescription from '../components/Pages/SymbolDescription'
+import SymbolDetailedDescription from '../components/Pages/SymbolDetailedDescription'
 
 import Routes from '../components/Routes/AllRoutes'
 
@@ -31,7 +32,8 @@ const AppRouter = () => (
                 <PrivateRoute path="/landing" component={ LandingPage }/>
                 <PrivateRoute path="/home" component={ HomePage }/>
                 <PrivateRoute path="/choosesymbol" component={ChooseSymbolPage}/>
-                <PrivateRoute path="/edit/:id" component={EditEntryPage} />
+                <PrivateRoute path="/symbol-description" component={SymbolDescription}/>
+                <PrivateRoute path="/symbol-more-detail" component={SymbolDetailedDescription}/>
                 <PrivateRoute path="/onboarding" component={ Onboarding } />
                 <PrivateRoute path="/1" component={ TooHighRoute } />
                 <PrivateRoute path="/2" component={ HighRoute } />

@@ -3,7 +3,7 @@
     justify-content: center;
     margin-left: -40px;
     flex-wrap: wrap-reverse;
-    margin-top: -20px;
+    margin: 0 auto;
 }
 
 .symbol {
@@ -23,6 +23,16 @@
     background: none;
 }
 
+.active-symbol-button-border {
+    border: 1px solid #545775;
+    background: #545775;
+    color: white;
+    padding: 6px 10px 6px 10px;
+    border-radius: 0.4rem;
+    margin: 5px 10px 5px 10px;
+    border: none;
+}
+
 .symbol-button-border {
     border: 1px solid #545775;
     background: none;
@@ -32,14 +42,14 @@
     margin: 5px 10px 5px 10px
 }
 
-.symbol-button-border:active {
-    background: #545775;
-    color: white;
-    border: none;
-}
+// .symbol-button-border:active {
+//     background: #545775;
+//     color: white;
+//     border: none;
+// }
 
-.symbol-button-border:hover {
-    background: #545775;
-    color: white;
-    border: none;
-}
+// .symbol-button-border:hover {
+//     background: #545775;
+//     color: white;
+//     border: none;
+// }
