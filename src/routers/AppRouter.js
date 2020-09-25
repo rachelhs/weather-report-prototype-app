@@ -45,7 +45,6 @@ const AppRouter = () => (
                 <PrivateRoute path="/8" component={ VeryLowRoute } />
                 <PrivateRoute path="/9" component={ SuicidalRoute } />
                 <PrivateRoute path="/allRoutes" component={ Routes } />
-                <PrivateRoute path="/home" component={ HomePage } />
                 <Route component={ NotFound } />
             </Switch>
         </div>
