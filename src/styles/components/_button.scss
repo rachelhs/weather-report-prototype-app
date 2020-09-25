@@ -30,6 +30,14 @@ button:disabled {
     background: #888;
 }
 
+.button--password-reset {
+    background-color: none;
+    border: none;
+    margin: 0 auto;
+    display: flex;
+    background: none;
+}
+
 .login-button {
     background: #545775 !important;
     border: none;

@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { startEmailLogin } from '../../actions/auth'
+import { startEmailLogin, passwordReset } from '../../actions/auth'
 import PropTypes from 'prop-types'
 import ForegroundAnimation from '../Animations/ForegroundAnimation'
 import '../../styles/components/_button.scss';
@@ -69,7 +69,7 @@ export class LoginEmailForm extends React.Component {
                     </CSSTransition>
 
                     <CSSTransition in={this.state.showLogin} timeout={1000} classNames="fade-fast" unmountOnExit>
-
+<div>
                         <form className='form' onSubmit={this.onFormSubmit}>
                             <div class="wrap-input100">
                                 <input
@@ -106,6 +106,8 @@ export class LoginEmailForm extends React.Component {
                             { goBackFunction &&
                             <button className='button button--secondary' onClick={goBackFunction}>Cancel</button> }
                         </form>
+                        <button className='button button--password-reset' onClick={passwordReset(this.state.email)}>Forgot Password?</button>
+                        </div>
                     </CSSTransition>
                 </div>
          </div>
