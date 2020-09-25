@@ -1,5 +1,6 @@
 {
   "name": "indecision-app",
+  "homepage": "http://myweatherreport.org",
   "version": "1.0.0",
   "main": "index.js",
   "author": "rachel",
