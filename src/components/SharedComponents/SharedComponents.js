@@ -500,12 +500,12 @@ export class AnimationsLayered extends React.Component {
     render() {
         return (
             <span>
-                {this.props.animations[0] ? <div className='anim-0'><Animation animation={this.props.animations[0]} /></div> : ''}
-                {this.props.animations[1] ? <div className='anim-1'><Animation animation={this.props.animations[1]} /></div> : ''}
-                {this.props.animations[2] ? <div className='anim-2'><Animation animation={this.props.animations[2]} /></div> : ''}
-                {this.props.animations[3] ? <div className='anim-3'><Animation animation={this.props.animations[3]} /></div> : ''}
-                {this.props.animations[4] ? <div className='anim-4'><Animation animation={this.props.animations[4]} /></div> : ''}
-                {this.props.animations[5] ? <div className='anim-5'><Animation animation={this.props.animations[5]} /></div> : ''}
+                {this.props.animations[0] ? <div className='anim-0'><Animation speed ={this.props.speeds[0]} animation={this.props.animations[0]} /></div> : ''}
+                {this.props.animations[1] ? <div className='anim-1'><Animation speed ={this.props.speeds[1]} animation={this.props.animations[1]} /></div> : ''}
+                {this.props.animations[2] ? <div className='anim-2'><Animation speed ={this.props.speeds[2]} animation={this.props.animations[2]} /></div> : ''}
+                {this.props.animations[3] ? <div className='anim-3'><Animation speed ={this.props.speeds[3]} animation={this.props.animations[3]} /></div> : ''}
+                {this.props.animations[4] ? <div className='anim-4'><Animation speed ={this.props.speeds[4]} animation={this.props.animations[4]} /></div> : ''}
+                {this.props.animations[5] ? <div className='anim-5'><Animation speed ={this.props.speeds[5]} animation={this.props.animations[5]} /></div> : ''}
             </span>
         )
     }
