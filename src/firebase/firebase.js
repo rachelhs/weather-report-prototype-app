@@ -22,8 +22,7 @@ const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 
 const createUser = (email, password) => firebase.auth().createUserWithEmailAndPassword(email, password)
 const logInUser = (email, password) => firebase.auth().signInWithEmailAndPassword(email, password)
-const sendPasswordReset = (email) => firebase.auth().sendPasswordResetEmail(email)
 
 const storage = firebase.storage();
 
-export { firebase, googleAuthProvider, storage, createUser, logInUser, database, sendPasswordReset as default };
+export { firebase, googleAuthProvider, storage, createUser, logInUser, database as default };

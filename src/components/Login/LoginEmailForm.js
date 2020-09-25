@@ -106,8 +106,8 @@ export class LoginEmailForm extends React.Component {
                             { goBackFunction &&
                             <button className='button button--secondary' onClick={goBackFunction}>Cancel</button> }
                         </form>
-                        <button className='button button--password-reset' onClick={passwordReset(this.state.email)}>Forgot Password?</button>
-                        </div>
+{                        <button className='button button--password-reset' onClick={passwordReset(this.state.email)}>Forgot Password?</button>
+}                        </div>
                     </CSSTransition>
                 </div>
          </div>
