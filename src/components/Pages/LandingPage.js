@@ -2,8 +2,33 @@ import React from 'react';
 import BackgroundAnimation from '../Animations/BackgroundAnimation'
 import ForegroundAnimation from '../Animations/ForegroundAnimation'
 const data = require('../../data/data.json');
+const firebase = require('firebase/app');
+import database from '../../firebase/firebase';
 
 export class LandingPage extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            isNewUser: true
+        }
+    }
+
+    componentDidMount = () => {
+        // checks if user is new by looking for weatherReports
+        const uid = firebase.auth().currentUser.uid;
+        database.ref(`users/${uid}/weatherReports`).once("value", snapshot => {
+            if (snapshot.exists()){
+               console.log("user exists");
+               this.setState({ isNewUser: false })
+            }
+        else {
+            // if no weatherReports have been entered, user is taken down onboarding path
+            console.log('new user')
+            this.setState({ isNewUser: true })
+            this.props.history.push('/onboarding');
+        }})
+    };
 
     onNext = () => {
         this.props.history.push('/choosesymbol');
@@ -11,7 +36,7 @@ export class LandingPage extends React.Component {
 
     render() {
         return (
-            <div className='background-box'>
+            (this.state.isNewUser) ? '' : (<div className='background-box'>
                 <div className='background-anim'>
                     <BackgroundAnimation />
                 </div>
@@ -24,7 +49,7 @@ export class LandingPage extends React.Component {
                         <button className='next-button' onClick={this.onNext}>NEXT</button>
                     </div>
                 </div>
-            </div>
+            </div>)
         );
     }
 }

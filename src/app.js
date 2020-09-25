@@ -34,7 +34,7 @@ firebase.auth().onAuthStateChanged((user) => {
         store.dispatch(startSetEntries()).then(() => {
             renderApp();
             if (history.location.pathname === '/') {
-                history.push('/landing')
+                history.push('/landing');
             }
         });
     } else {
