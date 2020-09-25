@@ -17,6 +17,7 @@ export class LandingPage extends React.Component {
     componentDidMount = () => {
         // checks if user is new by looking for weatherReports
         const uid = firebase.auth().currentUser.uid;
+        console.log(uid);
         database.ref(`users/${uid}/weatherReports`).once("value", snapshot => {
             if (snapshot.exists()){
                console.log("user exists");
