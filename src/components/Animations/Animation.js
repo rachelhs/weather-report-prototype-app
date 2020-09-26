@@ -7,6 +7,9 @@ import environment from '../../animations/environment'
 import growing from '../../animations/growing'
 import plant from '../../animations/plant'
 import HappyBackground from '../../animations/02_Happy_Weather_River_v8.json' 
+import tooHighFadeIn from '../../animations/01_Too_High_River_Fade_In.json'
+import tooHighFadeOut from '../../animations/01_Too_High_River_Fade_Out.json'
+import tooHighBackground from '../../animations/01_Too_High_Weather_River.json'
 
 
 class Animation extends Component {
@@ -44,6 +47,15 @@ class Animation extends Component {
         if (this.props.animation === 'happyBackground') {
             this.setState({ animationData: HappyBackground })
         }
+        if (this.props.animation === 'tooHighFadeIn') {
+            this.setState({ animationData: tooHighFadeIn })
+        }
+        if (this.props.animation === 'tooHighFadeOut') {
+            this.setState({ animationData: tooHighFadeOut })
+        }
+        if (this.props.animation === 'tooHighBackground') {
+            this.setState({ animationData: tooHighBackground })
+        }
     }
 
     render() {
@@ -59,7 +71,7 @@ class Animation extends Component {
 
         return (
             <Lottie options={defaultOptions}
-            speed={0.1}
+            speed={this.props.speed}
             />
         )
     }
