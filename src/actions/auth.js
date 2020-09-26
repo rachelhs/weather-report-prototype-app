@@ -19,6 +19,10 @@ export const startGoogleLogin = () => {
   };
 };
 
+export const passwordReset = (email) => () => {
+    return firebase.auth().sendPasswordResetEmail(email);
+}
+
 export const logout = () => ({
   type: 'LOGOUT'
 });

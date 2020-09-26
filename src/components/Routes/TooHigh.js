@@ -5,6 +5,8 @@ import { isLongerThanThreeDays, expressedTooHighRecently } from '../../actions/r
 import { CSSTransition } from "react-transition-group";
 import { SetExercises } from '../Exercises/SetExercises';
 import { ChooseExercise } from '../Exercises/ChooseExercise';
+import { AnimationsLayered } from '../SharedComponents/SharedComponents'
+
 import '../../styles/animation.css';
 
 class TooHighRoute extends React.Component {
@@ -16,16 +18,17 @@ class TooHighRoute extends React.Component {
             areYouAtRisk: null,
             harm: null,
             randExercise: null,
-            route: 'tooHigh'
-        }
+            route: 'tooHigh',
+            firstAnimation: true
+                }
         this.actionAfterHarm = this.actionAfterHarm.bind(this);
         this.actionAfterPlanning = this.actionAfterPlanning.bind(this);
     }
 
-    // method called as soon as all elements on the page are rendered & changed showAcknowledge to false after 3 seconds. This will hide the statement.
     componentDidMount() {
 
-        setTimeout(() => { this.setState({ acknowledge: false }) }, 3000)
+        // fade in animation plays for three seconds
+        setTimeout(() => { this.setState({ firstAnimation: false })}, 4000)
 
         expressedTooHighRecently(res => {
             res ? this.setState({ areYouAtRisk: true }) : this.setState({ areYouAtRisk: false })
@@ -40,7 +43,7 @@ class TooHighRoute extends React.Component {
     // called onexit of showAcknowledge
     threeDayFunction() {
         isLongerThanThreeDays(result => {
-            result ? this.setState({ howLong: true }) : this.setState({ howLong: false, awareOf: true })
+            result ? this.setState({ howLong: true }) : (this.setState({ howLong: false }), setTimeout(() => { this.setState({ awareOf: true })}, 3000))
             console.log('three days', result);
         })
     }
@@ -203,9 +206,9 @@ class TooHighRoute extends React.Component {
     }
     render() {
         return (
-            <div className='background-box'>
-                <AnimationsCombined />
-                <div className='info-box'>
+            <div>
+            {this.state.firstAnimation ? <div className='background-box-no-fade'><AnimationsLayered speeds={[1]} animations={['tooHighFadeIn']} /></div> : <div className='background-box'><AnimationsLayered speeds={[0.05]} animations={['tooHighBackground']} /></div>}
+            <div className='info-box'>
                 <CSSTransition in={this.state.howLong} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.areYouAtRisk() }}><HowLongHaveYouFeltLikeThis buttonClick={this.answeredHowLong.bind(this)} /></CSSTransition>          
                 <CSSTransition in={this.state.areYouAtRisk} timeout={2000} onExited={() => { this.triggerAfterHarm() }} classNames="fade" unmountOnExit><RiskOfHarm onClick={this.actionAfterHarm.bind(this)} /></CSSTransition>
                 <CSSTransition in={this.state.showPlanQ} timeout={2000} onExited={() => { this.triggerAfterPlan() }} classNames="fade" unmountOnExit><PlanQ onClick={this.actionAfterPlan.bind(this)}/></CSSTransition>
