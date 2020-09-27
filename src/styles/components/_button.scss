@@ -54,7 +54,7 @@ button:disabled {
     background: #545775 !important;
     border: none;
     border-radius: 0.5rem;
-    width: 80px;
+    min-width: 80px;
     height: 40px;
     color: white;
     font-family: 'Roboto', sans-serif;

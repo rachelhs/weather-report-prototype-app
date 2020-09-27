@@ -2,6 +2,7 @@ import { Router, Route, Switch } from 'react-router-dom'
 import React from 'react';
 import LandingPage from '../components/Pages/LandingPage'
 import HomePage from '../components/Home/HomePage'
+import ThreeHomePage from '../components/Home/MoreThanThreeHome'
 import NotFound from '../components/Pages/NotFound'
 import LoginEmailForm from '../components/Login/LoginEmailForm'
 import createHistory from 'history/createBrowserHistory'
@@ -31,6 +32,7 @@ const AppRouter = () => (
                 <PublicRoute path="/" component={ LoginEmailForm } exact={true} />
                 <PrivateRoute path="/landing" component={ LandingPage }/>
                 <PrivateRoute path="/home" component={ HomePage }/>
+                <PrivateRoute path="/3-home" component={ ThreeHomePage }/>
                 <PrivateRoute path="/choosesymbol" component={ChooseSymbolPage}/>
                 <PrivateRoute path="/symbol-description" component={SymbolDescription}/>
                 <PrivateRoute path="/symbol-more-detail" component={SymbolDetailedDescription}/>
