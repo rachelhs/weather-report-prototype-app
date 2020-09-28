@@ -1,5 +1,5 @@
 import React from 'react';
-import { AnimationsCombined, ReasonForFeelings, ReasonForFeelingsInput, FeedbackStatement, SetReminder, TakePhoto, ReactFirebaseFileUpload } from '../SharedComponents/SharedComponents';
+import { AnimationsLayered, ReasonForFeelings, ReasonForFeelingsInput, FeedbackStatement, SetReminder, TakePhoto, ReactFirebaseFileUpload } from '../SharedComponents/SharedComponents';
 import { GratefulQuestion, TakeCareQuestion } from '../SharedComponents/MentalHealthQuestions';
 import { randomQuestionNumber  } from '../../actions/route-functions';
 import { CSSTransition } from "react-transition-group";
@@ -12,7 +12,7 @@ class OkRoute extends React.Component {
         super(props);
         this.state = {
             route: 'ok',
-            showReasonForFeeling: true,
+            showReasonForFeeling: false,
             knowReasonForFeeling: null,
             randQues: null,
             showRandQues: null,
@@ -20,14 +20,20 @@ class OkRoute extends React.Component {
             takePhoto: null,
             showTakePhoto: null, 
             showFeedbackStatement: null, 
-            uploadPhoto: null
+            uploadPhoto: null,
+            neutralAnimation: true, 
+            okFadeIn: false,
+            okBackground: false
         }
       }
 
     // method called as soon as all elements on the page are rendered & changed showAcknowledge to false after 3 seconds. This will hide the statement.
     componentDidMount() { 
         this.setState({ randQues: randomQuestionNumber(2) });
+        setTimeout(() => { this.setState({ neutralAnimation: false, okFadeIn: true })}, 5000)
     }
+
+    showBackground() { this.setState({ okFadeIn: false }) }
 
     answeredReasonKnown(reasonKnown){ reasonKnown ? this.setState({ knowReasonForFeeling: true, showReasonForFeeling: false }) : this.setState({ knowReasonForFeeling: false, showReasonForFeeling: false }) }
     
@@ -56,11 +62,32 @@ class OkRoute extends React.Component {
     goHome() { this.props.history.push('/home') }
 
     render() {
+        console.log('this.state.neutralAnimation', this.state.neutralAnimation)
         const randomQuestion = this.state.randQues == 0 ? <GratefulQuestion buttonClick={this.answeredRandomQuestion.bind(this)} /> : <TakeCareQuestion buttonClick={this.answeredRandomQuestion.bind(this)} />;
+            return (        
+            // <div className='background-box'>
+            <div>
+                
+                {/* {this.state.neutralAnimation ? 
+                <AnimationsLayered speeds={[0.5]} animations={['neutralBackground']} />
+                 : 
+                <AnimationsLayered speeds={[0.5]} animations={['okFadeIn']} /> } */}
+                {/* <CSSTransition in={this.state.neutralAnimation} timeout={4000} classNames="fade-enter-only" unmountOnExit>
+                    <AnimationsLayered speeds={[0.5]} animations={['neutralBackground']} />
+                </CSSTransition>  
+                <CSSTransition in={this.state.okFadeIn} timeout={4000} classNames="fade-enter-only">
+                    <AnimationsLayered speeds={[0.5]} animations={['okFadeIn']} />
+                </CSSTransition> */}
 
-        return (        
-            <div className='background-box'>
-                <AnimationsCombined />
+                {this.state.neutralAnimation ?
+                <AnimationsLayered speeds={[0.5]} animations={['okFadeIn']} />
+                :
+                <div className='background-box fade-in'>
+                <AnimationsLayered speeds={[0]} animations={['okBackground']} />
+                </div>
+                }
+
+            
                 <div className='info-box'>   
                     <CSSTransition in={this.state.showReasonForFeeling} timeout={2000} classNames="fade" appear unmountOnExit onExited={() => this.afterReasonForFeeling()}><ReasonForFeelings onClick={this.answeredReasonKnown.bind(this)} /></CSSTransition>
                     {/* if user ansers 'no' to reason for feeling */}

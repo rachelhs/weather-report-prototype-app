@@ -1,11 +1,10 @@
 import React from 'react';
-import { AnimationsCombined, HowLongHaveYouFeltLikeThis, RiskOfHarm, PlanQ, PlanningQ, FeelingsPassStatement, Samaritans, AllRootsWithNext, Crisis, ReasonForFeelings, ReasonForFeelingsInput, FeedbackStatement } from '../SharedComponents/SharedComponents';
+import { AnimationsLayered, HowLongHaveYouFeltLikeThis, RiskOfHarm, PlanQ, PlanningQ, FeelingsPassStatement, Samaritans, AllRootsWithNext, Crisis, ReasonForFeelings, ReasonForFeelingsInput, FeedbackStatement } from '../SharedComponents/SharedComponents';
 import { SpokenToQ, GettingHelpQ } from '../SharedComponents/MentalHealthQuestions'
 import { isLongerThanThreeDays, expressedTooHighRecently } from '../../actions/route-functions';
 import { CSSTransition } from "react-transition-group";
 import { SetExercises } from '../Exercises/SetExercises';
 import { ChooseExercise } from '../Exercises/ChooseExercise';
-import { AnimationsLayered } from '../SharedComponents/SharedComponents'
 
 import '../../styles/animation.css';
 
@@ -19,7 +18,8 @@ class TooHighRoute extends React.Component {
             harm: null,
             randExercise: null,
             route: 'tooHigh',
-            firstAnimation: true
+            neutralAnimation: true,
+            emotionalAnimation: null
             }
         this.actionAfterHarm = this.actionAfterHarm.bind(this);
         this.actionAfterPlanning = this.actionAfterPlanning.bind(this);
@@ -28,16 +28,19 @@ class TooHighRoute extends React.Component {
     componentDidMount() {
 
         // fade in animation plays for three seconds
-        setTimeout(() => { this.setState({ firstAnimation: false })}, 4000)
+        setTimeout(() => { this.setState({ neutralAnimation: false })}, 4000)
 
-        expressedTooHighRecently(res => {
-            res ? this.setState({ areYouAtRisk: true }) : this.setState({ areYouAtRisk: false })
-
+        expressedTooHighRecently(res => { res ? this.setState({ areYouAtRisk: true }) : this.setState({ areYouAtRisk: false })
+            console.log('expressedTooHighRecently', res)
         })
-        this.threeDayFunction()
+        
         // setting exercise
         let randomExercise = ChooseExercise(['breathing', 'grounding', 'lessStimulation', 'safePlace', 'anchors']);
         this.setState({ randExercise: randomExercise });
+    }
+
+    showChangeBackground() {
+        this.setState({ emotionalAnimation: true });
     }
 
     // called onexit of showAcknowledge
@@ -207,7 +210,14 @@ class TooHighRoute extends React.Component {
     render() {
         return (
             <div>
-            {this.state.firstAnimation ? <div className='background-box-no-fade'><AnimationsLayered speeds={[1]} animations={['tooHighFadeIn']} /></div> : <div className='background-box'><AnimationsLayered speeds={[0.05]} animations={['tooHighBackground']} /></div>}
+                
+            <CSSTransition in={this.state.neutralAnimation} timeout={4000} classNames="fade" unmountOnExit onExited={() => { this.showChangeBackground() }}>
+                <div className='background-box-no-fade'><AnimationsLayered speeds={[1]} animations={['tooHighFadeIn']} /></div>
+            </CSSTransition>          
+            <CSSTransition in={this.state.emotionalAnimation} timeout={4000} classNames="fade-fast">
+                <div className='background-box'><AnimationsLayered speeds={[0]} animations={['tooHighBackground']} /></div>
+            </CSSTransition>          
+            
             <div className='info-box'>
                 <CSSTransition in={this.state.howLong} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.areYouAtRisk() }}><HowLongHaveYouFeltLikeThis buttonClick={this.answeredHowLong.bind(this)} /></CSSTransition>          
                 <CSSTransition in={this.state.areYouAtRisk} timeout={2000} onExited={() => { this.triggerAfterHarm() }} classNames="fade" unmountOnExit><RiskOfHarm onClick={this.actionAfterHarm.bind(this)} /></CSSTransition>

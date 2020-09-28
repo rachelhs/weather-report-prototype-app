@@ -65,3 +65,18 @@
 .fade-fast-enter-done {
     opacity: 1;
 }
+
+  /*  FADE IN FOR ANIMATIONS */
+
+.fade-enter-only {
+    opacity: 0;
+}
+  
+.fade-enter-only-active {
+    opacity: 1;
+    transition: opacity 0s linear;
+}
+
+.fade-enter-only-done {
+    opacity: 1;
+}
