@@ -10,17 +10,17 @@ export function isLongerThanThreeDays(cb) {
     const threeDaysAgo = now - 259200000; // get timestamp for 3 days ago (259200000 milliseconds)
     const uid = firebase.auth().currentUser.uid;
     let counter = 0;
-    database.ref(`users/${uid}/entries`)
+    database.ref(`users/${uid}/weatherReports`)
         .orderByChild('createdAt') //order by createAt value
         .limitToLast(2) // return two most recent entries
         .once('value', (snapshot) => {
             snapshot.forEach((child) => {
-                let time = child.val().createdAt;
-                if (time < threeDaysAgo) {
+                let key = Object.keys(child.val())[0];
+                if (key < threeDaysAgo) {
                     counter +=1;
                 }
             })
-            if(counter > 1) {
+            if(counter >= 1) {
                 cb(true)
                 return
             }
