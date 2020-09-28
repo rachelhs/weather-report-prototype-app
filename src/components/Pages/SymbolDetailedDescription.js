@@ -14,7 +14,7 @@ export default class SymbolDetailedDescription extends React.Component {
             weatherSymbol: this.props.location.state.weather,
             mainWord: this.props.location.state.mainWord,
             secondaryWords: [],
-            day: props.entry ? moment(props.entry.createdAt) : moment().subtract(10, 'days').calendar(),
+            day: moment(),
             createdAt: props.entry ? moment(props.entry.createdAt) : moment(),
         }
     }
@@ -33,11 +33,10 @@ export default class SymbolDetailedDescription extends React.Component {
     sendData() {
         const user = firebase.auth().currentUser;
         const uid = user.uid;
-        let day = this.state.day.valueOf()
-        let dayFormatted = day.split("/").join("-");
+        let date = this.state.day.format("DD-MM-YYYY")
         // work out path to route user based on main word 
         let route = GetKeyByValue(data[10].categories,this.state.mainWord);
-        database.ref(`users/${uid}/weatherReports/${dayFormatted}/${this.state.createdAt.valueOf()}`).update({
+        database.ref(`users/${uid}/weatherReports/${date}/${this.state.createdAt.valueOf()}`).update({
             weather: this.state.weatherSymbol,
             mainword: this.state.mainWord,
             secondarywords: this.state.secondaryWords,
