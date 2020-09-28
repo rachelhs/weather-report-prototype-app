@@ -20,7 +20,7 @@ class TooHighRoute extends React.Component {
             randExercise: null,
             route: 'tooHigh',
             firstAnimation: true
-                }
+            }
         this.actionAfterHarm = this.actionAfterHarm.bind(this);
         this.actionAfterPlanning = this.actionAfterPlanning.bind(this);
     }
