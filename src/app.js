@@ -28,10 +28,6 @@ const renderApp = () => {
 
 ReactDOM.render(<LoadingPage />, document.getElementById('app'));
 
-if(window.innerWidth > window.innerHeight){
-    alert("Please use Portrait!");
-}
-
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
         store.dispatch(login(user.uid));

@@ -44,7 +44,7 @@ class HomePage extends React.Component {
     render() {
         return (
             <div>
-                <AnimationsLayered animations={['happyBackground']} />
+                <AnimationsLayered speeds={[0.01]} animations={['happyBackground']} />
                 <AnchorsModal />
                 <PebblesModal />
                 {(this.state.Fish) ? <div className='anim-2'><Animation animation='fish' /></div> : ''}
