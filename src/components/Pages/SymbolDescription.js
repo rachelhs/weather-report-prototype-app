@@ -1,6 +1,6 @@
 import React from 'react';
 const data = require('../../data/data.json');
-import { AnimationsCombined } from '../SharedComponents/SharedComponents';
+import { AnimationsLayered } from '../SharedComponents/SharedComponents';
 import { BackButton } from '../../actions/route-functions';
 import { Link } from 'react-router-dom';
 
@@ -20,7 +20,7 @@ export default class SymbolDescription extends React.Component {
     render() {
         return (
             <div className='background-box'>
-                <AnimationsCombined />
+                <AnimationsLayered speeds={[0]} animations={['neutralBackground']} />
                 <div className='info-box-landing info-box-words'>
                     <h3 className='info-box-text-small-padding'>{ data[0].regularLogin[3] }</h3>
                     <div className='word-grid'>

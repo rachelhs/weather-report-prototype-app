@@ -20,7 +20,7 @@ import TooHighRoute from '../components/Routes/TooHigh'
 import Onboarding from '../components/Onboarding/onboarding'
 import SymbolDescription from '../components/Pages/SymbolDescription'
 import SymbolDetailedDescription from '../components/Pages/SymbolDetailedDescription'
-
+import IntroPage from '../components/Pages/IntroPage'
 import Routes from '../components/Routes/AllRoutes'
 
 export const history = createHistory();
@@ -30,6 +30,7 @@ const AppRouter = () => (
         <div>
             <Switch>
                 <PublicRoute path="/" component={ LoginEmailForm } exact={true} />
+                <PrivateRoute path="/intro" component={ IntroPage }/>
                 <PrivateRoute path="/landing" component={ LandingPage }/>
                 <PrivateRoute path="/home" component={ HomePage }/>
                 <PrivateRoute path="/3-home" component={ ThreeHomePage }/>

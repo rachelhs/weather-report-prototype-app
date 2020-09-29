@@ -14,6 +14,13 @@
     z-index: -5;
 }
 
+.anim-full-height {
+    position: absolute;
+    z-index: -10;
+    width: 100%;
+    height: 100vh;
+}
+
 .anim-0 {
     position: absolute;
     z-index: -10;
