@@ -12,6 +12,7 @@ import ChooseSymbolPage from '../components/Pages/ChooseSymbolPage'
 import LowRoute from '../components/Routes/LowRoute'
 import MediumLowRoute from '../components/Routes/MediumLowRoute'
 import VeryLowRoute from '../components/Routes/VeryLowRoute'
+import LowButWithEnergyRoute from '../components/Routes/LowButWithEnergy'
 import NothingRoute from '../components/Routes/NothingRoute'
 import OkRoute from '../components/Routes/OkRoute'
 import HighRoute from '../components/Routes/HighRoute'
@@ -44,7 +45,7 @@ const AppRouter = () => (
                 <PrivateRoute path="/5" component={ LowRoute } />
                 <PrivateRoute path="/6" component={ MediumLowRoute } />
                 <PrivateRoute path="/7" component={ VeryLowRoute } />
-                <PrivateRoute path="/8" component={ VeryLowRoute } />
+                <PrivateRoute path="/8" component={ LowButWithEnergyRoute } />
                 <PrivateRoute path="/9" component={ SuicidalRoute } />
                 <PrivateRoute path="/allRoutes" component={ Routes } />
                 <Route component={ NotFound } />
