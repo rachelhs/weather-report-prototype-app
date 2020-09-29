@@ -53,7 +53,7 @@ class TooHighRoute extends React.Component {
             this.setState({ areYouAtRisk: true })
             console.log('one')
         }
-        if (this.state.expressedRecently == false && this.state.longerThanThreeDays == true) {
+        else if (this.state.expressedRecently == false && this.state.longerThanThreeDays == true) {
             this.setState({ awareOf: true })
             console.log('two')
 
@@ -62,7 +62,7 @@ class TooHighRoute extends React.Component {
             this.setState({ howLong: true })
             console.log('three')
 
-        }
+        };
     }
 
     answeredHowLong() {
