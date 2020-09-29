@@ -8,13 +8,20 @@ class HomePage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            Fish: false
+            Fish: false,
+            weather: null
         }
     }
 
     // toggles the fish at random intervals
     // Math.random() * (max - min) + min
     componentDidMount() {
+        if (typeof this.props.location.state != 'undefined' || this.props.location.state != null) {
+            console.log('emotional background')
+            this.setState({ weather: this.props.location.state.weather })
+        } else {
+            this.setState({ weather: "neutralBackground" })
+        }
         let rand = Math.random() * (10000 - 3000) + 3000
         let intervalId = setInterval(() => {
             this.setState(prevState => {
@@ -42,9 +49,10 @@ class HomePage extends React.Component {
 
 
     render() {
+        console.log('weather', this.state.weather)
         return (
             <div>
-                <AnimationsLayered speeds={[0.01]} animations={['happyBackground']} />
+                <AnimationsLayered speeds={[1]} animations={[this.state.weather]} />
                 <AnchorsModal />
                 <PebblesModal />
                 {(this.state.Fish) ? <div className='anim-2'><Animation animation='fish' /></div> : ''}
