@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import database from '../../firebase/firebase';
-import { AnimationsCombined } from '../SharedComponents/SharedComponents';
+import { AnimationsLayered } from '../SharedComponents/SharedComponents';
 import { BackButton, GetKeyByValue } from '../../actions/route-functions';
 require('firebase/auth');
 const firebase = require('firebase/app');
@@ -79,7 +79,7 @@ export default class SymbolDetailedDescription extends React.Component {
         console.log('secondaryWords', this.state.secondaryWords)
         return (
             <div className='background-box'>
-                <AnimationsCombined />
+                <AnimationsLayered speeds={[0]} animations={['neutralBackground']} />
                 <div className='info-box-landing info-box-words'>
                     <h3 className='info-box-text-small-padding'>{ data[0].regularLogin[4] }</h3>
                     <div className='word-grid'>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { AnimationsCombined } from '../SharedComponents/SharedComponents';
+import { AnimationsLayered } from '../SharedComponents/SharedComponents';
 const data = require('../../data/data.json');
 import { Link } from 'react-router-dom';
 
@@ -7,7 +7,7 @@ export class ChooseSymbolPage extends React.Component {
     render() {
         return (
             <div className='background-box'>
-                <AnimationsCombined />
+                <AnimationsLayered speeds={[0]} animations={['neutralBackground']} />
                 <div className='info-box-landing'>
                     <h3 className='info-box-text'>{ data[0].regularLogin[2] }</h3>
                     <div className='weather-symbols-grid'>

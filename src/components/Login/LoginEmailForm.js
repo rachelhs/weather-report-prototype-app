@@ -2,10 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { startEmailLogin, passwordReset } from '../../actions/auth'
 import PropTypes from 'prop-types'
-import ForegroundAnimation from '../Animations/ForegroundAnimation'
 import '../../styles/components/_button.scss';
 import { CSSTransition } from "react-transition-group";
 import '../../styles/animation.css';
+import Animation from '../Animations/Animation'
 
 export class LoginEmailForm extends React.Component {
   state = {
@@ -56,22 +56,16 @@ export class LoginEmailForm extends React.Component {
     const { goBackFunction } = this.props
 
     return (
-        // <div className='box-layout'>
-        //     <div className='box-layout__box'>
-            <div className='background-box'>
-                <div className='background-anim'>
-                    <ForegroundAnimation />
-                </div>
-
-                <div className='info-box-login'>
-                    <CSSTransition in={this.state.appIntro} timeout={1500} classNames="transform-up" appear onExited={() => this.showLoginForm()}>
-                        <h1 className='box-layout__title'>WEATHER REPORT</h1>
-                    </CSSTransition>
-
-                    <CSSTransition in={this.state.showLogin} timeout={1000} classNames="fade-fast" unmountOnExit>
-<div>
+        <div>
+            <div className='anim-full-height'><Animation speed={0.2} animation={"neutralBackground"} /></div>
+            <div className='info-box-login'>
+                <CSSTransition in={this.state.appIntro} timeout={1500} classNames="transform-up" appear onExited={() => this.showLoginForm()}>
+                    <h1 className='box-layout__title'>WEATHER REPORT</h1>
+                </CSSTransition>
+                <CSSTransition in={this.state.showLogin} timeout={1000} classNames="fade-fast" unmountOnExit>
+                    <div>
                         <form className='form' onSubmit={this.onFormSubmit}>
-                            <div class="wrap-input100">
+                            <div className="wrap-input100">
                                 <input
                                     onChange={(ev) => this.setStateProperty(ev.target.value, 'email')}
                                     placeholder='Username*'
@@ -79,12 +73,12 @@ export class LoginEmailForm extends React.Component {
                                     type='text'
                                     name='email'
                                     required = '*Required'
-                                    oninput="this.setCustomValidity('')" 
+                                    onInput="this.setCustomValidity('')" 
                                     oninvalid="alert('You must fill out the form!');"
                                     className='form-input'
                                 />
                             </div>
-                            <div class="wrap-input100 validate-input">
+                            <div className="wrap-input100 validate-input">
                                 <input
                                     onChange={(ev) => this.setStateProperty(ev.target.value, 'password')}
                                     placeholder='Password*'
@@ -106,11 +100,10 @@ export class LoginEmailForm extends React.Component {
                             { goBackFunction &&
                             <button className='button button--secondary' onClick={goBackFunction}>Cancel</button> }
                         </form>
-{                        <button className='button button--password-reset' onClick={passwordReset(this.state.email)}>Forgot Password?</button>
-}                        </div>
-                    </CSSTransition>
-                </div>
-         </div>
+                        {<button className='button button--password-reset' onClick={passwordReset(this.state.email)}>Forgot Password?</button>}               </div>
+                </CSSTransition>
+            </div>
+        </div>
     )
   }
 }
