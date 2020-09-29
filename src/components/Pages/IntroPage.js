@@ -51,9 +51,12 @@ export class IntroPage extends React.Component {
         return (
             <div className='background-box'>
                 <AnimationsLayered speeds={[0]} animations={['neutralBackground']} />
-                <div className='info-box-landing'>
+                <div className='info-box-low'>
                     <CSSTransition in={this.state.showIntro} timeout={2000} classNames="fade" appear unmountOnExit onExited={() => this.reRoute()}>
-                        <h1 className='info-box-text-padding-top'>Welcome to the Weather Report</h1>
+                        <div>
+                            <h1>Hello!</h1>
+                            <h1>Welcome to the Weather Report</h1>
+                        </div>
                     </CSSTransition>
 
                     
