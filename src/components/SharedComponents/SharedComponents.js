@@ -11,6 +11,7 @@ import { randomQuestionNumber  } from '../../actions/route-functions';
 import database from '../../firebase/firebase';
 import { CSSTransition } from 'react-transition-group';
 import { storage } from "../../firebase/firebase";
+import { Link } from 'react-router-dom';
 
 //Is there anything you are aware of that has made you feel like this QUESTION
 export class ReasonForFeelings extends React.Component {
@@ -381,7 +382,12 @@ export class FeedbackStatement extends React.Component {
             <div>
                 <h1 className='info-box-title'>{data[3]['shared']['feedbackStatements'][this.props.dataFromParent][this.state.randFeedbackStatement]}</h1>
                 <div className='button-container'>
-                    <button className='next-button' onClick={(e) => this.props.onClick(true)}>home</button>
+                    <Link className='next-button'
+                        to={{
+                            pathname: '/home',
+                            state: { weather: this.props.dataFromParent }
+                        }}>Go to Home
+                    </Link>
                 </div>
             </div>
         )
