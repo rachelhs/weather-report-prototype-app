@@ -19,16 +19,26 @@ class TooHighRoute extends React.Component {
             harm: null,
             randExercise: null,
             route: 'tooHigh',
-            firstAnimation: true
-            }
+            firstAnimation: true,
+            neutralAnimation: true,
+            tooHighFadeIn: false,
+            whiteBackground: false,
+            animationSpeed: 1
+        }
         this.actionAfterHarm = this.actionAfterHarm.bind(this);
         this.actionAfterPlanning = this.actionAfterPlanning.bind(this);
     }
 
     componentDidMount() {
 
-        // fade in animation plays for three seconds
-        setTimeout(() => { this.setState({ firstAnimation: false })}, 3000)
+        setTimeout(() => { this.setState({ neutralAnimation: false, tooHighFadeIn: true }) }, 500)
+        setTimeout(() => {
+            setInterval(() => {
+                if (this.state.animationSpeed <= 1 && this.state.animationSpeed >= 0.1)
+                    this.setState({ animationSpeed: this.round((this.state.animationSpeed - 0.1), 1) })
+            }, 100)
+        }, 5000)
+        setTimeout(() => { this.setState({ whiteBackground: true }) }, 5500)
 
         expressedTooHighRecently(res => {
             res ? this.setState({ expressedRecently: true }) : this.setState({ expressedRecently: false })
@@ -38,7 +48,12 @@ class TooHighRoute extends React.Component {
         // setting exercise
         let randomExercise = ChooseExercise(['breathing', 'grounding', 'lessStimulation', 'safePlace', 'anchors']);
         this.setState({ randExercise: randomExercise });
-        setTimeout(() => { this.decideStart() }, 3000)
+        setTimeout(() => { this.decideStart() }, 7500)
+    }
+
+    round(value, precision) {
+        let multiplier = Math.pow(10, precision || 0);
+        return Math.round(value * multiplier) / multiplier;
     }
 
     threeDayFunction() {
@@ -145,7 +160,7 @@ class TooHighRoute extends React.Component {
     }
 
     leaveGettingHelpQ(res) {
-        res ? this.setState({ showGettingHelp: false, feedback: true }) : this.setState({ showGettingHelp: false, crisis: true })  
+        res ? this.setState({ showGettingHelp: false, feedback: true }) : this.setState({ showGettingHelp: false, crisis: true })
     }
 
     actionAfterHelpQ() {
@@ -175,10 +190,10 @@ class TooHighRoute extends React.Component {
 
     actionAfterSpokenTo() {
         if (this.state.spoken) {
-            this.setState({showGettingHelp: true})
+            this.setState({ showGettingHelp: true })
         }
-        else if(this.state.help) {
-            this.setState({showAnchors: true})
+        else if (this.state.help) {
+            this.setState({ showAnchors: true })
         }
     }
 
@@ -190,7 +205,7 @@ class TooHighRoute extends React.Component {
         if (this.state.reason) {
             this.setState({ showNote: true })
         }
-        else if (this.state.exercise){
+        else if (this.state.exercise) {
             this.setState({ exercises: true })
         }
     }
@@ -215,31 +230,39 @@ class TooHighRoute extends React.Component {
     clickedHome() {
         this.setState({ showFeedbackStatement: false })
     }
-    
+
     // goes to home page
     goHome() {
         this.props.history.push('/home');
-    
+
     }
     render() {
         return (
             <div>
-            {this.state.firstAnimation ? <div className='background-box-no-fade'><AnimationsLayered speeds={[1]} animations={['tooHighFadeIn']} /></div> : <div className='background-box'><AnimationsLayered speeds={[0.01]} animations={['tooHighBackground']} /></div>}
-            <div className='info-box'>
-                <CSSTransition in={this.state.howLong} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.areYouAtRisk() }}><HowLongHaveYouFeltLikeThis buttonClick={this.answeredHowLong.bind(this)} /></CSSTransition>          
-                <CSSTransition in={this.state.areYouAtRisk} timeout={2000} onExited={() => { this.triggerAfterHarm() }} classNames="fade" unmountOnExit><RiskOfHarm onClick={this.actionAfterHarm.bind(this)} /></CSSTransition>
-                <CSSTransition in={this.state.showPlanQ} timeout={2000} onExited={() => { this.triggerAfterPlan() }} classNames="fade" unmountOnExit><PlanQ onClick={this.actionAfterPlan.bind(this)}/></CSSTransition>
-                <CSSTransition in={this.state.showPlanningQ} timeout={2000} onExited={() => { this.triggerAfterPlanning() }} classNames="fade" unmountOnExit><PlanningQ onClick={this.actionAfterPlanning.bind(this)} /></CSSTransition>
-                <CSSTransition in={this.state.showFeelingsPass} timeout={2000} onEnter={() => { this.triggerTimeout() }} onExited={() => { this.showCrisisTeam() }} classNames="fade" unmountOnExit><FeelingsPassStatement /></CSSTransition>
-                <CSSTransition in={this.state.showSamaritans} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.showAnchors() }}><Samaritans onClick={this.actionAfterSamaritans.bind(this)}/></CSSTransition>
-                <CSSTransition in={this.state.showCrisisTeam} timeout={2000} classNames="fade" unmountOnExit onExited={() => {this.showSamaritans()}}><Crisis onClick={this.leaveCrisis.bind(this)} /></CSSTransition>
-                <CSSTransition in={this.state.showAnchors} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.showGettingHelp() }}><AllRootsWithNext onClick={this.leaveAnchors.bind(this)} /></CSSTransition>
-                <CSSTransition in={this.state.showGettingHelp} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterHelpQ() }}><GettingHelpQ onClick={this.leaveGettingHelpQ.bind(this)}/></CSSTransition>
-                <CSSTransition in={this.state.haveSpokenQ} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterSpokenTo() }}><SpokenToQ onClick={this.processSpokenToQ.bind(this)}/></CSSTransition>                
-                <CSSTransition in={this.state.awareOf} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterReason() }}><ReasonForFeelings onClick={this.processReasonFor.bind(this)}/></CSSTransition>
-                <CSSTransition in={this.state.showNote} timeout={2000} classNames="fade" unmountOnExit onExited={() => {this.actionAfterNote() } }><ReasonForFeelingsInput buttonClick={this.processNote.bind(this)}/></CSSTransition>
-                <CSSTransition in={this.state.exercises} timeout={2000} classNames="fade" unmountOnExit onExited={() => {this.actionAfterExercises() }}><div className='info-box-button'><div>{SetExercises(this.state.randExercise)}</div><button className='next-button' onClick={this.seenExercise.bind(this)}>next</button></div></CSSTransition>
-                <CSSTransition in={this.state.showFeedbackStatement} timeout={2000} className="fade" unmountOnExit onExited={() => this.goHome()}><FeedbackStatement dataFromParent = {this.state.route} onClick={this.clickedHome.bind(this)} /></CSSTransition>
+                <CSSTransition in={this.state.neutralAnimation} timeout={4000} classNames="fade-enter-only" unmountOnExit>
+                    <AnimationsLayered speeds={[1]} animations={['neutralBackground']} />
+                </CSSTransition>
+                <CSSTransition in={this.state.tooHighFadeIn} timeout={4000} classNames="fade-enter-only">
+                    <AnimationsLayered speeds={[this.state.animationSpeed]} animations={['tooHighFadeIn']} />
+                </CSSTransition>
+                <CSSTransition in={this.state.whiteBackground} timeout={2000} classNames="fade" unmountOnExit>
+                    <div className='background-box'></div>
+                </CSSTransition>
+                <div className='info-box'>
+                    <CSSTransition in={this.state.howLong} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.areYouAtRisk() }}><HowLongHaveYouFeltLikeThis buttonClick={this.answeredHowLong.bind(this)} /></CSSTransition>
+                    <CSSTransition in={this.state.areYouAtRisk} timeout={2000} onExited={() => { this.triggerAfterHarm() }} classNames="fade" unmountOnExit><RiskOfHarm onClick={this.actionAfterHarm.bind(this)} /></CSSTransition>
+                    <CSSTransition in={this.state.showPlanQ} timeout={2000} onExited={() => { this.triggerAfterPlan() }} classNames="fade" unmountOnExit><PlanQ onClick={this.actionAfterPlan.bind(this)} /></CSSTransition>
+                    <CSSTransition in={this.state.showPlanningQ} timeout={2000} onExited={() => { this.triggerAfterPlanning() }} classNames="fade" unmountOnExit><PlanningQ onClick={this.actionAfterPlanning.bind(this)} /></CSSTransition>
+                    <CSSTransition in={this.state.showFeelingsPass} timeout={2000} onEnter={() => { this.triggerTimeout() }} onExited={() => { this.showCrisisTeam() }} classNames="fade" unmountOnExit><FeelingsPassStatement /></CSSTransition>
+                    <CSSTransition in={this.state.showSamaritans} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.showAnchors() }}><Samaritans onClick={this.actionAfterSamaritans.bind(this)} /></CSSTransition>
+                    <CSSTransition in={this.state.showCrisisTeam} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.showSamaritans() }}><Crisis onClick={this.leaveCrisis.bind(this)} /></CSSTransition>
+                    <CSSTransition in={this.state.showAnchors} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.showGettingHelp() }}><AllRootsWithNext onClick={this.leaveAnchors.bind(this)} /></CSSTransition>
+                    <CSSTransition in={this.state.showGettingHelp} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterHelpQ() }}><GettingHelpQ onClick={this.leaveGettingHelpQ.bind(this)} /></CSSTransition>
+                    <CSSTransition in={this.state.haveSpokenQ} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterSpokenTo() }}><SpokenToQ onClick={this.processSpokenToQ.bind(this)} /></CSSTransition>
+                    <CSSTransition in={this.state.awareOf} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterReason() }}><ReasonForFeelings onClick={this.processReasonFor.bind(this)} /></CSSTransition>
+                    <CSSTransition in={this.state.showNote} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterNote() }}><ReasonForFeelingsInput buttonClick={this.processNote.bind(this)} /></CSSTransition>
+                    <CSSTransition in={this.state.exercises} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterExercises() }}><div className='info-box-button'><div>{SetExercises(this.state.randExercise)}</div><button className='next-button' onClick={this.seenExercise.bind(this)}>next</button></div></CSSTransition>
+                    <CSSTransition in={this.state.showFeedbackStatement} timeout={2000} className="fade" unmountOnExit onExited={() => this.goHome()}><FeedbackStatement dataFromParent={this.state.route} onClick={this.clickedHome.bind(this)} /></CSSTransition>
                 </div>
             </div>
         );
