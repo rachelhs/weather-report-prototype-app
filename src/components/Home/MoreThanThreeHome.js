@@ -1,7 +1,6 @@
 import React from 'react';
-import BackgroundAnimation from '../Animations/BackgroundAnimation'
-import ForegroundAnimation from '../Animations/ForegroundAnimation'
 import { Link } from 'react-router-dom';
+import { AnimationsLayered } from '../SharedComponents/SharedComponents';
 
 
 export class ThreeHomePage extends React.Component {
@@ -10,12 +9,7 @@ export class ThreeHomePage extends React.Component {
         
         return (
             <div className='background-box'>
-                <div className='background-anim'>
-                    <BackgroundAnimation />
-                </div>
-                <div className='foreground-anim'>
-                    <ForegroundAnimation />
-                </div>
+                <AnimationsLayered speeds={[0]} animations={['neutralBackground']} />
                 <div className='info-box-landing'>
                     <h1 className='info-box-text-padding-top'>You have registered how you're feeling more than three times today.</h1>
                     <p>From feedback, we have set a limit on entering this 3 times a day</p>
