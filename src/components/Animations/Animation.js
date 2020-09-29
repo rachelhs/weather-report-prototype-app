@@ -23,6 +23,9 @@ import nothingFadeOut from '../../animations/04_Nothing_River_Fade_Out.json'
 import lowFadeIn from '../../animations/05_Low_Fade_In.json'
 import low from '../../animations/05_Low_Weather_River.json'
 import lowFadeOut from '../../animations/05_Low_River_Fade_Out.json'
+import mediumLowFadeIn from '../../animations/06_Medium_Low_Fade_In.json'
+import mediumLow from '../../animations/06_Medium_Low_Weather_River.json'
+import mediumLowFadeOut from '../../animations/06_Medium_Low_River_Fade_Out.json'
 
 class Animation extends Component {
 
@@ -107,6 +110,15 @@ class Animation extends Component {
                 break
             case 'lowFadeOut':
                 this.setState({ animationData: lowFadeOut })
+                break
+            case 'mediumLowFadeIn':
+                this.setState({ animationData: mediumLowFadeIn })
+                break
+            case 'mediumLow':
+                this.setState({ animationData: mediumLow })
+                break
+            case 'mediumLowFadeOut':
+                this.setState({ animationData: mediumLowFadeOut })
                 break
             default:
               // code block
