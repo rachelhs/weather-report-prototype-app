@@ -81,13 +81,15 @@ class Animation extends Component {
     render() {
 
         const defaultOptions = {
-            loop: true,
+            loop: false,
             autoplay: true,
+            setMaxProgress: '1f',
             animationData: this.state.animationData,
             rendererSettings: {
                 preserveAspectRatio: 'xMidYMid slice'
             }
         };
+        
 
         return (
             <Lottie options={defaultOptions}
