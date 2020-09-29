@@ -8,12 +8,12 @@ import { ChooseExercise } from '../Exercises/ChooseExercise';
 import { SetExercises } from '../Exercises/SetExercises';
 import '../../styles/animation.css';
 
-class VeryLowRoute extends React.Component {
+class LowButWithEnergyRoute extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            route: 'veryLow',
+            route: 'lowWithEnergy',
             showAcknowledge: false,
             showHowLong: null,
             showReasonForFeeling: null,
@@ -24,7 +24,7 @@ class VeryLowRoute extends React.Component {
             exercise: 'meditating',
             firstAid: null,
             neutralAnimation: true,
-            veryLowFadeIn: false,
+            lowButWithEnergyFadeIn: false,
             whiteBackground: false,
             animationSpeed: 1
         }
@@ -43,7 +43,7 @@ class VeryLowRoute extends React.Component {
         let exercise = ChooseExercise(['stretching', 'gratitude', 'content', 'meditating', 'grounding']);
         this.setState({ exercise: exercise });
 
-        setTimeout(() => { this.setState({ neutralAnimation: false, veryLowFadeIn: true }) }, 500)
+        setTimeout(() => { this.setState({ neutralAnimation: false, lowButWithEnergyFadeIn: true }) }, 500)
         setTimeout(() => {
             setInterval(() => {
                 if (this.state.animationSpeed <= 1 && this.state.animationSpeed >= 0.1)
@@ -139,8 +139,8 @@ class VeryLowRoute extends React.Component {
                 <CSSTransition in={this.state.neutralAnimation} timeout={4000} classNames="fade-enter-only" unmountOnExit>
                     <AnimationsLayered speeds={[1]} animations={['neutralBackground']} />
                 </CSSTransition>
-                <CSSTransition in={this.state.veryLowFadeIn} timeout={4000} classNames="fade-enter-only">
-                    <AnimationsLayered speeds={[this.state.animationSpeed]} animations={['veryLowFadeIn']} />
+                <CSSTransition in={this.state.lowButWithEnergyFadeIn} timeout={4000} classNames="fade-enter-only">
+                    <AnimationsLayered speeds={[this.state.animationSpeed]} animations={['lowWithEnergyFadeIn']} />
                 </CSSTransition>
                 <CSSTransition in={this.state.whiteBackground} timeout={2000} classNames="fade" unmountOnExit>
                     <div className='background-box'></div>
@@ -163,4 +163,4 @@ class VeryLowRoute extends React.Component {
     }
 }
 
-export default VeryLowRoute;
+export default LowButWithEnergyRoute;
