@@ -88,11 +88,6 @@ class TooHighRoute extends React.Component {
         this.setState({ areYouAtRisk: true })
     }
 
-    // goes to home page
-    goHome() {
-        this.props.history.push('/home');
-    }
-
     triggerTimeout() {
         setTimeout(() => { this.setState({ showFeelingsPass: false }) }, 3000)
     }
@@ -172,10 +167,6 @@ class TooHighRoute extends React.Component {
         }
     }
 
-    clickedHome() {
-        this.setState({ showFeedback: false })
-    }
-
     leaveCrisis() {
         this.setState({ showCrisisTeam: false })
     }
@@ -226,16 +217,6 @@ class TooHighRoute extends React.Component {
         this.setState({ showFeedbackStatement: true })
     }
 
-    // triggered when user clicks to go home
-    clickedHome() {
-        this.setState({ showFeedbackStatement: false })
-    }
-
-    // goes to home page
-    goHome() {
-        this.props.history.push('/home');
-
-    }
     render() {
         return (
             <div>
@@ -262,7 +243,7 @@ class TooHighRoute extends React.Component {
                     <CSSTransition in={this.state.awareOf} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterReason() }}><ReasonForFeelings onClick={this.processReasonFor.bind(this)} /></CSSTransition>
                     <CSSTransition in={this.state.showNote} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterNote() }}><ReasonForFeelingsInput buttonClick={this.processNote.bind(this)} /></CSSTransition>
                     <CSSTransition in={this.state.exercises} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterExercises() }}><div className='info-box-button'><div>{SetExercises(this.state.randExercise)}</div><button className='next-button' onClick={this.seenExercise.bind(this)}>next</button></div></CSSTransition>
-                    <CSSTransition in={this.state.showFeedbackStatement} timeout={2000} className="fade" unmountOnExit onExited={() => this.goHome()}><FeedbackStatement dataFromParent={this.state.route} onClick={this.clickedHome.bind(this)} /></CSSTransition>
+                    <CSSTransition in={this.state.showFeedbackStatement} timeout={2000} className="fade" unmountOnExit><FeedbackStatement dataFromParent={this.state.route}/></CSSTransition>
                 </div>
             </div>
         );

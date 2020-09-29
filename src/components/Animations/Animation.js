@@ -9,7 +9,7 @@ import plant from '../../animations/plant'
 import HappyBackground from '../../animations/02_Happy_Weather_River_v8.json' 
 import tooHighFadeIn from '../../animations/01_Too_High_River_Fade_In.json'
 import tooHighFadeOut from '../../animations/01_Too_High_River_Fade_Out.json'
-import tooHighBackground from '../../animations/01_Too_High_Weather_River.json'
+import tooHigh from '../../animations/01_Too_High_Weather_River.json'
 import neutralBackground from '../../animations/10_Neutral Weather_River.json'
 import okFadeIn from '../../animations/03_OK_Fade In.json'
 import okBackground from '../../animations/03_OK_Weather_River .json'
@@ -17,6 +17,9 @@ import okFadeOut from '../../animations/03_OK_River_Fade Out.json'
 import highFadeIn from '../../animations/02_Happy_River_Fade_In.json'
 import high from '../../animations/02_Happy_Weather_River_v8.json'
 import highFadeOut from '../../animations/02_Happy_River_Fade_Out.json'
+import nothingFadeIn from '../../animations/04_Nothing_Fade_In.json'
+import nothing from '../../animations/04_Nothing_Weather_River.json'
+import nothingFadeOut from '../../animations/04_Nothing_River_Fade_Out.json'
 
 class Animation extends Component {
 
@@ -63,8 +66,8 @@ class Animation extends Component {
             case 'tooHighFadeOut':
                 this.setState({ animationData: tooHighFadeOut })
                 break;
-            case 'tooHighBackground':
-                this.setState({ animationData: tooHighBackground })
+            case 'tooHigh':
+                this.setState({ animationData: tooHigh })
                 break
             case 'okFadeIn':
                 this.setState({ animationData: okFadeIn })
@@ -78,11 +81,20 @@ class Animation extends Component {
             case 'highFadeIn':
                 this.setState({ animationData: highFadeIn })
                 break
-            case 'highBackground':
-                this.setState({ animationData: highBackground })
+            case 'high':
+                this.setState({ animationData: high })
                 break
             case 'highFadeOut':
                 this.setState({ animationData: highFadeOut })
+                break
+            case 'nothingFadeIn':
+                this.setState({ animationData: nothingFadeIn })
+                break
+            case 'nothing':
+                this.setState({ animationData: nothing })
+                break
+            case 'nothingFadeOut':
+                this.setState({ animationData: nothingFadeOut })
                 break
             default:
               // code block
