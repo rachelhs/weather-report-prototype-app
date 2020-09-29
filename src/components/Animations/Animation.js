@@ -15,7 +15,7 @@ import okFadeIn from '../../animations/03_OK_Fade In.json'
 import okBackground from '../../animations/03_OK_Weather_River .json'
 import okFadeOut from '../../animations/03_OK_River_Fade Out.json'
 import highFadeIn from '../../animations/02_Happy_River_Fade_In.json'
-import highBackground from '../../animations/02_Happy_Weather_River_v8.json'
+import high from '../../animations/02_Happy_Weather_River_v8.json'
 import highFadeOut from '../../animations/02_Happy_River_Fade_Out.json'
 
 class Animation extends Component {
