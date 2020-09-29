@@ -14,7 +14,9 @@ import neutralBackground from '../../animations/10_Neutral Weather_River.json'
 import okFadeIn from '../../animations/03_OK_Fade In.json'
 import okBackground from '../../animations/03_OK_Weather_River .json'
 import okFadeOut from '../../animations/03_OK_River_Fade Out.json'
-
+import highFadeIn from '../../animations/02_Happy_River_Fade_In.json'
+import highBackground from '../../animations/02_Happy_Weather_River_v8.json'
+import highFadeOut from '../../animations/02_Happy_River_Fade_Out.json'
 
 class Animation extends Component {
 
@@ -72,6 +74,15 @@ class Animation extends Component {
                 break
             case 'okFadeOut':
                 this.setState({ animationData: okFadeOut })
+                break
+            case 'highFadeIn':
+                this.setState({ animationData: highFadeIn })
+                break
+            case 'highBackground':
+                this.setState({ animationData: highBackground })
+                break
+            case 'highFadeOut':
+                this.setState({ animationData: highFadeOut })
                 break
             default:
               // code block
