@@ -54,15 +54,45 @@ export function expressedSuicidalRecently(cb) {
     let counter = 0;
     const now = Date.now(); // get timestamp for now
     const sevenDaysAgo = now - 604800000; // get timestamp for 7 days ago (604800000 milliseconds)
-    database.ref(`users/${uid}/entries`)
-        .limitToLast(21) // last 21 entries is max possible in a week
+    database.ref(`users/${uid}/weatherReports`)
+        .orderByChild('createdAt') //order by createAt value
+        .limitToLast(7)
         .once('value', (snapshot) => {
             snapshot.forEach((child) => {
-                let mainWord = child.val().mainWord;
-                let createdAt = child.val().createdAt;
-                if ((createdAt >= sevenDaysAgo) && mainWord === 'suicidal') {
+                // first entry for each day
+                let childKey = Object.keys(child.val())[0];
+                let mainWord = child.val()[childKey].mainWord;
+                let createdAt = child.val()[childKey].createdAt;
+                
+                let mainWord2 = ''
+                let createdAt2 = ''
+                let mainWord3 = ''
+                let createdAt3 = ''
+
+                // second entry if exists
+                if (Object.keys(child.val())[1]) {
+                    let childKey2 = Object.keys(child.val())[1];
+                    mainWord2 = child.val()[childKey2].mainWord;
+                    createdAt2 = child.val()[childKey2].createdAt;
+                }
+                // third entry if exists
+                if (Object.keys(child.val())[2]) {
+                    let childKey3 = Object.keys(child.val())[2];
+                    mainWord3 = child.val()[childKey3].mainWord;
+                    createdAt3 = child.val()[childKey3].createdAt;
+                }
+
+                // count goes up if one of the key words entered as a main word in the last 7 days
+                if ((createdAt >= sevenDaysAgo) && (mainWord === 'suicidal')) {
                     counter += 1;
                 }
+                if ((createdAt2 >= sevenDaysAgo) && (mainWord2 === 'suicidal')) {
+                    counter += 1;
+                }
+                if ((createdAt3 >= sevenDaysAgo) && (mainWord3 === 'suicidal')) {
+                    counter += 1;
+                }
+                console.log(counter);
             })
             if(counter >= 3) {
                 cb(true)
@@ -81,16 +111,45 @@ export function expressedTooHighRecently(cb) {
     let counter = 0;
     const now = Date.now(); // get timestamp for now
     const sevenDaysAgo = now - 604800000; // get timestamp for 7 days ago (604800000 milliseconds)
-    database.ref(`users/${uid}/entries`)
-        .limitToLast(21) // last 21 entries is max possible in a week
+    database.ref(`users/${uid}/weatherReports`)
+        .orderByChild('createdAt') //order by createAt value
+        .limitToLast(7)
         .once('value', (snapshot) => {
             snapshot.forEach((child) => {
-                let mainWord = child.val().mainWord;
-                let createdAt = child.val().createdAt;
-                // ignore if not in the last 7 days
+                // first entry for each day
+                let childKey = Object.keys(child.val())[0];
+                let mainWord = child.val()[childKey].mainWord;
+                let createdAt = child.val()[childKey].createdAt;
+                
+                let mainWord2 = ''
+                let createdAt2 = ''
+                let mainWord3 = ''
+                let createdAt3 = ''
+
+                // second entry if exists
+                if (Object.keys(child.val())[1]) {
+                    let childKey2 = Object.keys(child.val())[1];
+                    mainWord2 = child.val()[childKey2].mainWord;
+                    createdAt2 = child.val()[childKey2].createdAt;
+                }
+                // third entry if exists
+                if (Object.keys(child.val())[2]) {
+                    let childKey3 = Object.keys(child.val())[2];
+                    mainWord3 = child.val()[childKey3].mainWord;
+                    createdAt3 = child.val()[childKey3].createdAt;
+                }
+
+                // count goes up if one of the key words entered as a main word in the last 7 days
                 if ((createdAt >= sevenDaysAgo) && (mainWord === 'manic' || 'invincible' || 'over stimulated')) {
                     counter += 1;
                 }
+                if ((createdAt2 >= sevenDaysAgo) && (mainWord2 === 'manic' || 'invincible' || 'over stimulated')) {
+                    counter += 1;
+                }
+                if ((createdAt3 >= sevenDaysAgo) && (mainWord3 === 'manic' || 'invincible' || 'over stimulated')) {
+                    counter += 1;
+                }
+                console.log(counter);
             })
             if(counter >= 3) {
                 cb(true)

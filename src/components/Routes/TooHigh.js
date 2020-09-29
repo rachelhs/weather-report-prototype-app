@@ -14,7 +14,7 @@ class TooHighRoute extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            howLong: null,
+            howLong: false,
             areYouAtRisk: null,
             harm: null,
             randExercise: null,
@@ -28,10 +28,11 @@ class TooHighRoute extends React.Component {
     componentDidMount() {
 
         // fade in animation plays for three seconds
-        setTimeout(() => { this.setState({ firstAnimation: false })}, 4000)
+        setTimeout(() => { this.setState({ firstAnimation: false })}, 3000)
 
         expressedTooHighRecently(res => {
-            res ? this.setState({ areYouAtRisk: true }) : this.setState({ areYouAtRisk: false })
+            res ? this.setState({ expressedRecently: true }) : this.setState({ expressedRecently: false })
+            console.log('expressed recently', this.state.expressedRecently);
         })
         this.threeDayFunction()
         // setting exercise
@@ -42,7 +43,7 @@ class TooHighRoute extends React.Component {
 
     threeDayFunction() {
         isLongerThanThreeDays(result => {
-            result ? this.setState({ howLong: true }) : (this.setState({ howLong: false }), setTimeout(() => { this.setState({ awareOf: true })}, 3000))
+            result ? this.setState({ longerThanThreeDays: true }) : (this.setState({ longerThanThreeDays: false }))
             console.log('three days', result);
         })
     }
@@ -223,7 +224,7 @@ class TooHighRoute extends React.Component {
     render() {
         return (
             <div>
-            {this.state.firstAnimation ? <div className='background-box-no-fade'><AnimationsLayered speeds={[1]} animations={['tooHighFadeIn']} /></div> : <div className='background-box'><AnimationsLayered speeds={[0.05]} animations={['tooHighBackground']} /></div>}
+            {this.state.firstAnimation ? <div className='background-box-no-fade'><AnimationsLayered speeds={[1]} animations={['tooHighFadeIn']} /></div> : <div className='background-box'><AnimationsLayered speeds={[0.01]} animations={['tooHighBackground']} /></div>}
             <div className='info-box'>
                 <CSSTransition in={this.state.howLong} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.areYouAtRisk() }}><HowLongHaveYouFeltLikeThis buttonClick={this.answeredHowLong.bind(this)} /></CSSTransition>          
                 <CSSTransition in={this.state.areYouAtRisk} timeout={2000} onExited={() => { this.triggerAfterHarm() }} classNames="fade" unmountOnExit><RiskOfHarm onClick={this.actionAfterHarm.bind(this)} /></CSSTransition>
