@@ -33,7 +33,6 @@ class TooHighRoute extends React.Component {
         expressedTooHighRecently(res => {
             res ? this.setState({ expressedRecently: true }) : this.setState({ expressedRecently: false })
             console.log('expressed recently', this.state.expressedRecently);
-
         })
         this.threeDayFunction()
         // setting exercise

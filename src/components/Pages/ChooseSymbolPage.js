@@ -16,7 +16,7 @@ export class ChooseSymbolPage extends React.Component {
                                 to={{
                                     pathname: '/symbol-description',
                                     state: { weather: {symbol} }
-                                }}><img className='symbol' src={require(`../../images/${symbol}.png`).default}/>
+                                }}><img className='symbol' src={require(`../../images/weather-symbols/${symbol}.png`).default}/>
                             </Link>
                         ))}
                     </div>
