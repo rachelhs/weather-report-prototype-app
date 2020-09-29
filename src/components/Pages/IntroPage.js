@@ -22,8 +22,7 @@ export class IntroPage extends React.Component {
 
     reRoute() {
         const date = moment().format("DD-MM-YYYY");
-        const uid = firebase.auth().currentUser.uid;
-        // check if they have entered WR more 
+        const uid = firebase.auth().currentUser.uid;        // check if they have entered WR more 
         let entries = database.ref(`users/${uid}/weatherReports/${date}`);
         entries.on('value', function(snapshot) {
             const numberOfEntries = snapshot.numChildren()
@@ -31,17 +30,21 @@ export class IntroPage extends React.Component {
             if (numberOfEntries >= 3) {
                 history.push('/3-home');
             }
-        });
-        database.ref(`users/${uid}/weatherReports`).once("value", snapshot => {
-            // if user exists show 'no
-            if (snapshot.exists()){
-                history.push('/landing');
-            }
             else {
-                // if no weatherReports have been entered, user is taken down onboarding path
-                history.push('/onboarding');
+                database.ref(`users/${uid}/weatherReports`).once("value", snapshot => {
+                    // if user exists show 'no
+                    if (snapshot.exists()){
+                        history.push('/landing');
+                    }
+                    else {
+                        // if no weatherReports have been entered, user is taken down onboarding path
+                        history.push('/onboarding');
+                    }
+                })
             }
-        })
+        });
+        
+
     }
 
     render() {
