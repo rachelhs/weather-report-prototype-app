@@ -88,11 +88,6 @@ class SuicidalRoute extends React.Component {
         this.setState({ areYouAtRisk: true })
     }
 
-    // goes to home page
-    goHome() {
-        this.props.history.push('/home');
-    }
-
     triggerTimeout() {
         setTimeout(() => { this.setState({ acknowledge: false }) }, 3000)
         setTimeout(() => { this.setState({ showFeelingsPass: false }) }, 3000)
@@ -173,10 +168,6 @@ class SuicidalRoute extends React.Component {
         }
     }
 
-    clickedHome() {
-        this.setState({ showFeedback: false })
-    }
-
     leaveCrisis() {
         this.setState({ showCrisisTeam: false })
     }
@@ -225,7 +216,7 @@ class SuicidalRoute extends React.Component {
                     <CSSTransition in={this.state.showGettingHelp} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterHelpQ() }}><GettingHelpQ onClick={this.leaveGettingHelpQ.bind(this)} /></CSSTransition>
 
                     <CSSTransition in={this.state.haveSpokenQ} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterSpokenTo() }}><SpokenToQ onClick={this.processSpokenToQ.bind(this)} /></CSSTransition>
-                    <CSSTransition in={this.state.showFeedback} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.goHome()}><FeedbackStatement dataFromParent={this.state.route} onClick={this.clickedHome.bind(this)} /></CSSTransition>
+                    <CSSTransition in={this.state.showFeedback} timeout={2000} classNames="fade" unmountOnExit><FeedbackStatement dataFromParent={this.state.route}/></CSSTransition>
 
                 </div>
             </div>
