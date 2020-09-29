@@ -69,10 +69,6 @@ class OkRoute extends React.Component {
 
     uploadedPhoto() { this.setState({ uploadPhoto: false }) }
 
-    clickedHome() { this.setState({ showFeedbackStatement: false }) }
-
-    goHome() { this.props.history.push('/home') }
-
     render() {
         const randomQuestion = this.state.randQues == 0 ? <GratefulQuestion buttonClick={this.answeredRandomQuestion.bind(this)} /> : <TakeCareQuestion buttonClick={this.answeredRandomQuestion.bind(this)} />;
         return (        
@@ -99,7 +95,7 @@ class OkRoute extends React.Component {
                         {/* if user ansers 'yes' to upload photo */}
                         <CSSTransition in={this.state.uploadPhoto} timeout={2000} classNames="fade" appear unmountOnExit unmountOnExit onExited={() => this.showFeedbackStatement()}><ReactFirebaseFileUpload onClick={this.uploadedPhoto.bind(this)} /></CSSTransition>
                         {/* show feedback statement */}
-                        <CSSTransition in={this.state.showFeedbackStatement} timeout={2000} className="fade" unmountOnExit onExited={() => this.goHome()}><FeedbackStatement dataFromParent = {this.state.route} onClick={this.clickedHome.bind(this)} /></CSSTransition>
+                        <CSSTransition in={this.state.showFeedbackStatement} timeout={2000} className="fade" unmountOnExit><FeedbackStatement dataFromParent = {this.state.route} /></CSSTransition>
                     </div>
                 </div>
             </div>
