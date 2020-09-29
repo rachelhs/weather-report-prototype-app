@@ -95,7 +95,7 @@ class OkRoute extends React.Component {
                         {/* if user ansers 'yes' to upload photo */}
                         <CSSTransition in={this.state.uploadPhoto} timeout={2000} classNames="fade" appear unmountOnExit unmountOnExit onExited={() => this.showFeedbackStatement()}><ReactFirebaseFileUpload onClick={this.uploadedPhoto.bind(this)} /></CSSTransition>
                         {/* show feedback statement */}
-                        <CSSTransition in={this.state.showFeedbackStatement} timeout={2000} className="fade" unmountOnExit><FeedbackStatement dataFromParent = {this.state.route}/></CSSTransition>
+                        <CSSTransition in={this.state.showFeedbackStatement} timeout={2000} className="fade" unmountOnExit><FeedbackStatement dataFromParent = {this.state.route} /></CSSTransition>
                     </div>
                 </div>
             </div>
