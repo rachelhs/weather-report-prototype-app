@@ -4,7 +4,6 @@ import { GratefulQuestion, TakeCareQuestion } from '../SharedComponents/MentalHe
 import { randomQuestionNumber  } from '../../actions/route-functions';
 import { CSSTransition } from "react-transition-group";
 import '../../styles/animation.css';
-import { faLessThan } from '@fortawesome/free-solid-svg-icons';
 const data = require('../../data/data.json');
 
 class OkRoute extends React.Component {
@@ -47,8 +46,6 @@ class OkRoute extends React.Component {
         let multiplier = Math.pow(10, precision || 0);
         return Math.round(value * multiplier) / multiplier;
     } 
-
-    showBackground() { this.setState({ okFadeIn: false }) }
 
     answeredReasonKnown(reasonKnown){ reasonKnown ? this.setState({ knowReasonForFeeling: true, showReasonForFeeling: false }) : this.setState({ knowReasonForFeeling: false, showReasonForFeeling: false }) }
     
