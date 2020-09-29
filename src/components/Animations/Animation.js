@@ -32,6 +32,9 @@ import veryLowFadeOut from '../../animations/07_Very_Low_River_Fade_Out.json'
 import lowWithEnergyFadeIn from '../../animations/08_Low_But_with_Energy_Fade_In.json'
 import lowWithEnergy from '../../animations/08_Low_But_with_Energy_Weather_River.json'
 import lowWithEnergyFadeOut from '../../animations/08_Low_But_with_Energy_River_Fade_Out.json'
+import suicidalFadeIn from '../../animations/09_Suicidal_Fade_In.json'
+import suicidal from '../../animations/09_Suicidal_Weather_River.json'
+import suicidalFadeOut from '../../animations/09_Suicidal_River_Fade_Out.json'
 
 class Animation extends Component {
 
@@ -143,6 +146,15 @@ class Animation extends Component {
                 break
             case 'lowWithEnergyFadeOut':
                 this.setState({ animationData: lowWithEnergyFadeOut })
+                break
+            case 'suicidalFadeIn':
+                this.setState({ animationData: suicidalFadeIn })
+                break
+            case 'suicidal':
+                this.setState({ animationData: suicidal })
+                break
+            case 'suicidalFadeOut':
+                this.setState({ animationData: suicidalFadeOut })
                 break
             default:
               // code block
