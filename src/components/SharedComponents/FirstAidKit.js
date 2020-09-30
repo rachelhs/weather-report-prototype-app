@@ -4,6 +4,7 @@ import React from 'react';
 import { CSSTransition } from 'react-transition-group';
 import ReactModal from 'react-modal';
 import { SetExercises } from '../Exercises/SetExercises';
+import { AllRoots } from '../SharedComponents/SharedComponents';
 
 // First Aid Kit
 export class FirstAidKit extends React.Component {

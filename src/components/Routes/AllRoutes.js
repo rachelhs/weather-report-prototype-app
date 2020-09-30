@@ -18,19 +18,19 @@ export class AllRoutesPage extends React.Component {
                 </div>
                 <div className='info-box'>
                     <h1 className='info-box-text'>{question}</h1>
-                    <div className='info-box-button'>
+                    <div className='flex-center'>
                         <Link to="/5">Low</Link>
                     </div>
-                    <div className='info-box-button'>
+                    <div className='flex-center'>
                         <Link to="/6">Medium Low</Link>
                     </div>
-                    <div className='info-box-button'>
+                    <div className='flex-center'>
                         <Link to="/7">Very Low</Link>
                     </div>
-                    <div className='info-box-button'>
+                    <div className='flex-center'>
                         <Link to="/8">Low but with Energy</Link>
                     </div>
-                    <div className='info-box-button'>
+                    <div className='flex-center'>
                         <Link to="/9">Suicidal</Link>
                     </div>
                 </div>

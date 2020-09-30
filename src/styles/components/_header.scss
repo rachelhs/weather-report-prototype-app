@@ -1,18 +1,51 @@
 .header {
-    background-color: $dark-purple;
+    background-color: transparent;
+    position: absolute;
 }
 
 .header__content {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     padding: $s-size 0;
+    margin-top: 30px;
 }
 
 .header__title {
-    color: white;
+    color: purple;
     text-decoration: none;
     h1 {
         margin: 0;
     }
+}
+
+.leftright {
+    height: 10px;
+    width: 35px;
+    position: absolute;
+    background-color: white;
+    transition: all .3s ease-in;
+    margin-top: 12px;
+}
+
+.rightleft {
+    height: 10px;
+    width: 35px;
+    background-color: white;
+    transform: rotate(-90deg);
+    transition: all .3s ease-in;
+    margin: 0;
+    top: 50%;
+    margin-top: 12px;
+}
+
+.first-aid-button{
+    background-color: #339176;
+    position: relative;
+    border: none;
+    width: 39px;
+    height: 39px;
+    cursor: pointer;
+    padding: 2px;
+    margin: 0 25px 0 25px;
 }
