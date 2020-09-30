@@ -172,6 +172,16 @@ export function BackButton({ children }) {
     )
 }
 
+// back button
+export function BackButtonFirstAid({ children }) {
+    let history = useHistory()
+    return (
+      <button className='first-aid-close' type="button" onClick={() => history.goBack()}>
+        CLOSE
+      </button>
+    )
+}
+
 
 export function GetKeyByValue(object, value) {
     return Object.keys(object).find(key => object[key].includes(value));

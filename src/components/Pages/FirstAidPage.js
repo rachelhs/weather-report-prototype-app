@@ -2,8 +2,9 @@ import React from 'react';
 const data = require('../../data/data.json');
 import ReactModal from 'react-modal';
 import { SetExercises } from '../Exercises/SetExercises';
-import { AnimationsLayered } from '../SharedComponents/SharedComponents';
+import { useHistory } from 'react-router-dom'
 import { Link } from 'react-router-dom';
+import { BackButtonFirstAid } from '../../actions/route-functions';
 
 export class FirstAidPage extends React.Component {
     constructor(props) {
@@ -28,12 +29,11 @@ export class FirstAidPage extends React.Component {
     handleCloseModal999() { this.setState({ showModal999: false }) }
 
     render() {
+        // let history = useHistory()
         return (
             <div className='background-box-first-aid'>
                 <div className="flex-center">
-                    <Link className="first-aid-close" to={{ pathname: '/home' }}>
-                        CLOSE
-                    </Link>
+                    <BackButtonFirstAid/>
                 </div>
                 <div className="flex-center">
                     <div className="first-aid-buttonBig">
