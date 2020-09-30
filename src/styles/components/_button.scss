@@ -23,7 +23,10 @@ button:disabled {
 .button--link {
     background: none;
     border: none;
-    color: white;
+    color: $dark-purple;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    font-size: 15px;
 }
 
 .button--secondary {
@@ -79,10 +82,9 @@ button:disabled {
     margin: 5px;
 }
 
-.info-box-button {
+.flex-center {
     display: flex;
     justify-content: center;
-    margin-top: 10px;
 }
 
 // @media only screen and (max-width: 767px) {

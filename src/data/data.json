@@ -96,9 +96,13 @@
         "firstAid" : {
             "questions": {
                 "help": "What might help?",
-                "need": "What do you think you need right now?"
+                "need": "What do you think you need right now?",
+                "exercise": "Would an exercise help?",
+                "professional": "Do you need professional support?",
+                "emergency": "Is it an emergency?"
             }, 
                 "groundingEx": "Insert Grounding Ex here",
+                "breathingEx": "Insert Breathing Ex here",
             "options": {
                 "crisisTeam": "Call Bristol Mental Health Crisis Team: 0300 555 0334",
                 "ae": "Ring 999 or go to A & E",
