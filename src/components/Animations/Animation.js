@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import Lottie from 'react-lottie'
-import waves from '../../animations/waves.json'
 import sun from '../../animations/sun.json'
-import fish from '../../animations/Fish2.json'
-import environment from '../../animations/environment'
+import fish from '../../animations/00_Fish_Still.json'
+import environment from '../../animations/10_Neutral_BG_With_Trees.json'
 import growing from '../../animations/growing'
-import plant from '../../animations/plant'
+import lilypad from '../../animations/Lily_Pad.json'
+import roots from '../../animations/Roots.json'
 import HappyBackground from '../../animations/02_Happy_Weather_River_v8.json' 
 import tooHighFadeIn from '../../animations/01_Too_High_River_Fade_In.json'
 import tooHighFadeOut from '../../animations/01_Too_High_River_Fade_Out.json'
@@ -35,6 +35,9 @@ import lowWithEnergyFadeOut from '../../animations/08_Low_But_with_Energy_River_
 import suicidalFadeIn from '../../animations/09_Suicidal_Fade_In.json'
 import suicidal from '../../animations/09_Suicidal_Weather_River.json'
 import suicidalFadeOut from '../../animations/09_Suicidal_River_Fade_Out.json'
+import fishSwimming from '../../animations/00_Fish_Swimming_across'
+import riverbed from '../../animations/Riverbed.json'
+import riverLevel from '../../animations/10_River_Level.json'
 
 class Animation extends Component {
 
@@ -51,8 +54,14 @@ class Animation extends Component {
 
     chooseAnimation = () => {
         switch(this.props.animation) {
-            case 'waves':
-                this.setState({ animationData: waves })
+            case 'riverbed':
+                this.setState({ animationData: riverbed })
+                break;
+            case 'riverLevel':
+                this.setState({ animationData: riverLevel })
+                break;
+            case 'roots':
+                this.setState({ animationData: roots })
                 break;
             case 'sun':
                 this.setState({ animationData: sun })
@@ -60,14 +69,17 @@ class Animation extends Component {
             case 'fish':
                 this.setState({ animationData: fish })
                 break;
+            case 'fishSwimming':
+                this.setState({ animationData: fishSwimming })
+                break;
             case 'environment':
                 this.setState({ animationData: environment })
                 break;
             case 'growing':
                 this.setState({ animationData: growing })
                 break;
-            case 'plant':
-                this.setState({ animationData: plant })
+            case 'lilypad':
+                this.setState({ animationData: lilypad })
                 break;
             case 'neutralBackground':
                 this.setState({ animationData: neutralBackground })
@@ -175,6 +187,7 @@ class Animation extends Component {
         return (
             <Lottie options={defaultOptions}
             speed={this.props.speed}
+            isPaused={this.props.isPaused}
             />
         )
     }

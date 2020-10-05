@@ -22,7 +22,7 @@ class HomePage extends React.Component {
         } else {
             this.setState({ weather: "neutralBackground" })
         }
-        let rand = Math.random() * (10000 - 3000) + 3000
+        const rand = Math.random() * (30000 - 15000) + 15000
         let intervalId = setInterval(() => {
             this.setState(prevState => {
                 if (prevState.Fish === true) {
@@ -31,7 +31,7 @@ class HomePage extends React.Component {
                     };
                 } else {
                     return {
-                        Fish: true
+                        Fish: true,
                     };
                 }
             });
@@ -49,13 +49,16 @@ class HomePage extends React.Component {
 
 
     render() {
-        console.log('weather', this.state.weather)
+        console.log('fish', this.state.Fish);
+
         return (
             <div>
                 <AnimationsLayered speeds={[1]} animations={[this.state.weather]} />
                 <AnchorsModal />
                 <PebblesModal />
-                {(this.state.Fish) ? <div className='anim-2'><Animation animation='fish' /></div> : ''}
+                {(this.state.Fish) ? 
+                <div className='anim-2'><Animation animation='fishSwimming'/></div>
+                : ''}                
                 <FishModal fishAppears={this.state.Fish} />
             </div>
         );
