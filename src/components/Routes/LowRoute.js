@@ -36,7 +36,7 @@ class LowRoute extends React.Component {
         // random function for random questions
         this.setState({ randQues: randomQuestionNumber(2) });
         // setting exercise
-        let exercise = ChooseExercise(['breathing', 'meditating', 'grounding', 'gratitude', 'positive', 'selflike']);
+        let exercise = ChooseExercise(['breathing']);
         this.setState({ exercise: exercise });
 
         setTimeout(() => { this.setState({ neutralAnimation: false, lowFadeIn: true }) }, 500)
@@ -100,7 +100,7 @@ class LowRoute extends React.Component {
 
     // returns a random exercise that isn't the same as the one just seen
     chooseAnotherExercise() {
-        let exerciseArray = chooseAnotherRandomExercise(['breathing', 'meditating', 'grounding', 'gratitude', 'positive', 'selflike'], this.state.exercise);
+        let exerciseArray = chooseAnotherRandomExercise(['breathing'], this.state.exercise);
         this.setState({ showAnotherExerciseQuestion: false, yesAnotherExercise: true });
         let exercise = ChooseExercise(exerciseArray);
         this.setState({ exercise: exercise });
