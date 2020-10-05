@@ -8,7 +8,7 @@ export default class SymbolDescription extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            weatherSymbol: this.props.location.state.weather.symbol,
+            weatherSymbol: this.props.location.state.weather,
             mainWord: null
         }
     }
@@ -18,6 +18,7 @@ export default class SymbolDescription extends React.Component {
     }
 
     render() {
+        console.log('weather', this.state.weatherSymbol)
         return (
             <div className='background-box'>
                 <AnimationsLayered speeds={[0]} animations={['neutralBackground']} />
