@@ -53,7 +53,7 @@ class HomePage extends React.Component {
 
         return (
             <div>
-                <AnimationsLayered speeds={[1]} animations={[this.state.weather]} />
+                <AnimationsLayered speeds={[0.4]} animations={[this.state.weather]} />
                 <AnchorsModal />
                 <PebblesModal />
                 {(this.state.Fish) ? 

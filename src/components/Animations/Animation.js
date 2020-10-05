@@ -38,6 +38,7 @@ import suicidalFadeOut from '../../animations/09_Suicidal_River_Fade_Out.json'
 import fishSwimming from '../../animations/00_Fish_Swimming_across'
 import riverbed from '../../animations/Riverbed.json'
 import riverLevel from '../../animations/10_River_Level.json'
+import neutralNoTrees from '../../animations/10_Neutral_River_No Trees.json'
 
 class Animation extends Component {
 
@@ -167,6 +168,9 @@ class Animation extends Component {
                 break
             case 'suicidalFadeOut':
                 this.setState({ animationData: suicidalFadeOut })
+                break
+            case 'neutralNoTrees':
+                this.setState({ animationData: neutralNoTrees})
                 break
             default:
               // code block

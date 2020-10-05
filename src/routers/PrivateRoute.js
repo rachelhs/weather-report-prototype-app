@@ -3,6 +3,15 @@ import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 import Header from '../components/Header';
 
+const exclusionArray = [
+    '/intro',
+    '/landing',
+    '/onboarding',
+    '/choosesymbol',
+    '/symbol-description',
+    '/symbol-more-detail'
+]
+
 export const PrivateRoute = ({ 
     isAuthenticated, 
     component: Component,
@@ -11,7 +20,7 @@ export const PrivateRoute = ({
     <Route {...rest} component={(props) => (
         isAuthenticated ? (
             <div>
-            {props.location.pathname!=='/first-aid' && props.location.pathname!=='/onboarding' ? <Header/>:null}
+            {exclusionArray.indexOf(location.pathname) < 0 && <Header/>}
             <Component {...props}/>
             </div>
         ) : (

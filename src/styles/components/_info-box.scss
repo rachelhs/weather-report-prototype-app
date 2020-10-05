@@ -3,7 +3,7 @@
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 100%
+    height: 100%;
 }
 
 .opacity-box-full-height {
@@ -57,13 +57,7 @@
 
 .info-box-landing {
     margin: 0 auto;
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
     padding: 5%;
-    width: 100%;
     max-width: 500px;
 }
 
@@ -82,7 +76,7 @@
 @media only screen and (max-width: 768px) {
     .info-box { 
         width: 100%;
-        height: 100%;
+        height: calc(100% - 70px);
     }
     .info-box-text-padding-top {
         padding-top: 20%;
@@ -100,7 +94,7 @@
 }
 
 .info-box-text {
-    margin: 50px 30px 50px 30px;
+    margin: 10% 30px 10% 30px;
 }
 
 .info-box-replays {

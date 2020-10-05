@@ -2,7 +2,6 @@ import { Router, Route, Switch } from 'react-router-dom'
 import React from 'react';
 import LandingPage from '../components/Pages/LandingPage'
 import HomePage from '../components/Home/HomePage'
-import FirstAidPage from '../components/Pages/FirstAidPage'
 import ThreeHomePage from '../components/Home/MoreThanThreeHome'
 import NotFound from '../components/Pages/NotFound'
 import LoginEmailForm from '../components/Login/LoginEmailForm'
@@ -40,7 +39,6 @@ const AppRouter = () => (
                 <PrivateRoute path="/symbol-description" component={SymbolDescription}/>
                 <PrivateRoute path="/symbol-more-detail" component={SymbolDetailedDescription}/>
                 <PrivateRoute path="/onboarding" component={ Onboarding } />
-                <PrivateRoute path="/first-aid" component={ FirstAidPage } />
                 <PrivateRoute path="/1" component={ TooHighRoute } />
                 <PrivateRoute path="/2" component={ HighRoute } />
                 <PrivateRoute path="/3" component={ OkRoute } />
