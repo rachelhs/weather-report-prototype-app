@@ -129,15 +129,20 @@
         },
         {
             "onboarding": {
-                "intro": "Introduction to Weather Report. Introduce weather as a visual metaphor for mental health.",
-                "bestPerson": "You're the best person to understand how you're feeling. This app is a tool to help you through a process of self-reflection to build resilience. This will be a conversation with yourselves. The more you put in the more you get out!",
-                "care": "We found that most people want to care for something other than themselves. So care for this environment, by adding daily weather",
-                "river": "Introduction to the river",
-                "plant": "Introduction to the plant",
-                "environment": "Introduction to the environment",
-                "seed": "Introduce Lily plant growing from seed, adding roots",
-                "roots": "Add a couple of Roots (Anchors)",
-                "feeling": "Introduction to how you are feeling and weather effect on environment"
+                "intro": "Welcome to Weather Report",
+                "bestPerson": "This is a tool to help you log how you're feeling, notice patterns in your mood and lead yourself through a process of self reflection. You’re the best person to understand how you’re feeling, this is just a process to help you help yourself.",
+                "care": "It can also sometimes be easier to care for something or someone other than yourself, so whilst the weather you enter is about how you’re feeling, the effect will be shown on the river. The river is a place of support.",
+                "river": "This is the water line, it will change depending on your weather.",
+                "environment": "This is the place where you’ll see the weather change, in relation to your mood.",
+                "plant": "This is the lily that you’ll see grow and float. Whatever your weather the lily is resilient and it will always float.",
+                "roots": "The lily has roots underneath the water. These roots will always be visible as the lily floats along the river. The roots represent your support network.",
+                "addRoots": "Let’s add the first person who you can contact for support, maybe a friend or family member, health professional, gp, neighbour, someone you trust?",
+                "putLily": "Great now let's put the lily in the river",
+                "language1": "The language around expressing how you feel can be difficult, layered and complex, so sometimes a metaphor can help",
+                "language2": "We all have some idea of what someone means when they say they feel 'stormy'",
+                "language3": "Weather Report uses this metaphor of inner weather to help you express, monitor and reflect on the patterns of your mood",
+                "addWeather1": "You can add weather up to 3 times a day and see the effect of the weather on the river.",
+                "addWeather2": "Let’s try inputting your inner weather for the first time"
             }
         },
         {

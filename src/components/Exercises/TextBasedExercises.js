@@ -1,7 +1,15 @@
 import React from 'react';
+import AudioPlayer from 'react-h5-audio-player';
+import breathing from 'file-loader!../../sounds/breathing.mp3'
 
 export const Breathing = () => {
-    return <h1 className='info-box-title'>insert breathing exercise here</h1>
+    return <div><h1 className='info-box-title'>insert breathing exercise here</h1>
+        <AudioPlayer
+            autoPlay
+            // src="http://www.hochmuth.com/mp3/Haydn_Adagio.mp3"
+            src={breathing}
+            onPlay={e => console.log("onPlay")} />
+    </div>
 }
 
 export const Meditating = () => {
