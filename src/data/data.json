@@ -111,73 +111,79 @@
             
         }
     },
-        {
-            "suicidal": {
-                "questions": {
-                    "risk": "Are you at risk of harming yourself?",
-                    "plan": "Have you made a plan?",
-                    "act": "Are you planning to act on that plan?",
-                    "pass": "These feelings will pass, however it seems you need to get support now.",
-                    "samaritans": "999 / Samaritans. Once you've rung 999 or Samaritans it would be a good idea to ring one of your supporters to let them know what's happening.",
-                    "help": "That's Good. Are you getting the help you need?",
-                    "crisis": "Call crisis team. If you need a referral to the crisis team you will need to contact your GP",
-                    "crisis2": "If the crisis team can't help immediately and you are still at risk please ring 999 or Samaritans",
-                    "spoken": "Have you spoken to anyone about how you feel?",
-                    "reach": "It could help to reach out to one of your anchors"
-                }
-            }
-        },
-        {
-            "onboarding": {
-                "intro": "Welcome to Weather Report",
-                "bestPerson": "This is a tool to help you log how you're feeling, notice patterns in your mood and lead yourself through a process of self reflection. You’re the best person to understand how you’re feeling, this is just a process to help you help yourself.",
-                "care": "It can also sometimes be easier to care for something or someone other than yourself, so whilst the weather you enter is about how you’re feeling, the effect will be shown on the river. The river is a place of support.",
-                "river": "This is the water line, it will change depending on your weather.",
-                "environment": "This is the place where you’ll see the weather change, in relation to your mood.",
-                "plant": "This is the lily that you’ll see grow and float. Whatever your weather the lily is resilient and it will always float.",
-                "roots": "The lily has roots underneath the water. These roots will always be visible as the lily floats along the river. The roots represent your support network.",
-                "addRoots": "Let’s add the first person who you can contact for support, maybe a friend or family member, health professional, gp, neighbour, someone you trust?",
-                "putLily": "Great now let's put the lily in the river",
-                "language1": "The language around expressing how you feel can be difficult, layered and complex, so sometimes a metaphor can help",
-                "language2": "We all have some idea of what someone means when they say they feel 'stormy'",
-                "language3": "Weather Report uses this metaphor of inner weather to help you express, monitor and reflect on the patterns of your mood",
-                "addWeather1": "You can add weather up to 3 times a day and see the effect of the weather on the river.",
-                "addWeather2": "Let’s try inputting your inner weather for the first time"
-            }
-        },
-        {
-            "home": {
-                "fish": "Things you’re grateful for",
-                "addToFish": "Would you like to add anything to your list?",
-                "anchors": "Here are your anchors / roots",
-                "addToAnchors": "Would you like to add an anchor?",
-                "pebbles": "Here are your saved positive memories",
-                "addToPebbles": "Would you like to add another?"
-            },
-            "words": {
-                "rainbow": ["Happy", "Manic", "Over stimulated", "Excited", "Loved or Love", "Adventurous", "Brave", "Confident", "Energetic", "Hopeful", "Creative", "Kind", "Content", "Nostalgic", "Invincible", "Careless"],
-                "sunshine": ["Happy","Excited","Loved or Love","Adventurous","Confident","Energetic","Hopeful","Creative","Content","Playful","Stimulated","OK","Relaxed","Calm","Dazed"],
-                "bluesky": ["Gentle","Neutral","OK","Content","Relaxed","Calm","Nothing","Blocked","Dazed","Stuck"],
-                "light-clouds": ["Nothing","Blocked","Dazed","Stuck","Anxious","Neutral","OK","Relaxed","Calm","Confused","Impatient"],
-                "grey-cloud": ["Nothing","Blocked","Dazed","Stuck","Anxious","Neutral","OK","Gentle","Isolated","Lonely","Nervous","Uneasy","Stupid","Lazy","Unhappy","Worried","Low"],
-                "cloud-rain-threat": ["Anxious","Regret","Scared","Unhappy","Worried","Lonely","Sad","Lost","Miserable","Empty","Hurt","Exhausted","Gentle","Neutral","Relentless","Rejected","Awful","Depressed"],
-                "dark-clouds": ["Anxious","Distressed","Lost","Miserable","Awful","Crushed","Bleak","Broken","Panic","Desperate","Depressed"],
-                "tsunami": ["Angry","Outraged","Furious","Greed","Jealousy","Risky","Panic","Crushed","Desperate","Broken","Anxious","Depressed","Manic","Overwhelmed","Excited","Adventurous","Energetic"],
-                "tornado": ["Suicidal","Shame","Risky","Panic","Anxious","Angry","Bleak","Broken","Desperate","Worthless","Humiliated","Depressed","Manic","Overwhelmed"]
-            },
-            "secondaryWords": ["Overwhelmed","Anxious","Depressed","Uneasy","Worried","Careless","Exhausted","Risky","Bleak","Nothing","OK","Dazed","Creative","Calm","Hopeful","Happy","Angry"],
-            "symbols" : ["rainbow", "sunshine", "bluesky", "light-clouds", "grey-cloud", "cloud-rain-threat", "dark-clouds", "tsunami", "tornado"],
-            "categories": {
-                "one":["Invincible","Manic","Over stimulated","Overwhelmed","Flighty","Panic","Careless"],
-                "two": ["Ecstatic","Loved or Love","Happy","Adventurous","Excited","Brave","Confident","Playful","Curious","Energetic","Feisty","Hopeful","Creative","Kind","Stimulated","Pleased"],
-                "three": ["Gentle","Neutral","OK","Content","Relaxed","Calm","Nostalgic"],
-                "four": ["Nothing","Blocked","Dazed","Stuck"],
-                "five": ["Confused","Impatient","Isolated","Lonely","Nervous","Uneasy","Stupid","Lazy","Unhappy","Worried","Regret","Low","Scared","Anxious"],
-                "six": ["Sad","Lost","Miserable","Empty","Hurt","Exhausted","Relentless","Rejected","Awful","Distressed","Depressed"],
-                "seven": ["Crushed","Bleak","Broken","Desperate","Worthless","Humiliated","Shame","Alienated"],
-                "eight": ["Angry","Outraged","Furious","Greed","Jealousy","Risky","Panic"],
-                "nine": ["Suicidal"]
+    {
+        "suicidal": {
+            "questions": {
+                "risk": "Are you at risk of harming yourself?",
+                "plan": "Have you made a plan?",
+                "act": "Are you planning to act on that plan?",
+                "pass": "These feelings will pass, however it seems you need to get support now.",
+                "samaritans": "999 / Samaritans. Once you've rung 999 or Samaritans it would be a good idea to ring one of your supporters to let them know what's happening.",
+                "help": "That's Good. Are you getting the help you need?",
+                "crisis": "Call crisis team. If you need a referral to the crisis team you will need to contact your GP",
+                "crisis2": "If the crisis team can't help immediately and you are still at risk please ring 999 or Samaritans",
+                "spoken": "Have you spoken to anyone about how you feel?",
+                "reach": "It could help to reach out to one of your anchors"
             }
         }
+    },
+    {
+        "onboarding": {
+            "intro": "Welcome to Weather Report",
+            "bestPerson": "This is a tool to help you log how you're feeling, notice patterns in your mood and lead yourself through a process of self reflection. You’re the best person to understand how you’re feeling, this is just a process to help you help yourself.",
+            "care": "It can also sometimes be easier to care for something or someone other than yourself, so whilst the weather you enter is about how you’re feeling, the effect will be shown on the river. The river is a place of support.",
+            "river": "This is the water line, it will change depending on your weather.",
+            "environment": "This is the place where you’ll see the weather change, in relation to your mood.",
+            "plant": "This is the lily that you’ll see grow and float. Whatever your weather the lily is resilient and it will always float.",
+            "roots": "The lily has roots underneath the water. These roots will always be visible as the lily floats along the river. The roots represent your support network.",
+            "addRoots": "Let’s add the first person who you can contact for support, maybe a friend or family member, health professional, gp, neighbour, someone you trust?",
+            "putLily": "Great now let's put the lily in the river",
+            "language1": "The language around expressing how you feel can be difficult, layered and complex, so sometimes a metaphor can help",
+            "language2": "We all have some idea of what someone means when they say they feel 'stormy'",
+            "language3": "Weather Report uses this metaphor of inner weather to help you express, monitor and reflect on the patterns of your mood",
+            "addWeather1": "You can add weather up to 3 times a day and see the effect of the weather on the river.",
+            "addWeather2": "Let’s try inputting your inner weather for the first time"
+        }
+    },
+    {
+        "home": {
+            "fish": "Things you’re grateful for",
+            "addToFish": "Would you like to add anything to your list?",
+            "anchors": "Here are your anchors / roots",
+            "addToAnchors": "Would you like to add an anchor?",
+            "pebbles": "Here are your saved positive memories",
+            "addToPebbles": "Would you like to add another?"
+        },
+        "words": {
+            "rainbow": ["Happy", "Manic", "Over stimulated", "Excited", "Loved or Love", "Adventurous", "Brave", "Confident", "Energetic", "Hopeful", "Creative", "Kind", "Content", "Nostalgic", "Invincible", "Careless"],
+            "sunshine": ["Happy","Excited","Loved or Love","Adventurous","Confident","Energetic","Hopeful","Creative","Content","Playful","Stimulated","OK","Relaxed","Calm","Dazed"],
+            "bluesky": ["Gentle","Neutral","OK","Content","Relaxed","Calm","Nothing","Blocked","Dazed","Stuck"],
+            "light-clouds": ["Nothing","Blocked","Dazed","Stuck","Anxious","Neutral","OK","Relaxed","Calm","Confused","Impatient"],
+            "grey-cloud": ["Nothing","Blocked","Dazed","Stuck","Anxious","Neutral","OK","Gentle","Isolated","Lonely","Nervous","Uneasy","Stupid","Lazy","Unhappy","Worried","Low"],
+            "cloud-rain-threat": ["Anxious","Regret","Scared","Unhappy","Worried","Lonely","Sad","Lost","Miserable","Empty","Hurt","Exhausted","Gentle","Neutral","Relentless","Rejected","Awful","Depressed"],
+            "dark-clouds": ["Anxious","Distressed","Lost","Miserable","Awful","Crushed","Bleak","Broken","Panic","Desperate","Depressed"],
+            "tsunami": ["Angry","Outraged","Furious","Greed","Jealousy","Risky","Panic","Crushed","Desperate","Broken","Anxious","Depressed","Manic","Overwhelmed","Excited","Adventurous","Energetic"],
+            "tornado": ["Suicidal","Shame","Risky","Panic","Anxious","Angry","Bleak","Broken","Desperate","Worthless","Humiliated","Depressed","Manic","Overwhelmed"]
+        },
+        "secondaryWords": ["Overwhelmed","Anxious","Depressed","Uneasy","Worried","Careless","Exhausted","Risky","Bleak","Nothing","OK","Dazed","Creative","Calm","Hopeful","Happy","Angry"],
+        "symbols" : ["rainbow", "sunshine", "bluesky", "light-clouds", "grey-cloud", "cloud-rain-threat", "dark-clouds", "tsunami", "tornado"],
+        "categories": {
+            "one":["Invincible","Manic","Over stimulated","Overwhelmed","Flighty","Panic","Careless"],
+            "two": ["Ecstatic","Loved or Love","Happy","Adventurous","Excited","Brave","Confident","Playful","Curious","Energetic","Feisty","Hopeful","Creative","Kind","Stimulated","Pleased"],
+            "three": ["Gentle","Neutral","OK","Content","Relaxed","Calm","Nostalgic"],
+            "four": ["Nothing","Blocked","Dazed","Stuck"],
+            "five": ["Confused","Impatient","Isolated","Lonely","Nervous","Uneasy","Stupid","Lazy","Unhappy","Worried","Regret","Low","Scared","Anxious"],
+            "six": ["Sad","Lost","Miserable","Empty","Hurt","Exhausted","Relentless","Rejected","Awful","Distressed","Depressed"],
+            "seven": ["Crushed","Bleak","Broken","Desperate","Worthless","Humiliated","Shame","Alienated"],
+            "eight": ["Angry","Outraged","Furious","Greed","Jealousy","Risky","Panic"],
+            "nine": ["Suicidal"]
+        }
+    },
+    {
+        "menu": {
+            "wrDescription": "This is a tool to help you log how you're feeling, notice patterns in your mood and lead yourself through a process of self reflection. You’re the best person to understand how you’re feeling, this is just a process to help you, help yourself.",
+            "accessibility": "This is a tool to help you log how you're feeling, notice patterns in your mood and lead yourself through a process of self reflection. You’re the best person to understand how you’re feeling, this is just a process to help you, help yourself."            
+        }
+    }
 ]
 
