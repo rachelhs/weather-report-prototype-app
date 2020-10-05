@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="90" height="90" viewBox="0 0 90 90">
+  <defs>
+    <clipPath id="clip-path">
+      <circle id="Ellipse_114" data-name="Ellipse 114" cx="43.85" cy="43.85" r="43.85" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <path id="Path_480" data-name="Path 480" d="M75.149,29.9C74.6,27.031,72.5,23.707,64.9,24.369a9.1,9.1,0,0,0-4.283,1.409A23.95,23.95,0,0,0,58.56,20.7c-3.74-5.593-10.989-6.481-15.448-1.923-1.409,1.465-2.649,4.029-3.959,6.586a7.284,7.284,0,0,0-3.522-.888,6.662,6.662,0,0,0-6.9,6.389,6.121,6.121,0,0,0,.085,1.021A15.5,15.5,0,0,0,26.7,30.737c-4.043-1.684-8.812,1.684-9.7,7.044,23.725,0,44.462.394,68.187.176C84.412,31.018,80.031,28.637,75.149,29.9Z" transform="translate(-17 -15.858)" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Group_391" data-name="Group 391" transform="translate(-240 -365)">
+    <g id="Layer_2" data-name="Layer 2" transform="translate(241.4 366.4)">
+      <g id="_06_Medium_Low" data-name="06 Medium Low">
+        <g id="Group_386" data-name="Group 386" clip-path="url(#clip-path)">
+          <circle id="Ellipse_113" data-name="Ellipse 113" cx="43.85" cy="43.85" r="43.85" fill="#6392a0"/>
+          <path id="Path_477" data-name="Path 477" d="M3,81.24a43.857,43.857,0,0,0,83.536,0Z" transform="translate(-0.887 -24.014)" fill="#1e9593"/>
+          <line id="Line_75" data-name="Line 75" x1="3.642" y2="16.032" transform="translate(58.769 29.304)" fill="none" stroke="#fffcef" stroke-miterlimit="10" stroke-width="3" stroke-dasharray="23.34"/>
+          <line id="Line_76" data-name="Line 76" x1="8.368" y2="36.798" transform="translate(17.385 29.311)" fill="none" stroke="#fffcef" stroke-miterlimit="10" stroke-width="3" stroke-dasharray="53.57"/>
+          <line id="Line_77" data-name="Line 77" x1="7.889" y2="36.629" transform="translate(37.214 27.021)" fill="none" stroke="#fffcef" stroke-miterlimit="10" stroke-width="3" stroke-dasharray="53.2"/>
+          <line id="Line_78" data-name="Line 78" y1="17.145" x2="4.022" transform="translate(25.598 53.74)" fill="none" stroke="#fffcef" stroke-miterlimit="10" stroke-width="3"/>
+          <line id="Line_79" data-name="Line 79" y1="3.924" x2="0.923" transform="translate(30.029 48.076)" fill="none" stroke="#fffcef" stroke-miterlimit="10" stroke-width="3" stroke-dasharray="3.18 2.54 0 0"/>
+          <line id="Line_80" data-name="Line 80" y1="17.145" x2="4.022" transform="translate(30.952 30.931)" fill="none" stroke="#fffcef" stroke-miterlimit="10" stroke-width="3"/>
+          <line id="Line_81" data-name="Line 81" x1="3.649" y2="16.032" transform="translate(54.197 50.908)" fill="none" stroke="#fffcef" stroke-miterlimit="10" stroke-width="3" stroke-dasharray="23.34"/>
+          <line id="Line_82" data-name="Line 82" x1="7.896" y2="36.636" transform="translate(63.82 25.965)" fill="none" stroke="#fffcef" stroke-miterlimit="10" stroke-width="3" stroke-dasharray="53.2"/>
+          <line id="Line_83" data-name="Line 83" y1="17.145" x2="4.029" transform="translate(44.815 52.767)" fill="none" stroke="#fffcef" stroke-miterlimit="10" stroke-width="3"/>
+          <line id="Line_84" data-name="Line 84" y1="3.924" x2="0.923" transform="translate(49.252 47.104)" fill="none" stroke="#fffcef" stroke-miterlimit="10" stroke-width="3" stroke-dasharray="3.18 2.54 0 0"/>
+          <line id="Line_85" data-name="Line 85" y1="17.145" x2="4.022" transform="translate(50.175 29.959)" fill="none" stroke="#fffcef" stroke-miterlimit="10" stroke-width="3"/>
+          <path id="Path_478" data-name="Path 478" d="M75.149,29.9C74.6,27.031,72.5,23.707,64.9,24.369a9.1,9.1,0,0,0-4.283,1.409A23.95,23.95,0,0,0,58.56,20.7c-3.74-5.593-10.989-6.481-15.448-1.923-1.409,1.465-2.649,4.029-3.959,6.586a7.284,7.284,0,0,0-3.522-.888,6.662,6.662,0,0,0-6.9,6.389,6.121,6.121,0,0,0,.085,1.021A15.5,15.5,0,0,0,26.7,30.737c-4.043-1.684-8.812,1.684-9.7,7.044,23.725,0,44.16-.134,67.877-.352C84.109,30.483,80.031,28.637,75.149,29.9Z" transform="translate(-5.025 -4.687)" fill="#fffcef"/>
+          <g id="Group_385" data-name="Group 385" transform="translate(11.975 11.171)" clip-path="url(#clip-path-2)">
+            <path id="Path_479" data-name="Path 479" d="M74,37.611c-.507-2.867-2.444-6.164-9.474-5.53a7.988,7.988,0,0,0-3.959,1.444,25.774,25.774,0,0,0-1.895-5.114c-3.423-5.593-10.115-6.481-14.229-1.895-1.3,1.465-2.437,4.029-3.649,6.586a6.34,6.34,0,0,0-9.608,5.5,7.043,7.043,0,0,0,.077,1.021,13.855,13.855,0,0,0-1.923-1.148c-3.733-1.684-11.419.6-12.236,5.959,21.886,0,52.57,1.127,74.456.9C90.81,38.371,78.5,36.35,74,37.611Z" transform="translate(-17.03 -18.139)" fill="#9fc1ca"/>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="Group_381" data-name="Group 381" transform="translate(70 203)">
+      <g id="Ellipse_96" data-name="Ellipse 96" transform="translate(170 162)" fill="none" stroke="#3a3d7d" stroke-width="2">
+        <circle cx="45" cy="45" r="45" stroke="none"/>
+        <circle cx="45" cy="45" r="44" fill="none"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -57,7 +57,7 @@ export class LoginEmailForm extends React.Component {
 
     return (
         <div>
-            <div className='anim-full-height'><Animation speed={0.2} animation={"neutralBackground"} /></div>
+            <div className='anim-full-height'><Animation speed={0.2} animation={"neutralNoTrees"} /></div>
             <div className='info-box-login'>
                 <CSSTransition in={this.state.appIntro} timeout={1500} classNames="transform-up" appear onExited={() => this.showLoginForm()}>
                     <h1 className='box-layout__title'>WEATHER REPORT</h1>

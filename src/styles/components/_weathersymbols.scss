@@ -7,15 +7,8 @@
 }
 
 .symbol {
-    width: 90px;
-    height: 90px;
     opacity: 1;
-    margin: 15px;
-    @media (max-width: $desktop-breakpoint) {
-        width: 60px;
-        height: 60px;
-        margin-top: 5px;
-    }
+    margin: 5px;
 }
 
 .symbol-button {
@@ -41,15 +34,3 @@
     border-radius: 0.4rem;
     margin: 5px 10px 5px 10px
 }
-
-// .symbol-button-border:active {
-//     background: #545775;
-//     color: white;
-//     border: none;
-// }
-
-// .symbol-button-border:hover {
-//     background: #545775;
-//     color: white;
-//     border: none;
-// }
