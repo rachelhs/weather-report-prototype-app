@@ -135,9 +135,14 @@
                 "river": "This is the water line, it will change depending on your weather.",
                 "environment": "This is the place where you’ll see the weather change, in relation to your mood.",
                 "plant": "This is the lily that you’ll see grow and float. Whatever your weather the lily is resilient and it will always float.",
-                "seed": "Introduce Lily plant growing from seed, adding roots",
-                "roots": "Add a couple of Roots (Anchors)",
-                "feeling": "Introduction to how you are feeling and weather effect on environment"
+                "roots": "The lily has roots underneath the water. These roots will always be visible as the lily floats along the river. The roots represent your support network.",
+                "addRoots": "Let’s add the first person who you can contact for support, maybe a friend or family member, health professional, gp, neighbour, someone you trust?",
+                "putLily": "Great now let's put the lily in the river",
+                "language1": "The language around expressing how you feel can be difficult, layered and complex, so sometimes a metaphor can help",
+                "language2": "We all have some idea of what someone means when they say they feel 'stormy'",
+                "language3": "Weather Report uses this metaphor of inner weather to help you express, monitor and reflect on the patterns of your mood",
+                "addWeather1": "You can add weather up to 3 times a day and see the effect of the weather on the river.",
+                "addWeather2": "Let’s try inputting your inner weather for the first time"
             }
         },
         {

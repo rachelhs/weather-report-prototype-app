@@ -4,7 +4,8 @@ import sun from '../../animations/sun.json'
 import fish from '../../animations/00_Fish_Still.json'
 import environment from '../../animations/10_Neutral_BG_With_Trees.json'
 import growing from '../../animations/growing'
-import lilypad from '../../animations/Lily_Pad'
+import lilypad from '../../animations/Lily_Pad.json'
+import roots from '../../animations/Roots.json'
 import HappyBackground from '../../animations/02_Happy_Weather_River_v8.json' 
 import tooHighFadeIn from '../../animations/01_Too_High_River_Fade_In.json'
 import tooHighFadeOut from '../../animations/01_Too_High_River_Fade_Out.json'
@@ -57,7 +58,10 @@ class Animation extends Component {
                 this.setState({ animationData: riverbed })
                 break;
             case 'riverLevel':
-                this.setState({ animationData: riverLevel})
+                this.setState({ animationData: riverLevel })
+                break;
+            case 'roots':
+                this.setState({ animationData: roots })
                 break;
             case 'sun':
                 this.setState({ animationData: sun })

@@ -5,15 +5,17 @@ import { AddAnchor } from '../../components/SharedComponents/MentalHealthQuestio
 import '../../styles/animation.css';
 const data = require('../../data/data.json');
 const fadeTime = 3000;
-const fadeTimeLonger = 4000;
+const fadeTimeLonger = 5000;
 
 export class Onboarding extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            intro: true
+            intro: true,
+            language1: false
         }
+        this.show = this.show.bind(this);
     }
 
     componentDidMount() {
@@ -105,8 +107,16 @@ export class Onboarding extends React.Component {
         this.setState({ dropped: true })
     }
 
-    triggerTimeout() {
-        setTimeout(() => { this.setState({ dropped: false }) }, 3000)
+    showDropped2() {
+        this.setState({ dropped2: true })
+    }
+
+    triggerTimeout(itemToFadeOut) {
+        setTimeout(() => { this.setState({ [itemToFadeOut]: false }) }, fadeTime)
+    }
+    
+    triggerDroppedFade() {
+        setTimeout(() => {this.setState({ dropped2: false })}, fadeTime)
     }
 
     showFeeling() {
@@ -115,6 +125,14 @@ export class Onboarding extends React.Component {
 
     endFeeling() {
         this.setState({ feeling: false })
+    }
+
+    show(item) {
+        this.setState({ [item]: true })
+    }
+
+    hide(item) {
+        this.setState({ [item]: false })
     }
 
     // navigates away to start the choose weather symbol path
@@ -131,12 +149,16 @@ export class Onboarding extends React.Component {
                     <CSSTransition in={this.state.river} timeout={fadeTime} classNames="fade" unmountOnExit onEnter={() => { this.fadeOutRiver() }} onExited={() => { this.showEnvironment() }}><div className='background-box-no-fade'><AnimationsLayered speeds={[1]} animations={['riverLevel']} /><div className='info-box'><h1>{data[9].onboarding.river}</h1></div></div></CSSTransition>
                     <CSSTransition in={this.state.environment} timeout={fadeTime} classNames="fade" unmountOnExit onEnter={() => { this.fadeOutEnvironment() }} onExited={() => { this.showPlant() }}><div className='background-box-no-fade'><AnimationsLayered speeds={[1]} animations={['environment']} /><div className='info-box'><h1>{data[9].onboarding.environment}</h1></div></div></CSSTransition>
                     <CSSTransition in={this.state.plant} timeout={fadeTime} classNames="fade" unmountOnExit onEnter={() => { this.fadeOutLilypad() }} onExited={() => { this.showSeed() }}><div className='background-box-no-fade'><AnimationsLayered speeds={[1]} animations={['lilypad']} /><div className='info-box'><h1>{data[9].onboarding.plant}</h1></div></div></CSSTransition>
-                    <CSSTransition in={this.state.seed} timeout={fadeTime} classNames="fade" unmountOnExit onExited={() => { this.showRoot() }}><div className='background-box-no-fade'><AnimationsLayered animations={['growing']} /><div className='info-box'><TextWithNext text={data[9].onboarding.seed} onClick={this.endSeed.bind(this)} /></div></div></CSSTransition>
-                    <CSSTransition in={this.state.root} timeout={fadeTime} classNames="fade" unmountOnExit onExited={() => { this.showDropped() }}><div className='background-box'><AnimationsLayered animations={['growing']} /><div className='info-box'><h1>{data[9].onboarding.roots}</h1><AddAnchor buttonClick={this.endRoot.bind(this)}/></div></div></CSSTransition>
-                    <CSSTransition in={this.state.dropped} timeout={fadeTime} classNames="fade" unmountOnExit onEnter={() => { this.triggerTimeout() }} onExited={() => { this.showFeeling() }}><div className='background-box'><AnimationsLayered animations={['waves','growing']} /></div></CSSTransition>
-                    <CSSTransition in={this.state.feeling} timeout={fadeTime} classNames="fade" unmountOnExit onExited={() => { this.goToChooseWeather() }}><div className='background-box'><AnimationsLayered animations={['waves','plant','environment']} /><div className='info-box'><TextWithNext text={data[9].onboarding.feeling} onClick={this.endFeeling.bind(this)} /></div></div></CSSTransition>
-
-        </div>
+                    <CSSTransition in={this.state.seed} timeout={fadeTime} classNames="fade" unmountOnExit onExited={() => { this.showRoot() }}><div className='background-box-no-fade'><AnimationsLayered speeds={[1]} animations={['roots']} /><div className='info-box'><TextWithNext text={data[9].onboarding.roots} onClick={this.endSeed.bind(this)} /></div></div></CSSTransition>
+                    <CSSTransition in={this.state.root} timeout={fadeTime} classNames="fade" unmountOnExit onExited={() => { this.showDropped() }}><div className='background-box-no-fade'><AnimationsLayered speeds={[1]} animations={['roots']} /><div className='info-box'><h1>{data[9].onboarding.addRoots}</h1><AddAnchor buttonClick={this.endRoot.bind(this)}/></div></div></CSSTransition>
+                    <CSSTransition in={this.state.dropped} timeout={1000} classNames="fade" unmountOnExit onEnter={() => { this.triggerTimeout('dropped') }} onExited={() => { this.show('dropped2') }}><div className='background-box-no-fade'><AnimationsLayered speeds={[1]} animations={['riverLevel']} /><div className='info-box'><h1>{data[9].onboarding.putLily}</h1></div></div></CSSTransition>
+                    <CSSTransition in={this.state.dropped2} timeout={fadeTime} classNames="fade" unmountOnExit onEnter={() => { this.triggerTimeout('dropped2') }} onExited={() => { this.show('language1') }}><div className='background-box-no-fade'><AnimationsLayered speeds={[1, 1, 1]} animations={['riverLevel', 'lilypad', 'roots']} /></div></CSSTransition>
+                    <CSSTransition in={this.state.language1} timeout={fadeTime} classNames="fade" unmountOnExit onEnter={() => { this.triggerTimeout('language1') }} onExited={() => { this.show('language2') }}><div className='background-box-no-fade'><div className='info-box'><h1>{data[9].onboarding.language1}</h1></div></div></CSSTransition>
+                    <CSSTransition in={this.state.language2} timeout={fadeTime} classNames="fade" unmountOnExit onEnter={() => { this.triggerTimeout('language2') }} onExited={() => { this.show('language3') }}><div className='background-box-no-fade'><div className='info-box'><h1>{data[9].onboarding.language2}</h1></div></div></CSSTransition>
+                    <CSSTransition in={this.state.language3} timeout={fadeTime} classNames="fade" unmountOnExit onEnter={() => { this.triggerTimeout('language3') }} onExited={() => { this.show('addWeather1') }}><div className='background-box-no-fade'><div className='info-box'><h1>{data[9].onboarding.language3}</h1></div></div></CSSTransition>
+                    <CSSTransition in={this.state.addWeather1} timeout={fadeTime} classNames="fade" unmountOnExit onEnter={() => { this.triggerTimeout('addWeather1') }} onExited={() => { this.show('addWeather2') }}><div className='background-box-no-fade'><AnimationsLayered speeds={[1]} animations={['HappyBackground']} /><div className='info-box'><h1>{data[9].onboarding.addWeather1}</h1></div></div></CSSTransition>
+                    <CSSTransition in={this.state.addWeather2} timeout={fadeTime} classNames="fade" unmountOnExit onEnter={() => { this.triggerTimeout('addWeather2') }} onExited={() => { this.goToChooseWeather() }}><div className='background-box-no-fade'><AnimationsLayered speeds={[1]} animations={['HappyBackground']} /><div className='info-box'><h1>{data[9].onboarding.addWeather2}</h1></div></div></CSSTransition>
+                    </div>
         );
     }
 }
