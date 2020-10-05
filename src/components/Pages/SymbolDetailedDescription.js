@@ -69,7 +69,7 @@ export default class SymbolDetailedDescription extends React.Component {
                 break; 
             case "nine":
                 this.props.history.push('9');
-                break; 
+                break;
             default:
                 this.props.history.push('/landing');
         }
