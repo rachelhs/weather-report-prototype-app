@@ -162,8 +162,8 @@
             "grey-cloud": ["Nothing","Blocked","Dazed","Stuck","Anxious","Neutral","OK","Gentle","Isolated","Lonely","Nervous","Uneasy","Stupid","Lazy","Unhappy","Worried","Low"],
             "cloud-rain-threat": ["Anxious","Regret","Scared","Unhappy","Worried","Lonely","Sad","Lost","Miserable","Empty","Hurt","Exhausted","Gentle","Neutral","Relentless","Rejected","Awful","Depressed"],
             "dark-clouds": ["Anxious","Distressed","Lost","Miserable","Awful","Crushed","Bleak","Broken","Panic","Desperate","Depressed"],
-            "tsunami": ["Angry","Outraged","Furious","Greed","Jealousy","Risky","Panic","Crushed","Desperate","Broken","Anxious","Depressed","Manic","Overwhelmed","Excited","Adventurous","Energetic"],
-            "tornado": ["Suicidal","Shame","Risky","Panic","Anxious","Angry","Bleak","Broken","Desperate","Worthless","Humiliated","Depressed","Manic","Overwhelmed"]
+            "tornado": ["Angry","Outraged","Furious","Greed","Jealousy","Risky","Panic","Crushed","Desperate","Broken","Anxious","Depressed","Manic","Overwhelmed","Excited","Adventurous","Energetic"],
+            "tsunami": ["Suicidal","Shame","Risky","Panic","Anxious","Angry","Bleak","Broken","Desperate","Worthless","Humiliated","Depressed","Manic","Overwhelmed"]
         },
         "secondaryWords": ["Overwhelmed","Anxious","Depressed","Uneasy","Worried","Careless","Exhausted","Risky","Bleak","Nothing","OK","Dazed","Creative","Calm","Hopeful","Happy","Angry"],
         "symbols" : ["rainbow", "sunshine", "bluesky", "light-clouds", "grey-cloud", "cloud-rain-threat", "dark-clouds", "tsunami", "tornado"],
