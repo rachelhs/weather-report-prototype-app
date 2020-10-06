@@ -1,5 +1,5 @@
 import React from 'react';
-import { AnimationsLayered, ReasonForFeelings, FeedbackStatement, ReactFirebaseFileUpload } from '../SharedComponents/SharedComponents';
+import { AnimationsLayered, ReasonForFeelings, FeedbackStatement } from '../SharedComponents/SharedComponents';
 import { ReasonForFeelingsInputAndReminder } from '../SharedComponents/ReasonForFeeling'
 import { LikeAboutYourselfQuestion, EnjoyQuestion } from '../SharedComponents/MentalHealthQuestions';
 import { randomQuestionNumber } from '../../actions/route-functions';
@@ -18,11 +18,8 @@ class HighRoute extends React.Component {
             knowReasonForFeeling: null,
             randQues: null,
             showRandQues: null,
-            showSetReminderQuestion: null,
             takePhoto: null,
-            showTakePhoto: null,
             showFeedbackStatement: null,
-            uploadPhoto: null,
             neutralAnimation: true, 
             highFadeIn: false,
             whiteBackground: false,
@@ -54,32 +51,15 @@ class HighRoute extends React.Component {
 
     afterReasonForFeeling() { this.state.knowReasonForFeeling ? this.setState({ showReasonInput: true }) : this.setState({ showRandQues: true }) }
 
-    answeredReasonInput() { this.setState({ showReasonInput: false }) }
-
     answeredRandomQuestion() { this.setState({ showRandQues: false }) }
 
     showFeedbackStatement() { this.setState({ showFeedbackStatement: true }) }
-
-    showSetReminder() { this.setState({ showSetReminderQuestion: true }) }
 
     noSetReminder(answeredNo) {
         if (answeredNo) {
             this.setState({ showReasonInput: false })
         }
-        // this.setState({ showReasonInput: false }) 
     }
-
-    saveReminder() {
-        //save input and yes to reminder
-    }
-
-    feedbackOrTakePhotoQuestion() { this.state.takePhoto ? this.setState({ showTakePhoto: true }) : this.setState({ showFeedbackStatement: true }) }
-
-    answeredPhotoAsk(yes) { yes ? this.setState({ takePhotoYes: true, showTakePhoto: false }) : this.setState({ showTakePhoto: false }) }
-
-    photoOrFeedback() { this.state.takePhotoYes ? this.setState({ uploadPhoto: true }) : this.setState({ showFeedbackStatement: true }) }
-
-    uploadedPhoto() { this.setState({ uploadPhoto: false }) }
 
     render() {
         const randomQuestion = this.state.randQues == 0 ? <LikeAboutYourselfQuestion buttonClick={this.answeredRandomQuestion.bind(this)} /> : <EnjoyQuestion buttonClick={this.answeredRandomQuestion.bind(this)} />;
@@ -101,11 +81,6 @@ class HighRoute extends React.Component {
                     <CSSTransition in={this.state.showRandQues} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.showFeedbackStatement()}>{randomQuestion}</CSSTransition>
                     {/* if user ansers 'yes' to reason for feeling */}
                     <CSSTransition in={this.state.showReasonInput} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.showFeedbackStatement()}><ReasonForFeelingsInputAndReminder onClick={this.noSetReminder.bind(this)} /></CSSTransition>
-                    {/* <CSSTransition in={this.state.showSetReminderQuestion} timeout={2000} className="fade" unmountOnExit onExited={() => this.feedbackOrTakePhotoQuestion()} ><SetReminder onClick={this.answeredSetReminder.bind(this)} /></CSSTransition>
-                    {/* if user ansers 'yes' to record memory */}
-                    {/* <CSSTransition in={this.state.showTakePhoto} timeout={2000} className="fade" unmountOnExit onExited={() => this.photoOrFeedback()} ><TakePhoto onClick={this.answeredPhotoAsk.bind(this)} /></CSSTransition> */}
-                    {/* if user ansers 'yes' to upload photo */}
-                    <CSSTransition in={this.state.uploadPhoto} timeout={2000} classNames="fade" appear unmountOnExit unmountOnExit onExited={() => this.showFeedbackStatement()}><ReactFirebaseFileUpload onClick={this.uploadedPhoto.bind(this)} /></CSSTransition> 
                     {/* show feedback statement */}
                     <CSSTransition in={this.state.showFeedbackStatement} timeout={2000} className="fade" unmountOnExit><FeedbackStatement dataFromParent={this.state.route}/></CSSTransition>
                 </div>

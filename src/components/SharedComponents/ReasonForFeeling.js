@@ -7,6 +7,7 @@ import moment from 'moment';import database from '../../firebase/firebase';
 import { CSSTransition } from 'react-transition-group';
 import { storage } from "../../firebase/firebase";
 import { Link } from 'react-router-dom';
+import { ReactFirebaseFileUpload } from '../SharedComponents/SharedComponents'
 
 // Is there anything you are aware of that has made you feel like this INPUT BOX
 export class ReasonForFeelingsInputAndReminder extends React.Component {
@@ -19,61 +20,24 @@ export class ReasonForFeelingsInputAndReminder extends React.Component {
             showTakePhoto: null,
             takePhoto: null,
             value: '',
-            time:  moment(), 
-            image: null,
-            url: "nothing",
-            progress: 0,
-            createdAt: props.entry ? moment(props.entry.createdAt) : moment()
+            time:  moment().format(), 
         };
     }
 
     // functions for photo upload
+    closePhotoOption() {
+        this.setState({ showTakePhoto: false})
+    }
+
     yesTakePhoto() {
+        console.log("here where i should be")
+        this.setState({ takePhoto: true})
         const user = firebase.auth().currentUser;
         const uid = user.uid;
         database.ref(`users/${uid}/reasonForFeeling/${this.state.time}`).update({
             photoReminder: "yes"
         })
-        this.setState({ takePhoto: true})
     }
-
-    handleChange = (e) => {
-        if (e.target.files[0]) {
-          this.setState({ image: e.target.files[0] });
-        }
-    };
-    
-    handleUpload = () => {
-        const user = firebase.auth().currentUser;
-        const uid = user.uid;
-        const uploadTask = storage.ref(`images/${this.state.image.name}`).put(this.state.image);
-        uploadTask.on(
-            "state_changed",
-            snapshot => {
-                const progress = Math.round(
-                (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-                );
-                this.setState({ progress: progress });
-            },
-            error => {
-                console.log(error);
-            },
-            () => {
-                storage
-                .ref("images")
-                .child(this.state.image.name)
-                .getDownloadURL()
-                .then(url => {
-                    this.setState({ url: url });
-                    const data = {
-                        url: this.state.url,
-                        savedOn: this.state.createdAt.valueOf()
-                    }
-                    database.ref(`users/${uid}/reasonForFeeling/${this.state.time}`).push(data)
-                });
-            }
-        );
-    };
 
     // functions for reason for feeling upload
     handleNoteSubmit = (e) => {
@@ -89,22 +53,30 @@ export class ReasonForFeelingsInputAndReminder extends React.Component {
     askPhoto() { this.setState({ showTakePhoto: true})}
     // do you want reminding false
     yesSetReminder() {
-        console.log('remind yes')
         this.setState({ showReminder: false})
     }
     // send input to database
     sendInput(remind) {
+        let date = moment().format("DD-MM-YYYY");
+        let time = moment().format("kk-mm");
         const user = firebase.auth().currentUser;
         const uid = user.uid;
         database.ref(`users/${uid}/reasonForFeeling/${this.state.time}`).update({
             reason: this.state.value,
             remind: remind,
         })
+        if (remind) {
+            console.log('sais yes to remind', remind)
+            database.ref(`users/${uid}/pebbles/${this.state.time}`).update({
+                reason: this.state.value,
+                time: time
+            })
+        }
         this.setState({ showReminder: false})
     }
 
     render() {
-        const feedback = this.state.progress == 100 ? <h2>Thank you for uploading this memory</h2> : <h2></h2>;
+        const time = this.state.time;
         return (
             <div>
                 <CSSTransition in={this.state.showInput} timeout={2000} classNames="fade" appear unmountOnExit onExited={() => this.setReminder()}>
@@ -130,11 +102,11 @@ export class ReasonForFeelingsInputAndReminder extends React.Component {
                         </div>
                     </div>
                 </CSSTransition>
-                <CSSTransition in={this.state.showTakePhoto} timeout={2000} classNames="fade" unmountOnExit>
+                <CSSTransition in={this.state.showTakePhoto} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.yesTakePhoto()}>
                     <div>
                         <h1 className='info-box-title'>{data[3].shared.photoAsk}</h1>
                         <div className='button-container'>
-                            <button className='next-button' onClick={this.yesTakePhoto.bind(this)}>Yes</button>
+                            <button className='next-button' onClick={this.closePhotoOption.bind(this)}>Yes</button>
                             <button className='next-button'
                                 onClick={(e) => {
                                     this.sendInput(true);
@@ -145,14 +117,17 @@ export class ReasonForFeelingsInputAndReminder extends React.Component {
                     </div>
                 </CSSTransition>
                 <CSSTransition in={this.state.takePhoto} timeout={2000} classNames="fade" unmountOnExit>
-                <div>
-                    <input type="file" onChange={this.handleChange} />
-                    <button onClick={this.handleUpload}>Upload</button>
-                    { feedback }
-                    <div className='button-container'>
-                        <button className='next-button' onClick={(e) => this.props.onClick(true)}>Next</button>
+                    <div>
+                        <ReactFirebaseFileUpload time={time} />
+                        <div className='button-container'>
+                            <button className='next-button'
+                                onClick={(e) => {
+                                    this.sendInput(true);
+                                    this.props.onClick(true);
+                                }}>Next
+                            </button>
+                        </div>
                     </div>
-                </div>
                 </CSSTransition>
             </div>
         )
