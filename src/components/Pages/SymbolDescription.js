@@ -19,6 +19,7 @@ export default class SymbolDescription extends React.Component {
 
     render() {
         console.log('weather', this.state.weatherSymbol)
+        console.log('mainword', this.state.mainWord)
         return (
             <div className='background-box'>
                 <AnimationsLayered speeds={[0]} animations={['neutralBackground']} />
