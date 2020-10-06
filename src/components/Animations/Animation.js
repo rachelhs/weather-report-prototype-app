@@ -39,7 +39,7 @@ import fishSwimming from '../../animations/00_Fish_Swimming_across'
 import riverbed from '../../animations/Riverbed.json'
 import riverLevel from '../../animations/10_River_Level.json'
 import neutralNoTrees from '../../animations/10_Neutral_River_No Trees.json'
-import arrow from '../../animations/arrow.json'
+import meditation from '../../animations/11_Meditation_Screen_v1.json'
 
 class Animation extends Component {
 
@@ -175,6 +175,9 @@ class Animation extends Component {
                 break
             case 'neutralNoTrees':
                 this.setState({ animationData: neutralNoTrees})
+                break
+            case 'meditation':
+                this.setState({ animationData: meditation })
                 break
             default:
               // code block
