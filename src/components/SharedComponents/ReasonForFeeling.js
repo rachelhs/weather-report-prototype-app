@@ -1,0 +1,135 @@
+// FILE CONTAINING COMPONENTS WHICH ARE SHARED ACROSS PATHS
+const data = require('../../data/data.json');
+const firebase = require('firebase/app');
+require('firebase/auth');
+import React, {useState} from 'react';
+import moment from 'moment';import database from '../../firebase/firebase';
+import { CSSTransition } from 'react-transition-group';
+import { storage } from "../../firebase/firebase";
+import { Link } from 'react-router-dom';
+import { ReactFirebaseFileUpload } from '../SharedComponents/SharedComponents'
+
+// Is there anything you are aware of that has made you feel like this INPUT BOX
+export class ReasonForFeelingsInputAndReminder extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { 
+            showInput: true,
+            showReminder: false,
+            wantsReminding: false,
+            showTakePhoto: null,
+            takePhoto: null,
+            value: '',
+            time:  moment().format(), 
+        };
+    }
+
+    // functions for photo upload
+    closePhotoOption() {
+        this.setState({ showTakePhoto: false})
+    }
+
+    yesTakePhoto() {
+        console.log("here where i should be")
+        this.setState({ takePhoto: true})
+        const user = firebase.auth().currentUser;
+        const uid = user.uid;
+        database.ref(`users/${uid}/reasonForFeeling/${this.state.time}`).update({
+            photoReminder: "yes"
+        })
+    }
+
+    // functions for reason for feeling upload
+    handleNoteSubmit = (e) => {
+        e.preventDefault();
+        this.setState({ showInput: false});
+    }
+
+    handleNoteChange = (e) => { this.setState({ value: e.target.value }) }
+
+    // do you want reminding show
+    setReminder() { this.setState({ showReminder: true, wantsReminding: true}) }
+    // take a photo
+    askPhoto() { this.setState({ showTakePhoto: true})}
+    // do you want reminding false
+    yesSetReminder() {
+        this.setState({ showReminder: false})
+    }
+    // send input to database
+    sendInput(remind) {
+        let date = moment().format("DD-MM-YYYY");
+        let time = moment().format("kk-mm");
+        const user = firebase.auth().currentUser;
+        const uid = user.uid;
+        database.ref(`users/${uid}/reasonForFeeling/${this.state.time}`).update({
+            reason: this.state.value,
+            remind: remind,
+        })
+        if (remind) {
+            console.log('sais yes to remind', remind)
+            database.ref(`users/${uid}/pebbles/${this.state.time}`).update({
+                reason: this.state.value,
+                time: time
+            })
+        }
+        this.setState({ showReminder: false})
+    }
+
+    render() {
+        const time = this.state.time;
+        return (
+            <div>
+                <CSSTransition in={this.state.showInput} timeout={2000} classNames="fade" appear unmountOnExit onExited={() => this.setReminder()}>
+                    <div>
+                        <h1 className='info-box-title'>{data[3].shared.reason}</h1>
+                        <form className='button-container-vertical' onSubmit={this.handleNoteSubmit.bind(this)}>
+                            <textarea className='free-form-input input-paragraph' type="text" value={this.state.value} onChange={this.handleNoteChange} />
+                            <button className='next-button free-form-submit center' onClick={this.props.buttonClick}>Submit</button>
+                        </form>
+                    </div>
+                </CSSTransition>
+                <CSSTransition in={this.state.showReminder} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.askPhoto()}>
+                    <div>
+                        <h1 className='info-box-title'>{data[3].shared.reminderQuestion}</h1>
+                        <div className='button-container'>
+                            <button className='next-button' onClick={this.yesSetReminder.bind(this)}>Yes</button>
+                            <button className='next-button'
+                                onClick={(e) => {
+                                    this.sendInput(false);
+                                    this.props.onClick(true);
+                                }}>No
+                            </button>
+                        </div>
+                    </div>
+                </CSSTransition>
+                <CSSTransition in={this.state.showTakePhoto} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.yesTakePhoto()}>
+                    <div>
+                        <h1 className='info-box-title'>{data[3].shared.photoAsk}</h1>
+                        <div className='button-container'>
+                            <button className='next-button' onClick={this.closePhotoOption.bind(this)}>Yes</button>
+                            <button className='next-button'
+                                onClick={(e) => {
+                                    this.sendInput(true);
+                                    this.props.onClick(true);
+                                }}>No
+                            </button>
+                        </div>
+                    </div>
+                </CSSTransition>
+                <CSSTransition in={this.state.takePhoto} timeout={2000} classNames="fade" unmountOnExit>
+                    <div>
+                        <ReactFirebaseFileUpload time={time} />
+                        <div className='button-container'>
+                            <button className='next-button'
+                                onClick={(e) => {
+                                    this.sendInput(true);
+                                    this.props.onClick(true);
+                                }}>Next
+                            </button>
+                        </div>
+                    </div>
+                </CSSTransition>
+            </div>
+        )
+    }
+}
