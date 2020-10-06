@@ -136,6 +136,17 @@
             "pebbles": "Here are your saved positive memories",
             "addToPebbles": "Would you like to add another?"
         },
+        "words": {
+            "rainbow": ["Happy", "Manic", "Over stimulated", "Excited", "Loved or Love", "Adventurous", "Brave", "Confident", "Energetic", "Hopeful", "Creative", "Kind", "Content", "Nostalgic", "Invincible", "Careless"],
+            "sunshine": ["Happy","Excited","Loved or Love","Adventurous","Confident","Energetic","Hopeful","Creative","Content","Playful","Stimulated","OK","Relaxed","Calm","Dazed"],
+            "bluesky": ["Gentle","Neutral","OK","Content","Relaxed","Calm","Nothing","Blocked","Dazed","Stuck"],
+            "light-clouds": ["Nothing","Blocked","Dazed","Stuck","Anxious","Neutral","OK","Relaxed","Calm","Confused","Impatient"],
+            "grey-cloud": ["Nothing","Blocked","Dazed","Stuck","Anxious","Neutral","OK","Gentle","Isolated","Lonely","Nervous","Uneasy","Stupid","Lazy","Unhappy","Worried","Low"],
+            "cloud-rain-threat": ["Anxious","Regret","Scared","Unhappy","Worried","Lonely","Sad","Lost","Miserable","Empty","Hurt","Exhausted","Gentle","Neutral","Relentless","Rejected","Awful","Depressed"],
+            "dark-clouds": ["Anxious","Distressed","Lost","Miserable","Awful","Crushed","Bleak","Broken","Panic","Desperate","Depressed"],
+            "tornado": ["Angry","Outraged","Furious","Greed","Jealousy","Risky","Panic","Crushed","Desperate","Broken","Anxious","Depressed","Manic","Overwhelmed","Excited","Adventurous","Energetic"],
+            "tsunami": ["Suicidal","Shame","Risky","Panic","Anxious","Angry","Bleak","Broken","Desperate","Worthless","Humiliated","Depressed","Manic","Overwhelmed"]
+        },
         "secondaryWords": ["Overwhelmed","Anxious","Depressed","Uneasy","Worried","Careless","Exhausted","Risky","Bleak","Nothing","OK","Dazed","Creative","Calm","Hopeful","Happy","Angry"],
         "symbols" : ["rainbow", "sunshine", "bluesky", "light-clouds", "grey-cloud", "cloud-rain-threat", "dark-clouds", "tsunami", "tornado"],
         "categories": {
