@@ -45,6 +45,7 @@
             "contentReplayStatement": "[CHECK THIS] Recently, you made this note",
             "reminderQuestion": "Would you like to be reminded of this time in the future?",
             "photoAsk": "Do you want to take a photo?",
+            "positiveChange": "How can you positively change your situation?",
             "acknowledge": {
                 "low": "I’m sorry you are feeling like this",
                 "mediumLow": "I’m sorry you are feeling like this",

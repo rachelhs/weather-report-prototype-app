@@ -121,7 +121,7 @@ class VeryLowRoute extends React.Component {
 
     // returns a random exercise that isn't the same as the one just seen
     chooseAnotherExercise() {
-        let exerciseArray = chooseAnotherRandomExercise(['breathing', 'meditating', 'grounding', 'gratitude', 'positive', 'selflike'], this.state.exercise);
+        let exerciseArray = chooseAnotherRandomExercise(['stretching', 'gratitude', 'content', 'meditating', 'grounding'], this.state.exercise);
         this.setState({ showAnotherExerciseQuestion: false, yesAnotherExercise: true });
         let exercise = ChooseExercise(exerciseArray);
         this.setState({ exercise: exercise });

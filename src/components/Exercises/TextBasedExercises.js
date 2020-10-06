@@ -1,33 +1,80 @@
 import React from 'react';
 import AudioPlayer from 'react-h5-audio-player';
-import breathing from 'file-loader!../../sounds/breathing.mp3'
-
-export const Breathing = () => {
-    return <div><h1 className='info-box-title'>insert breathing exercise here</h1>
-        <AudioPlayer
-            autoPlay
-            // src="http://www.hochmuth.com/mp3/Haydn_Adagio.mp3"
-            src={breathing}
-            onPlay={e => console.log("onPlay")} />
-    </div>
-}
+import 'react-h5-audio-player/lib/styles.css';
+const firebase = require('firebase/app');
+import { AnimationsLayered } from '../SharedComponents/SharedComponents';
+import MeditationAnimation from '../Animations/MeditationAnimation';
 
 export const Meditating = () => {
     return <h1 className='info-box-title'>insert meditation exercise here</h1>
 }
 
-export const Grounding = () => {
-    return <h1 className='info-box-title'>insert grounding exercise here</h1>
+export class Breathing extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            url: ''
+        }
+    }
+
+    componentDidMount() {
+        const storage = firebase.storage();
+        storage.ref('sounds/breathing.mp3').getDownloadURL()
+            .then((url) => {
+                this.setState({ url: url });
+            })
+    }
+
+    render() {
+        return (<div>
+            <h1 className='exercises-title'>Breathing</h1>
+            <AudioPlayer
+                autoPlay={false}
+                src={this.state.url}
+            />
+            <MeditationAnimation />
+        </div>
+        )
+    }
 }
 
-export const Stretching = () => {
-    return <h1 className='info-box-title'>insert stretching exercise here</h1>
-}
+export class Grounding extends React.Component {
 
-export const SafePlace = () => {
-    return <h1 className='info-box-title'>insert safe place exercise here</h1>
-}
+    constructor(props) {
+        super(props);
+        this.state = {
+            url: ''
+        }
+    }
 
-export const LessStimulation = () => {
-    return <h1 className='info-box-title'>insert less stimulation exercise here</h1>
+    componentDidMount() {
+        const storage = firebase.storage();
+        storage.ref('sounds/grounding.mp3').getDownloadURL()
+            .then((url) => {
+                this.setState({ url: url });
+            })
+    }
+
+    render() {
+        return (<div>
+            <h1 className='exercises-title'>Grounding</h1>
+            <AudioPlayer
+                autoPlay={false}
+                src={this.state.url}
+            />
+        </div>
+        )
+    }
 }
+    export const Stretching = () => {
+        return <h1 className='info-box-title'>insert stretching exercise here</h1>
+    }
+
+    export const SafePlace = () => {
+        return <h1 className='info-box-title'>insert safe place exercise here</h1>
+    }
+
+    export const LessStimulation = () => {
+        return <h1 className='info-box-title'>insert less stimulation exercise here</h1>
+    }

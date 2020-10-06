@@ -42,6 +42,42 @@ export class PositiveThingQuestion extends React.Component {
     }
 }
 
+// How can you positively change your situation?
+export class ChangeSituation extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { valuePos: '' };
+        this.handlePosSubmit = this.handlePosSubmit.bind(this);
+    }
+
+    handlePosSubmit = (e) => {
+        e.preventDefault();
+        const user = firebase.auth().currentUser;
+        const uid = user.uid;
+        if(this.state.valuePos !== ''){
+        database.ref(`users/${uid}/positiveChangeSituation`).push(this.state.valuePos);
+        }
+    }
+
+    handlePosChange = (e) => {
+        this.setState({ valuePos: e.target.value });
+    }
+
+    render() {
+        return (
+            <div>
+                <h1 className='info-box-title'>{data[3].shared.positiveChange}</h1>
+                <form onSubmit={this.handlePosSubmit}>
+                    <input className='free-form-input' type="text" value={this.state.value} onChange={this.handlePosChange} />
+                    <div className='button-container'>
+                        <button className='next-button free-form-submit' onClick={this.props.buttonClick}>Submit</button>
+                    </div>
+                </form>
+            </div>
+        )
+    }
+}
+
 // What’s one thing a friend would say they like about you?
 export class FriendsLikeQuestion extends React.Component {
     constructor(props) {
@@ -431,6 +467,7 @@ export class TakeCareQuestion
         )
     }
 }
+
 // Have you spoken to anyone about how you feel QUESTION
 export class SpokenToQ extends React.Component {
     render() {
