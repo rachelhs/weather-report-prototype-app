@@ -67,13 +67,13 @@ export class FirstAid extends React.Component {
                                 <button  className='button-first-aid'>YOUR GP</button>
                             </div>                          
                             <div className="flex-center">
-                                <button  className='button-first-aid'>MENTAL HEALTH CRISIS TEAM</button>
+                                <button  className='button-first-aid'><a className='text-first-aid' href="tel:0300-555-0334">MENTAL HEALTH CRISIS TEAM</a></button>
                             </div>
                         </div>
                         <div>
                             <h3 className="first-aid-title">{data[7].firstAid.questions.emergency}</h3>
                             <div className="flex-center">
-                                <button  className='button-first-aid'>999</button>
+                                <button  className='button-first-aid'><a className='text-first-aid' href="tel:999">999</a></button>
                             </div>
                         </div>
                 </ReactModal>
