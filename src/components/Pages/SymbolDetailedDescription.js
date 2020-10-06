@@ -125,12 +125,11 @@ export default class SymbolDetailedDescription extends React.Component {
                             <div className="button-container">
                                 <BackButton />
                             </div>
-
                             {(this.state.newUser) ? <button className='next-button-last-onboarding' onClick={this.showLastPartOnboarding.bind(this)}>Next</button> : <button className='next-button-last-onboarding' onClick={this.sendData.bind(this)}>Next</button>}
                         </div>
                     </div>
                 }
-                    <CSSTransition in={this.state.report} timeout={fadeTime} classNames="fade" unmountOnExit appear><div className='info-box'><div className='arrow'><Arrow /></div><TextWithNextSmall text={data[9].onboarding.report} onClick={this.sendData.bind(this)} /></div></CSSTransition>
+                    <CSSTransition in={this.state.report} timeout={fadeTime} classNames="fade" unmountOnExit appear><div className='info-box'><div className='arrow'><Arrow /></div><TextWithNextSmall text={data[10].onboarding.report} onClick={this.sendData.bind(this)} /></div></CSSTransition>
             </div>
         )
     }

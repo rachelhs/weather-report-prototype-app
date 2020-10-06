@@ -128,6 +128,25 @@
         }
     },
     {
+        "onboarding": {
+            "intro": "Welcome to Weather Report",
+            "bestPerson": "This is a tool to help you log how you're feeling, notice patterns in your mood and lead yourself through a process of self reflection. You’re the best person to understand how you’re feeling, this is just a process to help you help yourself.",
+            "care": "It can also sometimes be easier to care for something or someone other than yourself, so whilst the weather you enter is about how you’re feeling, the effect will be shown on the river. The river is a place of support.",
+            "river": "This is the water line, it will change depending on your weather.",
+            "environment": "This is the place where you’ll see the weather change, in relation to your mood.",
+            "plant": "This is the lily that you’ll see grow and float. Whatever your weather the lily is resilient and it will always float.",
+            "roots": "The lily has roots underneath the water. These roots will always be visible as the lily floats along the river. The roots represent your support network.",
+            "addRoots": "Let’s add the first person who you can contact for support, maybe a friend or family member, health professional, gp, neighbour, someone you trust?",
+            "putLily": "Great now let's put the lily in the river",
+            "language1": "The language around expressing how you feel can be difficult, layered and complex, so sometimes a metaphor can help",
+            "language2": "We all have some idea of what someone means when they say they feel 'stormy'",
+            "language3": "Weather Report uses this metaphor of inner weather to help you express, monitor and reflect on the patterns of your mood",
+            "addWeather1": "You can add weather up to 3 times a day and see the effect of the weather on the river.",
+            "addWeather2": "Let’s try inputting your inner weather for the first time",
+            "report": "You can see how you have been doing over days, weeks and months in this weather report. Over time you may be able to reflect and see connections between what are negative triggers and what are positive things you can do to help your mental health. The more you share how you’re feeling, the more connections you might see."
+    }
+},
+    {
         "home": {
             "fish": "Things you’re grateful for",
             "addToFish": "Would you like to add anything to your list?",
@@ -159,25 +178,6 @@
             "seven": ["Crushed","Bleak","Broken","Desperate","Worthless","Humiliated","Shame","Alienated"],
             "eight": ["Angry","Outraged","Furious","Greed","Jealousy","Risky","Panic"],
             "nine": ["Suicidal"]
-        }
-    },
-        {
-            "onboarding": {
-                "intro": "Welcome to Weather Report",
-                "bestPerson": "This is a tool to help you log how you're feeling, notice patterns in your mood and lead yourself through a process of self reflection. You’re the best person to understand how you’re feeling, this is just a process to help you help yourself.",
-                "care": "It can also sometimes be easier to care for something or someone other than yourself, so whilst the weather you enter is about how you’re feeling, the effect will be shown on the river. The river is a place of support.",
-                "river": "This is the water line, it will change depending on your weather.",
-                "environment": "This is the place where you’ll see the weather change, in relation to your mood.",
-                "plant": "This is the lily that you’ll see grow and float. Whatever your weather the lily is resilient and it will always float.",
-                "roots": "The lily has roots underneath the water. These roots will always be visible as the lily floats along the river. The roots represent your support network.",
-                "addRoots": "Let’s add the first person who you can contact for support, maybe a friend or family member, health professional, gp, neighbour, someone you trust?",
-                "putLily": "Great now let's put the lily in the river",
-                "language1": "The language around expressing how you feel can be difficult, layered and complex, so sometimes a metaphor can help",
-                "language2": "We all have some idea of what someone means when they say they feel 'stormy'",
-                "language3": "Weather Report uses this metaphor of inner weather to help you express, monitor and reflect on the patterns of your mood",
-                "addWeather1": "You can add weather up to 3 times a day and see the effect of the weather on the river.",
-                "addWeather2": "Let’s try inputting your inner weather for the first time",
-                "report": "You can see how you have been doing over days, weeks and months in this weather report. Over time you may be able to reflect and see connections between what are negative triggers and what are positive things you can do to help your mental health. The more you share how you’re feeling, the more connections you might see."
         }
     },
     {
