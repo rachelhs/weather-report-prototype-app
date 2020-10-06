@@ -65,7 +65,7 @@ export class Onboarding extends React.Component {
 
     // navigates away to start the choose weather symbol path
     goToChooseWeather() {
-        this.props.history.push('/chooseSymbol');
+        this.props.history.push('/landing');
     }
 
     render() {
@@ -85,7 +85,7 @@ export class Onboarding extends React.Component {
                 <CSSTransition in={this.state.language2} timeout={fadeTime} classNames="fade" unmountOnExit onEnter={() => { this.triggerTimeout('language2') }} onExited={() => { this.show('language3') }}><div className='background-box-no-fade'><div className='info-box'><h1>{data[9].onboarding.language2}</h1></div></div></CSSTransition>
                 <CSSTransition in={this.state.language3} timeout={fadeTime} classNames="fade" unmountOnExit onEnter={() => { this.triggerTimeout('language3') }} onExited={() => { this.show('addWeather1') }}><div className='background-box-no-fade'><div className='info-box'><h1>{data[9].onboarding.language3}</h1></div></div></CSSTransition>
                 <CSSTransition in={this.state.addWeather1} timeout={fadeTime} classNames="fade" unmountOnExit onEnter={() => { this.triggerTimeout('addWeather1') }} onExited={() => { this.show('addWeather2') }}><div className='background-box-no-fade'><AnimationsLayered speeds={[1]} animations={['HappyBackground']} /><div className='info-box'><h1>{data[9].onboarding.addWeather1}</h1></div></div></CSSTransition>
-                <CSSTransition in={this.state.addWeather2} timeout={fadeTime} classNames="fade" unmountOnExit onEnter={() => { this.triggerTimeout('addWeather2') }} onExited={() => { this.goToChooseWeather() }}><div className='background-box-no-fade'><AnimationsLayered speeds={[1]} animations={['HappyBackground']} /><div className='info-box'><TextWithNext text={data[9].onboarding.addWeather2} onClick={this.goToChooseWeather.bind(this)}/></div></div></CSSTransition>
+                <CSSTransition in={this.state.addWeather2} timeout={fadeTime} classNames="fade" unmountOnExit><div className='background-box-no-fade'><AnimationsLayered speeds={[1]} animations={['HappyBackground']} /><div className='info-box'><TextWithNext text={data[9].onboarding.addWeather2} onClick={this.goToChooseWeather.bind(this)}/></div></div></CSSTransition>
             </div>
         );
     }
