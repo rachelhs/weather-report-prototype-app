@@ -73,6 +73,18 @@
     max-width: 500px;
 }
 
+.info-box-last-onboarding {
+    margin: 20px auto;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    padding: 5%;
+    width: 100%;
+    max-width: 500px;
+}
+
 @media only screen and (max-width: 768px) {
     .info-box { 
         width: 100%;
@@ -156,4 +168,13 @@ textarea {
     border: none;
 }
 
+.arrow {
+    width: 100px;
+    margin-left: 25px;
+    margin-top: 35px;
+}
+
+.arrow-text {
+    margin: 0;
+}
     
