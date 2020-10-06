@@ -28,43 +28,6 @@ export class ReasonForFeelings extends React.Component {
     }
 }
 
-// Is there anything you are aware of that has made you feel like this INPUT BOX
-export class ReasonForFeelingsInput extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { value: '' };
-        this.handleNoteSubmit = this.handleNoteSubmit.bind(this);
-    }
-
-    handleNoteSubmit = (e) => {
-        e.preventDefault();
-        const user = firebase.auth().currentUser;
-        const uid = user.uid;
-        let name = '';
-        database.ref(`users/${uid}/entries`).orderByChild('createdAt').limitToLast(1).on('child_added', (snapshot) => {
-            name = snapshot.key;
-            database.ref(`users/${uid}/entries/${name}`).update({
-                note: this.state.value
-            })
-        })
-    }
-
-    handleNoteChange = (e) => {
-        this.setState({ value: e.target.value });
-    }
-
-    render() {
-        return (
-            <div>
-                <h1 className='info-box-title'>{data[3].shared.reason}</h1>
-                <form className='button-container-vertical' onSubmit={this.handleNoteSubmit}>
-                    <textarea className='free-form-input input-paragraph' type="text" value={this.state.value} onChange={this.handleNoteChange} />
-                    <button className='next-button free-form-submit center' onClick={this.props.buttonClick}>Submit</button>
-                </form>
-            </div>
-        )
-    }
-}
 
 // I’m sorry you are feeling like this
 export class Acknowledgement extends React.Component {
@@ -220,37 +183,6 @@ export class AnotherExerciseQuestion extends React.Component {
         return (
             <div>
                 <h1 className='info-box-title'>{data[3].shared.anotherExercise}</h1>
-                <div className='button-container'>
-                    <button className='next-button' onClick={(e) => this.props.onClick(true)}>Yes</button>
-                    <button className='next-button' onClick={(e) => this.props.onClick(false)}>No</button>
-                </div>
-            </div>
-        )
-    }
-}
-
-//Would you like to be reminded of this in the future
-export class SetReminder extends React.Component {
-    render() {
-        return (
-            <div>
-                <h1 className='info-box-title'>{data[3].shared.reminderQuestion}</h1>
-                <div className='button-container'>
-                    <button className='next-button' onClick={(e) => this.props.onClick(true)}>Yes</button>
-                    <button className='next-button' onClick={(e) => this.props.onClick(false)}>No</button>
-                </div>
-            </div>
-        )
-    }
-}
-
-
-//Ask whether user wants to upload a photo
-export class TakePhoto extends React.Component {
-    render() {
-        return (
-            <div>
-                <h1 className='info-box-title'>{data[3].shared.photoAsk}</h1>
                 <div className='button-container'>
                     <button className='next-button' onClick={(e) => this.props.onClick(true)}>Yes</button>
                     <button className='next-button' onClick={(e) => this.props.onClick(false)}>No</button>
