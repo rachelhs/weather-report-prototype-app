@@ -2,6 +2,7 @@ import React from 'react';
 import ReactModal from 'react-modal';
 import firstAid from '../../images/first-aid-icon.svg';
 import ReportPhoto from '../../images/weather-symbols-no-border/grey-cloud.png';
+import { CSSTransition } from "react-transition-group";
 const data = require('../../data/data.json');
 const firebase = require('firebase/app');
 
@@ -25,17 +26,38 @@ export class FirstAid extends React.Component {
         super(props);
         this.state = {
             showFirstAid: false,
+            buttonsDisabled: true,
+            showButtonDisabledMessage: false
         }
     }
 
     handleOpenModalFirstAid() { this.setState({ showFirstAid: true }) }
     handleCloseModalFirstAid() { this.setState({ showFirstAid: false }) }
 
-    
+    componentDidMount() {
+        const url = window.location.pathname
+        console.log(url)
+        if (url === "/home" | url === "/3-home") {
+            this.setState({ buttonsDisabled: false })
+        }
+    }
+
+    clickGrounding() {
+        if(this.state.buttonsDisabled){
+            this.setState({ showButtonDisabledMessage: true })
+        }
+    }
+
+    clickBreathing() {
+        if(this.state.buttonsDisabled){
+            this.setState({ showButtonDisabledMessage: true })
+        }
+    }
+
     render() {
         const customStyles = {
             overlay: {zIndex: 1000}
-          };
+        };
         return (
             <span>
                 <button
@@ -55,27 +77,30 @@ export class FirstAid extends React.Component {
                     <div>
                         <h3 className="first-aid-title">{data[7].firstAid.questions.exercise}</h3>
                             <div className="flex-center">
-                                <button  className='button-first-aid'>GROUNDING EXERCISE</button>
+                                <button onClick={this.clickGrounding.bind(this)} className={this.state.buttonsDisabled ? 'exerciseDisabled button-first-aid' : 'button-first-aid'}>GROUNDING EXERCISE</button>
                             </div>
                             <div className="flex-center">
-                            <button  className='button-first-aid'>BREATHING EXERCISE</button>
+                            <button onClick={this.clickBreathing.bind(this)} className={this.state.buttonsDisabled ? 'exerciseDisabled button-first-aid' : 'button-first-aid'}>BREATHING EXERCISE</button>
                             </div>
+                            <CSSTransition in={this.state.showButtonDisabledMessage} timeout={2000} classNames="fade" appear unmountOnExit>
+                                <p className="flex-center exerciseMessage">You can access these exercises from the home screen</p>
+                            </CSSTransition>
+                    </div>
+                    <div>
+                        <h3 className="first-aid-title">{data[7].firstAid.questions.professional}</h3>
+                        <div className="flex-center">
+                            <button  className='button-first-aid'>YOUR GP</button>
+                        </div>                          
+                        <div className="flex-center">
+                            <button  className='button-first-aid'><a className='text-first-aid' href="tel:0300-555-0334">MENTAL HEALTH CRISIS TEAM</a></button>
                         </div>
-                        <div>
-                            <h3 className="first-aid-title">{data[7].firstAid.questions.professional}</h3>
-                            <div className="flex-center">
-                                <button  className='button-first-aid'>YOUR GP</button>
-                            </div>                          
-                            <div className="flex-center">
-                                <button  className='button-first-aid'><a className='text-first-aid' href="tel:0300-555-0334">MENTAL HEALTH CRISIS TEAM</a></button>
-                            </div>
+                    </div>
+                    <div>
+                        <h3 className="first-aid-title">{data[7].firstAid.questions.emergency}</h3>
+                        <div className="flex-center">
+                            <button  className='button-first-aid'><a className='text-first-aid' href="tel:999">999</a></button>
                         </div>
-                        <div>
-                            <h3 className="first-aid-title">{data[7].firstAid.questions.emergency}</h3>
-                            <div className="flex-center">
-                                <button  className='button-first-aid'><a className='text-first-aid' href="tel:999">999</a></button>
-                            </div>
-                        </div>
+                    </div>
                 </ReactModal>
             </span>
         )

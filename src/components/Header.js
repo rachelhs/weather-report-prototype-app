@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FirstAid, Menu, Report } from '../components/SharedComponents/MenuBarComponents';
 
-
 export const Header = () => (
     <header className="header">
         <div className="content-container">
