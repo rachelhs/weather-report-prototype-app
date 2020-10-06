@@ -68,6 +68,22 @@ button:disabled {
     text-align: center;
     line-height: 40px;
 }
+.next-button-last-onboarding {
+    background: #545775 !important;
+    border: none;
+    border-radius: 0.5rem;
+    min-width: 80px;
+    height: 40px;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 2px;
+    font-weight: 600;
+    margin: 5px;
+    margin-left: calc(50% - 40px);
+    text-decoration: none;
+    text-align: center;
+    line-height: 40px;
+}
 
 .back-button {
     background: transparent;
