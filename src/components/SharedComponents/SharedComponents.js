@@ -229,37 +229,6 @@ export class AnotherExerciseQuestion extends React.Component {
     }
 }
 
-//Would you like to be reminded of this in the future
-export class SetReminder extends React.Component {
-    render() {
-        return (
-            <div>
-                <h1 className='info-box-title'>{data[3].shared.reminderQuestion}</h1>
-                <div className='button-container'>
-                    <button className='next-button' onClick={(e) => this.props.onClick(true)}>Yes</button>
-                    <button className='next-button' onClick={(e) => this.props.onClick(false)}>No</button>
-                </div>
-            </div>
-        )
-    }
-}
-
-
-//Ask whether user wants to upload a photo
-export class TakePhoto extends React.Component {
-    render() {
-        return (
-            <div>
-                <h1 className='info-box-title'>{data[3].shared.photoAsk}</h1>
-                <div className='button-container'>
-                    <button className='next-button' onClick={(e) => this.props.onClick(true)}>Yes</button>
-                    <button className='next-button' onClick={(e) => this.props.onClick(false)}>No</button>
-                </div>
-            </div>
-        )
-    }
-}
-
 //UpLOAD a PHOTO
 export class ReactFirebaseFileUpload extends React.Component {
     constructor(props) {
@@ -282,6 +251,7 @@ export class ReactFirebaseFileUpload extends React.Component {
     handleUpload = () => {
         const user = firebase.auth().currentUser;
         const uid = user.uid;
+        let date = moment().format("DD-MM-YYYY");
         const uploadTask = storage.ref(`images/${this.state.image.name}`).put(this.state.image);
         uploadTask.on(
             "state_changed",
@@ -301,11 +271,13 @@ export class ReactFirebaseFileUpload extends React.Component {
                 .getDownloadURL()
                 .then(url => {
                     this.setState({ url: url });
-                    const data = {
-                        url: this.state.url,
+                    database.ref(`users/${uid}/reasonForFeeling/${this.props.time}`).update({
+                        photoUrl: this.state.url,
                         savedOn: this.state.createdAt.valueOf()
-                    }
-                    database.ref(`users/${uid}/images`).push(data)
+                    });
+                    database.ref(`users/${uid}/pebbles/${this.props.time}`).update({
+                        photoUrl: this.state.url,
+                    });
                 });
             }
         );
@@ -317,11 +289,8 @@ export class ReactFirebaseFileUpload extends React.Component {
         <div>
             {/* <progress value={this.state.progress} max="100" /> */}
             <input type="file" onChange={this.handleChange} />
-            <button onClick={this.handleUpload}>Upload</button>
+            <button onClick={this.handleUpload}>{this.state.progress == 0 ? <p>Upload</p> :<p>{"uploading " + this.state.progress + "%"}</p>}</button>
             { feedback }
-            <div className='button-container'>
-                <button className='next-button' onClick={(e) => this.props.onClick(true)}>Next</button>
-            </div>
         </div>
         );
     }
