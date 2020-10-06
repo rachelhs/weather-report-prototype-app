@@ -15,7 +15,7 @@ export default class SymbolDetailedDescription extends React.Component {
             mainWord: this.props.location.state.mainWord,
             secondaryWords: [],
             day: moment(),
-            createdAt: props.entry ? moment(props.entry.createdAt) : moment(),
+            createdAt: moment(),
         }
     }
 
@@ -34,10 +34,11 @@ export default class SymbolDetailedDescription extends React.Component {
         const user = firebase.auth().currentUser;
         const uid = user.uid;
         let date = this.state.day.format("DD-MM-YYYY")
+        let time = moment().format("kk-mm")
         // work out path to route user based on main word 
         let route = GetKeyByValue(data[10].categories,this.state.mainWord);
         console.log('route', route)
-        database.ref(`users/${uid}/weatherReports/${date}/${this.state.createdAt.valueOf()}`).update({
+        database.ref(`users/${uid}/weatherReports/${date}/${time}`).update({
             weather: this.state.weatherSymbol,
             mainword: this.state.mainWord,
             secondarywords: this.state.secondaryWords,
@@ -78,6 +79,8 @@ export default class SymbolDetailedDescription extends React.Component {
 
     render() {
         console.log('mainWord', this.state.mainWord)
+        let time = moment().format("HH-mm")
+        console.log('time', time)
         console.log('secondaryWords', this.state.secondaryWords)
         return (
             <div className='background-box'>
