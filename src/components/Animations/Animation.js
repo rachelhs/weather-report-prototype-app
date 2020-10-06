@@ -38,6 +38,7 @@ import suicidalFadeOut from '../../animations/09_Suicidal_River_Fade_Out.json'
 import fishSwimming from '../../animations/00_Fish_Swimming_across'
 import riverbed from '../../animations/Riverbed.json'
 import riverLevel from '../../animations/10_River_Level.json'
+import arrow from '../../animations/arrow.json'
 
 class Animation extends Component {
 
@@ -80,6 +81,9 @@ class Animation extends Component {
                 break;
             case 'lilypad':
                 this.setState({ animationData: lilypad })
+                break;
+            case 'arrow':
+                this.setState({ animationData: arrow })
                 break;
             case 'neutralBackground':
                 this.setState({ animationData: neutralBackground })
