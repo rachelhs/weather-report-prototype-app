@@ -1,5 +1,6 @@
 import React from 'react';
-import { AnimationsLayered, ReasonForFeelings, ReasonForFeelingsInput, FeedbackStatement, SetReminder, TakePhoto, ReactFirebaseFileUpload } from '../SharedComponents/SharedComponents';
+import { AnimationsLayered, ReasonForFeelings, FeedbackStatement } from '../SharedComponents/SharedComponents';
+import { ReasonForFeelingsInputAndReminder } from '../SharedComponents/ReasonForFeeling'
 import { GratefulQuestion, TakeCareQuestion } from '../SharedComponents/MentalHealthQuestions';
 import { randomQuestionNumber  } from '../../actions/route-functions';
 import { CSSTransition } from "react-transition-group";
@@ -16,11 +17,8 @@ class OkRoute extends React.Component {
             knowReasonForFeeling: null,
             randQues: null,
             showRandQues: null,
-            showSetReminderQuestion: null,
             takePhoto: null,
-            showTakePhoto: null, 
             showFeedbackStatement: null, 
-            uploadPhoto: null,
             neutralAnimation: true, 
             okFadeIn: false,
             whiteBackground: false,
@@ -57,18 +55,12 @@ class OkRoute extends React.Component {
 
     showFeedbackStatement() { this.setState({ showFeedbackStatement: true }) }
 
-    showSetReminder() { this.setState({ showSetReminderQuestion: true })}
-
-    answeredSetReminder(yes) { yes ? this.setState({ showSetReminderQuestion: false, takePhoto: true }) : this.setState({ showSetReminderQuestion: false })}
-
-    feedbackOrTakePhotoQuestion() { this.state.takePhoto ? this.setState({ showTakePhoto: true }) : this.setState({ showFeedbackStatement: true }) }
-
-    answeredPhotoAsk(yes) { yes ? this.setState({ takePhotoYes: true, showTakePhoto: false }) : this.setState({ showTakePhoto: false })}
-
-    photoOrFeedback() { this.state.takePhotoYes ? this.setState({ uploadPhoto: true }): this.setState({ showFeedbackStatement: true })}
-
-    uploadedPhoto() { this.setState({ uploadPhoto: false }) }
-
+    noSetReminder(answeredNo) {
+        if (answeredNo) {
+            this.setState({ showReasonInput: false })
+        }
+    }
+    
     render() {
         const randomQuestion = this.state.randQues == 0 ? <GratefulQuestion buttonClick={this.answeredRandomQuestion.bind(this)} /> : <TakeCareQuestion buttonClick={this.answeredRandomQuestion.bind(this)} />;
         return (        
@@ -88,12 +80,7 @@ class OkRoute extends React.Component {
                         {/* if user ansers 'no' to reason for feeling */}
                         <CSSTransition in={this.state.showRandQues} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.showFeedbackStatement()}>{ randomQuestion }</CSSTransition>
                         {/* if user ansers 'yes' to reason for feeling */}
-                        <CSSTransition in={this.state.showReasonInput} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.showSetReminder()}><ReasonForFeelingsInput buttonClick={this.answeredReasonInput.bind(this)} /></CSSTransition>
-                        <CSSTransition in={this.state.showSetReminderQuestion} timeout={2000} className="fade" unmountOnExit onExited={() => this.feedbackOrTakePhotoQuestion()} ><SetReminder onClick={this.answeredSetReminder.bind(this)} /></CSSTransition>
-                        {/* if user ansers 'yes' to record memory */}
-                        <CSSTransition in={this.state.showTakePhoto} timeout={2000} className="fade" unmountOnExit onExited={() => this.photoOrFeedback()} ><TakePhoto onClick={this.answeredPhotoAsk.bind(this)}/></CSSTransition>
-                        {/* if user ansers 'yes' to upload photo */}
-                        <CSSTransition in={this.state.uploadPhoto} timeout={2000} classNames="fade" appear unmountOnExit unmountOnExit onExited={() => this.showFeedbackStatement()}><ReactFirebaseFileUpload onClick={this.uploadedPhoto.bind(this)} /></CSSTransition>
+                        <CSSTransition in={this.state.showReasonInput} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.showFeedbackStatement()}><ReasonForFeelingsInputAndReminder onClick={this.noSetReminder.bind(this)} /></CSSTransition>
                         {/* show feedback statement */}
                         <CSSTransition in={this.state.showFeedbackStatement} timeout={2000} className="fade" unmountOnExit><FeedbackStatement dataFromParent = {this.state.route} /></CSSTransition>
                     </div>
