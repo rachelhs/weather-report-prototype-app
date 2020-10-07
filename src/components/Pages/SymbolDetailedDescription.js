@@ -6,6 +6,7 @@ import { BackButton, GetKeyByValue } from '../../actions/route-functions';
 import { CSSTransition } from "react-transition-group";
 import { TextWithNextSmall } from '../SharedComponents/SharedComponents';
 import Arrow from '../Animations/Arrow';
+import Header from '../../components/Header';
 require('firebase/auth');
 const firebase = require('firebase/app');
 const data = require('../../data/data.json');
@@ -133,7 +134,10 @@ export default class SymbolDetailedDescription extends React.Component {
                         </div>
                     </div>
                 }
-                    <CSSTransition in={this.state.report} timeout={fadeTime} classNames="fade" unmountOnExit appear><div className='info-box'><div className='arrow'><Arrow /></div><TextWithNextSmall text={data[10].onboarding.report} onClick={this.sendData.bind(this)} /></div></CSSTransition>
+                <div>
+                <Header />
+                    <CSSTransition in={this.state.report} timeout={fadeTime} classNames="fade" unmountOnExit appear><div className='info-box'><div className='arrow'><Arrow /></div><TextWithNextSmall text={data[9].onboarding.report} onClick={this.sendData.bind(this)} /></div></CSSTransition>
+                </div>
             </div>
         )
     }

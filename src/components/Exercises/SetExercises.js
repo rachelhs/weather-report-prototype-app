@@ -5,17 +5,12 @@ import LikeAboutSelf from './ReplayLikeAboutSelf';
 import ReplayContent from './ReplayContent';
 import ReplayAnchors from './ReplayAnchors';
 import ReplayCare from './ReplayCare';
+import ChangeSituation from '../SharedComponents/MentalHealthQuestions';
 import React from 'react';
 
 export const SetExercises = (exercise) => {
-    if (exercise == 'breathing') {
-        return Breathing();
-    }
     if (exercise == 'meditating') {
         return Meditating();
-    }
-    if (exercise == 'grounding') {
-        return Grounding();
     }
     if (exercise == 'stretching') {
         return Stretching();
@@ -25,6 +20,15 @@ export const SetExercises = (exercise) => {
     }
     if (exercise == 'lessStimulation') {
         return LessStimulation();
+    }
+    if (exercise == 'grounding') {
+        return <Grounding />;
+    }
+    if (exercise == 'breathing') {
+        return <Breathing />;
+    }
+    if (exercise == 'changeSituation') {
+        return <ChangeSituation />
     }
     if (exercise == 'gratitude') {
         return <Gratitude />
@@ -41,7 +45,7 @@ export const SetExercises = (exercise) => {
     if (exercise === 'anchors') {
         return <ReplayAnchors />
     }
-    if (exercise === 'selfcare') {
+    if (exercise === 'selfCare') {
         return <ReplayCare />
     }
 }

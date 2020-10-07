@@ -12,3 +12,19 @@
 .last-onboarding-container {
     margin-top: 0;
 }
+
+.exercise-container {
+    background-color: #9FD6CD;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    width: 100vw;
+    height: 100vh;
+    margin-left: -20px;
+    margin-top: -50px;
+}
+
+.exercises-title {
+    text-align: center;
+    margin-top: 20vh;
+}
