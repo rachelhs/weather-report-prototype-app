@@ -20,7 +20,7 @@ export class ReasonForFeelingsInputAndReminder extends React.Component {
             showTakePhoto: null,
             takePhoto: null,
             value: '',
-            time:  moment().format(), 
+            time:  moment().format("kk-mm")
         };
     }
 
@@ -30,11 +30,11 @@ export class ReasonForFeelingsInputAndReminder extends React.Component {
     }
 
     yesTakePhoto() {
-        console.log("here where i should be")
+        let date = moment().format("DD-MM-YYYY");
         this.setState({ takePhoto: true})
         const user = firebase.auth().currentUser;
         const uid = user.uid;
-        database.ref(`users/${uid}/reasonForFeeling/${this.state.time}`).update({
+        database.ref(`users/${uid}/reasonForFeeling/${date}/${this.state.time}`).update({
             photoReminder: "yes"
         })
     }
@@ -58,18 +58,16 @@ export class ReasonForFeelingsInputAndReminder extends React.Component {
     // send input to database
     sendInput(remind) {
         let date = moment().format("DD-MM-YYYY");
-        let time = moment().format("kk-mm");
         const user = firebase.auth().currentUser;
         const uid = user.uid;
-        database.ref(`users/${uid}/reasonForFeeling/${this.state.time}`).update({
+        database.ref(`users/${uid}/reasonForFeeling/${date}/${this.state.time}`).update({
             reason: this.state.value,
             remind: remind,
         })
         if (remind) {
             console.log('sais yes to remind', remind)
-            database.ref(`users/${uid}/pebbles/${this.state.time}`).update({
+            database.ref(`users/${uid}/pebbles/05-10-2020/${this.state.time}`).update({
                 reason: this.state.value,
-                time: time
             })
         }
         this.setState({ showReminder: false})

@@ -271,11 +271,11 @@ export class ReactFirebaseFileUpload extends React.Component {
                 .getDownloadURL()
                 .then(url => {
                     this.setState({ url: url });
-                    database.ref(`users/${uid}/reasonForFeeling/${this.props.time}`).update({
+                    database.ref(`users/${uid}/reasonForFeeling/${date}/${this.props.time}`).update({
                         photoUrl: this.state.url,
                         savedOn: this.state.createdAt.valueOf()
                     });
-                    database.ref(`users/${uid}/pebbles/${this.props.time}`).update({
+                    database.ref(`users/${uid}/pebbles/${date}/${this.props.time}`).update({
                         photoUrl: this.state.url,
                     });
                 });
