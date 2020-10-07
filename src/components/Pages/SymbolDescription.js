@@ -21,8 +21,8 @@ export default class SymbolDescription extends React.Component {
         return (
             <div className='background-box'>
                 <AnimationsLayered speeds={[0]} animations={['neutralBackground']} />
-                <div className='info-box-landing info-box-words'>
-                    <h3 className='info-box-text-small-padding'>{ data[0].regularLogin[3] }</h3>
+                <div className='info-box-landing'>
+                    <h3 className='info-box-text'>{ data[0].regularLogin[3] }</h3>
                     <div className='word-grid'>
                         {data[10]['words'][this.state.weatherSymbol].map((word) => (
                             <div className='words' key={word}>
