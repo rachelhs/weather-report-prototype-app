@@ -36,7 +36,7 @@ class LowRoute extends React.Component {
         // random function for random questions
         this.setState({ randQues: randomQuestionNumber(2) });
         // setting exercise
-        let exercise = ChooseExercise(['breathing']);
+        let exercise = ChooseExercise(['gratitude', 'positive', 'grounding', 'breathing', 'meditating', 'selflike']);
         this.setState({ exercise: exercise });
 
         setTimeout(() => { this.setState({ neutralAnimation: false, lowFadeIn: true }) }, 500)

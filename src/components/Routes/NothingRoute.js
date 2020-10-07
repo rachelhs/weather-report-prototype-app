@@ -35,7 +35,7 @@ class Nothing extends React.Component {
         // choose whether to show random questions or exercises
         this.setState({ randQuesOrExercise: randomQuestionNumber(2) })
         // setting exercise
-        let exercise = ChooseExercise(['breathing', 'meditating', 'grounding', 'gratitude', 'positive']);
+        let exercise = ChooseExercise(['breathing', 'meditating', 'grounding', 'gratitude', 'positive', 'selfCare', 'changeSituation']);
         this.setState({ exercise: exercise });
 
         setTimeout(() => { this.setState({ neutralAnimation: false, nothingFadeIn: true }) }, 500)
@@ -84,7 +84,7 @@ class Nothing extends React.Component {
     // returns a random exercise that isn't the same as the one just seen
     chooseAnotherExercise() {
         console.log('made it here')
-        let exerciseArray = chooseAnotherRandomExercise(['breathing', 'meditating', 'grounding', 'gratitude', 'positive'], this.state.exercise);
+        let exerciseArray = chooseAnotherRandomExercise(['breathing', 'meditating', 'grounding', 'gratitude', 'positive', 'selfCare', 'changeSituation'], this.state.exercise);
         this.setState({ showAnotherExerciseQuestion: false, yesAnotherExercise: true });
         let exercise = ChooseExercise(exerciseArray);
         this.setState({ exercise: exercise });
