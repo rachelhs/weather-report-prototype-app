@@ -16,7 +16,7 @@ export class ChooseSymbolPage extends React.Component {
     render() {
         return (
             <div className='background-box'>
-                <AnimationsLayered speeds={[0]} animations={['neutralBackground']} />
+                <AnimationsLayered speeds={[0.2]} animations={['neutralTreesNoLily']} />
                 <div className='info-box-landing'>
                     <h3 className='info-box-text'>{ data[0].regularLogin[2] }</h3>
                     <div className="flex-center"> 

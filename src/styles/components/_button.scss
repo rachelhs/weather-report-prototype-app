@@ -55,11 +55,11 @@ button:focus {
 }
 
 .login-button {
-    background: #545775 !important;
+    background: #3a3d7d !important;
     border: none;
     border-radius: 0.5rem;
     width: 100px;
-    height: 40px;
+    height: 45px;
     margin: 40px auto;
     color: white;
     font-family: 'Roboto', sans-serif;
@@ -67,7 +67,7 @@ button:focus {
 }
 
 .next-button {
-    background: #545775 !important;
+    background: #3a3d7d !important;
     border: none;
     border-radius: 0.5rem;
     min-width: 80px;
@@ -82,7 +82,7 @@ button:focus {
     line-height: 40px;
 }
 .next-button-last-onboarding {
-    background: #545775 !important;
+    background: #3a3d7d !important;
     border: none;
     border-radius: 0.5rem;
     min-width: 80px;
@@ -104,7 +104,7 @@ button:focus {
     border-radius: 0.5rem;
     width: 80px;
     height: 40px;
-    color: #545775;
+    color: #3a3d7d;
     font-family: 'Roboto', sans-serif;
     letter-spacing: 2px;
     font-weight: 600;
@@ -127,6 +127,7 @@ button:focus {
 .button-container {
     display: flex;
     justify-content: center;
+    margin-top: 20px;
 }
 
 .info-button-box {
