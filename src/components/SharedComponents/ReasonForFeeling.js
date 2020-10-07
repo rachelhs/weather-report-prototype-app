@@ -66,7 +66,7 @@ export class ReasonForFeelingsInputAndReminder extends React.Component {
         })
         if (remind) {
             console.log('sais yes to remind', remind)
-            database.ref(`users/${uid}/pebbles/05-10-2020/${this.state.time}`).update({
+            database.ref(`users/${uid}/pebbles/${date}/${this.state.time}`).update({
                 reason: this.state.value,
             })
         }
