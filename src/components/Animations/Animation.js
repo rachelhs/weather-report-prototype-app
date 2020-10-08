@@ -7,10 +7,10 @@ import growing from '../../animations/growing'
 import lilypad from '../../animations/Lily_Pad.json'
 import roots from '../../animations/Roots.json'
 import HappyBackground from '../../animations/02_Happy_Weather_River_v8.json' 
-import tooHighFadeIn from '../../animations/01_Too_High_River_Fade_In.json'
-import tooHighFadeOut from '../../animations/01_Too_High_River_Fade_Out.json'
-import tooHigh from '../../animations/01_Too_High_Weather_River.json'
-import neutralBackground from '../../animations/10_Neutral Weather_River.json'
+import rainbowFadeIn from '../../animations/01_Rainbow_River_Fade_In.json'
+import rainbowFadeOut from '../../animations/01_Rainbow_River_Fade_Out.json'
+import rainbow from '../../animations/01_Rainbow_Weather_River.json'
+import neutralBackground from '../../animations/10_Neutral_River All Assets'
 import okFadeIn from '../../animations/03_OK_Fade In.json'
 import ok from '../../animations/03_OK_Weather_River .json'
 import okFadeOut from '../../animations/03_OK_River_Fade Out.json'
@@ -39,6 +39,7 @@ import fishSwimming from '../../animations/00_Fish_Swimming_across'
 import riverbed from '../../animations/Riverbed.json'
 import riverLevel from '../../animations/10_River_Level.json'
 import neutralNoTrees from '../../animations/10_Neutral_River_No Trees.json'
+import neutralTreesNoLily from '../../animations/10_Neutral Weather_River.json'
 import meditation from '../../animations/11_Meditation_Screen_v1.json'
 
 class Animation extends Component {
@@ -92,14 +93,14 @@ class Animation extends Component {
             case 'HappyBackground':
                 this.setState({ animationData: HappyBackground })
                 break;
-            case 'tooHighFadeIn':
-                this.setState({ animationData: tooHighFadeIn })
+            case 'rainbowFadeIn':
+                this.setState({ animationData: rainbowFadeIn })
                 break;
-            case 'tooHighFadeOut':
-                this.setState({ animationData: tooHighFadeOut })
+            case 'rainbowFadeOut':
+                this.setState({ animationData: rainbowFadeOut })
                 break;
-            case 'tooHigh':
-                this.setState({ animationData: tooHigh })
+            case 'rainbow':
+                this.setState({ animationData: rainbow })
                 break
             case 'okFadeIn':
                 this.setState({ animationData: okFadeIn })
@@ -178,6 +179,9 @@ class Animation extends Component {
                 break
             case 'meditation':
                 this.setState({ animationData: meditation })
+                break
+            case 'neutralTreesNoLily':
+                this.setState({ animationData: neutralTreesNoLily })
                 break
             default:
               // code block

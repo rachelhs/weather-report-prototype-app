@@ -271,11 +271,11 @@ export class ReactFirebaseFileUpload extends React.Component {
                 .getDownloadURL()
                 .then(url => {
                     this.setState({ url: url });
-                    database.ref(`users/${uid}/reasonForFeeling/${this.props.time}`).update({
+                    database.ref(`users/${uid}/reasonForFeeling/${date}/${this.props.time}`).update({
                         photoUrl: this.state.url,
                         savedOn: this.state.createdAt.valueOf()
                     });
-                    database.ref(`users/${uid}/pebbles/${this.props.time}`).update({
+                    database.ref(`users/${uid}/pebbles/${date}/${this.props.time}`).update({
                         photoUrl: this.state.url,
                     });
                 });
@@ -343,18 +343,20 @@ export class FeedbackStatement extends React.Component {
       }
 
     componentDidMount() { 
-        const feedbackArray = data[3]['shared']['feedbackStatements'][this.props.dataFromParent]
+        const feedbackArray = data[3]['shared']['feedbackStatements'][this.props.route]
         this.setState({ randFeedbackStatement: randomQuestionNumber(feedbackArray.length) });
     }
     render() {
+        console.log('route', this.props.route)
+        console.log('weather',this.props.weather )
         return (
             <div>
-                <h1 className='info-box-title'>{data[3]['shared']['feedbackStatements'][this.props.dataFromParent][this.state.randFeedbackStatement]}</h1>
+                <h1 className='info-box-title'>{data[3]['shared']['feedbackStatements'][this.props.route][this.state.randFeedbackStatement]}</h1>
                 <div className='button-container'>
                     <Link className='next-button'
                         to={{
                             pathname: '/home',
-                            state: { weather: this.props.dataFromParent }
+                            state: { weather: this.props.weather }
                         }}>Go to Home
                     </Link>
                 </div>

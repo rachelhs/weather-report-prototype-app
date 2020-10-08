@@ -6,10 +6,11 @@ import Header from '../components/Header';
 const exclusionArray = [
     '/intro',
     '/landing',
+    '/symbol-more-detail',
     '/onboarding',
     '/choosesymbol',
     '/symbol-description',
-    '/symbol-more-detail'
+    '/symbol-more-detail',
 ]
 
 export const PrivateRoute = ({ 

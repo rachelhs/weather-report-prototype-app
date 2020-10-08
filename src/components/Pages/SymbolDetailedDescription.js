@@ -69,31 +69,58 @@ export default class SymbolDetailedDescription extends React.Component {
         })
         switch (route) {
             case "one":
-                this.props.history.push('/1');
+                this.props.history.push({
+                    pathname: '/1',
+                    state: { weatherSymbol: this.state.weatherSymbol }
+                })
                 break;
             case "two":
-                this.props.history.push('/2');
+                this.props.history.push({
+                    pathname: '/2',
+                    state: { weatherSymbol: this.state.weatherSymbol }
+                  })
                 break;
             case "three":
-                this.props.history.push('/3');
+                this.props.history.push({
+                    pathname: '/3',
+                    state: { weatherSymbol: this.state.weatherSymbol }
+                  })
                 break;
             case "four":
-                this.props.history.push('/4');
+                this.props.history.push({
+                    pathname: '/4',
+                    state: { weatherSymbol: this.state.weatherSymbol }
+                })
                 break;
             case "five":
-                this.props.history.push('/5');
+                this.props.history.push({
+                    pathname: '/5',
+                    state: { weatherSymbol: this.state.weatherSymbol }
+                })
                 break;
             case "six":
-                this.props.history.push('/6');
+                this.props.history.push({
+                    pathname: '/6',
+                    state: { weatherSymbol: this.state.weatherSymbol }
+                })
                 break;
             case "seven":
-                this.props.history.push('/7');
+                this.props.history.push({
+                    pathname: '/7',
+                    state: { weatherSymbol: this.state.weatherSymbol }
+                })
                 break;
             case "eight":
-                this.props.history.push('/8');
+                this.props.history.push({
+                    pathname: '/8',
+                    state: { weatherSymbol: this.state.weatherSymbol }
+                })
                 break;
             case "nine":
-                this.props.history.push('9');
+                this.props.history.push({
+                    pathname: '/9',
+                    state: { weatherSymbol: this.state.weatherSymbol }
+                })
                 break;
             default:
                 this.props.history.push('/landing');
@@ -113,29 +140,30 @@ export default class SymbolDetailedDescription extends React.Component {
             <div>
                 {(this.state.report) ? '' :
                     <div className='background-box'>
-                        <AnimationsLayered speeds={[0]} animations={['neutralBackground']} />
-                        <div className='info-box-landing info-box-words'>
-                            <h3 className='info-box-text-small-padding'>{data[0].regularLogin[4]}</h3>
-                            <div className='word-grid'>
-                                {data[10].secondaryWords.map((word) => (
-                                    <div className='words' key={word}>
-                                        <button
-                                            className={this.state.secondaryWords.includes(word) ? 'active-symbol-button-border' : 'symbol-button-border'}
-                                            onClick={(e) => { this.addWords({ word }) }}>
-                                            {word}
-                                        </button>
-                                    </div>
-                                ))}
+                        <AnimationsLayered speeds={[0.2]} animations={['neutralTreesNoLily']} />
+                        <div className='center-vertical'>
+                            <div className='info-box-landing info-box-words'>
+                                <h3 className='info-box-text-small-padding'>{data[0].regularLogin[4]}</h3>
+                                <div className='word-grid'>
+                                    {data[10].secondaryWords.map((word) => (
+                                        <div className='words' key={word}>
+                                            <button
+                                                className={this.state.secondaryWords.includes(word) ? 'active-symbol-button-border' : 'symbol-button-border'}
+                                                onClick={(e) => { this.addWords({ word }) }}>
+                                                {word}
+                                            </button>
+                                        </div>
+                                    ))}
+                                </div>
+                                <div className="button-container">
+                                    <BackButton />
+                                    {(this.state.newUser) ? <button className='next-button' onClick={this.showLastPartOnboarding.bind(this)}>Next</button> : <button className='next-button' onClick={this.sendData.bind(this)}>Next</button>}
+                                </div>
                             </div>
-                            <div className="button-container">
-                                <BackButton />
-                            </div>
-                            {(this.state.newUser) ? <button className='next-button-last-onboarding' onClick={this.showLastPartOnboarding.bind(this)}>Next</button> : <button className='next-button-last-onboarding' onClick={this.sendData.bind(this)}>Next</button>}
                         </div>
                     </div>
                 }
                 <div>
-                <Header />
                     <CSSTransition in={this.state.report} timeout={fadeTime} classNames="fade" unmountOnExit appear><div className='info-box'><div className='arrow'><Arrow /></div><TextWithNextSmall text={data[9].onboarding.report} onClick={this.sendData.bind(this)} /></div></CSSTransition>
                 </div>
             </div>
