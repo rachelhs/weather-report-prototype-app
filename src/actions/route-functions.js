@@ -11,7 +11,7 @@ export function isLongerThanThreeDays(cb) {
     const uid = firebase.auth().currentUser.uid;
     let counter = 0;
     database.ref(`users/${uid}/weatherReports`)
-        .orderByChild('createdAt') //order by createAt value
+        //.orderByChild('createdAt') //order by createAt value
         .limitToLast(2) // return two most recent entries
         .once('value', (snapshot) => {
             // date of most recent entry
@@ -32,10 +32,14 @@ export function isLongerThanThreeDays(cb) {
             snapshot.forEach((child) => {
                 // checks the first entry of each day
                 let time = Object.keys(child.val())[0];
+                console.log(time);
                 database.ref(`users/${uid}/weatherReports/${date1}/${time}/createdAt`).on('value', (snapshot) => {
                    // if first entry is older than three days ago, add 1 to counter
                     let createdAt1 = snapshot.val();
+                    console.log('createdAt1', createdAt1);
+                    console.log('threedaysago', threeDaysAgo);
                     if ((createdAt1 !== null) && (createdAt1 < threeDaysAgo)) {
+                        console.log('yes')
                         counter +=1;
                     }
 
@@ -43,6 +47,7 @@ export function isLongerThanThreeDays(cb) {
                 database.ref(`users/${uid}/weatherReports/${date2}/${time}/createdAt`).on('value', (snapshot) => {
                    // if second entry is older than three days ago, add 1 to counter
                     let createdAt2 = snapshot.val();
+                    console.log('createdAt2', createdAt2);
                     if ((createdAt2 !== null) && (createdAt2 < threeDaysAgo)) {
                         counter +=1;
 
