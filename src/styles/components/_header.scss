@@ -2,6 +2,7 @@
     background-color: transparent;
     position: absolute;
     z-index: 2;
+    top: 0;
 }
 
 .header__content {
@@ -34,7 +35,7 @@
     color: white;
     font-size: 12px;
     margin: 30px 0 10px 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Quicksand', sans-serif;
     font-weight: 700;
     letter-spacing: 2px;
     text-decoration: none;
@@ -44,7 +45,7 @@
 
 .text-first-aid {
     color: #339176;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Quicksand', sans-serif;
     font-size: 14px;
     font-weight: 700;
     letter-spacing: 2px;
@@ -63,7 +64,7 @@
     border: none;
     border-radius: 0.5rem;
     min-width: 80px;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Quicksand', sans-serif;
     font-size: 14px;
     font-weight: 700;
     letter-spacing: 2px;
@@ -74,7 +75,7 @@
 .exerciseMessage {
     color: white;
     text-align: center;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Quicksand', sans-serif;
     font-size: 13px;
     letter-spacing: 0.5px;
     font-style: italic;
@@ -97,11 +98,16 @@
     color: #3B3B82;
     font-size: 12px;
     margin: 30px 0 10px 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Quicksand', sans-serif;
     font-weight: 700;
     letter-spacing: 2px;
     text-decoration: none;
     border:none;
     background: transparent;
+}
+
+.menu-text {
+    font-weight: 700;
+    letter-spacing: 0.5px;
 }
 
