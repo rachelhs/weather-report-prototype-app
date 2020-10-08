@@ -142,7 +142,7 @@ export default class SymbolDetailedDescription extends React.Component {
                     <div className='background-box'>
                         <AnimationsLayered speeds={[0.2]} animations={['neutralTreesNoLily']} />
                         <div className='center-vertical'>
-                            <div className='info-box-landing info-box-words'>
+                            <div className='info-box-choose info-box-words'>
                                 <h3 className='info-box-text-small-padding'>{data[0].regularLogin[4]}</h3>
                                 <div className='word-grid'>
                                     {data[10].secondaryWords.map((word) => (
