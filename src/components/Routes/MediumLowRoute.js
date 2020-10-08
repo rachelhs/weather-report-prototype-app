@@ -27,13 +27,23 @@ class MediumLowRoute extends React.Component {
             neutralAnimation: true,
             mediumLowFadeIn: false,
             whiteBackground: false,
-            animationSpeed: 1
+            animationSpeed: 1,
+            weatherFadeIn: null,
+            weatherSymbol: null
         }
         this.showThenFade = this.showThenFade.bind(this);
     }
 
     // method called as soon as all elements on the page are rendered & changed showAcknowledge to false after 3 seconds. This will hide the statement.
     componentDidMount() {
+        if (typeof this.props.location.state != 'undefined' || this.props.location.state != null) {
+            let weatherFadeIn = this.props.location.state.weatherSymbol + "FadeIn"
+            this.setState({ weatherFadeIn: weatherFadeIn });
+            this.setState({ weatherSymbol: this.props.location.state.weatherSymbol });
+            console.log('props', this.props.location.state.weatherSymbol)
+        } else {
+            this.setState({ weatherFadeIn: "neutralBackground" });
+        }
         // set timeout to say I’m sorry you are feeling like this
         setTimeout(() => { this.setState({ showAcknowledge: false }) }, 10500)
         // random function for random questions
@@ -140,7 +150,7 @@ class MediumLowRoute extends React.Component {
                     <AnimationsLayered speeds={[1]} animations={['neutralBackground']} />
                 </CSSTransition>
                 <CSSTransition in={this.state.mediumLowFadeIn} timeout={4000} classNames="fade-enter-only">
-                    <AnimationsLayered speeds={[this.state.animationSpeed]} animations={['mediumLowFadeIn']} />
+                    <AnimationsLayered speeds={[this.state.animationSpeed]} animations={[this.state.weatherFadeIn]} />
                 </CSSTransition>
                 <CSSTransition in={this.state.whiteBackground} timeout={2000} classNames="fade" unmountOnExit>
                     <div className='background-box'></div>
@@ -154,7 +164,7 @@ class MediumLowRoute extends React.Component {
                     <CSSTransition in={this.state.showRandomPositiveStatement} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.showRandomExercise()}><h1 className='info-box-title'>{data[4].mediumLow.positiveStatements[this.state.randPositive]}</h1></CSSTransition>
                     <CSSTransition in={this.state.showRandomExercises} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.askAnotherExerciseQuestion()}><div className='exercise-container'><div>{SetExercises(this.state.exercise)}</div><button className='next-button' onClick={this.seenExercise.bind(this)}>next</button></div></CSSTransition>
                     <CSSTransition in={this.state.showAnotherExerciseQuestion} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.afterAskAnotherQuestion()}><div><AnotherExerciseQuestion onClick={this.answeredAnotherExerciseQuestion.bind(this)} /></div></CSSTransition>
-                    <CSSTransition in={this.state.showFeedbackStatement} timeout={2000} className="fade" unmountOnExit><FeedbackStatement dataFromParent={this.state.route}/></CSSTransition>
+                    <CSSTransition in={this.state.showFeedbackStatement} timeout={2000} className="fade" unmountOnExit><FeedbackStatement route={this.state.route} weather={this.state.weatherSymbol}/></CSSTransition>
                 </div>
             </div>
         );
