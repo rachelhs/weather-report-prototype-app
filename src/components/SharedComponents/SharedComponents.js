@@ -411,7 +411,7 @@ export class Contact extends React.Component {
         return (
             <div>
                 <CSSTransition in={this.state.showText} timeout={2000} classNames="fade" unmountOnExit appear onExited={() => this.showText()}><h1 className='info-box-title'>{data[6].veryLow.questions.support}</h1></CSSTransition>
-                <CSSTransition in={this.state.showAnchors} timeout={2000} classNames="fade" unmountOnExit><AllRoots /></CSSTransition>
+                <CSSTransition in={this.state.showAnchors} timeout={2000} classNames="fade" unmountOnExit><AllRootsLowWithEnergy /></CSSTransition>
             </div>
         )
     }
@@ -454,6 +454,49 @@ export class AllRoots extends React.Component {
         return (
             <div>
                 <h1 className='info-box-title'>{data[8].suicidal.questions.reach}</h1>
+                {renderedOutput}
+            </div>
+        )
+    }
+}
+
+// show list of roots (anchors)
+export class AllRootsLowWithEnergy extends React.Component {
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            listOfAnchors: []
+        }
+    }
+
+    componentDidMount() {
+        this.getListOfAnchors();
+    }
+
+    getListOfAnchors = () => {
+        listOfAnchors = [];
+        const user = firebase.auth().currentUser;
+        const uid = user.uid;
+
+        database.ref(`users/${uid}/anchors`)
+            .on('value', (snapshot) => {
+                // get list of keys for each entry
+                snapshot.forEach((childSnapshot) => {
+                    let names = childSnapshot.val().name;
+                    let numbers = childSnapshot.val().number;
+                    listOfAnchors.push(names);
+                    listOfAnchors.push(numbers);
+                })
+                this.setState({ listOfAnchors: listOfAnchors })
+            })
+    }
+
+    render() {
+        let renderedOutput = this.state.listOfAnchors.map((item, index) => <h1 key={index}>{item}</h1>)
+        return (
+            <div>
+                <h1 className='info-box-title'>{data[6].veryLow.questions.roots}</h1>
                 {renderedOutput}
             </div>
         )
