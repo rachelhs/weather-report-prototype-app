@@ -22,7 +22,6 @@ import Onboarding from '../components/Onboarding/onboarding'
 import SymbolDescription from '../components/Pages/SymbolDescription'
 import SymbolDetailedDescription from '../components/Pages/SymbolDetailedDescription'
 import IntroPage from '../components/Pages/IntroPage'
-import Routes from '../components/Routes/AllRoutes'
 
 export const history = createHistory();
 
@@ -48,7 +47,6 @@ const AppRouter = () => (
                 <PrivateRoute path="/7" component={ VeryLowRoute } />
                 <PrivateRoute path="/8" component={ LowButWithEnergyRoute } />
                 <PrivateRoute path="/9" component={ SuicidalRoute } />
-                <PrivateRoute path="/allRoutes" component={ Routes } />
                 <Route component={ NotFound } />
             </Switch>
         </div>

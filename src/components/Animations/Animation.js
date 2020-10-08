@@ -7,9 +7,9 @@ import growing from '../../animations/growing'
 import lilypad from '../../animations/Lily_Pad.json'
 import roots from '../../animations/Roots.json'
 import HappyBackground from '../../animations/02_Happy_Weather_River_v8.json' 
-import tooHighFadeIn from '../../animations/01_Too_High_River_Fade_In.json'
-import tooHighFadeOut from '../../animations/01_Too_High_River_Fade_Out.json'
-import tooHigh from '../../animations/01_Too_High_Weather_River.json'
+import rainbowFadeIn from '../../animations/01_Rainbow_River_Fade_In.json'
+import rainbowFadeOut from '../../animations/01_Rainbow_River_Fade_Out.json'
+import rainbow from '../../animations/01_Rainbow_Weather_River.json'
 import neutralBackground from '../../animations/10_Neutral_River All Assets'
 import okFadeIn from '../../animations/03_OK_Fade In.json'
 import ok from '../../animations/03_OK_Weather_River .json'
@@ -93,14 +93,14 @@ class Animation extends Component {
             case 'HappyBackground':
                 this.setState({ animationData: HappyBackground })
                 break;
-            case 'tooHighFadeIn':
-                this.setState({ animationData: tooHighFadeIn })
+            case 'rainbowFadeIn':
+                this.setState({ animationData: rainbowFadeIn })
                 break;
-            case 'tooHighFadeOut':
-                this.setState({ animationData: tooHighFadeOut })
+            case 'rainbowFadeOut':
+                this.setState({ animationData: rainbowFadeOut })
                 break;
-            case 'tooHigh':
-                this.setState({ animationData: tooHigh })
+            case 'rainbow':
+                this.setState({ animationData: rainbow })
                 break
             case 'okFadeIn':
                 this.setState({ animationData: okFadeIn })

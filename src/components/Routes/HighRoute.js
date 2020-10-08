@@ -23,7 +23,9 @@ class HighRoute extends React.Component {
             neutralAnimation: true, 
             highFadeIn: false,
             whiteBackground: false,
-            animationSpeed: 1
+            animationSpeed: 1,
+            weatherSymbol: this.props.location.state.weatherSymbol,
+            weatherFadeIn: null
         }
     }
 
@@ -40,6 +42,8 @@ class HighRoute extends React.Component {
         }, 5000)
         setTimeout(() => { this.setState({ whiteBackground: true }) }, 5500)
         setTimeout(() => { this.setState({ showReasonForFeeling: true }) }, 7500)
+        let weatherFadeIn = this.state.weatherSymbol + "FadeIn"
+        this.setState({ weatherFadeIn: weatherFadeIn });
     }
 
     round(value, precision) {
@@ -63,14 +67,13 @@ class HighRoute extends React.Component {
 
     render() {
         const randomQuestion = this.state.randQues == 0 ? <LikeAboutYourselfQuestion buttonClick={this.answeredRandomQuestion.bind(this)} /> : <EnjoyQuestion buttonClick={this.answeredRandomQuestion.bind(this)} />;
-
         return (
             <div>
                 <CSSTransition in={this.state.neutralAnimation} timeout={4000} classNames="fade-enter-only" unmountOnExit>
                     <AnimationsLayered speeds={[1]} animations={['neutralBackground']} />
                 </CSSTransition>
                 <CSSTransition in={this.state.highFadeIn} timeout={4000} classNames="fade-enter-only">
-                    <AnimationsLayered speeds={[this.state.animationSpeed]} animations={['highFadeIn']} />
+                    <AnimationsLayered speeds={[this.state.animationSpeed]} animations={[this.state.weatherFadeIn]} />
                 </CSSTransition>
                 <CSSTransition in={this.state.whiteBackground} timeout={2000} classNames="fade" unmountOnExit>
                     <div className='background-box'></div>
@@ -82,7 +85,7 @@ class HighRoute extends React.Component {
                     {/* if user ansers 'yes' to reason for feeling */}
                     <CSSTransition in={this.state.showReasonInput} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.showFeedbackStatement()}><ReasonForFeelingsInputAndReminder onClick={this.noSetReminder.bind(this)} /></CSSTransition>
                     {/* show feedback statement */}
-                    <CSSTransition in={this.state.showFeedbackStatement} timeout={2000} className="fade" unmountOnExit><FeedbackStatement dataFromParent={this.state.route}/></CSSTransition>
+                    <CSSTransition in={this.state.showFeedbackStatement} timeout={2000} className="fade" unmountOnExit><FeedbackStatement route={this.state.route} weather={this.state.weatherSymbol}/></CSSTransition>
                 </div>
             </div>
         );
