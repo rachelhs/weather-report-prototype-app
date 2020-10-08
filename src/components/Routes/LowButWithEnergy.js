@@ -62,8 +62,6 @@ class LowButWithEnergyRoute extends React.Component {
         }, 5000)
         setTimeout(() => { this.setState({ whiteBackground: true }) }, 5500)
         setTimeout(() => { this.setState({ showAcknowledge: true }) }, 7500)
-        let weatherFadeIn = this.state.weatherSymbol + "FadeIn"
-        this.setState({ weatherFadeIn: weatherFadeIn });
     }
 
     round(value, precision) {
