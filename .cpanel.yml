@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/cmeineck/public_html/
-    - /bin/cp -R public $DEPLOYPATH
+    - export DEPLOYPATH=/home/cmeineck/public_html
+    - /bin/cp -r * $DEPLOYPATH
