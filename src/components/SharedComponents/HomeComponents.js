@@ -4,6 +4,7 @@ const firebase = require('firebase/app');
 import database from '../../firebase/firebase';
 let listOfGrateful = [];
 let listOfAnchors = [];
+import ReactModal from 'react-modal';
 let listOfPebbles = [];
 let hideOtherButtons = null;
 import { TextWithButton } from '../SharedComponents/SharedComponents'
@@ -213,7 +214,9 @@ export class PebblesModal extends React.Component {
             show: null,
             modalsOpen: false,
             listOfPebbles: [],
-            addButtonClicked: false
+            pebbleToShow: null,
+            addButtonClicked: false,
+            arrayIndex: null
         }
     }
 
@@ -223,6 +226,7 @@ export class PebblesModal extends React.Component {
             modalsOpen: false
         })
     }
+
     handleShow = () => {
         this.setState({
             show: true,
@@ -231,23 +235,59 @@ export class PebblesModal extends React.Component {
     }
 
     componentDidMount() {
-        this.getListOfPebbles();
+        this.getListOfPebbles().then(this.setRandomPebble)
     }
 
-    getListOfPebbles = () => {
-        listOfPebbles = [];
-        const user = firebase.auth().currentUser;
-        const uid = user.uid;
+    getListOfPebbles() {
+        return new Promise(function(resolve) {
+            listOfPebbles = [];
+            const user = firebase.auth().currentUser;
+            const uid = user.uid;
+            database.ref(`users/${uid}/pebbles`).on('value', function(snap){
+                for (let key in snap.val()) {
+                    for (let key2 in snap.val()[key]) {
+                        let pebbleObj = {}
+                        pebbleObj['date'] = key;
+                        pebbleObj['time'] = key2;
+                        pebbleObj['reason'] = snap.val()[key][key2]['reason'];
+                        if (snap.val()[key][key2]['photoUrl'] != undefined) {
+                            pebbleObj['url'] = snap.val()[key][key2]['photoUrl'];
+                        }
+                        listOfPebbles.push(pebbleObj);
+                    }
+                }
+                resolve();
+            });
+        })
+    }
 
-        database.ref(`users/${uid}/positiveThings`)
-            .on('value', (snapshot) => {
-                // get list of keys for each entry
-                snapshot.forEach((childSnapshot) => {
-                    let pebbles = childSnapshot.val();
-                    listOfPebbles.push(pebbles);
-                })
-                this.setState({ listOfPebbles: listOfPebbles })
-            })
+    setRandomPebble = () => {
+        this.setState({listOfPebbles: listOfPebbles})
+        let number = this.selectRandomIndex()
+        this.setState({arrayIndex: number}) 
+        let randomPebble = this.state.listOfPebbles[number];
+        this.setState({pebbleToShow: randomPebble})
+    }
+
+    selectAnotherMemory() {
+        let number = this.selectRandomIndex()
+        while (number == this.state.arrayIndex) {
+            number = this.selectRandomIndex()
+        } 
+        if (number !== this.state.arrayIndex) {
+            this.setState({arrayIndex: number}) 
+            let randomPebble = this.state.listOfPebbles[number];
+            this.setState({pebbleToShow: randomPebble})
+            // console.log('random memory', this.state.pebbleToShow)
+        }
+    }
+
+    selectRandomIndex() {
+        let randomNumber = Math.floor(Math.random()*this.state.listOfPebbles.length)
+        // console.log('listOfPebbles.length', listOfPebbles.length)
+        // console.log('randomNumber', randomNumber)
+
+        return randomNumber
     }
 
     toggleAddPebble(res) {
@@ -255,30 +295,32 @@ export class PebblesModal extends React.Component {
     }
 
     render() {
+        console.log('random',this.state.arrayIndex)
         let renderedOutput = this.state.listOfPebbles.map((item, index) => <h1 key={index}>{item}</h1>)
-
+        const customStyles = {
+            overlay: {zIndex: 1000}
+        };
+        const photoMemory = this.state.pebbleToShow && this.state.pebbleToShow.url ?
+        <img src={this.state.pebbleToShow.url} alt="photo of your recorded memory" width="100%"/>
+        : '';
         return (
             <div>
-                {this.state.modalsOpen ? '' : <Button className='clickablePebble' variant="primary" onClick={this.handleShow.bind(this)}></Button>}
-                <Modal
-                    show={this.state.show}
-                    onHide={this.handleClose}
-                    backdrop="static"
-                    keyboard={false}
-                >
-                    <Modal.Header closeButton>
-                    </Modal.Header>
-
-                    <Modal.Title className='modal-title'><h1 className='info-box-title'>{data[10].home.pebbles}</h1>
-                    </Modal.Title>
-                    <Modal.Body>
-                        {renderedOutput}
-                        {this.state.addButtonClicked ? <h1>{data[10].home.addToPebbles}</h1> : <TextWithButton buttonText='add' text={data[10].home.addToPebbles} onClick={this.toggleAddPebble.bind(this)} />}
-                        {this.state.toggleAddPebble ? <PositiveThingQuestion /> : ''}
-                        </Modal.Body>
-                    <Modal.Footer>
-                    </Modal.Footer>
-                </Modal>
+                <Button className='clickablePebble' variant="primary" onClick={this.handleShow.bind(this)}></Button>
+                <a className='clickablePebbleArea' onClick={this.handleShow.bind(this)}></a>
+                <ReactModal style={customStyles} className='modalPebbles' isOpen={this.state.show} ariaHideApp={false}>
+                    <div className="flex-center">
+                        <button className='menu-close' type="button" onClick={this.handleClose.bind(this)}>
+                            CLOSE
+                        </button>
+                    </div>
+                    <h1>Pebble Memories</h1>
+                    { this.state.pebbleToShow && <h3>{this.state.pebbleToShow.date} - {this.state.pebbleToShow.time}</h3> }
+                    { this.state.pebbleToShow && <h3>{this.state.pebbleToShow.reason}</h3> }
+                    { photoMemory }
+                    <div className="flex-center">
+                        <button className="next-button" onClick={this.selectAnotherMemory.bind(this)}>Look at another memory</button>
+                    </div>
+                </ReactModal>
             </div>
         );
     }

@@ -55,11 +55,11 @@ button:focus {
 }
 
 .login-button {
-    background: #545775 !important;
+    background: #3a3d7d !important;
     border: none;
     border-radius: 0.5rem;
     width: 100px;
-    height: 40px;
+    height: 45px;
     margin: 40px auto;
     color: white;
     font-family: 'Roboto', sans-serif;
@@ -67,7 +67,7 @@ button:focus {
 }
 
 .next-button {
-    background: #545775 !important;
+    background: #3a3d7d !important;
     border: none;
     border-radius: 0.5rem;
     min-width: 80px;
@@ -77,22 +77,6 @@ button:focus {
     letter-spacing: 2px;
     font-weight: 600;
     margin: 5px;
-    text-decoration: none;
-    text-align: center;
-    line-height: 40px;
-}
-.next-button-last-onboarding {
-    background: #545775 !important;
-    border: none;
-    border-radius: 0.5rem;
-    min-width: 80px;
-    height: 40px;
-    color: white;
-    font-family: 'Roboto', sans-serif;
-    letter-spacing: 2px;
-    font-weight: 600;
-    margin: 5px;
-    margin-left: calc(50% - 40px);
     text-decoration: none;
     text-align: center;
     line-height: 40px;
@@ -104,7 +88,7 @@ button:focus {
     border-radius: 0.5rem;
     width: 80px;
     height: 40px;
-    color: #545775;
+    color: #3a3d7d;
     font-family: 'Roboto', sans-serif;
     letter-spacing: 2px;
     font-weight: 600;
@@ -127,6 +111,7 @@ button:focus {
 .button-container {
     display: flex;
     justify-content: center;
+    margin-top: 20px;
 }
 
 .info-button-box {
@@ -146,55 +131,51 @@ button:focus {
 
 .clickableFish {
     position: absolute;
-    z-index: 0;
-    width: 25px;
-    height: 25px;
+    z-index: 1;
+    width: 50px;
+    height: 50px;
     border-radius:50%;
     border: none;
-    color: 'white';
+    background-color:white;
     opacity: 90%;
-    box-shadow: 2px 3px 20px #252525;
-    top: 68%;
-    left: 62%;
-    @media (min-width: $desktop-breakpoint) {
-        top: 70%;
-        left: 55%;
-        }
+    bottom: 28%;
+    left: 71%;
 }  
 
 .clickablePlant {
     position: absolute;
-    z-index: 0;
-    width: 25px;
-    height: 25px;
+    z-index: 1;
+    width: 50px;
+    height: 50px;
     border-radius:50%;
     border: none;
-    color: 'white';
+    background-color:white;
     opacity: 90%;
-    box-shadow: 2px 3px 20px #252525;
-    top: 73%;
-    left: 42%;
-    @media (min-width: $desktop-breakpoint) {
-        top: 75%;
-        left: 48%;
-        }
+    bottom: 16%;
+    left: 41%;
 } 
 
 .clickablePebble {
     position: absolute;
-    z-index: 0;
-    width: 25px;
-    height: 25px;
+    z-index: 1;
+    width: 50px;
+    height: 50px;
     border-radius:50%;
     border: none;
-    color: 'white';
+    background-color: white;
     opacity: 90%;
-    box-shadow: 2px 3px 20px #252525;
-    top: 90%;
-    left: 12%;
-    @media (min-width: $desktop-breakpoint) {
-        top: 93%;
-        left: 38%;
-        }
+    bottom: 10px;
+    left: 10%;
+}
+
+.clickablePebbleArea {
+    position: absolute;
+    z-index: 0;
+    width: 100%;
+    height: 50px;
+    opacity: 100%;
+    bottom: 0;
+    background-color: transparent;
+    border: none;
 }
 

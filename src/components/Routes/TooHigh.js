@@ -224,7 +224,7 @@ class TooHighRoute extends React.Component {
                     <AnimationsLayered speeds={[1]} animations={['neutralBackground']} />
                 </CSSTransition>
                 <CSSTransition in={this.state.tooHighFadeIn} timeout={4000} classNames="fade-enter-only">
-                    <AnimationsLayered speeds={[this.state.animationSpeed]} animations={['tooHighFadeIn']} />
+                    <AnimationsLayered speeds={[this.state.animationSpeed]} animations={['rainbowFadeIn']} />
                 </CSSTransition>
                 <CSSTransition in={this.state.whiteBackground} timeout={2000} classNames="fade" unmountOnExit>
                     <div className='background-box'></div>

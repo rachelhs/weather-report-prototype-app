@@ -80,7 +80,6 @@ export function randomQuestionNumber(num) {
 }
 
 export function chooseAnotherRandomExercise(exerciseArray, lastExercise) {
-    console.log('choose another ...');
     for (let i = 0; i < exerciseArray.length; i++) {
         if (exerciseArray[i] === lastExercise) {
             exerciseArray.splice(i, 1);

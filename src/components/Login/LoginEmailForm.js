@@ -56,7 +56,7 @@ export class LoginEmailForm extends React.Component {
     const { goBackFunction } = this.props
 
     return (
-        <div>
+      <div className='background-box'>
             <div className='anim-full-height'><Animation speed={0.2} animation={"neutralNoTrees"} /></div>
             <div className='info-box-login'>
                 <CSSTransition in={this.state.appIntro} timeout={1500} classNames="transform-up" appear onExited={() => this.showLoginForm()}>
@@ -95,7 +95,7 @@ export class LoginEmailForm extends React.Component {
                             </div>
                             { error && <p className='form__error'>{error}</p> }
                             <button type='submit' className='button login-button' disabled={loading}>
-                                { loading ? 'Loading..' : 'LOGIN' }
+                                { loading ? '...' : 'NEXT' }
                             </button>
                             { goBackFunction &&
                             <button className='button button--secondary' onClick={goBackFunction}>Cancel</button> }

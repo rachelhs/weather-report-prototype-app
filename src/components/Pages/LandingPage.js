@@ -16,7 +16,7 @@ export class LandingPage extends React.Component {
         
         return (
             <div className='background-box'>
-                <AnimationsLayered speeds={[0]} animations={['neutralBackground']} />
+                <AnimationsLayered speeds={[0.2]} animations={['neutralTreesNoLily']} />
                 <div className='info-box-landing'>
                     <CSSTransition in={this.state.showContent} timeout={2000} classNames="fade" appear unmountOnExit>
                         <div>
