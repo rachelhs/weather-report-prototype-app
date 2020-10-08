@@ -34,7 +34,7 @@ export class PositiveThingQuestion extends React.Component {
                 <form onSubmit={this.handlePosSubmit}>
                     <input className='free-form-input' type="text" value={this.state.value} onChange={this.handlePosChange} />
                     <div className='button-container'>
-                        <button className='next-button free-form-submit' onClick={this.props.buttonClick}>Submit</button>
+                        <button className='next-button-dark free-form-submit' onClick={this.props.buttonClick}>NEXT</button>
                     </div>
                 </form>
             </div>
@@ -70,7 +70,7 @@ export class ChangeSituation extends React.Component {
                 <form onSubmit={this.handlePosSubmit}>
                     <input className='free-form-input' type="text" value={this.state.value} onChange={this.handlePosChange} />
                     <div className='button-container'>
-                        <button className='next-button free-form-submit' onClick={this.props.buttonClick}>Submit</button>
+                        <button className='next-button-dark free-form-submit' onClick={this.props.buttonClick}>NEXT</button>
                     </div>
                 </form>
             </div>
@@ -106,7 +106,7 @@ export class FriendsLikeQuestion extends React.Component {
                 <form onSubmit={this.handleFriendsSubmit}>
                     <input className='free-form-input' type="text" value={this.state.value} onChange={this.handleFriendsChange} />
                     <div className='button-container'>
-                        <button className='next-button free-form-submit' onClick={this.props.buttonClick}>Submit</button>
+                        <button className='next-button-dark free-form-submit' onClick={this.props.buttonClick}>NEXT</button>
                     </div>
                 </form>
             </div>
@@ -142,7 +142,7 @@ export class PositiveChangeQuestion extends React.Component {
                 <form className='button-container' onSubmit={this.handlepositiveChangeSubmit}>
                     <input className='free-form-input-vertical' type="text" value={this.state.value} onChange={this.handlepositiveChange} />
                     <div className="button-container">
-                        <button className='next-button free-form-submit' onClick={this.props.buttonClick}>Submit</button>
+                        <button className='next-button-dark free-form-submit' onClick={this.props.buttonClick}>NEXT</button>
                     </div>
                 </form>
             </div>

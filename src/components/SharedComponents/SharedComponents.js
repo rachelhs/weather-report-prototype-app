@@ -497,7 +497,7 @@ export class AllRootsWithNext extends React.Component {
                 <h1 className='info-box-title'>{data[8].suicidal.questions.reach}</h1>
                 {renderedOutput}
                 <div className='button-container'>
-                    <button className='next-button' onClick={(e) => this.props.onClick(true)}>next</button>
+                    <button className='next-button-dark' onClick={(e) => this.props.onClick(true)}>NEXT</button>
                 </div>
             </div>
         )
@@ -511,7 +511,7 @@ export class TextWithNext extends React.Component {
             <div>
                 <h1 className='info-box-title'>{this.props.text}</h1>
                 <div className='button-container'>
-                    <button className='next-button' onClick={(e) => this.props.onClick(true)}>Next</button>
+                    <button className='next-button-dark' onClick={(e) => this.props.onClick(true)}>NEXT</button>
                 </div>
             </div>
         )
@@ -525,7 +525,7 @@ export class TextWithNextSmall extends React.Component {
             <div>
                 <h3 className="arrow-text">{this.props.text}</h3>
                 <div className='button-container'>
-                    <button className='next-button' onClick={(e) => this.props.onClick(true)}>Next</button>
+                    <button className='next-button-dark' onClick={(e) => this.props.onClick(true)}>NEXT</button>
                 </div>
             </div>
         )
