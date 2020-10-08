@@ -72,6 +72,7 @@ class LowButWithEnergyRoute extends React.Component {
     // called onexit of showAcknowledge
     threeDayFunction() {
         isLongerThanThreeDays(res => {
+            console.log(res, 'islongerthanthreedays');
             res ? this.setState({ showHowLong: true, showAcknowledge: false }) : this.setState({ showReasonForFeeling: true, showAcknowledge: false })
         })
     }

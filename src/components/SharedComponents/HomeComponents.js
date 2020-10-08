@@ -6,7 +6,6 @@ let listOfGrateful = [];
 let listOfAnchors = [];
 import ReactModal from 'react-modal';
 let listOfPebbles = [];
-let hideOtherButtons = null;
 import { TextWithButton } from '../SharedComponents/SharedComponents'
 import { Button, Modal } from 'react-bootstrap';
 import { AddAnchor, PositiveThingQuestion } from '../SharedComponents/MentalHealthQuestions'
