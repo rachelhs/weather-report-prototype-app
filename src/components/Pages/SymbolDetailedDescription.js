@@ -56,7 +56,7 @@ export default class SymbolDetailedDescription extends React.Component {
     sendData() {
         const user = firebase.auth().currentUser;
         const uid = user.uid;
-        let date = this.state.day.format("DD-MM-YYYY")
+        let date = this.state.day.format("YYYY-MM-DD")
         let time = moment().format("kk-mm")
         // work out path to route user based on main word 
         let route = GetKeyByValue(data[10].categories,this.state.mainWord);
