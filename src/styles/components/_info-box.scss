@@ -72,9 +72,17 @@
     left: 50%;
 }
 
+.center-vertical-higher {
+    position: absolute;
+    top: 30%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 100%;
+    left: 50%;
+}
+
 .info-box-landing {
     margin: 0 auto;
-    padding: 5%;
     max-width: 500px;
 }
 

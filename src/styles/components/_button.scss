@@ -67,6 +67,21 @@ button:focus {
 }
 
 .next-button {
+    background: transparent;
+    border: 1px solid #3a3d7d;;
+    border-radius: 0.5rem;
+    min-width: 60px;
+    color: #3a3d7d;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 2px;
+    font-weight: 600;
+    margin: 5px;
+    text-decoration: none;
+    text-align: center;
+    line-height: 35px;
+}
+
+.next-button-dark {
     background: #3a3d7d !important;
     border: none;
     border-radius: 0.5rem;

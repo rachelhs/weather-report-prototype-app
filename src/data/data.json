@@ -115,6 +115,7 @@
         "suicidal": {
             "questions": {
                 "risk": "Are you at risk of harming yourself?",
+                "riskOthers": "Are you at risk of harming yourself or others?",
                 "plan": "Have you made a plan?",
                 "act": "Are you planning to act on that plan?",
                 "pass": "These feelings will pass, however it seems you need to get support now.",

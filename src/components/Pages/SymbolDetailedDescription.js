@@ -157,7 +157,7 @@ export default class SymbolDetailedDescription extends React.Component {
                                 </div>
                                 <div className="button-container">
                                     <BackButton />
-                                    {(this.state.newUser) ? <button className='next-button' onClick={this.showLastPartOnboarding.bind(this)}>Next</button> : <button className='next-button' onClick={this.sendData.bind(this)}>Next</button>}
+                                    {(this.state.newUser) ? <button className='next-button-dark' onClick={this.showLastPartOnboarding.bind(this)}>Next</button> : <button className='next-button-dark' onClick={this.sendData.bind(this)}>Next</button>}
                                 </div>
                             </div>
                         </div>

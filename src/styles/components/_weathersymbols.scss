@@ -40,3 +40,18 @@
     border-radius: 0.4rem;
     margin: 9px 10px 9px 10px
 }
+
+// target iphone SE with small height
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px)
+and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 40/71) and (orientation:portrait)
+{
+    .active-symbol-button-border {
+        padding: 6px 10px 6px 10px;
+        margin: 4px 10px 4px 10px;
+    }
+    
+    .symbol-button-border {
+        padding: 6px 10px 6px 10px;
+        margin: 4px 10px 4px 10px;
+    }
+}
