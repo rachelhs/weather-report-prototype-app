@@ -50,7 +50,7 @@
                 "mediumLow": "I’m sorry you are feeling like this",
                 "veryLow": "I’m sorry you are feeling like this, it can be difficult to have these feelings",
                 "lowWithEnergy": "I’m sorry you are feeling like this, it can be difficult to have these feelings",
-                "suicidal": "I’m sorry you’re feeling like this, it can be difficult to sit with this feeling and have these feelings."
+                "suicidal": "I’m sorry you’re feeling like this, it can be difficult to have and sit with these feelings."
             },
             "feedbackStatements": {
                 "ok": ["feedback statement ok route"],
@@ -60,7 +60,7 @@
                 "veryLow": ["feedback v low statement 1", "feedback v low statement 2"],
                 "mediumLow": ["feedback medium low statement 1", "feedback medium low statement 2"],
                 "low": ["feedback low statement 1", "feedback low statement 2"],
-                "suicidal": ["feedback suicidal statement 1", "feedback suicidal statement 2"]
+                "suicidal": ["Lots of people have felt like this before. It may seem like things won’t change but all feelings eventually pass.", "Don’t give up, one day you will look back, and be glad you didn’t","I won’t say have a good day. Instead I advise you, to have a day. Stay alive, feed yourself well, wear comfortable clothes, and don’t give up on yourself just yet. It’ll get better. Until then, have a day"]
             }
         }
     },
@@ -119,12 +119,12 @@
                 "plan": "Have you made a plan?",
                 "act": "Are you planning to act on that plan?",
                 "pass": "These feelings will pass, however it seems you need to get support now.",
-                "samaritans": "999 / Samaritans. Once you've rung 999 or Samaritans it would be a good idea to ring one of your supporters to let them know what's happening.",
+                "samaritans": "Call 999 or the Samaritans on 116 123 for free or",
                 "help": "That's Good. Are you getting the help you need?",
-                "crisis": "Call crisis team. If you need a referral to the crisis team you will need to contact your GP",
-                "crisis2": "If the crisis team can't help immediately and you are still at risk please ring 999 or Samaritans",
+                "crisis": "We think you should call Bristol Mental Health Crisis Team on 0300 555 0334 or visit",
+                "crisis2": "for more support",
                 "spoken": "Have you spoken to anyone about how you feel?",
-                "reach": "It could help to reach out to one of your anchors"
+                "reach": "It could help to reach out to one of your roots"
             }
         }
     },
