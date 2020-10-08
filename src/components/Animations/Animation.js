@@ -6,35 +6,34 @@ import environment from '../../animations/10_Neutral_BG_With_Trees.json'
 import growing from '../../animations/growing'
 import lilypad from '../../animations/Lily_Pad.json'
 import roots from '../../animations/Roots.json'
-import HappyBackground from '../../animations/02_Happy_Weather_River_v8.json' 
 import rainbowFadeIn from '../../animations/01_Rainbow_River_Fade_In.json'
 import rainbowFadeOut from '../../animations/01_Rainbow_River_Fade_Out.json'
 import rainbow from '../../animations/01_Rainbow_Weather_River.json'
 import neutralBackground from '../../animations/10_Neutral_River All Assets'
-import okFadeIn from '../../animations/03_OK_Fade In.json'
-import ok from '../../animations/03_OK_Weather_River .json'
-import okFadeOut from '../../animations/03_OK_River_Fade Out.json'
-import highFadeIn from '../../animations/02_Happy_River_Fade_In.json'
-import high from '../../animations/02_Happy_Weather_River_v8.json'
-import highFadeOut from '../../animations/02_Happy_River_Fade_Out.json'
-import nothingFadeIn from '../../animations/04_Nothing_Fade_In.json'
-import nothing from '../../animations/04_Nothing_Weather_River.json'
-import nothingFadeOut from '../../animations/04_Nothing_River_Fade_Out.json'
-import lowFadeIn from '../../animations/05_Low_Fade_In.json'
-import low from '../../animations/05_Low_Weather_River.json'
-import lowFadeOut from '../../animations/05_Low_River_Fade_Out.json'
-import mediumLowFadeIn from '../../animations/06_Medium_Low_Fade_In.json'
-import mediumLow from '../../animations/06_Medium_Low_Weather_River.json'
-import mediumLowFadeOut from '../../animations/06_Medium_Low_River_Fade_Out.json'
-import veryLowFadeIn from '../../animations/07_Very_Low_Fade_In.json'
-import veryLow from '../../animations/07_Very_Low_v1.json'
-import veryLowFadeOut from '../../animations/07_Very_Low_River_Fade_Out.json'
-import lowWithEnergyFadeIn from '../../animations/08_Low_But_with_Energy_Fade_In.json'
-import lowWithEnergy from '../../animations/08_Low_But_with_Energy_Weather_River.json'
-import lowWithEnergyFadeOut from '../../animations/08_Low_But_with_Energy_River_Fade_Out.json'
-import suicidalFadeIn from '../../animations/09_Suicidal_Fade_In.json'
-import suicidal from '../../animations/09_Suicidal_Weather_River.json'
-import suicidalFadeOut from '../../animations/09_Suicidal_River_Fade_Out.json'
+import blueskyFadeIn from '../../animations/03_OK_Fade In.json'
+import bluesky from '../../animations/03_OK_Weather_River .json'
+import blueskyFadeOut from '../../animations/03_OK_River_Fade Out.json'
+import sunshineFadeIn from '../../animations/02_Happy_River_Fade_In.json'
+import sunshine from '../../animations/02_Happy_Weather_River_v8.json'
+import sunshineFadeOut from '../../animations/02_Happy_River_Fade_Out.json'
+import lightCloudsFadeIn from '../../animations/04_Nothing_Fade_In.json'
+import lightClouds from '../../animations/04_Nothing_Weather_River.json'
+import lightCloudsFadeOut from '../../animations/04_Nothing_River_Fade_Out.json'
+import greyCloudFadeIn from '../../animations/05_Low_Fade_In.json'
+import greyCloud from '../../animations/05_Low_Weather_River.json'
+import greyCloudFadeOut from '../../animations/05_Low_River_Fade_Out.json'
+import cloudRainThreatFadeIn from '../../animations/06_Medium_Low_Fade_In.json'
+import cloudRainThreat from '../../animations/06_Medium_Low_Weather_River.json'
+import cloudRainThreatFadeOut from '../../animations/06_Medium_Low_River_Fade_Out.json'
+import darkCloudsLowFadeIn from '../../animations/07_Very_Low_Fade_In.json'
+import darkCloudsLow from '../../animations/07_Very_Low_v1.json'
+import darkCloudsLowFadeOut from '../../animations/07_Very_Low_River_Fade_Out.json'
+import tornadoFadeIn from '../../animations/08_Low_But_with_Energy_Fade_In.json'
+import tornado from '../../animations/08_Low_But_with_Energy_Weather_River.json'
+import tornadoFadeOut from '../../animations/08_Low_But_with_Energy_River_Fade_Out.json'
+import tsunamiFadeIn from '../../animations/09_Suicidal_Fade_In.json'
+import tsunami from '../../animations/09_Suicidal_Weather_River.json'
+import tsunamiFadeOut from '../../animations/09_Suicidal_River_Fade_Out.json'
 import fishSwimming from '../../animations/00_Fish_Swimming_across'
 import riverbed from '../../animations/Riverbed.json'
 import riverLevel from '../../animations/10_River_Level.json'
@@ -90,8 +89,14 @@ class Animation extends Component {
             case 'neutralBackground':
                 this.setState({ animationData: neutralBackground })
                 break;
-            case 'HappyBackground':
-                this.setState({ animationData: HappyBackground })
+            case 'sunshine':
+                this.setState({ animationData: sunshine })
+                break;
+            case 'sunshineFadeIn':
+                this.setState({ animationData: sunshineFadeIn })
+                break;
+            case 'sunshineFadeOut':
+                this.setState({ animationData: sunshineFadeOut })
                 break;
             case 'rainbowFadeIn':
                 this.setState({ animationData: rainbowFadeIn })
@@ -102,14 +107,14 @@ class Animation extends Component {
             case 'rainbow':
                 this.setState({ animationData: rainbow })
                 break
-            case 'okFadeIn':
-                this.setState({ animationData: okFadeIn })
+            case 'blueskyFadeIn':
+                this.setState({ animationData: blueskyFadeIn })
                 break
-            case 'ok':
-                this.setState({ animationData: ok })
+            case 'bluesky':
+                this.setState({ animationData: bluesky })
                 break
-            case 'okFadeOut':
-                this.setState({ animationData: okFadeOut })
+            case 'blueskyFadeOut':
+                this.setState({ animationData: blueskyFadeOut })
                 break
             case 'highFadeIn':
                 this.setState({ animationData: highFadeIn })
@@ -120,59 +125,59 @@ class Animation extends Component {
             case 'highFadeOut':
                 this.setState({ animationData: highFadeOut })
                 break
-            case 'nothingFadeIn':
-                this.setState({ animationData: nothingFadeIn })
+            case 'light-cloudsFadeIn':
+                this.setState({ animationData: lightCloudsFadeIn })
                 break
-            case 'nothing':
-                this.setState({ animationData: nothing })
+            case 'light-clouds':
+                this.setState({ animationData: lightClouds })
                 break
-            case 'nothingFadeOut':
-                this.setState({ animationData: nothingFadeOut })
+            case 'light-cloudsFadeOut':
+                this.setState({ animationData: lightCloudsFadeOut })
                 break
-            case 'lowFadeIn':
-                this.setState({ animationData: lowFadeIn })
+            case 'grey-cloudFadeIn':
+                this.setState({ animationData: greyCloudFadeIn })
                 break
-            case 'low':
-                this.setState({ animationData: low })
+            case 'grey-cloud':
+                this.setState({ animationData: greyCloud })
                 break
-            case 'lowFadeOut':
-                this.setState({ animationData: lowFadeOut })
+            case 'grey-cloudFadeOut':
+                this.setState({ animationData: greyCloudFadeOut })
                 break
-            case 'mediumLowFadeIn':
-                this.setState({ animationData: mediumLowFadeIn })
+            case 'cloud-rain-threatFadeIn':
+                this.setState({ animationData: cloudRainThreatFadeIn })
                 break
-            case 'mediumLow':
-                this.setState({ animationData: mediumLow })
+            case 'cloud-rain-threatLow':
+                this.setState({ animationData: cloudRainThreat })
                 break
-            case 'mediumLowFadeOut':
-                this.setState({ animationData: mediumLowFadeOut })
+            case 'cloud-rain-threatFadeOut':
+                this.setState({ animationData: cloudRainThreatFadeOut })
                 break
-            case 'veryLowFadeIn':
-                this.setState({ animationData: veryLowFadeIn })
+            case 'dark-cloudsFadeIn':
+                this.setState({ animationData: darkCloudsLowFadeIn })
                 break
-            case 'veryLow':
-                this.setState({ animationData: veryLow })
+            case 'dark-cloudsLow':
+                this.setState({ animationData: darkCloudsLow })
                 break
-            case 'veryLowFadeOut':
-                this.setState({ animationData: veryLowFadeOut })
+            case 'dark-cloudsLowFadeOut':
+                this.setState({ animationData: darkCloudsLowFadeOut })
                 break
-            case 'lowWithEnergyFadeIn':
-                this.setState({ animationData: lowWithEnergyFadeIn })
+            case 'tsunamiFadeIn':
+                this.setState({ animationData: tsunamiFadeIn })
                 break
-            case 'lowButWithEnergy':
-                this.setState({ animationData: lowWithEnergy })
+            case 'tsunami':
+                this.setState({ animationData: tsunami })
                 break
-            case 'lowWithEnergyFadeOut':
-                this.setState({ animationData: lowWithEnergyFadeOut })
+            case 'tsunami':
+                this.setState({ animationData: tsunamiFadeOut })
                 break
-            case 'suicidalFadeIn':
-                this.setState({ animationData: suicidalFadeIn })
+            case 'tornadoFadeIn':
+                this.setState({ animationData: tornadoFadeIn })
                 break
-            case 'suicidal':
-                this.setState({ animationData: suicidal })
+            case 'tornado':
+                this.setState({ animationData: tornado })
                 break
-            case 'suicidalFadeOut':
-                this.setState({ animationData: suicidalFadeOut })
+            case 'tornadoFadeOut':
+                this.setState({ animationData: tornadoFadeOut })
                 break
             case 'neutralNoTrees':
                 this.setState({ animationData: neutralNoTrees})

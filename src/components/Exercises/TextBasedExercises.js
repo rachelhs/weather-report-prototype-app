@@ -2,7 +2,6 @@ import React from 'react';
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 const firebase = require('firebase/app');
-import { AnimationsLayered } from '../SharedComponents/SharedComponents';
 import MeditationAnimation from '../Animations/MeditationAnimation';
 
 export const Meditating = () => {
