@@ -60,7 +60,7 @@ export class ReasonForFeelingsInput extends React.Component {
                 <h1 className='info-box-title'>{data[3].shared.reason}</h1>
                 <form className='button-container-vertical' onSubmit={this.handleNoteSubmit}>
                     <textarea className='free-form-input input-paragraph' type="text" value={this.state.value} onChange={this.handleNoteChange} />
-                    <button className='next-button free-form-submit center' onClick={this.props.buttonClick}>Submit</button>
+                    <button className='next-button-dark free-form-submit center' onClick={this.props.buttonClick}>NEXT</button>
                 </form>
             </div>
         )
@@ -372,7 +372,7 @@ export class FeedbackStatement extends React.Component {
             <div>
                 <h1 className='info-box-title'>{data[3]['shared']['feedbackStatements'][this.props.route][this.state.randFeedbackStatement]}</h1>
                 <div className='button-container'>
-                    <Link className='next-button'
+                    <Link className='next-button-dark'
                         to={{
                             pathname: '/home',
                             state: { weather: this.props.weather }
