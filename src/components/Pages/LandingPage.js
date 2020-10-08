@@ -22,7 +22,7 @@ export class LandingPage extends React.Component {
                         <div>
                             <h1 className='info-box-text-padding-top'>{ data[0].regularLogin[1] }</h1>
                             <div className="button-container">
-                                <button className='next-button' onClick={this.onNext}>NEXT</button>
+                                <button className='next-button-dark' onClick={this.onNext}>NEXT</button>
                             </div>
                         </div>
                     </CSSTransition>

@@ -35,7 +35,7 @@ export default class SymbolDescription extends React.Component {
                         </div>
                         <div className="button-container">
                             <BackButton/>
-                            <Link className='next-button' 
+                            <Link className='next-button-dark' 
                                 to={{
                                     pathname: '/symbol-more-detail',
                                     state: 
