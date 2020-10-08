@@ -18,7 +18,9 @@ class SuicidalRoute extends React.Component {
             neutralAnimation: true,
             suicidalFadeIn: false,
             whiteBackground: false,
-            animationSpeed: 1
+            animationSpeed: 1,
+            weatherSymbol: null, 
+            weatherFadeIn: null
         }
         this.showAcknowledge = this.showAcknowledge.bind(this);
         this.actionAfterHarm = this.actionAfterHarm.bind(this);
@@ -27,7 +29,14 @@ class SuicidalRoute extends React.Component {
 
     // method called as soon as all elements on the page are rendered & changed showAcknowledge to false after 3 seconds. This will hide the statement.
     componentDidMount() {
-
+        if (typeof this.props.location.state != 'undefined' || this.props.location.state != null) {
+            let weatherFadeIn = this.props.location.state.weatherSymbol + "FadeIn"
+            this.setState({ weatherFadeIn: weatherFadeIn });
+            this.setState({ weatherSymbol: this.props.location.state.weatherSymbol });
+            console.log('props', this.props.location.state.weatherSymbol)
+        } else {
+            this.setState({ weatherFadeIn: "neutralBackground" });
+        }
         setTimeout(() => { this.setState({ acknowledge: false }) }, 10500)
 
         expressedSuicidalRecently(res => {
@@ -196,7 +205,7 @@ class SuicidalRoute extends React.Component {
                     <AnimationsLayered speeds={[1]} animations={['neutralBackground']} />
                 </CSSTransition>
                 <CSSTransition in={this.state.suicidalFadeIn} timeout={4000} classNames="fade-enter-only">
-                    <AnimationsLayered speeds={[this.state.animationSpeed]} animations={['suicidalFadeIn']} />
+                    <AnimationsLayered speeds={[this.state.animationSpeed]} animations={[this.state.weatherFadeIn]} />
                 </CSSTransition>
                 <CSSTransition in={this.state.whiteBackground} timeout={2000} classNames="fade" unmountOnExit>
                     <div className='background-box'></div>
@@ -216,7 +225,7 @@ class SuicidalRoute extends React.Component {
                     <CSSTransition in={this.state.showGettingHelp} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterHelpQ() }}><GettingHelpQ onClick={this.leaveGettingHelpQ.bind(this)} /></CSSTransition>
 
                     <CSSTransition in={this.state.haveSpokenQ} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterSpokenTo() }}><SpokenToQ onClick={this.processSpokenToQ.bind(this)} /></CSSTransition>
-                    <CSSTransition in={this.state.showFeedback} timeout={2000} classNames="fade" unmountOnExit><FeedbackStatement dataFromParent={this.state.route}/></CSSTransition>
+                    <CSSTransition in={this.state.showFeedback} timeout={2000} classNames="fade" unmountOnExit><FeedbackStatement route={this.state.route} weather={this.state.weatherSymbol}/></CSSTransition>
 
                 </div>
             </div>
