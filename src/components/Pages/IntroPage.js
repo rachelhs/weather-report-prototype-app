@@ -51,7 +51,7 @@ export class IntroPage extends React.Component {
         return (
             <div className='container'>
                     <CSSTransition in={this.state.showIntro} timeout={2000} classNames="fade" appear unmountOnExit onExited={() => this.reRoute()}>
-                        <div class="vertical-center">
+                        <div class="center-vertical">
                             <h1>Weather Report</h1>
                         </div>
                     </CSSTransition>

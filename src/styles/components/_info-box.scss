@@ -63,14 +63,13 @@
     height: 100%;
 }
 
-.vertical-center {
-    text-align: center;
-    width: 100%;
-    margin: 0;
+.center-vertical {
     position: absolute;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
+    top: 45%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 100%;
+    left: 50%;
 }
 
 .info-box-landing {

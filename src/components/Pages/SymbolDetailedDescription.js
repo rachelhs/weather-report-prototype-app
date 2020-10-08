@@ -114,23 +114,25 @@ export default class SymbolDetailedDescription extends React.Component {
                 {(this.state.report) ? '' :
                     <div className='background-box'>
                         <AnimationsLayered speeds={[0]} animations={['neutralBackground']} />
-                        <div className='info-box-landing info-box-words'>
-                            <h3 className='info-box-text-small-padding'>{data[0].regularLogin[4]}</h3>
-                            <div className='word-grid'>
-                                {data[10].secondaryWords.map((word) => (
-                                    <div className='words' key={word}>
-                                        <button
-                                            className={this.state.secondaryWords.includes(word) ? 'active-symbol-button-border' : 'symbol-button-border'}
-                                            onClick={(e) => { this.addWords({ word }) }}>
-                                            {word}
-                                        </button>
-                                    </div>
-                                ))}
+                        <div className='center-vertical'>
+                            <div className='info-box-landing info-box-words'>
+                                <h3 className='info-box-text-small-padding'>{data[0].regularLogin[4]}</h3>
+                                <div className='word-grid'>
+                                    {data[10].secondaryWords.map((word) => (
+                                        <div className='words' key={word}>
+                                            <button
+                                                className={this.state.secondaryWords.includes(word) ? 'active-symbol-button-border' : 'symbol-button-border'}
+                                                onClick={(e) => { this.addWords({ word }) }}>
+                                                {word}
+                                            </button>
+                                        </div>
+                                    ))}
+                                </div>
+                                <div className="button-container">
+                                    <BackButton />
+                                </div>
+                                {(this.state.newUser) ? <button className='next-button-last-onboarding' onClick={this.showLastPartOnboarding.bind(this)}>Next</button> : <button className='next-button-last-onboarding' onClick={this.sendData.bind(this)}>Next</button>}
                             </div>
-                            <div className="button-container">
-                                <BackButton />
-                            </div>
-                            {(this.state.newUser) ? <button className='next-button-last-onboarding' onClick={this.showLastPartOnboarding.bind(this)}>Next</button> : <button className='next-button-last-onboarding' onClick={this.sendData.bind(this)}>Next</button>}
                         </div>
                     </div>
                 }
