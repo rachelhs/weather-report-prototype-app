@@ -73,6 +73,7 @@ class HighRoute extends React.Component {
 
     render() {
         console.log('weatherFadeIn', this.state.weatherFadeIn)
+        console.log('weatherSymbol', this.state.weatherSymbol)
         const randomQuestion = this.state.randQues == 0 ? <LikeAboutYourselfQuestion buttonClick={this.answeredRandomQuestion.bind(this)} /> : <EnjoyQuestion buttonClick={this.answeredRandomQuestion.bind(this)} />;
         return (
             <div>

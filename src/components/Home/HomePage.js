@@ -17,9 +17,9 @@ class HomePage extends React.Component {
     // Math.random() * (max - min) + min
     componentDidMount() {
         if (typeof this.props.location.state != 'undefined' || this.props.location.state != null) {
-            console.log('emotional background')
             this.setState({ weather: this.props.location.state.weather })
-        } else {
+            console.log('this.props.location.state.weather', this.props.location.state.weather)
+        }  else {
             this.setState({ weather: "neutralBackground" })
         }
         const rand = Math.random() * (30000 - 15000) + 15000
