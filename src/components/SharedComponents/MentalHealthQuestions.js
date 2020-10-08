@@ -532,7 +532,7 @@ export class AddAnchor extends React.Component {
     render() {
         return (
             <div>
-                <form className='button-container' onSubmit={this.anchorsSubmit}>
+                <form onSubmit={this.anchorsSubmit}>
                     <input className='free-form-input' type="text" placeholder="name" onChange={this.anchorsChangeName} />
                     <input className='free-form-input' type="text" placeholder="number" onChange={this.anchorsChangeNumber} />
                     <div className='button-container'>

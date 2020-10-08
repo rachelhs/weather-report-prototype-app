@@ -36,7 +36,9 @@ export class OneGratefulQuestion extends React.Component {
             <div>
                 <form className='button-container-vertical' onSubmit={this.handlegratefulQuestionSubmit}>
                     <input className='free-form-input-vertical' placeholder="1" type="text" onChange={this.handlegratefulOne} />
-                    <button className='next-button free-form-submit' onClick={this.props.buttonClick}>NEXT</button>
+                    <div className='button-container'>
+                        <button className='next-button free-form-submit' onClick={this.props.buttonClick}>NEXT</button>
+                    </div>
                 </form>
             </div>
         )
@@ -49,7 +51,6 @@ export class FishModal extends React.Component {
         super(props)
         this.state = {
             show: null,
-            modalsOpen: false,
             listOfGrateful: [],
             addButtonClicked: false
         }
@@ -58,13 +59,11 @@ export class FishModal extends React.Component {
     handleClose = () => {
         this.setState({
             show: false,
-            modalsOpen: false
         })
     }
     handleShow = () => {
         this.setState({
             show: true,
-            modalsOpen: true
         })
     }
 
@@ -94,30 +93,28 @@ export class FishModal extends React.Component {
 
     render() {
         let renderedOutput = this.state.listOfGrateful.map((item, index) => <h1 key={index}>{item}</h1>)
-
+        const customStyles = {
+            overlay: {zIndex: 1000}
+        };
         return (
             <div>
-                {(this.state.modalsOpen === false && this.props.fishAppears === true) ? <Button className='clickableFish' variant="primary" onClick={this.handleShow.bind(this)}></Button> : ''}
-                <Modal
-                    show={this.state.show}
-                    onHide={this.handleClose}
-                    backdrop="static"
-                    keyboard={false}
-                    dialogClassName="modal-dialog modal-dialog-centered"
-                >
-                    <Modal.Header closeButton>
-                    </Modal.Header>
-
-                    <Modal.Title className='modal-title'><h1 className='info-box-title'>{data[10].home.fish}</h1>
-                    </Modal.Title>
-                    <Modal.Body>
-                        {renderedOutput}
-                        {this.state.addButtonClicked ? <h1>{data[10].home.addToFish}</h1> : <TextWithButton buttonText='add' text={data[10].home.addToFish} onClick={this.toggleAddGratitude.bind(this)} />}
-                        {this.state.toggleAddGratitude ? <OneGratefulQuestion /> : ''}
-                    </Modal.Body>
-                    <Modal.Footer>
-                    </Modal.Footer>
-                </Modal>
+                {(this.props.fishAppears === true) ?
+                <Button className='clickableFish' variant="primary" onClick={this.handleShow.bind(this)}></Button> 
+                : ''}
+                <ReactModal style={customStyles} className='modalPebbles' isOpen={this.state.show} ariaHideApp={false}>
+                    <div className="flex-center">
+                        <button className='menu-close' type="button" onClick={this.handleClose.bind(this)}>
+                            CLOSE
+                        </button>
+                    </div>
+                    <h1 className='info-box-title'>{data[10].home.fish}</h1>
+                    {renderedOutput}
+                    {this.state.addButtonClicked ? 
+                        <h3>{data[10].home.addToFish}</h3> :
+                        <TextWithButton buttonText='add' text={data[10].home.addToFish} onClick={this.toggleAddGratitude.bind(this)} />
+                    }
+                    {this.state.toggleAddGratitude ? <OneGratefulQuestion /> : ''}
+                </ReactModal>
             </div>
         );
     }
@@ -129,7 +126,6 @@ export class AnchorsModal extends React.Component {
         super(props)
         this.state = {
             show: null,
-            modalsOpen: false,
             listOfAnchors: [],
             addButtonClicked: false
         }
@@ -138,13 +134,11 @@ export class AnchorsModal extends React.Component {
     handleClose = () => {
         this.setState({
             show: false,
-            modalsOpen: false
         })
     }
     handleShow = () => {
         this.setState({
             show: true,
-            modalsOpen: true
         })
     }
 
@@ -176,30 +170,26 @@ export class AnchorsModal extends React.Component {
 
     render() {
         let renderedOutput = this.state.listOfAnchors.map((item, index) => <h1 key={index}>{item}</h1>)
-
+        const customStyles = {
+            overlay: {zIndex: 1000}
+        };
         return (
             <div>
-                {(this.state.modalsOpen) ? '' : <Button className='clickablePlant' variant="primary" onClick={this.handleShow.bind(this)}></Button>}
-                <Modal
-                    show={this.state.show}
-                    onHide={this.handleClose}
-                    backdrop="static"
-                    keyboard={false}
-                    dialogClassName="modal-dialog modal-dialog-centered"
-                >
-                    <Modal.Header closeButton>
-                    </Modal.Header>
-
-                    <Modal.Title className='modal-title'><h1 className='info-box-title'>{data[10].home.anchors}</h1>
-                    </Modal.Title>
-                    <Modal.Body>
-                        {renderedOutput}
-                        {this.state.addButtonClicked ? <h1>{data[10].home.addToAnchors}</h1> : <TextWithButton buttonText='add' text={data[10].home.addToAnchors} onClick={this.toggleAddAnchor.bind(this)} />}
-                        {this.state.toggleAddAnchor ? <AddAnchor /> : ''}
-                    </Modal.Body>
-                    <Modal.Footer>
-                    </Modal.Footer>
-                </Modal>
+                <Button className='clickablePlant' variant="primary" onClick={this.handleShow.bind(this)}></Button>
+                <ReactModal style={customStyles} className='modalPebbles' isOpen={this.state.show} ariaHideApp={false}>
+                    <div className="flex-center">
+                        <button className='menu-close' type="button" onClick={this.handleClose.bind(this)}>
+                            CLOSE
+                        </button>
+                    </div>
+                    <h1 className='info-box-title'>{data[10].home.anchors}</h1>
+                    {renderedOutput}
+                    {this.state.addButtonClicked ?
+                    <h3>{data[10].home.addToAnchors}</h3>
+                    :
+                    <TextWithButton buttonText='add' text={data[10].home.addToAnchors} onClick={this.toggleAddAnchor.bind(this)} />}
+                    {this.state.toggleAddAnchor ? <AddAnchor /> : ''}
+                </ReactModal>
             </div>
         );
     }
@@ -211,7 +201,6 @@ export class PebblesModal extends React.Component {
         super(props)
         this.state = {
             show: null,
-            modalsOpen: false,
             listOfPebbles: [],
             pebbleToShow: null,
             addButtonClicked: false,
@@ -222,19 +211,17 @@ export class PebblesModal extends React.Component {
     handleClose = () => {
         this.setState({
             show: false,
-            modalsOpen: false
         })
     }
 
     handleShow = () => {
         this.setState({
             show: true,
-            modalsOpen: true
         })
     }
 
     componentDidMount() {
-        this.getListOfPebbles().then(this.setRandomPebble)
+        this.getListOfPebbles().then(this.setRandomPebble);
     }
 
     getListOfPebbles() {

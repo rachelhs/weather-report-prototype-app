@@ -9,7 +9,8 @@ class HomePage extends React.Component {
         super(props);
         this.state = {
             Fish: false,
-            weather: null
+            weather: null,
+            showButton: false
         }
     }
 
@@ -29,10 +30,12 @@ class HomePage extends React.Component {
         let intervalId = setInterval(() => {
             this.setState(prevState => {
                 if (prevState.Fish === true) {
+                    this.hideButton()
                     return {
                         Fish: false
                     };
                 } else {
+                    this.showButton()
                     return {
                         Fish: true,
                     };
@@ -46,6 +49,14 @@ class HomePage extends React.Component {
         });
     }
 
+    showButton() {
+        setTimeout( () => { this.setState({ showButton: true }) }, 3500)
+    }
+
+    hideButton() {
+        this.setState({ showButton: false })
+    }
+
     componentWillUnmount() {
         clearInterval(this.state.intervalId);
     }
@@ -53,7 +64,7 @@ class HomePage extends React.Component {
 
     render() {
         console.log('fish', this.state.Fish);
-
+        console.log('show button', this.state.showButton)
         return (
             <div>
                 <AnimationsLayered speeds={[0.4]} animations={[this.state.weather]} />
@@ -62,7 +73,7 @@ class HomePage extends React.Component {
                 {(this.state.Fish) ? 
                 <div className='anim-2'><Animation animation='fishSwimming'/></div>
                 : ''}                
-                <FishModal fishAppears={this.state.Fish} />
+                <FishModal fishAppears={this.state.showButton} />
             </div>
         );
     }
