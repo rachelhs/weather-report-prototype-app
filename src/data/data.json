@@ -33,8 +33,8 @@
             "reason": "Is there anything you are aware of that has made you feel like this?",
             "positiveChange": "How can you positively change your situation?",
             "anotherExercise": "Do you want to do another exercise?",
-            "gratefulQuestion": "What are 3 things you are grateful for?",
-            "takeCareQuestion": "What 3 things do you do to take care of yourself to keep you well? (eg, shower etc.)",
+            "gratefulQuestion": "What are 3 things are you grateful for?",
+            "takeCareQuestion": "What 3 things do you do to take care of yourself and keep well?  It could be things like taking a shower, doing the washing or going for a walk.",
             "enjoyQuestion": "What 3 things do you enjoy?",
             "likeAboutYourselfQuestion": "Sometimes we can forget nice things we like about ourselves. Heres some things you’ve liked about yourself in the past",
             "gratitudeReplayStatement": "Sometimes our mind plays tricks on us and we forget the wider perspective. Here are some things that you were previously grateful for",
@@ -53,8 +53,8 @@
                 "suicidal": "I’m sorry you’re feeling like this, it can be difficult to have and sit with these feelings."
             },
             "feedbackStatements": {
-                "ok": ["feedback statement ok route"],
-                "high": ["feeback statement high 1", "feeback statement high 2"],
+                "ok": ["Thanks for that", "\"May the strength of the past reflect in your future.\""],
+                "high": ["Thanks for that"],
                 "tooHigh": ["Hopefully that helped and your weather calms down soon"],
                 "nothing": ["Sometimes we just have to sit with these difficult feelings, and know that they will pass, just like the weather", "You are not your feelings, tomorrow will come. Just because I’m feeling nothing, doesn’t mean I am nothing"],
                 "veryLow": ["Sometimes we just have to sit with these difficult feelings, and know that they will pass, just like the weather", "I won’t say have a good day. Instead I advise you, to have a day. Stay alive, feed yourself well, wear comfortable clothes, and don’t give up on yourself just yet. It’ll get better. Until then, have a day", "Don’t give up, one day you will look back, and be glad you didn’t"],
