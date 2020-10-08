@@ -17,67 +17,69 @@ export class ChooseSymbolPage extends React.Component {
         return (
             <div className='background-box'>
                 <AnimationsLayered speeds={[0.2]} animations={['neutralTreesNoLily']} />
-                <div className='info-box-landing'>
-                    <h3 className='info-box-text'>{ data[0].regularLogin[2] }</h3>
-                    <div className="flex-center"> 
-                        <Link className='symbol-button'
-                            to={{
-                                pathname: '/symbol-description',
-                                state: { weather: "rainbow" }
-                            }}><img className='symbol' src={rainbow}/>
-                        </Link>
-                        <Link className='symbol-button'
-                            to={{
-                                pathname: '/symbol-description',
-                                state: { weather: "sunshine" }
-                            }}><img className='symbol' src={sunshine}/>
-                        </Link>
-                        <Link className='symbol-button'
-                            to={{
-                                pathname: '/symbol-description',
-                                state: { weather: "bluesky" }
-                            }}><img className='symbol' src={bluesky}/>
-                        </Link>
-                    </div>
-                    <div className="flex-center">
-                        <Link className='symbol-button'
-                            to={{
-                                pathname: '/symbol-description',
-                                state: { weather: "light-clouds" }
-                            }}><img className='symbol' src={lightclouds}/>
-                        </Link>
-                        <Link className='symbol-button'
-                            to={{
-                                pathname: '/symbol-description',
-                                state: { weather: "grey-cloud" }
-                            }}><img className='symbol' src={greysky}/>
-                        </Link>
-                        <Link className='symbol-button'
-                            to={{
-                                pathname: '/symbol-description',
-                                state: { weather: "dark-clouds" }
-                            }}><img className='symbol' src={darksky}/>
-                        </Link> 
-                    </div>
-                    <div className="flex-center">
-                        <Link className='symbol-button'
-                            to={{
-                                pathname: '/symbol-description',
-                                state: { weather: "cloud-rain-threat" }
-                            }}><img className='symbol' src={cloudrain}/>
-                        </Link>
-                        <Link className='symbol-button'
-                            to={{
-                                pathname: '/symbol-description',
-                                state: { weather: "tornado" }
-                            }}><img className='symbol' src={tornado}/>
-                        </Link>
-                        <Link className='symbol-button'
-                            to={{
-                                pathname: '/symbol-description',
-                                state: { weather: "tsunami" }
-                            }}><img className='symbol' src={tsunami}/>
-                        </Link>
+                <div className='center-vertical'>
+                    <div className='info-box-landing'>
+                        <h3 className='info-box-text'>{ data[0].regularLogin[2] }</h3>
+                        <div className="flex-center"> 
+                            <Link className='symbol-button'
+                                to={{
+                                    pathname: '/symbol-description',
+                                    state: { weather: "rainbow" }
+                                }}><img className='symbol' src={rainbow}/>
+                            </Link>
+                            <Link className='symbol-button'
+                                to={{
+                                    pathname: '/symbol-description',
+                                    state: { weather: "sunshine" }
+                                }}><img className='symbol' src={sunshine}/>
+                            </Link>
+                            <Link className='symbol-button'
+                                to={{
+                                    pathname: '/symbol-description',
+                                    state: { weather: "bluesky" }
+                                }}><img className='symbol' src={bluesky}/>
+                            </Link>
+                        </div>
+                        <div className="flex-center">
+                            <Link className='symbol-button'
+                                to={{
+                                    pathname: '/symbol-description',
+                                    state: { weather: "light-clouds" }
+                                }}><img className='symbol' src={lightclouds}/>
+                            </Link>
+                            <Link className='symbol-button'
+                                to={{
+                                    pathname: '/symbol-description',
+                                    state: { weather: "grey-cloud" }
+                                }}><img className='symbol' src={greysky}/>
+                            </Link>
+                            <Link className='symbol-button'
+                                to={{
+                                    pathname: '/symbol-description',
+                                    state: { weather: "dark-clouds" }
+                                }}><img className='symbol' src={darksky}/>
+                            </Link> 
+                        </div>
+                        <div className="flex-center">
+                            <Link className='symbol-button'
+                                to={{
+                                    pathname: '/symbol-description',
+                                    state: { weather: "cloud-rain-threat" }
+                                }}><img className='symbol' src={cloudrain}/>
+                            </Link>
+                            <Link className='symbol-button'
+                                to={{
+                                    pathname: '/symbol-description',
+                                    state: { weather: "tornado" }
+                                }}><img className='symbol' src={tornado}/>
+                            </Link>
+                            <Link className='symbol-button'
+                                to={{
+                                    pathname: '/symbol-description',
+                                    state: { weather: "tsunami" }
+                                }}><img className='symbol' src={tsunami}/>
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </div>
