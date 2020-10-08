@@ -113,7 +113,7 @@ export default class SymbolDetailedDescription extends React.Component {
             <div>
                 {(this.state.report) ? '' :
                     <div className='background-box'>
-                        <AnimationsLayered speeds={[0]} animations={['neutralBackground']} />
+                        <AnimationsLayered speeds={[0.2]} animations={['neutralTreesNoLily']} />
                         <div className='center-vertical'>
                             <div className='info-box-landing info-box-words'>
                                 <h3 className='info-box-text-small-padding'>{data[0].regularLogin[4]}</h3>
@@ -130,14 +130,13 @@ export default class SymbolDetailedDescription extends React.Component {
                                 </div>
                                 <div className="button-container">
                                     <BackButton />
+                                    {(this.state.newUser) ? <button className='next-button' onClick={this.showLastPartOnboarding.bind(this)}>Next</button> : <button className='next-button' onClick={this.sendData.bind(this)}>Next</button>}
                                 </div>
-                                {(this.state.newUser) ? <button className='next-button-last-onboarding' onClick={this.showLastPartOnboarding.bind(this)}>Next</button> : <button className='next-button-last-onboarding' onClick={this.sendData.bind(this)}>Next</button>}
                             </div>
                         </div>
                     </div>
                 }
                 <div>
-                <Header />
                     <CSSTransition in={this.state.report} timeout={fadeTime} classNames="fade" unmountOnExit appear><div className='info-box'><div className='arrow'><Arrow /></div><TextWithNextSmall text={data[9].onboarding.report} onClick={this.sendData.bind(this)} /></div></CSSTransition>
                 </div>
             </div>
