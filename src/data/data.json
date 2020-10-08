@@ -36,13 +36,13 @@
             "gratefulQuestion": "What are 3 things you are grateful for?",
             "takeCareQuestion": "What 3 things do you do to take care of yourself to keep you well? (eg, shower etc.)",
             "enjoyQuestion": "What 3 things do you enjoy?",
-            "likeAboutYourselfQuestion": "What 3 things do you like about yourself?",
-            "gratitudeReplayStatement": "[CHECK THIS] Recently, you said that this makes you feel gratitude",
+            "likeAboutYourselfQuestion": "Sometimes we can forget nice things we like about ourselves. Heres some things you’ve liked about yourself in the past",
+            "gratitudeReplayStatement": "Sometimes our mind plays tricks on us and we forget the wider perspective. Here are some things that you were previously grateful for",
             "likeReplayStatement": "[CHECK THIS] Recently, you said that this is something you like about yourself",
-            "posReplayStatement": "[CHECK THIS] Recently, you saved this as a positive memory",
+            "posReplayStatement": "Sometimes we forget we’ve had some great times in our lives, Here are some positive memories from your life",
             "safeQuestion": "Are you keeping yourself safe?",
             "support": "Have you contacted your supporters?",
-            "contentReplayStatement": "[CHECK THIS] Recently, you made this note",
+            "contentReplayStatement": "Sometimes we can forget times where we have felt content and OK. Here are some memories of sometimes from your life that you’ve felt OK to remind you that you can feel this again",
             "reminderQuestion": "Would you like to be reminded of this time in the future?",
             "photoAsk": "Do you want to take a photo?",
             "acknowledge": {
@@ -57,9 +57,10 @@
                 "high": ["feeback statement high 1", "feeback statement high 2"],
                 "tooHigh": ["Hopefully that helped and your weather calms down soon"],
                 "nothing": ["Sometimes we just have to sit with these difficult feelings, and know that they will pass, just like the weather", "You are not your feelings, tomorrow will come. Just because I’m feeling nothing, doesn’t mean I am nothing"],
-                "veryLow": ["feedback v low statement 1", "feedback v low statement 2"],
-                "mediumLow": ["feedback medium low statement 1", "feedback medium low statement 2"],
+                "veryLow": ["Sometimes we just have to sit with these difficult feelings, and know that they will pass, just like the weather", "I won’t say have a good day. Instead I advise you, to have a day. Stay alive, feed yourself well, wear comfortable clothes, and don’t give up on yourself just yet. It’ll get better. Until then, have a day", "Don’t give up, one day you will look back, and be glad you didn’t"],
+                "mediumLow": ["You are not alone in these feelings, many people feel like this at some point in their lives. You can work through this", "Don’t give up, one day you will look back, and be glad you didn’t"],
                 "low": ["feedback low statement 1", "feedback low statement 2"],
+                "lowWithEnergy": ["'Even the darkest night will end, and the sun will rise' Victor Hugo", "Don’t give up, one day you will look back, and be glad you didn’t","I won’t say have a good day. Instead I advise you, to have a day. Stay alive, feed yourself well, wear comfortable clothes, and don’t give up on yourself just yet. It’ll get better. Until then, have a day"],
                 "suicidal": ["Lots of people have felt like this before. It may seem like things won’t change but all feelings eventually pass.", "Don’t give up, one day you will look back, and be glad you didn’t","I won’t say have a good day. Instead I advise you, to have a day. Stay alive, feed yourself well, wear comfortable clothes, and don’t give up on yourself just yet. It’ll get better. Until then, have a day"]
             }
         }
@@ -67,7 +68,7 @@
     {
         "mediumLow": {
             "questions": {
-                "posThing": "What’s one small thing you can do to make yourself feel better?",
+                "posThing": "What's one small thing you can do to make yourself feel a bit better? It could be something like going outside, having your favourite drink or throwing some rubbish away",
                 "friendLike": "What’s one thing a friend would say they like about you?"
             },
             "positiveStatements": ["A feeling is not who you are", "It is ok to rest today"]
@@ -88,6 +89,7 @@
                 "posThing": "What’s one small thing you can do to make yourself feel better?",
                 "contacted": "Have you contacted your supporters?",
                 "support": "It can really help to get some personal or professional help on this",
+                "roots": "Sometimes we forget we have support in our lives Remember you can always talk to someone and there are people who care about you",
                 "exHelped": "Did this help?"
             }
         }
