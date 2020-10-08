@@ -12,6 +12,7 @@ import database from '../../firebase/firebase';
 import { CSSTransition } from 'react-transition-group';
 import { storage } from "../../firebase/firebase";
 import { Link } from 'react-router-dom';
+let listOfAnchors = [];
 
 //Is there anything you are aware of that has made you feel like this QUESTION
 export class ReasonForFeelings extends React.Component {
@@ -206,6 +207,7 @@ export class Samaritans extends React.Component {
         return (
             <div>
                 <h1 className='info-box-title'>{data[8].suicidal.questions.samaritans}</h1>
+                <a href="https://www.samaritans.org/how-we-can-help/contact-samaritan/" target="_blank"><h1 className='info-box-title'>view other ways to get in touch with them.</h1></a>
                 <div className='button-container'>
                     <button className='next-button' onClick={(e) => this.props.onClick(true)}>OK</button>
                 </div>
@@ -220,6 +222,7 @@ export class Crisis extends React.Component {
         return (
             <div>
                 <h1 className='info-box-title'>{data[8].suicidal.questions.crisis}</h1>
+                <a href="http://bristolmentalhealth.org/crisis-help/" target="_blank"><h1 className='info-box-title'>http://bristolmentalhealth.org/crisis-help/</h1></a>
                 <h1 className='info-box-title'>{data[8].suicidal.questions.crisis2}</h1>
                 <div className='button-container'>
                     <button className='next-button' onClick={(e) => this.props.onClick(true)}>OK</button>
@@ -414,11 +417,42 @@ export class Contact extends React.Component {
 
 // show list of roots (anchors)
 export class AllRoots extends React.Component {
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            listOfAnchors: []
+        }
+    }
+
+    componentDidMount() {
+        this.getListOfAnchors();
+    }
+
+    getListOfAnchors = () => {
+        listOfAnchors = [];
+        const user = firebase.auth().currentUser;
+        const uid = user.uid;
+
+        database.ref(`users/${uid}/anchors`)
+            .on('value', (snapshot) => {
+                // get list of keys for each entry
+                snapshot.forEach((childSnapshot) => {
+                    let names = childSnapshot.val().name;
+                    let numbers = childSnapshot.val().number;
+                    listOfAnchors.push(names);
+                    listOfAnchors.push(numbers);
+                })
+                this.setState({ listOfAnchors: listOfAnchors })
+            })
+    }
+
     render() {
+        let renderedOutput = this.state.listOfAnchors.map((item, index) => <h1 key={index}>{item}</h1>)
         return (
             <div>
                 <h1 className='info-box-title'>{data[8].suicidal.questions.reach}</h1>
-                <h1 className='info-box-title'>[NEEDS DOING - LIST OF ROOTS GOES HERE]</h1>
+                {renderedOutput}
             </div>
         )
     }
@@ -426,11 +460,42 @@ export class AllRoots extends React.Component {
 
 // show list of roots (anchors) and with a next button
 export class AllRootsWithNext extends React.Component {
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            listOfAnchors: []
+        }
+    }
+
+    componentDidMount() {
+        this.getListOfAnchors();
+    }
+
+    getListOfAnchors = () => {
+        listOfAnchors = [];
+        const user = firebase.auth().currentUser;
+        const uid = user.uid;
+
+        database.ref(`users/${uid}/anchors`)
+            .on('value', (snapshot) => {
+                // get list of keys for each entry
+                snapshot.forEach((childSnapshot) => {
+                    let names = childSnapshot.val().name;
+                    let numbers = childSnapshot.val().number;
+                    listOfAnchors.push(names);
+                    listOfAnchors.push(numbers);
+                })
+                this.setState({ listOfAnchors: listOfAnchors })
+            })
+    }
+
     render() {
+        let renderedOutput = this.state.listOfAnchors.map((item, index) => <h1 key={index}>{item}</h1>)
         return (
             <div>
                 <h1 className='info-box-title'>{data[8].suicidal.questions.reach}</h1>
-                <h1 className='info-box-title'>[NEEDS DOING - LIST OF ROOTS GOES HERE]</h1>
+                {renderedOutput}
                 <div className='button-container'>
                     <button className='next-button' onClick={(e) => this.props.onClick(true)}>next</button>
                 </div>
