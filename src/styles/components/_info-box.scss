@@ -79,6 +79,11 @@
     top: 10%;
 }
 
+.info-box-choose {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
 .info-box-low {
     margin: 0 auto;
     position: absolute;
@@ -106,7 +111,7 @@
 @media only screen and (max-width: 768px) {
     .info-box { 
         width: 100%;
-        height: calc(100% - 100px);
+        height: calc(100% - 70px);
     }
     .info-box-text-padding-top {
         padding-top: 20%;

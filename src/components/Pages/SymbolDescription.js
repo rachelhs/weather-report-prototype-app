@@ -22,7 +22,7 @@ export default class SymbolDescription extends React.Component {
             <div className='background-box'>
                 <AnimationsLayered speeds={[0.2]} animations={['neutralTreesNoLily']} />
                 <div className='center-vertical'>
-                    <div className='info-box-landing'>
+                    <div className='info-box-choose'>
                         <h3 className='info-box-text'>{ data[0].regularLogin[3] }</h3>
                         <div className='word-grid'>
                             {data[10]['words'][this.state.weatherSymbol].map((word) => (
