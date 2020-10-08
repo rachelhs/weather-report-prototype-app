@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/mywewakz/public_html
+    - export DEPLOYPATH=/home/mywewakz/repositories/weather-report-prototype-app
     - /bin/cp -r * $DEPLOYPATH
