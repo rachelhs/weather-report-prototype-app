@@ -33,34 +33,23 @@ export function isLongerThanThreeDays(cb) {
                 // checks the first entry of each day
                 let time = Object.keys(child.val())[0];
                 database.ref(`users/${uid}/weatherReports/${date1}/${time}/createdAt`).on('value', (snapshot) => {
-                   // console.log('createdAt', snapshot.val());
+                   // if first entry is older than three days ago, add 1 to counter
                     let createdAt1 = snapshot.val();
-                    if (createdAt1 < threeDaysAgo) {
+                    if ((createdAt1 !== null) && (createdAt1 < threeDaysAgo)) {
                         counter +=1;
                     }
 
                 })
                 database.ref(`users/${uid}/weatherReports/${date2}/${time}/createdAt`).on('value', (snapshot) => {
-                   // console.log('createdAt', snapshot.val());
+                   // if second entry is older than three days ago, add 1 to counter
                     let createdAt2 = snapshot.val();
-                    if (createdAt2 < threeDaysAgo) {
+                    if ((createdAt2 !== null) && (createdAt2 < threeDaysAgo)) {
                         counter +=1;
+
                     }
                 })
-
-                console.log(counter);
-                // if (createdAt1) {
-                //     console.log(createdAt1);
-                // }
-                //let getTimestamp = database.ref(`users/${uid}/weatherReports/${val}/${key}/createdAt`);
-                //console.log('timestamp', getTimestamp);
-                // let getTimestamp = child.key.createdAt;
-                // console.log(getTimestamp);
-                // if (key < threeDaysAgo) {
-                //     counter +=1;
-                // }
-
             })
+            // if either or both entries older than three days, counter will be 1 or 2 -> return true
             if (counter >= 1) {
                 cb(true)
                 return
@@ -132,7 +121,6 @@ export function expressedSuicidalRecently(cb) {
                 if ((createdAt3 >= sevenDaysAgo) && (mainWord3 === 'suicidal')) {
                     counter += 1;
                 }
-                console.log(counter);
             })
             // has user expressed this emotion 4 times in the last week
             // this is a bit hacky (counter >= 12 because counter goes up 3 times for each entry...)
@@ -191,7 +179,6 @@ export function expressedTooHighRecently(cb) {
                 if ((createdAt3 >= sevenDaysAgo) && (mainWord3 === 'manic' || 'invincible' || 'over stimulated')) {
                     counter += 1;
                 }
-                console.log(counter);
             })
             // has user expressed this emotion 4 times in the last week
             // this is a bit hacky (counter >= 12 because counter goes up 3 times for each entry...)

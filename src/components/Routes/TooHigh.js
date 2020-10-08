@@ -58,7 +58,7 @@ class TooHighRoute extends React.Component {
 
     threeDayFunction() {
         isLongerThanThreeDays(result => {
-            result ? this.setState({ longerThanThreeDays: true }) : (this.setState({ longerThanThreeDays: false }))
+            result ? this.setState({ longerThanThreeDays: false }) : (this.setState({ longerThanThreeDays: true }))
             console.log('three days', result);
         })
     }
