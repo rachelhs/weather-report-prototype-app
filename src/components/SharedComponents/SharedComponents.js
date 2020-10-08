@@ -103,12 +103,10 @@ export class HowLongHaveYouFeltLikeThis extends React.Component {
         return (
             <div>
                 <h1 className='info-box-title'>{data[3].shared.howLong}</h1>
-                <div className='button-container'>
-                    <button className='next-button' onClick={(e) => { this.onHowLong('today'); this.props.buttonClick(true) }}>today</button>
-                    <button className='next-button' onClick={(e) => { this.onHowLong('a few'); this.props.buttonClick(true) }}>a few days</button>
-                    <button className='next-button' onClick={(e) => { this.onHowLong('a week'); this.props.buttonClick(true) }}>a week</button>
-                    <button className='next-button' onClick={(e) => { this.onHowLong('longer'); this.props.buttonClick(true) }}>longer</button>
-                </div>
+                <button className='next-button stack-button' onClick={(e) => { this.onHowLong('today'); this.props.buttonClick(true) }}>TODAY</button>
+                <button className='next-button stack-button' onClick={(e) => { this.onHowLong('a few'); this.props.buttonClick(true) }}>A FEW DAYS</button>
+                <button className='next-button stack-button' onClick={(e) => { this.onHowLong('a week'); this.props.buttonClick(true) }}>A WEEK</button>
+                <button className='next-button stack-button' onClick={(e) => { this.onHowLong('longer'); this.props.buttonClick(true) }}>LONGER</button>
             </div>
         )
     }

@@ -141,7 +141,9 @@ export class PositiveChangeQuestion extends React.Component {
                 <h1 className='info-box-title'>{data[3].shared.positiveChange}</h1>
                 <form className='button-container' onSubmit={this.handlepositiveChangeSubmit}>
                     <input className='free-form-input-vertical' type="text" value={this.state.value} onChange={this.handlepositiveChange} />
-                    <button className='next-button free-form-submit' onClick={this.props.buttonClick}>Submit</button>
+                    <div className="button-container">
+                        <button className='next-button free-form-submit' onClick={this.props.buttonClick}>Submit</button>
+                    </div>
                 </form>
             </div>
         )
@@ -197,7 +199,7 @@ export class HelpedCopeQuestion extends React.Component {
                     <input className='free-form-input-vertical' placeholder="2" type="text" onChange={this.handlehelpedCopeTwo} />
                     <input className='free-form-input-vertical' placeholder="3" type="text" onChange={this.handlehelpedCopeThree} />
                     <div className='button-container'>
-                        <button className='next-button free-form-submit' onClick={this.props.buttonClick}>NEXT</button>
+                        <button className='next-button-dark free-form-submit' onClick={this.props.buttonClick}>NEXT</button>
                     </div>
                 </form>
             </div>
@@ -283,7 +285,9 @@ export class GratefulQuestion extends React.Component {
                     <input className='free-form-input-vertical' placeholder="1" type="text" onChange={this.handlegratefulOne} />
                     <input className='free-form-input-vertical' placeholder="2" type="text" onChange={this.handlegratefulTwo} />
                     <input className='free-form-input-vertical' placeholder="3" type="text" onChange={this.handlegratefulThree} />
-                    <button className='next-button free-form-submit' onClick={this.props.buttonClick}>NEXT</button>
+                    <div className='button-container'>
+                        <button className='next-button-dark free-form-submit' onClick={this.props.buttonClick}>NEXT</button>
+                    </div>
                 </form>
             </div>
         )
@@ -337,7 +341,9 @@ export class EnjoyQuestion extends React.Component {
                     <input className='free-form-input-vertical' placeholder="1" type="text" onChange={this.handleEnjoyOne} />
                     <input className='free-form-input-vertical' placeholder="2" type="text" onChange={this.handleEnjoyTwo} />
                     <input className='free-form-input-vertical' placeholder="3" type="text" onChange={this.handleEnjoyThree} />
-                    <button className='next-button free-form-submit' onClick={this.props.buttonClick}>NEXT</button>
+                    <div className='button-container'>
+                        <button className='next-button-dark free-form-submit' onClick={this.props.buttonClick}>NEXT</button>
+                    </div>
                 </form>
             </div>
         )
@@ -391,7 +397,9 @@ export class LikeAboutYourselfQuestion extends React.Component {
                     <input className='free-form-input-vertical' placeholder="1" type="text" onChange={this.handleLikeOne} />
                     <input className='free-form-input-vertical' placeholder="2" type="text" onChange={this.handleLikeTwo} />
                     <input className='free-form-input-vertical' placeholder="3" type="text" onChange={this.handleLikeThree} />
-                    <button className='next-button free-form-submit' onClick={this.props.buttonClick}>NEXT</button>
+                    <div className="button-container">
+                        <button className='next-button-dark free-form-submit' onClick={this.props.buttonClick}>NEXT</button>
+                    </div>
                 </form>
             </div>
         )
@@ -461,7 +469,9 @@ export class TakeCareQuestion
                     <input className='free-form-input-vertical' placeholder="1" type="text" onChange={this.handletakeCareOne} />
                     <input className='free-form-input-vertical' placeholder="2" type="text" onChange={this.handletakeCareTwo} />
                     <input className='free-form-input-vertical' placeholder="3" type="text" onChange={this.handletakeCareThree} />
-                    <button className='next-button free-form-submit' onClick={this.props.buttonClick}>NEXT</button>
+                    <div className='button-container'>
+                        <button className='next-button-dark free-form-submit' onClick={this.props.buttonClick}>NEXT</button>
+                    </div>
                 </form>
             </div>
         )
@@ -525,7 +535,9 @@ export class AddAnchor extends React.Component {
                 <form className='button-container' onSubmit={this.anchorsSubmit}>
                     <input className='free-form-input' type="text" placeholder="name" onChange={this.anchorsChangeName} />
                     <input className='free-form-input' type="text" placeholder="number" onChange={this.anchorsChangeNumber} />
-                    <button className='next-button free-form-submit' onClick={this.props.buttonClick}>Add</button>
+                    <div className='button-container'>
+                        <button className='next-button free-form-submit' onClick={this.props.buttonClick}>Add</button>
+                    </div>
                 </form>
             </div>
         )

@@ -82,7 +82,7 @@ export class ReasonForFeelingsInputAndReminder extends React.Component {
                         <h1 className='info-box-title'>{data[3].shared.reason}</h1>
                         <form className='button-container-vertical' onSubmit={this.handleNoteSubmit.bind(this)}>
                             <textarea className='free-form-input input-paragraph' type="text" value={this.state.value} onChange={this.handleNoteChange} />
-                            <button className='next-button free-form-submit center' onClick={this.props.buttonClick}>Submit</button>
+                            <button className='next-button-dark free-form-submit center' onClick={this.props.buttonClick}>NEXT</button>
                         </form>
                     </div>
                 </CSSTransition>
@@ -90,12 +90,12 @@ export class ReasonForFeelingsInputAndReminder extends React.Component {
                     <div>
                         <h1 className='info-box-title'>{data[3].shared.reminderQuestion}</h1>
                         <div className='button-container'>
-                            <button className='next-button' onClick={this.yesSetReminder.bind(this)}>Yes</button>
+                            <button className='next-button' onClick={this.yesSetReminder.bind(this)}>YES</button>
                             <button className='next-button'
                                 onClick={(e) => {
                                     this.sendInput(false);
                                     this.props.onClick(true);
-                                }}>No
+                                }}>NO
                             </button>
                         </div>
                     </div>
@@ -104,12 +104,12 @@ export class ReasonForFeelingsInputAndReminder extends React.Component {
                     <div>
                         <h1 className='info-box-title'>{data[3].shared.photoAsk}</h1>
                         <div className='button-container'>
-                            <button className='next-button' onClick={this.closePhotoOption.bind(this)}>Yes</button>
+                            <button className='next-button' onClick={this.closePhotoOption.bind(this)}>YES</button>
                             <button className='next-button'
                                 onClick={(e) => {
                                     this.sendInput(true);
                                     this.props.onClick(true);
-                                }}>No
+                                }}>NO
                             </button>
                         </div>
                     </div>
@@ -122,7 +122,7 @@ export class ReasonForFeelingsInputAndReminder extends React.Component {
                                 onClick={(e) => {
                                     this.sendInput(true);
                                     this.props.onClick(true);
-                                }}>Next
+                                }}>NEXT
                             </button>
                         </div>
                     </div>
