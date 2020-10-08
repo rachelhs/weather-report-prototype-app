@@ -164,7 +164,10 @@ export default class SymbolDetailedDescription extends React.Component {
                     </div>
                 }
                 <div>
-                    <CSSTransition in={this.state.report} timeout={fadeTime} classNames="fade" unmountOnExit appear><div className='info-box'><div className='arrow'><Arrow /></div><TextWithNextSmall text={data[9].onboarding.report} onClick={this.sendData.bind(this)} /></div></CSSTransition>
+                    <CSSTransition in={this.state.report} timeout={fadeTime} classNames="fade" unmountOnExit appear><div className='info-box'>
+                        
+                        <div className='arrow'><Arrow /></div>
+                        <TextWithNextSmall text={data[9].onboarding.report} onClick={this.sendData.bind(this)} /></div></CSSTransition>
                 </div>
             </div>
         )
