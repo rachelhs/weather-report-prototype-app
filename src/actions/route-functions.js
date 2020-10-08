@@ -14,13 +14,43 @@ export function isLongerThanThreeDays(cb) {
         .orderByChild('createdAt') //order by createAt value
         .limitToLast(2) // return two most recent entries
         .once('value', (snapshot) => {
+            // date of most recent entry
+            let date1 = Object.keys(snapshot.val())[0];
+            // date of second most recent entry
+            // check first if it exists
+            // exists if more than one value of snapshot
+            let date2 = '';
+            let length = Object.keys(snapshot.val()).length;
+            if (length > 1) {
+                date2 = Object.keys(snapshot.val())[1];
+            }
+            // if only one entry then more than three days true
+            else {
+                cb(true)
+                return
+            }
             snapshot.forEach((child) => {
-                let key = Object.keys(child.val())[0];
-                if (key < threeDaysAgo) {
-                    counter +=1;
-                }
+                // checks the first entry of each day
+                let time = Object.keys(child.val())[0];
+                database.ref(`users/${uid}/weatherReports/${date1}/${time}/createdAt`).on('value', (snapshot) => {
+                   // if first entry is older than three days ago, add 1 to counter
+                    let createdAt1 = snapshot.val();
+                    if ((createdAt1 !== null) && (createdAt1 < threeDaysAgo)) {
+                        counter +=1;
+                    }
+
+                })
+                database.ref(`users/${uid}/weatherReports/${date2}/${time}/createdAt`).on('value', (snapshot) => {
+                   // if second entry is older than three days ago, add 1 to counter
+                    let createdAt2 = snapshot.val();
+                    if ((createdAt2 !== null) && (createdAt2 < threeDaysAgo)) {
+                        counter +=1;
+
+                    }
+                })
             })
-            if(counter >= 1) {
+            // if either or both entries older than three days, counter will be 1 or 2 -> return true
+            if (counter >= 1) {
                 cb(true)
                 return
             }
@@ -62,7 +92,7 @@ export function expressedSuicidalRecently(cb) {
                 let childKey = Object.keys(child.val())[0];
                 let mainWord = child.val()[childKey].mainWord;
                 let createdAt = child.val()[childKey].createdAt;
-                
+
                 let mainWord2 = ''
                 let createdAt2 = ''
                 let mainWord3 = ''
@@ -91,9 +121,10 @@ export function expressedSuicidalRecently(cb) {
                 if ((createdAt3 >= sevenDaysAgo) && (mainWord3 === 'suicidal')) {
                     counter += 1;
                 }
-                console.log(counter);
             })
-            if(counter >= 3) {
+            // has user expressed this emotion 4 times in the last week
+            // this is a bit hacky (counter >= 12 because counter goes up 3 times for each entry...)
+            if (counter >= 12) {
                 cb(true)
                 return
             }
@@ -119,7 +150,7 @@ export function expressedTooHighRecently(cb) {
                 let childKey = Object.keys(child.val())[0];
                 let mainWord = child.val()[childKey].mainWord;
                 let createdAt = child.val()[childKey].createdAt;
-                
+
                 let mainWord2 = ''
                 let createdAt2 = ''
                 let mainWord3 = ''
@@ -148,9 +179,10 @@ export function expressedTooHighRecently(cb) {
                 if ((createdAt3 >= sevenDaysAgo) && (mainWord3 === 'manic' || 'invincible' || 'over stimulated')) {
                     counter += 1;
                 }
-                console.log(counter);
             })
-            if(counter >= 3) {
+            // has user expressed this emotion 4 times in the last week
+            // this is a bit hacky (counter >= 12 because counter goes up 3 times for each entry...)
+            if (counter >= 9) {
                 cb(true)
                 return
             }
@@ -165,8 +197,8 @@ export function expressedTooHighRecently(cb) {
 export function BackButton({ children }) {
     let history = useHistory()
     return (
-      <button className='back-button' type="button" onClick={() => history.goBack()}>
-        BACK
+        <button className='back-button' type="button" onClick={() => history.goBack()}>
+            BACK
       </button>
     )
 }
@@ -175,8 +207,8 @@ export function BackButton({ children }) {
 export function BackButtonFirstAid({ children }) {
     let history = useHistory()
     return (
-      <button className='first-aid-close' type="button" onClick={() => history.goBack()}>
-        CLOSE
+        <button className='first-aid-close' type="button" onClick={() => history.goBack()}>
+            CLOSE
       </button>
     )
 }

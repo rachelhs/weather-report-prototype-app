@@ -81,7 +81,7 @@ class SuicidalRoute extends React.Component {
     // called onexit of showAcknowledge
     threeDayFunction() {
         isLongerThanThreeDays(result => {
-            result ? this.setState({ longerThanThreeDays: true }) : (this.setState({ longerThanThreeDays: false }))
+            result ? this.setState({ longerThanThreeDays: false }) : (this.setState({ longerThanThreeDays: true }))
         })
     }
 
