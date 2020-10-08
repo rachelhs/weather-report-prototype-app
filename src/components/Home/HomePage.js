@@ -17,6 +17,9 @@ class HomePage extends React.Component {
     // Math.random() * (max - min) + min
     componentDidMount() {
         if (typeof this.props.location.state != 'undefined' || this.props.location.state != null) {
+            if (this.props.location.state.weather == 'undefined' || this.props.location.state.weather == null) {
+                this.setState({ weather: "neutralBackground" })
+            } else
             this.setState({ weather: this.props.location.state.weather })
             console.log('this.props.location.state.weather', this.props.location.state.weather)
         }  else {

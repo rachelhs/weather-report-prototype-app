@@ -227,8 +227,6 @@ class TooHighRoute extends React.Component {
     }
 
     render() {
-        console.log('weatherSymbol', this.state.weatherSymbol)
-        console.log('this.state.route', this.state.route)
         return (
             <div>
                 <CSSTransition in={this.state.neutralAnimation} timeout={4000} classNames="fade-enter-only" unmountOnExit>
@@ -240,32 +238,30 @@ class TooHighRoute extends React.Component {
                 <CSSTransition in={this.state.whiteBackground} timeout={2000} classNames="fade" unmountOnExit>
                     <div className='background-box'></div>
                 </CSSTransition>
-                <div className='center-vertical-higher'>
-                    <div className='info-box-landing'>
-                        <CSSTransition in={this.state.howLong} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.areYouAtRisk() }}><HowLongHaveYouFeltLikeThis buttonClick={this.answeredHowLong.bind(this)} /></CSSTransition>
-                        <CSSTransition in={this.state.areYouAtRisk} timeout={2000} onExited={() => { this.triggerAfterHarm() }} classNames="fade" unmountOnExit><RiskOfHarmTooHigh onClick={this.actionAfterHarm.bind(this)} /></CSSTransition>
-                        <CSSTransition in={this.state.showPlanQ} timeout={2000} onExited={() => { this.triggerAfterPlan() }} classNames="fade" unmountOnExit><PlanQ onClick={this.actionAfterPlan.bind(this)} /></CSSTransition>
-                        <CSSTransition in={this.state.showPlanningQ} timeout={2000} onExited={() => { this.triggerAfterPlanning() }} classNames="fade" unmountOnExit><PlanningQ onClick={this.actionAfterPlanning.bind(this)} /></CSSTransition>
-                        <CSSTransition in={this.state.showFeelingsPass} timeout={2000} onEnter={() => { this.triggerTimeout() }} onExited={() => { this.showCrisisTeam() }} classNames="fade" unmountOnExit><FeelingsPassStatement /></CSSTransition>
-                        <CSSTransition in={this.state.showSamaritans} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.showAnchors() }}><Samaritans onClick={this.actionAfterSamaritans.bind(this)} /></CSSTransition>
-                        <CSSTransition in={this.state.showCrisisTeam} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.showSamaritans() }}><Crisis onClick={this.leaveCrisis.bind(this)} /></CSSTransition>
-                        <CSSTransition in={this.state.showAnchors} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.showGettingHelp() }}><AllRootsWithNext onClick={this.leaveAnchors.bind(this)} /></CSSTransition>
-                        <CSSTransition in={this.state.showGettingHelp} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterHelpQ() }}><GettingHelpQ onClick={this.leaveGettingHelpQ.bind(this)} /></CSSTransition>
-                        <CSSTransition in={this.state.haveSpokenQ} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterSpokenTo() }}><SpokenToQ onClick={this.processSpokenToQ.bind(this)} /></CSSTransition>
-                        <CSSTransition in={this.state.awareOf} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterReason() }}><ReasonForFeelings onClick={this.processReasonFor.bind(this)} /></CSSTransition>
-                        <CSSTransition in={this.state.showNote} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterNote() }}><ReasonForFeelingsInput buttonClick={this.processNote.bind(this)} /></CSSTransition>
-                        <CSSTransition in={this.state.exercises} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterExercises() }}>
-                            <div>
-                                <div>{SetExercises(this.state.randExercise)}</div>
-                                <div className="flex-center">
-                                    <button className='next-button-dark' onClick={this.seenExercise.bind(this)}>NEXT</button>
-                                </div>
+                <div className='info-box-landing'>
+                    <CSSTransition in={this.state.howLong} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.areYouAtRisk() }}><HowLongHaveYouFeltLikeThis buttonClick={this.answeredHowLong.bind(this)} /></CSSTransition>
+                    <CSSTransition in={this.state.areYouAtRisk} timeout={2000} onExited={() => { this.triggerAfterHarm() }} classNames="fade" unmountOnExit><RiskOfHarmTooHigh onClick={this.actionAfterHarm.bind(this)} /></CSSTransition>
+                    <CSSTransition in={this.state.showPlanQ} timeout={2000} onExited={() => { this.triggerAfterPlan() }} classNames="fade" unmountOnExit><PlanQ onClick={this.actionAfterPlan.bind(this)} /></CSSTransition>
+                    <CSSTransition in={this.state.showPlanningQ} timeout={2000} onExited={() => { this.triggerAfterPlanning() }} classNames="fade" unmountOnExit><PlanningQ onClick={this.actionAfterPlanning.bind(this)} /></CSSTransition>
+                    <CSSTransition in={this.state.showFeelingsPass} timeout={2000} onEnter={() => { this.triggerTimeout() }} onExited={() => { this.showCrisisTeam() }} classNames="fade" unmountOnExit><FeelingsPassStatement /></CSSTransition>
+                    <CSSTransition in={this.state.showSamaritans} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.showAnchors() }}><Samaritans onClick={this.actionAfterSamaritans.bind(this)} /></CSSTransition>
+                    <CSSTransition in={this.state.showCrisisTeam} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.showSamaritans() }}><Crisis onClick={this.leaveCrisis.bind(this)} /></CSSTransition>
+                    <CSSTransition in={this.state.showAnchors} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.showGettingHelp() }}><AllRootsWithNext onClick={this.leaveAnchors.bind(this)} /></CSSTransition>
+                    <CSSTransition in={this.state.showGettingHelp} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterHelpQ() }}><GettingHelpQ onClick={this.leaveGettingHelpQ.bind(this)} /></CSSTransition>
+                    <CSSTransition in={this.state.haveSpokenQ} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterSpokenTo() }}><SpokenToQ onClick={this.processSpokenToQ.bind(this)} /></CSSTransition>
+                    <CSSTransition in={this.state.awareOf} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterReason() }}><ReasonForFeelings onClick={this.processReasonFor.bind(this)} /></CSSTransition>
+                    <CSSTransition in={this.state.showNote} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterNote() }}><ReasonForFeelingsInput buttonClick={this.processNote.bind(this)} /></CSSTransition>
+                    <CSSTransition in={this.state.exercises} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterExercises() }}>
+                        <div>
+                            <div>{SetExercises(this.state.randExercise)}</div>
+                            <div className="flex-center">
+                                <button className='next-button-dark' onClick={this.seenExercise.bind(this)}>NEXT</button>
                             </div>
-                        </CSSTransition>
-                        <CSSTransition in={this.state.showFeedbackStatement} timeout={2000} className="fade" unmountOnExit>
-                            <FeedbackStatement route={this.state.route} weather={this.state.weatherSymbol}/>
-                        </CSSTransition>
-                    </div>
+                        </div>
+                    </CSSTransition>
+                    <CSSTransition in={this.state.showFeedbackStatement} timeout={2000} className="fade" unmountOnExit>
+                        <FeedbackStatement route={this.state.route} weather={this.state.weatherSymbol}/>
+                    </CSSTransition>
                 </div>
             </div>
         );

@@ -72,18 +72,11 @@
     left: 50%;
 }
 
-.center-vertical-higher {
-    position: absolute;
-    top: 30%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    width: 100%;
-    left: 50%;
-}
-
 .info-box-landing {
     margin: 0 auto;
     max-width: 500px;
+    position: absolute;
+    top: 10%;
 }
 
 .info-box-low {
@@ -174,7 +167,8 @@
     margin-bottom: 10px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    background-color: lightgray;
+    border-bottom: 1px solid white;
+    background-color: rgba(200, 229, 232, 0.9);
     border: none;
 }
 
@@ -192,7 +186,8 @@ textarea {
     margin: 5px auto;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    background-color: lightgray;
+    border-bottom: 1px solid white !important;
+    background-color: rgba(200, 229, 232, 0.9);
     border: none;
 }
 
