@@ -12,15 +12,15 @@ class MeditationAnimation extends React.Component {
             animationData: meditation,
             rendererSettings: {
                 preserveAspectRatio: 'xMidYMid slice'
-            }
+            }            
         };
 
         return (
             <Lottie options={defaultOptions}
                 speed={this.props.speed}
                 isPaused={this.props.isPaused}
-                width={200}
-                height={200}
+                width={"100vw"}
+                height={"100vh"}
             />
         )
     }
