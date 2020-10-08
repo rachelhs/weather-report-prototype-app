@@ -55,7 +55,7 @@
             "feedbackStatements": {
                 "ok": ["feedback statement ok route"],
                 "high": ["feeback statement high 1", "feeback statement high 2"],
-                "tooHigh": ["feedback too high statement 1", "feedback too high statement 2"],
+                "tooHigh": ["Hopefully that helped and your weather calms down soon"],
                 "nothing": ["Sometimes we just have to sit with these difficult feelings, and know that they will pass, just like the weather", "You are not your feelings, tomorrow will come. Just because I’m feeling nothing, doesn’t mean I am nothing"],
                 "veryLow": ["feedback v low statement 1", "feedback v low statement 2"],
                 "mediumLow": ["feedback medium low statement 1", "feedback medium low statement 2"],

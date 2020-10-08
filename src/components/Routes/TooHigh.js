@@ -227,6 +227,8 @@ class TooHighRoute extends React.Component {
     }
 
     render() {
+        console.log('weatherSymbol', this.state.weatherSymbol)
+        console.log('this.state.route', this.state.route)
         return (
             <div>
                 <CSSTransition in={this.state.neutralAnimation} timeout={4000} classNames="fade-enter-only" unmountOnExit>
@@ -260,7 +262,9 @@ class TooHighRoute extends React.Component {
                                 </div>
                             </div>
                         </CSSTransition>
-                        <CSSTransition in={this.state.showFeedbackStatement} timeout={2000} className="fade" unmountOnExit><FeedbackStatement route={this.state.route} weather={this.state.weatherSymbol}/></CSSTransition>
+                        <CSSTransition in={this.state.showFeedbackStatement} timeout={2000} className="fade" unmountOnExit>
+                            <FeedbackStatement route={this.state.route} weather={this.state.weatherSymbol}/>
+                        </CSSTransition>
                     </div>
                 </div>
             </div>

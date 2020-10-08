@@ -367,6 +367,7 @@ export class FeedbackStatement extends React.Component {
     render() {
         console.log('route', this.props.route)
         console.log('weather',this.props.weather )
+
         return (
             <div>
                 <h1 className='info-box-title'>{data[3]['shared']['feedbackStatements'][this.props.route][this.state.randFeedbackStatement]}</h1>
@@ -375,10 +376,11 @@ export class FeedbackStatement extends React.Component {
                         to={{
                             pathname: '/home',
                             state: { weather: this.props.weather }
-                        }}>Go to Home
+                        }}>HOME
                     </Link>
                 </div>
             </div>
+
         )
     }
 }
