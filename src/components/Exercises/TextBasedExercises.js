@@ -26,14 +26,17 @@ export class Breathing extends React.Component {
     }
 
     render() {
-        return (<div>
-            <h1 className='exercises-title'>Breathing</h1>
-            <AudioPlayer
-                autoPlay={false}
-                src={this.state.url}
-            />
-            <MeditationAnimation />
-        </div>
+        return (
+            <div>
+                <h1 className='exercises-title'>Breathing</h1>
+                <AudioPlayer
+                    autoPlay={false}
+                    src={this.state.url}
+                />
+                <div className="breathingExercise">
+                    <MeditationAnimation />
+                </div>
+            </div>
         )
     }
 }
@@ -61,6 +64,7 @@ export class Grounding extends React.Component {
             <AudioPlayer
                 autoPlay={false}
                 src={this.state.url}
+                className="audioPlayer"
             />
         </div>
         )

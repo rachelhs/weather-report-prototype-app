@@ -150,14 +150,14 @@ export default class SymbolDetailedDescription extends React.Component {
                                             <button
                                                 className={this.state.secondaryWords.includes(word) ? 'active-symbol-button-border' : 'symbol-button-border'}
                                                 onClick={(e) => { this.addWords({ word }) }}>
-                                                {word}
+                                                {word.toUpperCase()}
                                             </button>
                                         </div>
                                     ))}
                                 </div>
                                 <div className="button-container">
                                     <BackButton />
-                                    {(this.state.newUser) ? <button className='next-button-dark' onClick={this.showLastPartOnboarding.bind(this)}>Next</button> : <button className='next-button-dark' onClick={this.sendData.bind(this)}>Next</button>}
+                                    {(this.state.newUser) ? <button className='next-button-dark' onClick={this.showLastPartOnboarding.bind(this)}>NEXT</button> : <button className='next-button-dark' onClick={this.sendData.bind(this)}>NEXT</button>}
                                 </div>
                             </div>
                         </div>
