@@ -26,7 +26,9 @@ class LowButWithEnergyRoute extends React.Component {
             neutralAnimation: true,
             lowButWithEnergyFadeIn: false,
             whiteBackground: false,
-            animationSpeed: 1
+            animationSpeed: 1,
+            weatherFadeIn: null,
+            weatherSymbol: null
         }
         this.seenExercise = this.seenExercise.bind(this);
         this.decideFirstAid = this.decideFirstAid.bind(this);
@@ -34,6 +36,14 @@ class LowButWithEnergyRoute extends React.Component {
 
     // method called as soon as all elements on the page are rendered & changed showAcknowledge to false after 3 seconds. This will hide the statement.
     componentDidMount() {
+        if (typeof this.props.location.state != 'undefined' || this.props.location.state != null) {
+            let weatherFadeIn = this.props.location.state.weatherSymbol + "FadeIn"
+            this.setState({ weatherFadeIn: weatherFadeIn });
+            this.setState({ weatherSymbol: this.props.location.state.weatherSymbol });
+            console.log('props', this.props.location.state.weatherSymbol)
+        } else {
+            this.setState({ weatherFadeIn: "neutralBackground" });
+        }
         // set timeout to say I’m sorry you are feeling like this
         setTimeout(() => { this.setState({ showAcknowledge: false }) }, 10500)
         // random function for random questions
@@ -52,6 +62,8 @@ class LowButWithEnergyRoute extends React.Component {
         }, 5000)
         setTimeout(() => { this.setState({ whiteBackground: true }) }, 5500)
         setTimeout(() => { this.setState({ showAcknowledge: true }) }, 7500)
+        let weatherFadeIn = this.state.weatherSymbol + "FadeIn"
+        this.setState({ weatherFadeIn: weatherFadeIn });
     }
 
     round(value, precision) {
@@ -140,7 +152,7 @@ class LowButWithEnergyRoute extends React.Component {
                     <AnimationsLayered speeds={[1]} animations={['neutralBackground']} />
                 </CSSTransition>
                 <CSSTransition in={this.state.lowButWithEnergyFadeIn} timeout={4000} classNames="fade-enter-only">
-                    <AnimationsLayered speeds={[this.state.animationSpeed]} animations={['lowWithEnergyFadeIn']} />
+                    <AnimationsLayered speeds={[this.state.animationSpeed]} animations={[this.state.weatherFadeIn]} />
                 </CSSTransition>
                 <CSSTransition in={this.state.whiteBackground} timeout={2000} classNames="fade" unmountOnExit>
                     <div className='background-box'></div>
@@ -156,7 +168,7 @@ class LowButWithEnergyRoute extends React.Component {
                     <CSSTransition in={this.state.showRandomExercises} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.askIfHelped()}><div className='flex-center'><div>{SetExercises(this.state.exercise)}</div><button className='next-button' onClick={this.seenExercise}>next</button></div></CSSTransition>
                     <CSSTransition in={this.state.showAskIfHelped} timeout={1000} className="fade" unmountOnExit onExited={() => this.askAnotherExerciseQuestion()}><AskIfHelped exercise={this.state.exercise} onClick={this.afterAnsweredIfHelped.bind(this)} /></CSSTransition>
                     <CSSTransition in={this.state.showAnotherExerciseQuestion} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.afterAskAnotherQuestion()}><div><AnotherExerciseQuestion onClick={this.answeredAnotherExerciseQuestion.bind(this)} /></div></CSSTransition>
-                    <CSSTransition in={this.state.showFeedbackStatement} timeout={2000} className="fade" unmountOnExit><FeedbackStatement dataFromParent={this.state.route}/></CSSTransition>
+                    <CSSTransition in={this.state.showFeedbackStatement} timeout={2000} className="fade" unmountOnExit><FeedbackStatement route={this.state.route} weather={this.state.weatherSymbol}/></CSSTransition>
                 </div>
             </div>
         );

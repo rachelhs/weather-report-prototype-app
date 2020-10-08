@@ -23,14 +23,23 @@ class TooHighRoute extends React.Component {
             neutralAnimation: true,
             tooHighFadeIn: false,
             whiteBackground: false,
-            animationSpeed: 1
+            animationSpeed: 1,
+            weatherSymbol: null, 
+            weatherFadeIn: null
         }
         this.actionAfterHarm = this.actionAfterHarm.bind(this);
         this.actionAfterPlanning = this.actionAfterPlanning.bind(this);
     }
 
     componentDidMount() {
-
+        if (typeof this.props.location.state != 'undefined' || this.props.location.state != null) {
+            let weatherFadeIn = this.props.location.state.weatherSymbol + "FadeIn"
+            this.setState({ weatherFadeIn: weatherFadeIn });
+            this.setState({ weatherSymbol: this.props.location.state.weatherSymbol });
+            console.log('props', this.props.location.state.weatherSymbol)
+        } else {
+            this.setState({ weatherFadeIn: "neutralBackground" });
+        }
         setTimeout(() => { this.setState({ neutralAnimation: false, tooHighFadeIn: true }) }, 500)
         setTimeout(() => {
             setInterval(() => {
@@ -224,7 +233,7 @@ class TooHighRoute extends React.Component {
                     <AnimationsLayered speeds={[1]} animations={['neutralBackground']} />
                 </CSSTransition>
                 <CSSTransition in={this.state.tooHighFadeIn} timeout={4000} classNames="fade-enter-only">
-                    <AnimationsLayered speeds={[this.state.animationSpeed]} animations={['rainbowFadeIn']} />
+                    <AnimationsLayered speeds={[this.state.animationSpeed]} animations={[this.state.weatherFadeIn]} />
                 </CSSTransition>
                 <CSSTransition in={this.state.whiteBackground} timeout={2000} classNames="fade" unmountOnExit>
                     <div className='background-box'></div>
@@ -243,7 +252,7 @@ class TooHighRoute extends React.Component {
                     <CSSTransition in={this.state.awareOf} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterReason() }}><ReasonForFeelings onClick={this.processReasonFor.bind(this)} /></CSSTransition>
                     <CSSTransition in={this.state.showNote} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterNote() }}><ReasonForFeelingsInput buttonClick={this.processNote.bind(this)} /></CSSTransition>
                     <CSSTransition in={this.state.exercises} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterExercises() }}><div className='flex-center'><div>{SetExercises(this.state.randExercise)}</div><button className='next-button' onClick={this.seenExercise.bind(this)}>next</button></div></CSSTransition>
-                    <CSSTransition in={this.state.showFeedbackStatement} timeout={2000} className="fade" unmountOnExit><FeedbackStatement dataFromParent={this.state.route}/></CSSTransition>
+                    <CSSTransition in={this.state.showFeedbackStatement} timeout={2000} className="fade" unmountOnExit><FeedbackStatement route={this.state.route} weather={this.state.weatherSymbol}/></CSSTransition>
                 </div>
             </div>
         );

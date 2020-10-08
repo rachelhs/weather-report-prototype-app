@@ -24,13 +24,21 @@ class HighRoute extends React.Component {
             highFadeIn: false,
             whiteBackground: false,
             animationSpeed: 1,
-            weatherSymbol: this.props.location.state.weatherSymbol,
-            weatherFadeIn: null
+            weatherFadeIn: null,
+            weatherSymbol: null
         }
     }
 
     // method called as soon as all elements on the page are rendered & changed showAcknowledge to false after 3 seconds. This will hide the statement.
     componentDidMount() {
+        if (typeof this.props.location.state != 'undefined' || this.props.location.state != null) {
+            let weatherFadeIn = this.props.location.state.weatherSymbol + "FadeIn"
+            this.setState({ weatherFadeIn: weatherFadeIn });
+            this.setState({ weatherSymbol: this.props.location.state.weatherSymbol });
+            console.log('props', this.props.location.state.weatherSymbol)
+        } else {
+            this.setState({ weatherFadeIn: "neutralBackground" });
+        }
         this.setState({ randQues: randomQuestionNumber(2) });
 
         setTimeout(() => { this.setState({ neutralAnimation: false, okFadeIn: true }) }, 500)
@@ -42,8 +50,6 @@ class HighRoute extends React.Component {
         }, 5000)
         setTimeout(() => { this.setState({ whiteBackground: true }) }, 5500)
         setTimeout(() => { this.setState({ showReasonForFeeling: true }) }, 7500)
-        let weatherFadeIn = this.state.weatherSymbol + "FadeIn"
-        this.setState({ weatherFadeIn: weatherFadeIn });
     }
 
     round(value, precision) {
@@ -66,6 +72,7 @@ class HighRoute extends React.Component {
     }
 
     render() {
+        console.log('weatherFadeIn', this.state.weatherFadeIn)
         const randomQuestion = this.state.randQues == 0 ? <LikeAboutYourselfQuestion buttonClick={this.answeredRandomQuestion.bind(this)} /> : <EnjoyQuestion buttonClick={this.answeredRandomQuestion.bind(this)} />;
         return (
             <div>
