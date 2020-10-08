@@ -51,6 +51,10 @@ export class FirstAid extends React.Component {
     clickBreathing() {
         if(this.state.buttonsDisabled){
             this.setState({ showButtonDisabledMessage: true })
+        } else {
+            this.props.history.push({
+                pathname: '/breathing-exercise',
+            })
         }
     }
 
@@ -124,7 +128,7 @@ export class Menu extends React.Component {
         };
         return (
             <span>
-                <button onClick={this.handleOpenModalMenu.bind(this)} className="button--link">MENU</button>
+                <button onClick={this.handleOpenModalMenu.bind(this)} className="button--link menu-text">MENU</button>
                 <ReactModal style={customStyles} className='modalMenu' isOpen={this.state.showMenu} ariaHideApp={false}>
                     <div className="flex-center">
                         <button className='menu-close' type="button" onClick={this.handleCloseModalMenu.bind(this)}>
@@ -160,7 +164,7 @@ export class Report extends React.Component {
         };
         return (
             <span>
-                <button onClick={this.handleOpenModalReport.bind(this)} className="button--link">REPORT</button>
+                <button onClick={this.handleOpenModalReport.bind(this)} className="button--link menu-text">REPORT</button>
                 <ReactModal style={customStyles} className='modalMenu' isOpen={this.state.showReport} ariaHideApp={false}>
                     <div className="flex-center">
                         <button className='menu-close' type="button" onClick={this.handleCloseModalReport.bind(this)}>

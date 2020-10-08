@@ -22,6 +22,7 @@ import Onboarding from '../components/Onboarding/onboarding'
 import SymbolDescription from '../components/Pages/SymbolDescription'
 import SymbolDetailedDescription from '../components/Pages/SymbolDetailedDescription'
 import IntroPage from '../components/Pages/IntroPage'
+import BreathingExercise from '../components/Pages/BreathingExercise'
 
 export const history = createHistory();
 
@@ -47,6 +48,7 @@ const AppRouter = () => (
                 <PrivateRoute path="/7" component={ VeryLowRoute } />
                 <PrivateRoute path="/8" component={ LowButWithEnergyRoute } />
                 <PrivateRoute path="/9" component={ SuicidalRoute } />
+                <PrivateRoute path="/breathing-exercise" component={ BreathingExercise } />
                 <Route component={ NotFound } />
             </Switch>
         </div>

@@ -29,7 +29,7 @@ export default class SymbolDescription extends React.Component {
                                 <div className='words' key={word}>
                                     <button 
                                     className={this.state.mainWord === word ? 'active-symbol-button-border' : 'symbol-button-border'}
-                                    onClick={(e) => { this.mainWord({word})}}>{word}</button>
+                                    onClick={(e) => { this.mainWord({word})}}>{word.toUpperCase()}</button>
                                 </div>
                             ))}
                         </div>
@@ -43,7 +43,7 @@ export default class SymbolDescription extends React.Component {
                                             weather: this.state.weatherSymbol,
                                             mainWord: this.state.mainWord
                                         }
-                                }}>Next
+                                }}>NEXT
                             </Link>
                         </div>
                     </div>
