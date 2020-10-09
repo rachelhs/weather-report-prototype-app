@@ -238,7 +238,7 @@ class TooHighRoute extends React.Component {
                 <CSSTransition in={this.state.whiteBackground} timeout={2000} classNames="fade" unmountOnExit>
                     <div className='background-box'></div>
                 </CSSTransition>
-                <div className='info-box-landing'>
+                <div className='info-boxs'>
                     <CSSTransition in={this.state.howLong} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.areYouAtRisk() }}><HowLongHaveYouFeltLikeThis buttonClick={this.answeredHowLong.bind(this)} /></CSSTransition>
                     <CSSTransition in={this.state.areYouAtRisk} timeout={2000} onExited={() => { this.triggerAfterHarm() }} classNames="fade" unmountOnExit><RiskOfHarmTooHigh onClick={this.actionAfterHarm.bind(this)} /></CSSTransition>
                     <CSSTransition in={this.state.showPlanQ} timeout={2000} onExited={() => { this.triggerAfterPlan() }} classNames="fade" unmountOnExit><PlanQ onClick={this.actionAfterPlan.bind(this)} /></CSSTransition>
