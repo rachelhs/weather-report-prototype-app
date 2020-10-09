@@ -10,8 +10,8 @@ export class ThreeHomePage extends React.Component {
         return (
             <div className='background-box'>
                 <AnimationsLayered speeds={[0]} animations={['neutralBackground']} />
-                <div className='info-box-landing'>
-                    <h1 className='info-box-text-padding-top'>You have registered how you're feeling more than three times today.</h1>
+                <div className='info-box'>
+                    <h1 className='info-box-little-text'>You have registered how you're feeling more than three times today.</h1>
                     <p>From feedback, we have set a limit on entering this 3 times a day</p>
                     <p>You can go to the home page</p>
                     <div className="button-container">

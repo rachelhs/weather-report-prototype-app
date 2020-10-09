@@ -72,13 +72,6 @@
     left: 50%;
 }
 
-.info-box-landing {
-    margin: 0 auto;
-    max-width: 500px;
-    position: absolute;
-    top: 10%;
-}
-
 .info-box-choose {
     max-width: 500px;
     margin: 0 auto;
@@ -113,17 +106,12 @@
         width: 100%;
         height: calc(100% - 70px);
     }
-    .info-box-text-padding-top {
-        padding-top: 20%;
-    }
 }
 
-.info-box-text-padding-top {
-    padding-bottom: 20px;
-    padding-right: 20%;
-    padding-left: 20%;
-    height: 65vh;
-    margin-top: 10vh;
+.info-box-little-text {
+    height: 55vh;
+    margin: 7vh auto;
+    max-width: 230px;
 }
 
 .info-box-text-small-padding {
