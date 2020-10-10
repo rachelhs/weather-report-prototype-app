@@ -23,7 +23,6 @@ class SuicidalRoute extends React.Component {
             weatherSymbol: null, 
             weatherFadeIn: null
         }
-        this.showAcknowledge = this.showAcknowledge.bind(this);
         this.actionAfterHarm = this.actionAfterHarm.bind(this);
         this.actionAfterPlanning = this.actionAfterPlanning.bind(this);
     }
@@ -84,10 +83,6 @@ class SuicidalRoute extends React.Component {
         isLongerThanThreeDays(result => {
             result ? this.setState({ longerThanThreeDays: false }) : (this.setState({ longerThanThreeDays: true }))
         })
-    }
-
-    showAcknowledge() {
-        this.setState({ acknowledge: true })
     }
 
     answeredHowLong() {
@@ -238,7 +233,7 @@ class SuicidalRoute extends React.Component {
                     <div className='background-box'></div>
                 </CSSTransition>
                 <div className='info-box'>
-                    <CSSTransition in={this.state.howLong} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.showAcknowledge() }}><HowLongHaveYouFeltLikeThis buttonClick={this.answeredHowLong.bind(this)} /></CSSTransition>
+                    <CSSTransition in={this.state.howLong} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.show('acknowledge') }}><HowLongHaveYouFeltLikeThis buttonClick={this.answeredHowLong.bind(this)} /></CSSTransition>
                     <CSSTransition in={this.state.acknowledge} timeout={2000} onEnter={() => { this.triggerTimeout('acknowledge') }} unmountOnExit classNames="fade" onExited={() => this.areYouAtRisk()}><SuicidalAcknowledgement /></CSSTransition>
                     <CSSTransition in={this.state.areYouAtRisk} timeout={2000} onExited={() => { this.triggerAfterHarm() }} classNames="fade" unmountOnExit><RiskOfHarm onClick={this.actionAfterHarm.bind(this)} /></CSSTransition>
                     <CSSTransition in={this.state.showPlanQ} timeout={2000} onExited={() => { this.triggerAfterPlan() }} classNames="fade" unmountOnExit><PlanQ onClick={this.actionAfterPlan.bind(this)} /></CSSTransition>
