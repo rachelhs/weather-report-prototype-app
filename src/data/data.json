@@ -68,7 +68,6 @@
     {
         "mediumLow": {
             "questions": {
-                "posThing": "What's one small thing you can do to make yourself feel a bit better? It could be something like going outside, having your favourite drink or throwing some rubbish away",
                 "friendLike": "What’s one thing a friend would say they like about you?"
             },
             "positiveStatements": ["A feeling is not who you are", "It is ok to rest today"]

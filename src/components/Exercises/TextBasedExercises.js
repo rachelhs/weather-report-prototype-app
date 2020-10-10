@@ -3,6 +3,7 @@ import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 const firebase = require('firebase/app');
 import MeditationAnimation from '../Animations/MeditationAnimation';
+import { BackButton } from '../../actions/route-functions'
 
 export const Meditating = () => {
     return <h1 className='info-box-title'>insert meditation exercise here</h1>
