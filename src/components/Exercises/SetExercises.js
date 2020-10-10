@@ -18,9 +18,6 @@ export const SetExercises = (exercise) => {
     if (exercise == 'safePlace') {
         return SafePlace();
     }
-    if (exercise == 'lessStimulation') {
-        return LessStimulation();
-    }
     if (exercise == 'grounding') {
         return <Grounding />;
     }
