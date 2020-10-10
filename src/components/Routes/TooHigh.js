@@ -55,7 +55,7 @@ class TooHighRoute extends React.Component {
         })
         this.threeDayFunction()
         // setting exercise
-        let randomExercise = ChooseExercise(['breathing', 'grounding', 'lessStimulation', 'safePlace', 'anchors']);
+        let randomExercise = ChooseExercise(['breathing', 'grounding', 'safePlace', 'anchors']);
         this.setState({ randExercise: randomExercise });
         setTimeout(() => { this.decideStart() }, 7500)
     }

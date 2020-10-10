@@ -4,6 +4,7 @@
     bottom: 0;
     width: 100%;
     height: 100%;
+    z-index: -6;
 }
 
 .opacity-box-full-height {
@@ -155,7 +156,8 @@
 .info-box-title {
     text-align: center;
     padding: 5%;
-    font-size: 22px;
+    font-size: 19px;
+    margin-top: 40px;
 }
 
 .free-form-submit {

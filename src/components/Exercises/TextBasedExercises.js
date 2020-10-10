@@ -3,6 +3,7 @@ import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 const firebase = require('firebase/app');
 import MeditationAnimation from '../Animations/MeditationAnimation';
+import { BackButton } from '../../actions/route-functions'
 
 export const Meditating = () => {
     return <h1 className='info-box-title'>insert meditation exercise here</h1>
@@ -27,7 +28,7 @@ export class Breathing extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="no-white-overlay">
                 <h1 className='exercises-title'>Breathing</h1>
                 <AudioPlayer
                     autoPlay={false}
