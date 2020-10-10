@@ -1,4 +1,4 @@
-import { Breathing, BreathingInRoute, Meditating, Grounding, Stretching, SafePlace, LessStimulation } from './TextBasedExercises';
+import { Breathing, Meditating, Grounding, Stretching, SafePlace, LessStimulation } from './TextBasedExercises';
 import Gratitude from './ReplayGratitude';
 import PositiveMemory from './ReplayPosMemories';
 import LikeAboutSelf from './ReplayLikeAboutSelf';
