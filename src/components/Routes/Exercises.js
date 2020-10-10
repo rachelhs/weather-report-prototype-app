@@ -47,8 +47,8 @@ class Exercises extends React.Component {
         this.setState({ randPositive: randomQuestionNumber(positiveArray.length) });
         // setting exercise
         //let exercise = ChooseExercise(['breathing']);
-        // let exercise = ChooseExercise(['meditating', 'gratitude', 'stretching', 'safePlace', 'breathing', 'positive', 'selflike', 'selfcare', 'changeSituation', 'content', 'anchors']);
-        let exercise = ChooseExercise(['breathing']);
+        let exercise = ChooseExercise(['meditating', 'gratitude', 'stretching', 'safePlace', 'breathing', 'positive', 'selflike', 'selfcare', 'changeSituation', 'content', 'anchors']);
+        // let exercise = ChooseExercise(['breathing']);
 
         this.setState({ exercise: exercise });
         setTimeout(() => { this.setState({ showRandomPositiveStatement: false }) }, 3000)
@@ -142,8 +142,10 @@ class Exercises extends React.Component {
         const Exercise = this.state.showRandomExercises ?
             <div>
             <div>{SetExercises(this.state.exercise)}</div>
-            <div className='button-container'>
-                <button className='next-button-dark' onClick={this.seenExercise.bind(this)}>NEXT</button>
+            <div className="flex-center">
+                <div className='back-button-breathing'>
+                    <button className='next-button-dark ' onClick={this.seenExercise.bind(this)}>NEXT</button>
+                </div>
             </div>
             </div>
         : ''
@@ -153,7 +155,7 @@ class Exercises extends React.Component {
                 <CSSTransition in={this.state.neutralAnimation} timeout={4000} classNames="fade-enter-only" unmountOnExit>
                     <AnimationsLayered speeds={[1]} animations={['neutralNoTrees']} />
                 </CSSTransition>  
-                <div className='background-box'></div>
+                {this.state.showRandomExercises ? '' : <div className='background-box'></div>}
                 <div className='info-box'>
                     <CSSTransition in={this.state.showRandomQuestions} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.showRandomExercise()}>
                         {randomQuestion}
