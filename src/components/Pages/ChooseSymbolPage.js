@@ -4,8 +4,8 @@ const data = require('../../data/data.json');
 import { Link } from 'react-router-dom';
 import sunshine from '../../images/weather-symbols/sunshine.svg';
 import bluesky from '../../images/weather-symbols/bluesky.svg';
-import cloudrain from '../../images/weather-symbols/cloud-rain-threat.svg';
-import darksky from '../../images/weather-symbols/dark-clouds.svg';
+import purpleRain from '../../images/weather-symbols/cloud-rain-threat.svg';
+import turquoiseRain from '../../images/weather-symbols/dark-clouds.svg';
 import greysky from '../../images/weather-symbols/grey-cloud.svg';
 import rainbow from '../../images/weather-symbols/rainbow.svg';
 import lightclouds from '../../images/weather-symbols/light-clouds.svg';
@@ -56,17 +56,17 @@ export class ChooseSymbolPage extends React.Component {
                             <Link className='symbol-button'
                                 to={{
                                     pathname: '/symbol-description',
-                                    state: { weather: "dark-clouds" }
-                                }}><img className='symbol' src={darksky}/>
-                            </Link> 
+                                    state: { weather: "purple-rain" }
+                                }}><img className='symbol' src={purpleRain}/>
+                            </Link>
                         </div>
                         <div className="flex-center">
                             <Link className='symbol-button'
                                 to={{
                                     pathname: '/symbol-description',
-                                    state: { weather: "cloud-rain-threat" }
-                                }}><img className='symbol' src={cloudrain}/>
-                            </Link>
+                                    state: { weather: "turquoise-rain" }
+                                }}><img className='symbol' src={turquoiseRain}/>
+                            </Link> 
                             <Link className='symbol-button'
                                 to={{
                                     pathname: '/symbol-description',

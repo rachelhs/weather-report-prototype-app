@@ -164,13 +164,13 @@
             "bluesky": ["Gentle","Neutral","OK","Content","Relaxed","Calm","Nothing","Blocked","Dazed","Stuck"],
             "light-clouds": ["Nothing","Blocked","Dazed","Stuck","Anxious","Neutral","OK","Relaxed","Calm","Confused","Impatient"],
             "grey-cloud": ["Nothing","Blocked","Dazed","Stuck","Anxious","Neutral","OK","Gentle","Isolated","Lonely","Nervous","Uneasy","Stupid","Lazy","Unhappy","Worried","Low"],
-            "cloud-rain-threat": ["Anxious","Regret","Scared","Unhappy","Worried","Lonely","Sad","Lost","Miserable","Empty","Hurt","Exhausted","Gentle","Neutral","Relentless","Rejected","Awful","Depressed"],
-            "dark-clouds": ["Anxious","Distressed","Lost","Miserable","Awful","Crushed","Bleak","Broken","Panic","Desperate","Depressed"],
+            "purple-rain": ["Anxious","Regret","Scared","Unhappy","Worried","Lonely","Sad","Lost","Miserable","Empty","Hurt","Exhausted","Gentle","Neutral","Relentless","Rejected","Awful","Depressed"],
+            "turquoise-rain": ["Anxious","Distressed","Lost","Miserable","Awful","Crushed","Bleak","Broken","Panic","Desperate","Depressed"],
             "tornado": ["Angry","Outraged","Furious","Greed","Jealousy","Risky","Panic","Crushed","Desperate","Broken","Anxious","Depressed","Manic","Overwhelmed","Excited","Adventurous","Energetic"],
             "tsunami": ["Suicidal","Shame","Risky","Panic","Anxious","Angry","Bleak","Broken","Desperate","Worthless","Humiliated","Depressed","Manic","Overwhelmed"]
         },
         "secondaryWords": ["Overwhelmed","Anxious","Depressed","Uneasy","Worried","Careless","Exhausted","Risky","Bleak","Nothing","OK","Dazed","Creative","Calm","Hopeful","Happy","Angry"],
-        "symbols" : ["rainbow", "sunshine", "bluesky", "light-clouds", "grey-cloud", "cloud-rain-threat", "dark-clouds", "tsunami", "tornado"],
+        "symbols" : ["rainbow", "sunshine", "bluesky", "light-clouds", "grey-cloud", "purple-rain", "dark-clouds", "tsunami", "tornado"],
         "categories": {
             "one":["Invincible","Manic","Over stimulated","Overwhelmed","Flighty","Panic","Careless"],
             "two": ["Ecstatic","Loved or Love","Happy","Adventurous","Excited","Brave","Confident","Playful","Curious","Energetic","Feisty","Hopeful","Creative","Kind","Stimulated","Pleased"],

@@ -93,7 +93,7 @@ export class FirstAid extends React.Component {
                     <div>
                         <h3 className="first-aid-title">{data[7].firstAid.questions.professional}</h3>
                         <div className="flex-center">
-                            <button  className='button-first-aid'>YOUR GP</button>
+                            <button className='button-first-aid'><a className='text-first-aid' target="_blank" href="https://www.nhs.uk/service-search/find-a-gp">YOUR GP</a></button>
                         </div>                          
                         <div className="flex-center">
                             <button  className='button-first-aid'><a className='text-first-aid' href="tel:0300-555-0334">MENTAL HEALTH CRISIS TEAM</a></button>
@@ -102,7 +102,7 @@ export class FirstAid extends React.Component {
                     <div>
                         <h3 className="first-aid-title">{data[7].firstAid.questions.emergency}</h3>
                         <div className="flex-center">
-                            <button  className='button-first-aid'><a className='text-first-aid' href="tel:999">999</a></button>
+                            <button  className='button-first-aid'><a className='text-first-aid' href="tel:999">CALL 999</a></button>
                         </div>
                     </div>
                 </ReactModal>
