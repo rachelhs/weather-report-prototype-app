@@ -45,14 +45,14 @@
     // border: 1px solid $green;
     margin: 0 auto;
     position: absolute;
-    top: 50%;
+    top: 43%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     padding: 5%;
     width: 100%;
     max-width: 500px;
-    height: calc(100% - 70px);
+    // height: calc(100% - 70px);
 }
 
 .container {
@@ -63,6 +63,7 @@
     height: 100%;
 }
 
+// vetically centers text on screen - used for welcome to wr screen
 .center-vertical {
     position: absolute;
     top: 45%;
@@ -101,18 +102,29 @@
     max-width: 500px;
 }
 
-@media only screen and (max-width: 768px) {
-    .info-box { 
-        width: 100%;
-        height: calc(100% - 70px);
-    }
-}
-
-.info-box-little-text {
+//
+.header-text-spacing {
     height: 55vh;
     margin: 7vh auto;
     max-width: 230px;
 }
+
+@media (min-width: 768px) {
+    .header-text-spacing {
+        height: 20vh;
+        margin: 0 auto;
+        max-width: 230px;
+    }
+}  
+
+@media (max-width: 768px) {
+    .padding-top {
+        padding-top: 0 !important;
+    }
+    .info-box { 
+        width: 100%;
+    }
+} 
 
 .info-box-text-small-padding {
     margin: 25px 15px 15px 15px
@@ -197,3 +209,6 @@ textarea {
     margin: 0;
 }
     
+.padding-top {
+    padding-top: 100px;
+}

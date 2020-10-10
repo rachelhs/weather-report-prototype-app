@@ -13,7 +13,7 @@ button {
     z-index: 101;
     cursor: pointer;
     font-family: 'Quicksand', sans-serif;
-    font-weight: 700;
+    font-weight: 500;
     letter-spacing: 2px;
     font-weight: 400;
     border-radius: 0.5rem;
@@ -66,16 +66,16 @@ button:focus {
     color: white
 }
 
-.next-button {
+.transparent-button {
     background: transparent;
-    border: 1px solid #3a3d7d;;
+    border: 1px solid #3a3d7d;
     min-width: 60px;
     color: #3a3d7d;
     margin: 5px;
     text-decoration: none;
     line-height: 35px;
     font-family: 'Quicksand', sans-serif;
-    font-weight: 700;
+    font-weight: 600;
     letter-spacing: 2px;
     border-radius: 0.5rem;
     text-align: center;
@@ -92,7 +92,7 @@ button:focus {
     margin: 5px;
     text-decoration: none;
     font-family: 'Quicksand', sans-serif;
-    font-weight: 700;
+    font-weight: 500;
     letter-spacing: 2px;
     border-radius: 0.5rem;
     text-align: center;
@@ -101,11 +101,11 @@ button:focus {
 }
 
 .back-button {
-    background: #3a3d7d !important;
-    border: none;
+    background: transparent;
+    border: 1px solid #3a3d7d;
     width: 80px;
     height: 40px;
-    color: white;
+    color: #3a3d7d;
     margin: 5px;
 }
 
