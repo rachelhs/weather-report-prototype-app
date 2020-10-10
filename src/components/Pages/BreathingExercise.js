@@ -31,16 +31,7 @@ export class BreathingExercise extends React.Component {
             <div>
                 <CSSTransition in={this.state.breathing} timeout={2000} classNames="fade" unmountOnExit>
                     <div>
-                        <div>
-                            <h1 className='exercises-title'>Breathing</h1>
-                            <AudioPlayer
-                                autoPlay={false}
-                                src={this.state.url}
-                            />
-                            <div className="breathingExercise">
-                                <MeditationAnimation />
-                            </div>
-                        </div>
+                        < Breathing />
                         <div className="flex-center">
                             <div className="back-button-breathing">
                                 <BackButton />
