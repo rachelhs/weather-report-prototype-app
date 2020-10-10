@@ -30,7 +30,8 @@ export class PositiveThingQuestion extends React.Component {
     render() {
         return (
             <div>
-                <h1 className='info-box-title'>{data[4].mediumLow.questions.posThing}</h1>
+                <h2 className='info-box-title '> What's one small thing you can do to make yourself feel a bit better?</h2>
+                <p>It could be something like going outside, having your favourite drink or throwing some rubbish away</p>
                 <form onSubmit={this.handlePosSubmit}>
                     <input className='free-form-input' type="text" value={this.state.value} onChange={this.handlePosChange} />
                     <div className='button-container'>
@@ -66,7 +67,7 @@ export class ChangeSituation extends React.Component {
     render() {
         return (
             <div>
-                <h1 className='info-box-title'>{data[3].shared.positiveChange}</h1>
+                <h2 className='info-box-title'>{data[3].shared.positiveChange}</h2>
                 <form onSubmit={this.handlePosSubmit}>
                     <input className='free-form-input' type="text" value={this.state.value} onChange={this.handlePosChange} />
                     <div className='button-container'>
@@ -102,7 +103,7 @@ export class FriendsLikeQuestion extends React.Component {
     render() {
         return (
             <div>
-                <h1 className='info-box-title'>{data[4].mediumLow.questions.friendLike}</h1>
+                <h2 className='info-box-title'>{data[4].mediumLow.questions.friendLike}</h2>
                 <form onSubmit={this.handleFriendsSubmit}>
                     <input className='free-form-input' type="text" value={this.state.value} onChange={this.handleFriendsChange} />
                     <div className='button-container'>
@@ -138,7 +139,7 @@ export class PositiveChangeQuestion extends React.Component {
     render() {
         return (
             <div>
-                <h1 className='info-box-title'>{data[3].shared.positiveChange}</h1>
+                <h2 className='info-box-title'>{data[3].shared.positiveChange}</h2>
                 <form className='button-container' onSubmit={this.handlepositiveChangeSubmit}>
                     <input className='free-form-input-vertical' type="text" value={this.state.value} onChange={this.handlepositiveChange} />
                     <div className="button-container">
@@ -193,7 +194,7 @@ export class HelpedCopeQuestion extends React.Component {
     render() {
         return (
             <div>
-                <h1 className='info-box-title'>{data[5].low.questions.helpedCope}</h1>
+                <h2 className='info-box-title'>{data[5].low.questions.helpedCope}</h2>
                 <form className='button-container-vertical' onSubmit={this.handleCopedSubmit}>
                     <input className='free-form-input-vertical' placeholder="1" type="text" onChange={this.handlehelpedCopeOne} />
                     <input className='free-form-input-vertical' placeholder="2" type="text" onChange={this.handlehelpedCopeTwo} />
@@ -213,7 +214,7 @@ export class SafeQuestion extends React.Component {
     render() {
         return (
             <div>
-                <h1 className='info-box-title'>{data[3].shared.safeQuestion}</h1>
+                <h2 className='info-box-title'>{data[3].shared.safeQuestion}</h2>
                 <div className='button-container'>
                     <button className='transparent-button' onClick={(e) => this.props.onClick(true)}>Yes</button>
                     <button className='transparent-button' onClick={(e) => this.props.onClick(false)}>No</button>
@@ -228,7 +229,7 @@ export class ContactSupportersQuestion extends React.Component {
     render() {
         return (
             <div>
-                <h1 className='info-box-title'>{data[3].shared.support}</h1>
+                <h2 className='info-box-title'>{data[3].shared.support}</h2>
                 <div className='button-container'>
                     <button className='transparent-button' onClick={(e) => this.props.onClick(true)}>Yes</button>
                     <button className='transparent-button' onClick={(e) => this.props.onClick(false)}>No</button>
@@ -280,7 +281,7 @@ export class GratefulQuestion extends React.Component {
     render() {
         return (
             <div>
-                <h1 className='info-box-title'>{data[3].shared.gratefulQuestion}</h1>
+                <h2 className='info-box-title'>{data[3].shared.gratefulQuestion}</h2>
                 <form className='button-container-vertical' onSubmit={this.handlegratefulQuestionSubmit}>
                     <input className='free-form-input-vertical' placeholder="1" type="text" onChange={this.handlegratefulOne} />
                     <input className='free-form-input-vertical' placeholder="2" type="text" onChange={this.handlegratefulTwo} />
@@ -336,7 +337,7 @@ export class EnjoyQuestion extends React.Component {
     render() {
         return (
             <div>
-                <h1 className='info-box-title'>{data[3].shared.enjoyQuestion}</h1>
+                <h2 className='info-box-title'>{data[3].shared.enjoyQuestion}</h2>
                 <form className='button-container-vertical' onSubmit={this.handleEnjoyQuestionSubmit}>
                     <input className='free-form-input-vertical' placeholder="1" type="text" onChange={this.handleEnjoyOne} />
                     <input className='free-form-input-vertical' placeholder="2" type="text" onChange={this.handleEnjoyTwo} />
@@ -392,7 +393,7 @@ export class LikeAboutYourselfQuestion extends React.Component {
     render() {
         return (
             <div>
-                <h1 className='info-box-title'>{data[3].shared.likeAboutYourselfQuestion}</h1>
+                <h2 className='info-box-title'>{data[3].shared.likeAboutYourselfQuestion}</h2>
                 <form className='button-container-vertical' onSubmit={this.handleLikeQuestionSubmit}>
                     <input className='free-form-input-vertical' placeholder="1" type="text" onChange={this.handleLikeOne} />
                     <input className='free-form-input-vertical' placeholder="2" type="text" onChange={this.handleLikeTwo} />
@@ -411,7 +412,7 @@ export class GettingHelpQ extends React.Component {
     render() {
         return (
             <div>
-                <h1 className='info-box-title'>{data[8].suicidal.questions.help}</h1>
+                <h2 className='info-box-title'>{data[8].suicidal.questions.help}</h2>
                 <div className='button-container'>
                     <button className='transparent-button' onClick={(e) => this.props.onClick(true)}>Yes</button>
                     <button className='transparent-button' onClick={(e) => this.props.onClick(false)}>No</button>
@@ -464,7 +465,7 @@ export class TakeCareQuestion
     render() {
         return (
             <div>
-                <h1 className='info-box-title'>{data[3].shared.takeCareQuestion}</h1>
+                <h2 className='info-box-title'>{data[3].shared.takeCareQuestion}</h2>
                 <form className='button-container-vertical' onSubmit={this.handleTakeCareQuestionSubmit}>
                     <input className='free-form-input-vertical' placeholder="1" type="text" onChange={this.handletakeCareOne} />
                     <input className='free-form-input-vertical' placeholder="2" type="text" onChange={this.handletakeCareTwo} />
@@ -483,7 +484,7 @@ export class SpokenToQ extends React.Component {
     render() {
         return (
             <div>
-                <h1 className='info-box-title'>{data[8].suicidal.questions.spoken}</h1>
+                <h2 className='info-box-title'>{data[8].suicidal.questions.spoken}</h2>
                 <div className='button-container'>
                     <button className='transparent-button' onClick={(e) => this.props.onClick(true)}>Yes</button>
                     <button className='transparent-button' onClick={(e) => this.props.onClick(false)}>No</button>
