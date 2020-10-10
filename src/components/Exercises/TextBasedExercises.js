@@ -1,6 +1,7 @@
 import React from 'react';
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
+import 'react-h5-audio-player/src/styles.scss';
 const firebase = require('firebase/app');
 import MeditationAnimation from '../Animations/MeditationAnimation';
 import { BackButton } from '../../actions/route-functions'
@@ -33,6 +34,7 @@ export class Breathing extends React.Component {
                 <AudioPlayer
                     autoPlay={false}
                     src={this.state.url}
+                    loop={false}
                 />
                 <div className="breathingExercise">
                     <MeditationAnimation />
