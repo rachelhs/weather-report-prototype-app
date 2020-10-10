@@ -170,7 +170,7 @@
             "tsunami": ["Suicidal","Shame","Risky","Panic","Anxious","Angry","Bleak","Broken","Desperate","Worthless","Humiliated","Depressed","Manic","Overwhelmed"]
         },
         "secondaryWords": ["Overwhelmed","Anxious","Depressed","Uneasy","Worried","Careless","Exhausted","Risky","Bleak","Nothing","OK","Dazed","Creative","Calm","Hopeful","Happy","Angry"],
-        "symbols" : ["rainbow", "sunshine", "bluesky", "light-clouds", "grey-cloud", "purple-rain", "dark-clouds", "tsunami", "tornado"],
+        "symbols" : ["rainbow", "sunshine", "bluesky", "light-clouds", "grey-cloud", "purple-rain", "turquoise-rain", "tsunami", "tornado"],
         "categories": {
             "one":["Invincible","Manic","Over stimulated","Overwhelmed","Flighty","Panic","Careless"],
             "two": ["Ecstatic","Loved or Love","Happy","Adventurous","Excited","Brave","Confident","Playful","Curious","Energetic","Feisty","Hopeful","Creative","Kind","Stimulated","Pleased"],
