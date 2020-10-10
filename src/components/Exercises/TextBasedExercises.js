@@ -28,7 +28,7 @@ export class Breathing extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="no-white-overlay">
                 <h1 className='exercises-title'>Breathing</h1>
                 <AudioPlayer
                     autoPlay={false}

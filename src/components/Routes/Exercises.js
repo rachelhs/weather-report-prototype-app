@@ -110,12 +110,7 @@ class Exercises extends React.Component {
 
     // called on 'next' button click when user has seen an exercise
     seenExercise() {
-        this.setState({ showRandomExercises: false })
-    }
-
-    // called on onexit after a random exercise and asks user if they want another
-    askAnotherExerciseQuestion() {
-        this.setState({ showAnotherExerciseQuestion: true })
+        this.setState({ showRandomExercises: false, showAnotherExerciseQuestion: true })
     }
 
     // called when user presses 'yes' or 'no' to another question
@@ -137,16 +132,16 @@ class Exercises extends React.Component {
 
     render() {
         const randomQuestion = this.state.randQues == 0 ? 
-            <PositiveThingQuestion buttonClick={this.answeredRandomQuestion.bind(this)} /> :
-            <FriendsLikeQuestion buttonClick={this.answeredRandomQuestion.bind(this)} />;
+        <PositiveThingQuestion buttonClick={this.answeredRandomQuestion.bind(this)} /> :
+        <FriendsLikeQuestion buttonClick={this.answeredRandomQuestion.bind(this)} />;
         const Exercise = this.state.showRandomExercises ?
             <div>
-            <div>{SetExercises(this.state.exercise)}</div>
-            <div className="flex-center">
-                <div className='back-button-breathing'>
-                    <button className='next-button-dark ' onClick={this.seenExercise.bind(this)}>NEXT</button>
+                <div>{SetExercises(this.state.exercise)}</div>
+                <div className="flex-center">
+                    <div className='back-button-breathing'>
+                        <button className='next-button-dark ' onClick={this.seenExercise.bind(this)}>NEXT</button>
+                    </div>
                 </div>
-            </div>
             </div>
         : ''
 
@@ -155,7 +150,7 @@ class Exercises extends React.Component {
                 <CSSTransition in={this.state.neutralAnimation} timeout={4000} classNames="fade-enter-only" unmountOnExit>
                     <AnimationsLayered speeds={[1]} animations={['neutralNoTrees']} />
                 </CSSTransition>  
-                {this.state.showRandomExercises ? '' : <div className='background-box'></div>}
+                <div className='background-box'></div>
                 <div className='info-box'>
                     <CSSTransition in={this.state.showRandomQuestions} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.showRandomExercise()}>
                         {randomQuestion}
