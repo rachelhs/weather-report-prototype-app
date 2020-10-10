@@ -125,6 +125,7 @@
                 "help": "That's Good. Are you getting the help you need?",
                 "crisis": "We think you should call Bristol Mental Health Crisis Team on 0300 555 0334 or visit",
                 "crisis2": "for more support",
+                "afterCrisis": "If the crisis team can't help immediately and you are still at risk please ring 999 or Samaritans",
                 "spoken": "Have you spoken to anyone about how you feel?",
                 "reach": "It could help to reach out to one of your roots"
             }
