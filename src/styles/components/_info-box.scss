@@ -49,7 +49,6 @@
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    padding: 5%;
     width: 100%;
     max-width: 500px;
     // height: calc(100% - 70px);
@@ -155,7 +154,8 @@
 .info-box-title {
     text-align: center;
     padding: 5%;
-    font-size: 22px;
+    font-size: 19px;
+    margin-top: 40px;
 }
 
 .free-form-submit {

@@ -1,4 +1,4 @@
-import { Breathing, Meditating, Grounding, Stretching, SafePlace, LessStimulation } from './TextBasedExercises';
+import { Breathing, BreathingInRoute, Meditating, Grounding, Stretching, SafePlace, LessStimulation } from './TextBasedExercises';
 import Gratitude from './ReplayGratitude';
 import PositiveMemory from './ReplayPosMemories';
 import LikeAboutSelf from './ReplayLikeAboutSelf';
@@ -17,9 +17,6 @@ export const SetExercises = (exercise) => {
     }
     if (exercise == 'safePlace') {
         return SafePlace();
-    }
-    if (exercise == 'lessStimulation') {
-        return LessStimulation();
     }
     if (exercise == 'grounding') {
         return <Grounding />;
