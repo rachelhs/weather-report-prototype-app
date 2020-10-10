@@ -19,15 +19,6 @@ export const startGoogleLogin = () => {
   };
 };
 
-export const passwordReset = (email) => () => {
-    if(email == ''){
-      console.log('empty')
-    }
-    else {
-    return firebase.auth().sendPasswordResetEmail(email);
-    }Ï
-}
-
 export const logout = () => ({
   type: 'LOGOUT'
 });

@@ -22,11 +22,13 @@ export class LoginEmailForm extends React.Component {
     showEnterEmail: false
   }
 this.passwordReset = this.passwordReset.bind(this);
+this.triggerTimeout = this.triggerTimeout.bind(this);
 }
 
-  componentDidMount() { 
-      setTimeout( () => { this.setState({ appIntro: false }) }, 3000)
-  }
+triggerTimeout(itemToFadeOut) {
+  const fadeTime = 3000;
+  setTimeout(() => { this.setState({ [itemToFadeOut]: false }) }, fadeTime)
+}
 
   setStateProperty = (value, property) => {
     this.setState(() => {
@@ -74,7 +76,7 @@ this.passwordReset = this.passwordReset.bind(this);
       <div className='background-box'>
             <div className='anim-full-height'><Animation speed={0.2} animation={"neutralNoTrees"} /></div>
             <div className='info-box-login'>
-                <CSSTransition in={this.state.appIntro} timeout={1500} classNames="transform-up" appear onExited={() => this.showLoginForm()}>
+                <CSSTransition in={this.state.appIntro} timeout={1000} classNames="transform-up" appear onEntered={() => { this.triggerTimeout('appIntro') }} onExited={() => this.showLoginForm()}>
                     <h1 className='box-layout__title'>WEATHER REPORT</h1>
                 </CSSTransition>
                 <CSSTransition in={this.state.showLogin} timeout={1000} classNames="fade-fast" unmountOnExit>
@@ -88,8 +90,6 @@ this.passwordReset = this.passwordReset.bind(this);
                                     type='text'
                                     name='email'
                                     required = '*Required'
-                                    onInput="this.setCustomValidity('')" 
-                                    oninvalid="alert('You must fill out the form!');"
                                     className='form-input'
                                 />
                             </div>
@@ -123,11 +123,6 @@ this.passwordReset = this.passwordReset.bind(this);
         </div>
     )
   }
-}
-
-LoginEmailForm.propTypes = {
-  startEmailLogin: PropTypes.func,
-  goBackFunction: PropTypes.func
 }
 
 const mapDispatchToProps = (dispatch) => ({
