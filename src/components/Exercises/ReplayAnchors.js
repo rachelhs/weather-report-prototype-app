@@ -51,9 +51,9 @@ export default class ReplayAnchors extends React.Component {
     
     {
         return (
-            <div>
-            <h1 className='info-box-title'>{data[3].shared.posReplayStatement}</h1>
-            <h1 className='info-box-title'>{this.state.randomPositive}</h1>
+            <div className='info-box'>
+                <h1 className='info-box-title'>{data[3].shared.posReplayStatement}</h1>
+                <h1 className='info-box-title'>{this.state.randomPositive}</h1>
             </div> 
         )
     }
