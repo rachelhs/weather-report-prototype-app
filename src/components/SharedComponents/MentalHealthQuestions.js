@@ -407,8 +407,8 @@ export class LikeAboutYourselfQuestion extends React.Component {
     }
 }
 
-// Are you getting the help you need QUESTION
-export class GettingHelpQ extends React.Component {
+// Are you getting the help you need QUESTION + That's good
+export class GettingHelp1 extends React.Component {
     render() {
         return (
             <div>
@@ -421,6 +421,22 @@ export class GettingHelpQ extends React.Component {
         )
     }
 }
+
+// Are you getting the help you need QUESTION
+export class GettingHelp2 extends React.Component {
+    render() {
+        return (
+            <div>
+                <h2 className='info-box-title'>{data[8].suicidal.questions.help2}</h2>
+                <div className='button-container'>
+                    <button className='transparent-button' onClick={(e) => this.props.onClick(true)}>Yes</button>
+                    <button className='transparent-button' onClick={(e) => this.props.onClick(false)}>No</button>
+                </div>
+            </div>
+        )
+    }
+}
+
 
 // What 3 things do you do to take care of yourself to keep you well? (eg, shower etc.)
 export class TakeCareQuestion
