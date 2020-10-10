@@ -105,8 +105,14 @@ class Nothing extends React.Component {
 
     render() {
         const randomQuestion = this.state.randQues == 0 ? <PositiveThingQuestion buttonClick={this.answeredRandomQuestion.bind(this)} /> : <PositiveChangeQuestion buttonClick={this.answeredRandomQuestion.bind(this)} />;
-        const questionOrExercise = this.state.randQuesOrExercise == 0 ? randomQuestion : <div className='flex-center'><div>{SetExercises(this.state.exercise)}</div><button className='next-button-dark' onClick={this.seenExercise.bind(this)}>NEXT</button></div>;
-
+        const questionOrExercise = this.state.randQuesOrExercise == 0 ? randomQuestion :
+        <div>
+            <div>
+            {SetExercises(this.state.exercise)}</div>
+            <div className='button-container'>
+                <button className='next-button-dark' onClick={this.seenExercise.bind(this)}>NEXT</button>
+            </div>
+        </div>;
         return (
             <div>
                 <CSSTransition in={this.state.neutralAnimation} timeout={4000} classNames="fade-enter-only" unmountOnExit>

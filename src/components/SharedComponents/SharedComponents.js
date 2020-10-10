@@ -341,7 +341,7 @@ export class AskIfHelped extends React.Component {
                 <div className='button-container'>
                     <button className='transparent-button' onClick={(e) => { this.props.onClick(true); this.addToDatabase('yes'); }}>YES</button>
                     <button className='transparent-button' onClick={(e) => { this.props.onClick(true); this.addToDatabase('no'); }}>NO</button>
-                    <button className='transparent-button' onClick={(e) => { this.props.onClick(true); this.addToDatabase('a bit'); }}>A Bit</button>
+                    <button className='transparent-button' onClick={(e) => { this.props.onClick(true); this.addToDatabase('a bit'); }}>A BIT</button>
                 </div>
             </div>
         )

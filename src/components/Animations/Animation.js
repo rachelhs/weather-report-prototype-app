@@ -143,22 +143,22 @@ class Animation extends Component {
             case 'grey-cloudFadeOut':
                 this.setState({ animationData: greyCloudFadeOut })
                 break
-            case 'cloud-rain-threatFadeIn':
+            case 'purple-rainFadeIn':
                 this.setState({ animationData: cloudRainThreatFadeIn })
                 break
-            case 'cloud-rain-threatLow':
+            case 'purple-rainLow':
                 this.setState({ animationData: cloudRainThreat })
                 break
-            case 'cloud-rain-threatFadeOut':
+            case 'purple-rainFadeOut':
                 this.setState({ animationData: cloudRainThreatFadeOut })
                 break
-            case 'dark-cloudsFadeIn':
+            case 'turquoise-rainFadeIn':
                 this.setState({ animationData: darkCloudsLowFadeIn })
                 break
-            case 'dark-cloudsLow':
+            case 'turquoise-rainLow':
                 this.setState({ animationData: darkCloudsLow })
                 break
-            case 'dark-cloudsLowFadeOut':
+            case 'turquoise-rainLowFadeOut':
                 this.setState({ animationData: darkCloudsLowFadeOut })
                 break
             case 'tsunamiFadeIn':

@@ -254,7 +254,7 @@ class TooHighRoute extends React.Component {
                     <CSSTransition in={this.state.exercises} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterExercises() }}>
                         <div>
                             <div>{SetExercises(this.state.randExercise)}</div>
-                            <div className="flex-center">
+                            <div className='button-container'>
                                 <button className='next-button-dark' onClick={this.seenExercise.bind(this)}>NEXT</button>
                             </div>
                         </div>
