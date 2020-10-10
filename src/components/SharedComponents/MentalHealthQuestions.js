@@ -215,8 +215,8 @@ export class SafeQuestion extends React.Component {
             <div>
                 <h1 className='info-box-title'>{data[3].shared.safeQuestion}</h1>
                 <div className='button-container'>
-                    <button className='next-button' onClick={(e) => this.props.onClick(true)}>Yes</button>
-                    <button className='next-button' onClick={(e) => this.props.onClick(false)}>No</button>
+                    <button className='transparent-button' onClick={(e) => this.props.onClick(true)}>Yes</button>
+                    <button className='transparent-button' onClick={(e) => this.props.onClick(false)}>No</button>
                 </div>
             </div>
         )
@@ -230,8 +230,8 @@ export class ContactSupportersQuestion extends React.Component {
             <div>
                 <h1 className='info-box-title'>{data[3].shared.support}</h1>
                 <div className='button-container'>
-                    <button className='next-button' onClick={(e) => this.props.onClick(true)}>Yes</button>
-                    <button className='next-button' onClick={(e) => this.props.onClick(false)}>No</button>
+                    <button className='transparent-button' onClick={(e) => this.props.onClick(true)}>Yes</button>
+                    <button className='transparent-button' onClick={(e) => this.props.onClick(false)}>No</button>
                 </div>
             </div>
         )
@@ -413,8 +413,8 @@ export class GettingHelpQ extends React.Component {
             <div>
                 <h1 className='info-box-title'>{data[8].suicidal.questions.help}</h1>
                 <div className='button-container'>
-                    <button className='next-button' onClick={(e) => this.props.onClick(true)}>Yes</button>
-                    <button className='next-button' onClick={(e) => this.props.onClick(false)}>No</button>
+                    <button className='transparent-button' onClick={(e) => this.props.onClick(true)}>Yes</button>
+                    <button className='transparent-button' onClick={(e) => this.props.onClick(false)}>No</button>
                 </div>
             </div>
         )
@@ -485,8 +485,8 @@ export class SpokenToQ extends React.Component {
             <div>
                 <h1 className='info-box-title'>{data[8].suicidal.questions.spoken}</h1>
                 <div className='button-container'>
-                    <button className='next-button' onClick={(e) => this.props.onClick(true)}>Yes</button>
-                    <button className='next-button' onClick={(e) => this.props.onClick(false)}>No</button>
+                    <button className='transparent-button' onClick={(e) => this.props.onClick(true)}>Yes</button>
+                    <button className='transparent-button' onClick={(e) => this.props.onClick(false)}>No</button>
                 </div>
             </div>
         )
@@ -536,7 +536,7 @@ export class AddAnchor extends React.Component {
                     <input className='free-form-input' type="text" placeholder="name" onChange={this.anchorsChangeName} />
                     <input className='free-form-input' type="text" placeholder="number" onChange={this.anchorsChangeNumber} />
                     <div className='button-container'>
-                        <button className='next-button free-form-submit' onClick={this.props.buttonClick}>Add</button>
+                        <button className='transparent-button free-form-submit' onClick={this.props.buttonClick}>Add</button>
                     </div>
                 </form>
             </div>

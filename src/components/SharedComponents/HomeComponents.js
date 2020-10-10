@@ -37,7 +37,7 @@ export class OneGratefulQuestion extends React.Component {
                 <form className='button-container-vertical' onSubmit={this.handlegratefulQuestionSubmit}>
                     <input className='free-form-input-vertical' placeholder="1" type="text" onChange={this.handlegratefulOne} />
                     <div className='button-container'>
-                        <button className='next-button free-form-submit' onClick={this.props.buttonClick}>NEXT</button>
+                        <button className='transparent-button free-form-submit' onClick={this.props.buttonClick}>NEXT</button>
                     </div>
                 </form>
             </div>
@@ -304,7 +304,7 @@ export class PebblesModal extends React.Component {
                     { this.state.pebbleToShow && <h3>{this.state.pebbleToShow.reason}</h3> }
                     { photoMemory }
                     <div className="flex-center">
-                        <button className="next-button" onClick={this.selectAnotherMemory.bind(this)}>Look at another memory</button>
+                        <button className="transparent-button" onClick={this.selectAnotherMemory.bind(this)}>Look at another memory</button>
                     </div>
                 </ReactModal>
             </div>

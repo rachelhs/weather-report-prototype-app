@@ -21,8 +21,8 @@ export class ReasonForFeelings extends React.Component {
             <div>
                 <h1 className='info-box-title'>{data[3].shared.reason}</h1>
                 <div className='button-container'>
-                    <button className='next-button' onClick={(e) => this.props.onClick(true)}>YES</button>
-                    <button className='next-button' onClick={(e) => this.props.onClick(false)}>NO</button>
+                    <button className='transparent-button' onClick={(e) => this.props.onClick(true)}>YES</button>
+                    <button className='transparent-button' onClick={(e) => this.props.onClick(false)}>NO</button>
                 </div>
             </div>
         )
@@ -103,10 +103,10 @@ export class HowLongHaveYouFeltLikeThis extends React.Component {
         return (
             <div>
                 <h1 className='info-box-title'>{data[3].shared.howLong}</h1>
-                <button className='next-button stack-button' onClick={(e) => { this.onHowLong('today'); this.props.buttonClick(true) }}>TODAY</button>
-                <button className='next-button stack-button' onClick={(e) => { this.onHowLong('a few'); this.props.buttonClick(true) }}>A FEW DAYS</button>
-                <button className='next-button stack-button' onClick={(e) => { this.onHowLong('a week'); this.props.buttonClick(true) }}>A WEEK</button>
-                <button className='next-button stack-button' onClick={(e) => { this.onHowLong('longer'); this.props.buttonClick(true) }}>LONGER</button>
+                <button className='transparent-button stack-button' onClick={(e) => { this.onHowLong('today'); this.props.buttonClick(true) }}>TODAY</button>
+                <button className='transparent-button stack-button' onClick={(e) => { this.onHowLong('a few'); this.props.buttonClick(true) }}>A FEW DAYS</button>
+                <button className='transparent-button stack-button' onClick={(e) => { this.onHowLong('a week'); this.props.buttonClick(true) }}>A WEEK</button>
+                <button className='transparent-button stack-button' onClick={(e) => { this.onHowLong('longer'); this.props.buttonClick(true) }}>LONGER</button>
             </div>
         )
     }
@@ -120,8 +120,8 @@ export class SpokenToQ extends React.Component {
             <div>
                 <h1 className='info-box-title'>{data[8].suicidal.questions.spoken}</h1>
                 <div className='button-container'>
-                    <button className='next-button' onClick={(e) => this.props.onClick(true)}>YES</button>
-                    <button className='next-button' onClick={(e) => this.props.onClick(false)}>NO</button>
+                    <button className='transparent-button' onClick={(e) => this.props.onClick(true)}>YES</button>
+                    <button className='transparent-button' onClick={(e) => this.props.onClick(false)}>NO</button>
                 </div>
             </div>
         )
@@ -135,8 +135,8 @@ export class RiskOfHarm extends React.Component {
             <div>
                 <h1 className='info-box-title'>{data[8].suicidal.questions.risk}</h1>
                 <div className='button-container'>
-                    <button className='next-button' onClick={(e) => this.props.onClick(true)}>YES</button>
-                    <button className='next-button' onClick={(e) => this.props.onClick(false)}>NO</button>
+                    <button className='transparent-button' onClick={(e) => this.props.onClick(true)}>YES</button>
+                    <button className='transparent-button' onClick={(e) => this.props.onClick(false)}>NO</button>
                 </div>
             </div>
         )
@@ -150,8 +150,8 @@ export class RiskOfHarmTooHigh extends React.Component {
             <div>
                 <h1 className='info-box-title'>{data[8].suicidal.questions.riskOthers}</h1>
                 <div className='button-container'>
-                    <button className='next-button' onClick={(e) => this.props.onClick(true)}>YES</button>
-                    <button className='next-button' onClick={(e) => this.props.onClick(false)}>NO</button>
+                    <button className='transparent-button' onClick={(e) => this.props.onClick(true)}>YES</button>
+                    <button className='transparent-button' onClick={(e) => this.props.onClick(false)}>NO</button>
                 </div>
             </div>
         )
@@ -165,8 +165,8 @@ export class PlanQ extends React.Component {
             <div>
                 <h1 className='info-box-title'>{data[8].suicidal.questions.plan}</h1>
                 <div className='button-container'>
-                    <button className='next-button' onClick={(e) => this.props.onClick(true)}>YES</button>
-                    <button className='next-button' onClick={(e) => this.props.onClick(false)}>NO</button>
+                    <button className='transparent-button' onClick={(e) => this.props.onClick(true)}>YES</button>
+                    <button className='transparent-button' onClick={(e) => this.props.onClick(false)}>NO</button>
                 </div>
             </div>
         )
@@ -180,8 +180,8 @@ export class PlanningQ extends React.Component {
             <div>
                 <h1 className='info-box-title'>{data[8].suicidal.questions.act}</h1>
                 <div className='button-container'>
-                    <button className='next-button' onClick={(e) => this.props.onClick(true)}>YES</button>
-                    <button className='next-button' onClick={(e) => this.props.onClick(false)}>NO</button>
+                    <button className='transparent-button' onClick={(e) => this.props.onClick(true)}>YES</button>
+                    <button className='transparent-button' onClick={(e) => this.props.onClick(false)}>NO</button>
                 </div>
             </div>
         )
@@ -207,7 +207,7 @@ export class Samaritans extends React.Component {
                 <h1 className='info-box-title'>{data[8].suicidal.questions.samaritans}</h1>
                 <a href="https://www.samaritans.org/how-we-can-help/contact-samaritan/" target="_blank"><h1 className='info-box-title'>view other ways to get in touch with them.</h1></a>
                 <div className='button-container'>
-                    <button className='next-button' onClick={(e) => this.props.onClick(true)}>OK</button>
+                    <button className='transparent-button' onClick={(e) => this.props.onClick(true)}>OK</button>
                 </div>
             </div>
         )
@@ -223,7 +223,7 @@ export class Crisis extends React.Component {
                 <a href="http://bristolmentalhealth.org/crisis-help/" target="_blank"><h1 className='info-box-title'>http://bristolmentalhealth.org/crisis-help/</h1></a>
                 <h1 className='info-box-title'>{data[8].suicidal.questions.crisis2}</h1>
                 <div className='button-container'>
-                    <button className='next-button' onClick={(e) => this.props.onClick(true)}>OK</button>
+                    <button className='transparent-button' onClick={(e) => this.props.onClick(true)}>OK</button>
                 </div>
             </div>
         )
@@ -237,8 +237,8 @@ export class AnotherExerciseQuestion extends React.Component {
             <div>
                 <h1 className='info-box-title'>{data[3].shared.anotherExercise}</h1>
                 <div className='button-container'>
-                    <button className='next-button' onClick={(e) => this.props.onClick(true)}>YES</button>
-                    <button className='next-button' onClick={(e) => this.props.onClick(false)}>NO</button>
+                    <button className='transparent-button' onClick={(e) => this.props.onClick(true)}>YES</button>
+                    <button className='transparent-button' onClick={(e) => this.props.onClick(false)}>NO</button>
                 </div>
             </div>
         )
@@ -339,9 +339,9 @@ export class AskIfHelped extends React.Component {
             <div>
                 <h1 className='info-box-title'>{data[6].veryLow.questions.exHelped}</h1>
                 <div className='button-container'>
-                    <button className='next-button' onClick={(e) => { this.props.onClick(true); this.addToDatabase('yes'); }}>YES</button>
-                    <button className='next-button' onClick={(e) => { this.props.onClick(true); this.addToDatabase('no'); }}>NO</button>
-                    <button className='next-button' onClick={(e) => { this.props.onClick(true); this.addToDatabase('a bit'); }}>A Bit</button>
+                    <button className='transparent-button' onClick={(e) => { this.props.onClick(true); this.addToDatabase('yes'); }}>YES</button>
+                    <button className='transparent-button' onClick={(e) => { this.props.onClick(true); this.addToDatabase('no'); }}>NO</button>
+                    <button className='transparent-button' onClick={(e) => { this.props.onClick(true); this.addToDatabase('a bit'); }}>A Bit</button>
                 </div>
             </div>
         )
@@ -582,7 +582,7 @@ export class TextWithButton extends React.Component {
             <div>
                 <h1 className='info-box-title'>{this.props.text}</h1>
                 <div className='button-container'>
-                    <button className='next-button' onClick={(e) => this.props.onClick(true)}>{this.props.buttonText}</button>
+                    <button className='transparent-button' onClick={(e) => this.props.onClick(true)}>{this.props.buttonText}</button>
                 </div>
             </div>
         )

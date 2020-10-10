@@ -20,8 +20,8 @@ export class LandingPage extends React.Component {
                 <div className='info-box'>
                     <CSSTransition in={this.state.showContent} timeout={2000} classNames="fade" appear unmountOnExit>
                         <div>
-                            <h1 className='info-box-little-text'>{ data[0].regularLogin[1] }</h1>
-                            <div className="button-container">
+                            <h1 className='header-text-spacing'>{ data[0].regularLogin[1] }</h1>
+                            <div className="button-container padding-top">
                                 <button className='next-button-dark' onClick={this.onNext}>NEXT</button>
                             </div>
                         </div>

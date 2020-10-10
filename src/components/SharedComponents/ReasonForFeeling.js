@@ -90,8 +90,8 @@ export class ReasonForFeelingsInputAndReminder extends React.Component {
                     <div>
                         <h1 className='info-box-title'>{data[3].shared.reminderQuestion}</h1>
                         <div className='button-container'>
-                            <button className='next-button' onClick={this.yesSetReminder.bind(this)}>YES</button>
-                            <button className='next-button'
+                            <button className='transparent-button' onClick={this.yesSetReminder.bind(this)}>YES</button>
+                            <button className='transparent-button'
                                 onClick={(e) => {
                                     this.sendInput(false);
                                     this.props.onClick(true);
@@ -104,8 +104,8 @@ export class ReasonForFeelingsInputAndReminder extends React.Component {
                     <div>
                         <h1 className='info-box-title'>{data[3].shared.photoAsk}</h1>
                         <div className='button-container'>
-                            <button className='next-button' onClick={this.closePhotoOption.bind(this)}>YES</button>
-                            <button className='next-button'
+                            <button className='transparent-button' onClick={this.closePhotoOption.bind(this)}>YES</button>
+                            <button className='transparent-button'
                                 onClick={(e) => {
                                     this.sendInput(true);
                                     this.props.onClick(true);
@@ -118,7 +118,7 @@ export class ReasonForFeelingsInputAndReminder extends React.Component {
                     <div>
                         <ReactFirebaseFileUpload time={time} />
                         <div className='button-container'>
-                            <button className='next-button'
+                            <button className='transparent-button'
                                 onClick={(e) => {
                                     this.sendInput(true);
                                     this.props.onClick(true);
