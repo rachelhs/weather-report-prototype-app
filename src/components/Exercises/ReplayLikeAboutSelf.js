@@ -58,8 +58,11 @@ export default class LikeAboutSelf extends React.Component {
                 </div>
             </div>
             : 
-            <div className='button-container'>
-                <button className='next-button-dark free-form-submit extra-margin-top' onClick={this.props.buttonClick}>NEXT</button>
+            <div className="positive-padding">
+                <h2 className='info-box-title-no-padding'>{data[3].shared.likeReplayStatement}</h2>
+                <div className='button-container'>
+                    <button className='next-button-dark free-form-submit extra-margin-top' onClick={this.props.buttonClick}>NEXT</button>
+                </div>
             </div>
         return (
             <div>
