@@ -63,6 +63,9 @@
                 "low": ["You are not alone in these feelings, many people feel like this at some point in their lives. You can work through this", "Don’t give up, one day you will look back, and be glad you didn’t"],
                 "lowWithEnergy": ["'Even the darkest night will end, and the sun will rise' Victor Hugo", "Don’t give up, one day you will look back, and be glad you didn’t","I won’t say have a good day. Instead I advise you, to have a day. Stay alive, feed yourself well, wear comfortable clothes, and don’t give up on yourself just yet. It’ll get better. Until then, have a day"],
                 "suicidal": ["Lots of people have felt like this before. It may seem like things won’t change but all feelings eventually pass.", "Don’t give up, one day you will look back, and be glad you didn’t","I won’t say have a good day. Instead I advise you, to have a day. Stay alive, feed yourself well, wear comfortable clothes, and don’t give up on yourself just yet. It’ll get better. Until then, have a day"]
+            },
+            "exercises": {
+                "groundingText": "Grounding does what it says on the tin – it literally grounds us. It seeks to place us firmly back in the moment, fully in connection with ourselves and the world around us. Focusing on the senses can really ground us – Sound, Smell, Taste, Sight, Touch and Breathing"
             }
         }
     },
