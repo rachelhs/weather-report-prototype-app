@@ -13,7 +13,7 @@ import LikeAboutSelf from '../Exercises/ReplayLikeAboutSelf';
 import ReplayContent from '../Exercises/ReplayContent';
 import ReplayAnchors from '../Exercises/ReplayAnchors';
 import ReplayCare from '../Exercises/ReplayCare';
-import ChangeSituation from '../SharedComponents/MentalHealthQuestions';
+import { ChangeSituation } from '../SharedComponents/MentalHealthQuestions';
 
 const data = require('../../data/data.json');
 
@@ -57,7 +57,7 @@ class Exercises extends React.Component {
         // setting exercise
         //let exercise = ChooseExercise(['breathing']);
         // let exercise = ChooseExercise(['meditating', 'gratitude', 'stretching', 'safePlace', 'breathing', 'positive', 'selflike', 'selfcare', 'changeSituation', 'content', 'anchors']);
-        let exercise = ChooseExercise(['selfcare']);
+        let exercise = ChooseExercise(['anchors']);
         this.setState({ exercise: exercise });
 
         setTimeout(() => { this.setState({ showRandomPositiveStatement: false }) }, 3000)

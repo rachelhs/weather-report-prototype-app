@@ -66,8 +66,8 @@ export class ChangeSituation extends React.Component {
 
     render() {
         return (
-            <div>
-                <h2 className='info-box-title'>{data[3].shared.positiveChange}</h2>
+            <div className="info-box">
+                <h2 className='info-box-title-top'>{data[3].shared.positiveChange}</h2>
                 <form onSubmit={this.handlePosSubmit}>
                     <input className='free-form-input' type="text" value={this.state.value} onChange={this.handlePosChange} />
                     <div className='button-container'>
