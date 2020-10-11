@@ -69,6 +69,8 @@ export default class ReplyCare extends React.Component {
     }
 
     render() {
+        console.log('state1', this.state.randomCare1)
+        console.log('state2', this.state.randomCare2)
         return (
             <div className="positive-padding">
                 <h2 className='info-box-title-no-padding'>{data[3].shared.replayCare}</h2>
