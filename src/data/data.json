@@ -38,7 +38,7 @@
             "enjoyQuestion": "What 3 things do you enjoy?",
             "likeAboutYourselfQuestion": "Sometimes we can forget nice things we like about ourselves. Heres some things you’ve liked about yourself in the past",
             "gratitudeReplayStatement": "Sometimes we forget the bigger picture. Here are some things that you said you were grateful for.",
-            "likeReplayStatement": "[CHECK THIS] Recently, you said that this is something you like about yourself",
+            "likeReplayStatement": "Sometimes we can forget nice things we like about ourselves. Here are some things you’ve liked about yourself in the past.",
             "posReplayStatement": "Sometimes we forget we’ve had some great times in our lives, Here are some positive memories from your life",
             "safeQuestion": "Are you keeping yourself safe?",
             "support": "Have you contacted your supporters?",
@@ -123,8 +123,10 @@
                 "pass": "These feelings will pass, however it seems you need to get support now.",
                 "samaritans": "Call 999 or the Samaritans on 116 123 for free or",
                 "help": "That's Good. Are you getting the help you need?",
+                "help2": "Are you getting the help you need?",
                 "crisis": "We think you should call Bristol Mental Health Crisis Team on 0300 555 0334 or visit",
                 "crisis2": "for more support",
+                "afterCrisis": "If the crisis team can't help immediately and you are still at risk please ring 999 or Samaritans",
                 "spoken": "Have you spoken to anyone about how you feel?",
                 "reach": "It could help to reach out to one of your roots"
             }
@@ -170,7 +172,7 @@
             "tsunami": ["Suicidal","Shame","Risky","Panic","Anxious","Angry","Bleak","Broken","Desperate","Worthless","Humiliated","Depressed","Manic","Overwhelmed"]
         },
         "secondaryWords": ["Overwhelmed","Anxious","Depressed","Uneasy","Worried","Careless","Exhausted","Risky","Bleak","Nothing","OK","Dazed","Creative","Calm","Hopeful","Happy","Angry"],
-        "symbols" : ["rainbow", "sunshine", "bluesky", "light-clouds", "grey-cloud", "purple-rain", "dark-clouds", "tsunami", "tornado"],
+        "symbols" : ["rainbow", "sunshine", "bluesky", "light-clouds", "grey-cloud", "purple-rain", "turquoise-rain", "tsunami", "tornado"],
         "categories": {
             "one":["Invincible","Manic","Over stimulated","Overwhelmed","Flighty","Panic","Careless"],
             "two": ["Ecstatic","Loved or Love","Happy","Adventurous","Excited","Brave","Confident","Playful","Curious","Energetic","Feisty","Hopeful","Creative","Kind","Stimulated","Pleased"],
@@ -179,7 +181,7 @@
             "five": ["Confused","Impatient","Isolated","Lonely","Nervous","Uneasy","Stupid","Lazy","Unhappy","Worried","Regret","Low","Scared","Anxious"],
             "six": ["Sad","Lost","Miserable","Empty","Hurt","Exhausted","Relentless","Rejected","Awful","Distressed","Depressed"],
             "seven": ["Crushed","Bleak","Broken","Desperate","Worthless","Humiliated","Shame","Alienated"],
-            "eight": ["Angry","Outraged","Furious","Greed","Jealousy","Risky","Panic"],
+            "eight": ["Angry","Outraged","Furious","Greed","Jealousy","Risky"],
             "nine": ["Suicidal"]
         }
     },
