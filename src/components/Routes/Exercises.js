@@ -4,8 +4,17 @@ import { PositiveThingQuestion, FriendsLikeQuestion } from '../SharedComponents/
 import { isLongerThanThreeDays, randomQuestionNumber, chooseAnotherRandomExercise } from '../../actions/route-functions';
 import { CSSTransition } from "react-transition-group";
 import { ChooseExercise } from '../Exercises/ChooseExercise';
-import { SetExercises } from '../Exercises/SetExercises';
+
 import '../../styles/animation.css';
+import { Breathing, Meditating, Grounding, Stretching, SafePlace, LessStimulation } from '../Exercises/TextBasedExercises';
+import Gratitude from '../Exercises/ReplayGratitude';
+import PositiveMemory from '../Exercises/ReplayPosMemories';
+import LikeAboutSelf from '../Exercises/ReplayLikeAboutSelf';
+import ReplayContent from '../Exercises/ReplayContent';
+import ReplayAnchors from '../Exercises/ReplayAnchors';
+import ReplayCare from '../Exercises/ReplayCare';
+import ChangeSituation from '../SharedComponents/MentalHealthQuestions';
+
 const data = require('../../data/data.json');
 
 class Exercises extends React.Component {
@@ -48,9 +57,9 @@ class Exercises extends React.Component {
         // setting exercise
         //let exercise = ChooseExercise(['breathing']);
         // let exercise = ChooseExercise(['meditating', 'gratitude', 'stretching', 'safePlace', 'breathing', 'positive', 'selflike', 'selfcare', 'changeSituation', 'content', 'anchors']);
-        let exercise = ChooseExercise(['breathing']);
-
+        let exercise = ChooseExercise(['selfcare']);
         this.setState({ exercise: exercise });
+
         setTimeout(() => { this.setState({ showRandomPositiveStatement: false }) }, 3000)
 
         setTimeout(() => {
@@ -121,7 +130,7 @@ class Exercises extends React.Component {
 
     // returns a random exercise that isn't the same as the one just seen
     chooseAnotherExercise() {
-        let exerciseArray = chooseAnotherRandomExercise(['meditating', 'gratitude', 'positive', 'selflike', 'selfcare'], this.state.exercise);
+        let exerciseArray = chooseAnotherRandomExercise(['meditating', 'gratitude', 'stretching', 'breathing'], this.state.exercise);
         this.setState({ showAnotherExerciseQuestion: false, yesAnotherExercise: true });
         let exercise = ChooseExercise(exerciseArray);
         this.setState({ exercise: exercise });
@@ -130,21 +139,27 @@ class Exercises extends React.Component {
     // goes back to random exercises if user has previously clicked yes
     afterAskAnotherQuestion() { this.state.yesAnotherExercise ? this.setState({ showRandomExercises: true }) : this.setState({ showRandomExercise: false, showFeedbackStatement: true }) }
 
+    SetExercises = (exercise) => {
+        if (exercise == 'meditating') { return <Meditating buttonClick={this.seenExercise.bind(this)}/> }
+        if (exercise == 'stretching') { return <Stretching buttonClick={this.seenExercise.bind(this)}/> }
+        if (exercise == 'safePlace') { return <SafePlace buttonClick={this.seenExercise.bind(this)}/> }
+        if (exercise == 'grounding') { return <Grounding buttonClick={this.seenExercise.bind(this)}/> }
+        if (exercise == 'breathing') { return <Breathing buttonClick={this.seenExercise.bind(this)}/> }
+        if (exercise == 'changeSituation') { return <ChangeSituation buttonClick={this.seenExercise.bind(this)}/> }
+        if (exercise == 'gratitude') { return <Gratitude buttonClick={this.seenExercise.bind(this)}/> }
+        if (exercise == 'positive') { return <PositiveMemory buttonClick={this.seenExercise.bind(this)} /> }
+        if (exercise === 'selflike') { return <LikeAboutSelf buttonClick={this.seenExercise.bind(this)}/> }
+        if (exercise === 'content') { return <ReplayContent buttonClick={this.seenExercise.bind(this)}/> }
+        if (exercise === 'anchors') { return <ReplayAnchors buttonClick={this.seenExercise.bind(this)}/> }
+        if (exercise === 'selfcare') { return <ReplayCare buttonClick={this.seenExercise.bind(this)}/> }
+    }
+
     render() {
+        // console.log('set exercise', SetExercises(this.state.exercise))
         const randomQuestion = this.state.randQues == 0 ? 
         <PositiveThingQuestion buttonClick={this.answeredRandomQuestion.bind(this)} /> :
         <FriendsLikeQuestion buttonClick={this.answeredRandomQuestion.bind(this)} />;
-        const Exercise = this.state.showRandomExercises ?
-            <div>
-                <div>{SetExercises(this.state.exercise)}</div>
-                <div className="flex-center">
-                    <div className='back-button-breathing'>
-                        <button className='next-button-dark ' onClick={this.seenExercise.bind(this)}>NEXT</button>
-                    </div>
-                </div>
-            </div>
-        : ''
-
+        const Exercise = this.state.showRandomExercises ? <div>{this.SetExercises(this.state.exercise)}</div> : ''
         return (
             <div>
                 <CSSTransition in={this.state.neutralAnimation} timeout={4000} classNames="fade-enter-only" unmountOnExit>

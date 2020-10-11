@@ -270,9 +270,6 @@ export class PebblesModal extends React.Component {
 
     selectRandomIndex() {
         let randomNumber = Math.floor(Math.random()*this.state.listOfPebbles.length)
-        // console.log('listOfPebbles.length', listOfPebbles.length)
-        // console.log('randomNumber', randomNumber)
-
         return randomNumber
     }
 
@@ -282,7 +279,6 @@ export class PebblesModal extends React.Component {
 
     render() {
         console.log('random',this.state.arrayIndex)
-        let renderedOutput = this.state.listOfPebbles.map((item, index) => <h1 key={index}>{item}</h1>)
         const customStyles = {
             overlay: {zIndex: 1000}
         };
