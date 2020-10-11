@@ -39,6 +39,9 @@ class HomePage extends React.Component {
         this.setState({
             intervalId
         });
+        if (!this.state.weather ) {
+            this.setState({ weather: 'neutralBackground' })
+        }
         if (this.state.weather == "tornado") {
             setTimeout( () => { this.setState({ tornadoFadeOut: true }) }, 29800)
             setTimeout( () => { this.setState({ backToNeutral: true, tornadoFadeOut: false }) }, 30500)
