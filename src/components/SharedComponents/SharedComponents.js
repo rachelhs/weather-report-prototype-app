@@ -516,6 +516,7 @@ export class AllRootsWithNext extends React.Component {
 
     getListOfAnchors = () => {
         listOfAnchors = [];
+
         const user = firebase.auth().currentUser;
         const uid = user.uid;
 
