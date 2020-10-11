@@ -47,7 +47,11 @@ export default class ReplayAnchors extends React.Component {
             <div className='info-box'>
                 <h1 className='info-box-title'>{data[10].home.anchors}</h1>
                 {listItems }
+                <div className='button-container'>
+                    <button className='next-button-dark free-form-submit extra-margin-top' onClick={this.props.buttonClick}>NEXT</button>
+                </div>
             </div> 
+            
         )
     }
 }

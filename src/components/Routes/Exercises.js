@@ -6,7 +6,8 @@ import { CSSTransition } from "react-transition-group";
 import { ChooseExercise } from '../Exercises/ChooseExercise';
 
 import '../../styles/animation.css';
-import { Breathing, Meditating, Grounding, Stretching, SafePlace, LessStimulation } from '../Exercises/TextBasedExercises';
+// import exercises
+import { Breathing, Meditating, Grounding, Stretching, SafePlace } from '../Exercises/TextBasedExercises';
 import Gratitude from '../Exercises/ReplayGratitude';
 import PositiveMemory from '../Exercises/ReplayPosMemories';
 import LikeAboutSelf from '../Exercises/ReplayLikeAboutSelf';
@@ -56,8 +57,8 @@ class Exercises extends React.Component {
         this.setState({ randPositive: randomQuestionNumber(positiveArray.length) });
         // setting exercise
         //let exercise = ChooseExercise(['breathing']);
-        // let exercise = ChooseExercise(['meditating', 'gratitude', 'stretching', 'safePlace', 'breathing', 'positive', 'selflike', 'selfcare', 'changeSituation', 'content', 'anchors']);
-        let exercise = ChooseExercise(['anchors']);
+        let exercise = ChooseExercise(['meditating', 'gratitude', 'stretching', 'safePlace', 'breathing', 'positive', 'selflike', 'selfcare', 'changeSituation', 'content', 'anchors']);
+        // let exercise = ChooseExercise(['anchors']);
         this.setState({ exercise: exercise });
 
         setTimeout(() => { this.setState({ showRandomPositiveStatement: false }) }, 3000)
@@ -130,7 +131,7 @@ class Exercises extends React.Component {
 
     // returns a random exercise that isn't the same as the one just seen
     chooseAnotherExercise() {
-        let exerciseArray = chooseAnotherRandomExercise(['meditating', 'gratitude', 'stretching', 'breathing'], this.state.exercise);
+        let exerciseArray = chooseAnotherRandomExercise(['meditating', 'gratitude', 'stretching', 'safePlace', 'breathing', 'positive', 'selflike', 'selfcare', 'changeSituation', 'content', 'anchors'], this.state.exercise);
         this.setState({ showAnotherExerciseQuestion: false, yesAnotherExercise: true });
         let exercise = ChooseExercise(exerciseArray);
         this.setState({ exercise: exercise });

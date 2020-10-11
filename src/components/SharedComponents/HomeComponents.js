@@ -50,7 +50,7 @@ export class FishModal extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            show: null,
+            show: false,
             listOfGrateful: [],
             addButtonClicked: false
         }
@@ -125,7 +125,7 @@ export class AnchorsModal extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            show: null,
+            show: false,
             listOfAnchors: [],
             addButtonClicked: false
         }
@@ -264,7 +264,6 @@ export class PebblesModal extends React.Component {
             this.setState({arrayIndex: number}) 
             let randomPebble = this.state.listOfPebbles[number];
             this.setState({pebbleToShow: randomPebble})
-            // console.log('random memory', this.state.pebbleToShow)
         }
     }
 
