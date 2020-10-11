@@ -187,8 +187,8 @@ export class AnchorsModal extends React.Component {
                     {this.state.addButtonClicked ?
                     <h3>{data[10].home.addToAnchors}</h3>
                     :
-                    <TextWithButton buttonText='add' text={data[10].home.addToAnchors} onClick={this.toggleAddAnchor.bind(this)} />}
-                    {this.state.toggleAddAnchor ? <AddAnchor /> : ''}
+                    <TextWithButton buttonText='yes' text={data[10].home.addToAnchors} onClick={this.toggleAddAnchor.bind(this)} />}
+                    {this.state.toggleAddAnchor ? [listOfAnchors = [], <AddAnchor />] : ''}
                 </ReactModal>
             </div>
         );
@@ -277,7 +277,6 @@ export class PebblesModal extends React.Component {
     }
 
     render() {
-        console.log('random',this.state.arrayIndex)
         const customStyles = {
             overlay: {zIndex: 1000}
         };
