@@ -43,6 +43,7 @@ class MediumLowRoute extends React.Component {
 
     // method called as soon as all elements on the page are rendered & changed showAcknowledge to false after 3 seconds. This will hide the statement.
     componentDidMount() {
+
         if (typeof this.props.location.state != 'undefined' || this.props.location.state != null) {
             let weatherFadeIn = this.props.location.state.weatherSymbol + "FadeIn"
             this.setState({ weatherFadeIn: weatherFadeIn });
@@ -59,11 +60,9 @@ class MediumLowRoute extends React.Component {
         const positiveArray = data[4].mediumLow.positiveStatements;
         this.setState({ randPositive: randomQuestionNumber(positiveArray.length) });
         // setting exercise
-        //let exercise = ChooseExercise(['breathing']);
-        let exercise = ChooseExercise(['selfcare']);
+        let exercise = ChooseExercise(['meditating', 'gratitude', 'positive', 'selflike', 'selfcare']);
         this.setState({ exercise: exercise });
         setTimeout(() => { this.setState({ showRandomPositiveStatement: false }) }, 3000)
-
         setTimeout(() => { this.setState({ neutralAnimation: false, mediumLowFadeIn: true }) }, 500)
         setTimeout(() => {
             setInterval(() => {
@@ -129,12 +128,12 @@ class MediumLowRoute extends React.Component {
 
     // called when user presses 'yes' or 'no' to another question
     answeredAnotherExerciseQuestion(another) {
-        console.log('another', another)
         another ? (this.chooseAnotherExercise()) : this.setState({ showAnotherExerciseQuestion: false, yesAnotherExercise: false })
     }
 
     // returns a random exercise that isn't the same as the one just seen
     chooseAnotherExercise() {
+
         let exerciseArray = chooseAnotherRandomExercise(['meditating', 'gratitude', 'positive', 'selflike', 'selfcare'], this.state.exercise);
         this.setState({ showAnotherExerciseQuestion: false, yesAnotherExercise: true });
         let exercise = ChooseExercise(exerciseArray);
@@ -145,7 +144,7 @@ class MediumLowRoute extends React.Component {
     afterAskAnotherQuestion() { this.state.yesAnotherExercise ? this.setState({ showRandomExercises: true }) : this.setState({ showRandomExercise: false, showFeedbackStatement: true }) }
 
     SetExercises = (exercise) => {
-        if (exercise == 'meditating') { return <Meditating buttonClick={this.askAnotherExerciseQuestion.bind(this)}/> }        if (exercise == 'gratitude') { return <Gratitude buttonClick={this.askAnotherExerciseQuestion.bind(this)}/> }
+        if (exercise == 'meditating') { return <Meditating buttonClick={this.askAnotherExerciseQuestion.bind(this)}/> }
         if (exercise == 'positive') { return <PositiveMemory buttonClick={this.askAnotherExerciseQuestion.bind(this)} /> }
         if (exercise === 'selflike') { return <LikeAboutSelf buttonClick={this.askAnotherExerciseQuestion.bind(this)}/> }
         if (exercise === 'selfcare') { return <ReplayCare buttonClick={this.askAnotherExerciseQuestion.bind(this)}/> }

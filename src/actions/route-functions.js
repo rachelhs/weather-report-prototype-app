@@ -33,18 +33,18 @@ export function isLongerThanThreeDays(cb) {
                 // checks the first entry of each day
                 let time = Object.keys(child.val())[0];
                 database.ref(`users/${uid}/weatherReports/${date1}/${time}/createdAt`).on('value', (snapshot) => {
-                   // if first entry is older than three days ago, add 1 to counter
+                    // if first entry is older than three days ago, add 1 to counter
                     let createdAt1 = snapshot.val();
                     if ((createdAt1 !== null) && (createdAt1 < threeDaysAgo)) {
-                        counter +=1;
+                        counter += 1;
                     }
 
                 })
                 database.ref(`users/${uid}/weatherReports/${date2}/${time}/createdAt`).on('value', (snapshot) => {
-                   // if second entry is older than three days ago, add 1 to counter
+                    // if second entry is older than three days ago, add 1 to counter
                     let createdAt2 = snapshot.val();
                     if ((createdAt2 !== null) && (createdAt2 < threeDaysAgo)) {
-                        counter +=1;
+                        counter += 1;
 
                     }
                 })
@@ -216,4 +216,33 @@ export function BackButtonFirstAid({ children }) {
 
 export function GetKeyByValue(object, value) {
     return Object.keys(object).find(key => object[key].includes(value));
+}
+
+// loops through all exercises that may have no data and returns an array of strings of ones that are non empty
+export function availableExercises(cb) {
+
+    const uid = firebase.auth().currentUser.uid;
+    database.ref(`users/${uid}/`).once('value', snapshot => {
+        let exs = [];
+        snapshot.forEach((child) => {
+            let childKey = child.key;
+            if (childKey == 'grateful') {
+                exs.push('gratitude');
+            }
+            else if (childKey == 'takeCare') {
+                exs.push('selfcare');
+            }
+            else if (childKey == 'pebbles') {
+                exs.push('positive');
+            }
+            else if (childKey == 'likeAboutSelf') {
+                exs.push('selflike');
+            }
+            else if (childKey == 'content') {
+                exs.push('content');
+            }
+        })
+        console.log(exs);
+        return exs;
+    })
 }

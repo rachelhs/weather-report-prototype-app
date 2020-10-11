@@ -3,7 +3,9 @@ import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 const firebase = require('firebase/app');
 import MeditationAnimation from '../Animations/MeditationAnimation';
-import { BackButton } from '../../actions/route-functions'
+import { BackButton } from '../../actions/route-functions';
+const data = require('../../data/data.json');
+
 
 export class Meditating extends React.Component {
     constructor(props) {
@@ -15,7 +17,7 @@ export class Meditating extends React.Component {
 
     componentDidMount() {
         const storage = firebase.storage();
-        storage.ref('sounds/breathing.mp3').getDownloadURL()
+        storage.ref('sounds/meditation.mp3').getDownloadURL()
             .then((url) => {
                 this.setState({ url: url });
             })
@@ -103,7 +105,7 @@ export class Grounding extends React.Component {
         return (
             <div className="no-white-overlay">
                 <h2 className='exercises-title'>Grounding Exercise</h2>
-                <p>text here</p>
+                <p>{data[3].shared.exercises.groudingText}</p>
                 <AudioPlayer
                     autoPlay={false}
                     src={this.state.url}

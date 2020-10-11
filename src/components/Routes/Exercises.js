@@ -56,9 +56,7 @@ class Exercises extends React.Component {
         const positiveArray = data[4].mediumLow.positiveStatements;
         this.setState({ randPositive: randomQuestionNumber(positiveArray.length) });
         // setting exercise
-        //let exercise = ChooseExercise(['breathing']);
         let exercise = ChooseExercise(['meditating', 'gratitude', 'stretching', 'safePlace', 'breathing', 'positive', 'selflike', 'selfcare', 'changeSituation', 'content', 'anchors']);
-        // let exercise = ChooseExercise(['anchors']);
         this.setState({ exercise: exercise });
 
         setTimeout(() => { this.setState({ showRandomPositiveStatement: false }) }, 3000)

@@ -21,7 +21,7 @@ export class IntroPage extends React.Component {
     };
 
     reRoute() {
-        const date = moment().format("DD-MM-YYYY");
+        const date = moment().format("YYYY-MM-DD");
         const uid = firebase.auth().currentUser.uid;        // check if they have entered WR more 
         let entries = database.ref(`users/${uid}/weatherReports/${date}`);
         entries.on('value', function(snapshot) {
