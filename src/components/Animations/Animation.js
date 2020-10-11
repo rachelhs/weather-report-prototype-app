@@ -163,7 +163,7 @@ class Animation extends Component {
             case 'tsunami':
                 this.setState({ animationData: tsunami })
                 break
-            case 'tsunami':
+            case 'tsunamiFadeOut':
                 this.setState({ animationData: tsunamiFadeOut })
                 break
             case 'tornadoFadeIn':

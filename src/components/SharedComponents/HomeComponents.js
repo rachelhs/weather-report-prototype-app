@@ -277,7 +277,6 @@ export class PebblesModal extends React.Component {
     }
 
     render() {
-        console.log('random',this.state.arrayIndex)
         const customStyles = {
             overlay: {zIndex: 1000}
         };
