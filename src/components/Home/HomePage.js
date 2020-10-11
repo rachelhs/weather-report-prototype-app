@@ -2,9 +2,6 @@ import React from 'react';
 import { AnimationsLayered } from '../SharedComponents/SharedComponents'
 import Animation from '../../components/Animations/Animation'
 import { FishModal, AnchorsModal, PebblesModal } from '../SharedComponents/HomeComponents'
-import { CSSTransition } from "react-transition-group";
-import Lottie from 'react-lottie'
-import tornado from '../../animations/08_Low_But_with_Energy_Weather_River.json'
 
 class HomePage extends React.Component {
 
@@ -15,8 +12,8 @@ class HomePage extends React.Component {
             weather: this.props.location.state ? this.props.location.state.weather : 'neutralBackground',
             showButton: false,
             tornadoFadeOut: false,
-            tornadoTemp: false,
-            speed: 1.4,
+            tsunamiFadeOut: false,
+            backToNeutral: false
         }
     }
 
@@ -43,10 +40,12 @@ class HomePage extends React.Component {
             intervalId
         });
         if (this.state.weather == "tornado") {
-
-            this.setState({ tornadoTemp: true })
-            // setTimeout( () => { this.setState({ tornadoFadeOut: true }) }, 6000)
-            // setTimeout( () => { this.setState({ backToNeutral: true, tornadoFadeOut: false }) }, 23000)
+            setTimeout( () => { this.setState({ tornadoFadeOut: true }) }, 29800)
+            setTimeout( () => { this.setState({ backToNeutral: true, tornadoFadeOut: false }) }, 30500)
+        }
+        if (this.state.weather == "tsunami") {
+            setTimeout( () => { this.setState({ tsunamiFadeOut: true }) }, 29800)
+            setTimeout( () => { this.setState({ backToNeutral: true, tsunamiFadeOut: false }) }, 38500)
         }
     }
 
@@ -62,33 +61,20 @@ class HomePage extends React.Component {
         clearInterval(this.state.intervalId);
     }
 
-    onAnimationComplete() {
-        this.setState({ tornadoTemp: false, tornadoFadeOut: true })
-        this.setState({ speed: 0 })
-        
-    }
-
     render() {
-        console.log('weather', this.state.weather)
-        console.log('tornadoFadeOut',this.state.tornadoFadeOut )
-        console.log('tornadoTemp', this.state.tornadoTemp)
-        const defaultOptions = {
-            loop: false,
-            autoplay: false,
-            animationData: tornado,
-            rendererSettings: {
-                preserveAspectRatio: 'xMidYMid slice',
-            }
-        };
-        let tornadoFadeOut = this.state.tornadoFadeOut ? <AnimationsLayered speeds={[1.4]} animations={['tornadoFadeOut']} /> : ''
-        // let backToNeutral = this.state.backToNeutral ? <AnimationsLayered speeds={[0.4]} animations={['neutralBackground']} /> : ''
+        console.log('this.state.weather', this.state.weather)
+        console.log('this.state.tornadoFadeOut', this.state.tornadoFadeOut)
+        console.log('this.state.tsunamiFadeOut', this.state.tsunamiFadeOut)
+        console.log('this.state.back to neutal', this.state.backToNeutral)
+        let tornadoFadeOut = this.state.tornadoFadeOut ? <AnimationsLayered speeds={[0.8]} animations={['tornadoFadeOut']} /> : ''
+        let tsunamiFadeOut = this.state.tsunamiFadeOut ? <AnimationsLayered speeds={[0.8]} animations={['tsunamiFadeOut']} /> : ''
+        let backToNeutral = this.state.backToNeutral ? <AnimationsLayered speeds={[0.8]} animations={['neutralBackground']} /> : ''
         return (
             <div>
-                {/* <AnimationsLayered speeds={[0.4]} animations={[this.state.weather]} /> */}
-                {(this.state.weather == 'tornado') ?
-                <div className='anim-0'><Lottie options={defaultOptions} speed={this.state.speed} eventListeners={[{ eventName: 'complete', callback: () => this.onAnimationComplete() }]}/></div>
-                : '' } 
+                <AnimationsLayered speeds={[0.8]} animations={[this.state.weather]} />
                 { tornadoFadeOut } 
+                { tsunamiFadeOut }
+                { backToNeutral }
                 <AnchorsModal />
                 <PebblesModal />
                 {(this.state.Fish) ? 
