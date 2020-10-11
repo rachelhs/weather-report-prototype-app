@@ -3,7 +3,7 @@ import { HowLongHaveYouFeltLikeThis, RiskOfHarmTooHigh, PlanQ, PlanningQ, Feelin
 import { SpokenToQ, GettingHelpQ } from '../SharedComponents/MentalHealthQuestions'
 import { isLongerThanThreeDays, expressedTooHighRecently } from '../../actions/route-functions';
 import { CSSTransition } from "react-transition-group";
-import { SetExercises } from '../Exercises/SetExercises';
+
 import { ChooseExercise } from '../Exercises/ChooseExercise';
 import { AnimationsLayered } from '../SharedComponents/SharedComponents'
 

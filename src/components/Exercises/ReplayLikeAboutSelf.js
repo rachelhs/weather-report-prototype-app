@@ -2,6 +2,7 @@ import React from 'react';
 const firebase = require('firebase/app');
 require('firebase/auth');
 import database from '../../firebase/firebase';
+import Gratitude from './ReplayGratitude';
 const data = require('../../data/data.json');
 
 export default class LikeAboutSelf extends React.Component {
@@ -24,7 +25,7 @@ export default class LikeAboutSelf extends React.Component {
         let rand = 0;
         let entry = '';
 
-        database.ref(`users/${uid}/helpedCope`)
+        database.ref(`users/${uid}/likeAboutSelf`)
         .on('value', (snapshot) => {
             // get list of keys for each entry
             snapshot.forEach((childSnapshot) => {
@@ -33,12 +34,10 @@ export default class LikeAboutSelf extends React.Component {
             // pick a random entry
             rand = Math.floor(Math.random() * listOfKeys.length);
             const randKey = listOfKeys[rand];
-            database.ref(`users/${uid}/helpedCope/${randKey}`)
+            database.ref(`users/${uid}/likeAboutSelf/${randKey}`)
             .on('value', (childSnapshot) => {
-                console.log(childSnapshot.val());
                 entry = childSnapshot.val();
                 this.setState({ randomLike: entry });
-
             })
         })
     }
@@ -47,13 +46,24 @@ export default class LikeAboutSelf extends React.Component {
         this.getRandomLike();
     }
 
-    render() 
-    
-    {
+    render() {
+        const showStatement = this.state.randomLike ?
+            <div className="positive-padding">
+                <h2 className='info-box-title-no-padding'>{data[3].shared.likeReplayStatement}</h2>
+                <div className="gratitudeBox">
+                    <h2>{this.state.randomLike}</h2>
+                </div>
+                <div className='button-container'>
+                    <button className='next-button-dark free-form-submit extra-margin-top' onClick={this.props.buttonClick}>NEXT</button>
+                </div>
+            </div>
+            : 
+            <div className='button-container'>
+                <button className='next-button-dark free-form-submit extra-margin-top' onClick={this.props.buttonClick}>NEXT</button>
+            </div>
         return (
             <div>
-            <h1 className='info-box-title'>{data[3].shared.likeReplayStatement}</h1>
-            <h1 className='info-box-title'>{this.state.randomLike}</h1>
+                { showStatement }
             </div>
         )
     }

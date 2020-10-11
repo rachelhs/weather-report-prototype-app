@@ -37,7 +37,7 @@
             "takeCareQuestion": "What 3 things do you do to take care of yourself and keep well?  It could be things like taking a shower, doing the washing or going for a walk.",
             "enjoyQuestion": "What 3 things do you enjoy?",
             "likeAboutYourselfQuestion": "Sometimes we can forget nice things we like about ourselves. Heres some things you’ve liked about yourself in the past",
-            "gratitudeReplayStatement": "Sometimes our mind plays tricks on us and we forget the wider perspective. Here are some things that you were previously grateful for",
+            "gratitudeReplayStatement": "Sometimes we forget the bigger picture. Here are some things that you said you were grateful for.",
             "likeReplayStatement": "[CHECK THIS] Recently, you said that this is something you like about yourself",
             "posReplayStatement": "Sometimes we forget we’ve had some great times in our lives, Here are some positive memories from your life",
             "safeQuestion": "Are you keeping yourself safe?",
@@ -45,6 +45,7 @@
             "contentReplayStatement": "Sometimes we can forget times where we have felt content and OK. Here are some memories of sometimes from your life that you’ve felt OK to remind you that you can feel this again",
             "reminderQuestion": "Would you like to be reminded of this time in the future?",
             "photoAsk": "Do you want to take a photo?",
+            "replayCare": "Sometimes we forget how to take care of yourself. Here are some previous things that you’ve mentioned that you could do to help yourself.",
             "acknowledge": {
                 "low": "I’m sorry you are feeling like this",
                 "mediumLow": "I’m sorry you are feeling like this",

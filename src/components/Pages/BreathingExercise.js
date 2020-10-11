@@ -8,6 +8,7 @@ import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 import MeditationAnimation from '../Animations/MeditationAnimation';
 const firebase = require('firebase/app');
+import { useHistory } from 'react-router-dom'
 
 export class BreathingExercise extends React.Component {
     constructor(props) {
@@ -26,17 +27,19 @@ export class BreathingExercise extends React.Component {
             })
     }
 
+    backButton() {
+        this.props.history.push({
+            pathname: '/home',
+        })
+    }
+    
+
     render() {
         return (
             <div>
                 <CSSTransition in={this.state.breathing} timeout={2000} classNames="fade" unmountOnExit>
                     <div>
-                        < Breathing />
-                        <div className="flex-center">
-                            <div className="back-button-breathing">
-                                <BackButton />
-                            </div>
-                        </div>
+                        < Breathing buttonClick={this.backButton.bind(this)}/>
                     </div>
                 </CSSTransition>
             </div>

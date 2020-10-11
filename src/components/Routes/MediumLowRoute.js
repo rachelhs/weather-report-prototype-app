@@ -4,7 +4,7 @@ import { PositiveThingQuestion, FriendsLikeQuestion } from '../SharedComponents/
 import { isLongerThanThreeDays, randomQuestionNumber, chooseAnotherRandomExercise } from '../../actions/route-functions';
 import { CSSTransition } from "react-transition-group";
 import { ChooseExercise } from '../Exercises/ChooseExercise';
-import { SetExercises } from '../Exercises/SetExercises';
+
 import '../../styles/animation.css';
 const data = require('../../data/data.json');
 
