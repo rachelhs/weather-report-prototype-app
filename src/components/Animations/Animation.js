@@ -3,16 +3,15 @@ import Lottie from 'react-lottie'
 import sun from '../../animations/sun.json'
 import fish from '../../animations/00_Fish_Still.json'
 import environment from '../../animations/10_Neutral_BG_With_Trees.json'
-import growing from '../../animations/growing'
 import lilypad from '../../animations/Lily_Pad.json'
 import roots from '../../animations/Roots.json'
 import rainbowFadeIn from '../../animations/01_Rainbow_River_Fade_In.json'
 import rainbowFadeOut from '../../animations/01_Rainbow_River_Fade_Out.json'
 import rainbow from '../../animations/01_Rainbow_Weather_River.json'
 import neutralBackground from '../../animations/10_Neutral_River All Assets'
-import blueskyFadeIn from '../../animations/03_OK_Fade In.json'
-import bluesky from '../../animations/03_OK_Weather_River .json'
-import blueskyFadeOut from '../../animations/03_OK_River_Fade Out.json'
+import blueskyFadeIn from '../../animations/03_OK_Fade_In.json'
+import bluesky from '../../animations/03_OK_Weather_River.json'
+import blueskyFadeOut from '../../animations/03_OK_River_Fade_Out.json'
 import sunshineFadeIn from '../../animations/02_Happy_River_Fade_In.json'
 import sunshine from '../../animations/02_Happy_Weather_River_v8.json'
 import sunshineFadeOut from '../../animations/02_Happy_River_Fade_Out.json'
@@ -76,9 +75,6 @@ class Animation extends Component {
                 break;
             case 'environment':
                 this.setState({ animationData: environment })
-                break;
-            case 'growing':
-                this.setState({ animationData: growing })
                 break;
             case 'lilypad':
                 this.setState({ animationData: lilypad })

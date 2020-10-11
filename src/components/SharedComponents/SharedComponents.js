@@ -4,8 +4,6 @@ const firebase = require('firebase/app');
 require('firebase/auth');
 import React, {useState} from 'react';
 import moment from 'moment';
-import BackgroundAnimation from '../../components/Animations/BackgroundAnimation'
-import ForegroundAnimation from '../../components/Animations/ForegroundAnimation'
 import Animation from '../../components/Animations/Animation'
 import { randomQuestionNumber  } from '../../actions/route-functions';
 import database from '../../firebase/firebase';
@@ -585,22 +583,6 @@ export class TextWithButton extends React.Component {
                     <button className='transparent-button' onClick={(e) => this.props.onClick(true)}>{this.props.buttonText}</button>
                 </div>
             </div>
-        )
-    }
-}
-
-// other components
-export class AnimationsCombined extends React.Component {
-    render() {
-        return (
-            <span>
-                <div className='background-anim'>
-                    <BackgroundAnimation />
-                </div>
-                <div className='foreground-anim'>
-                    <ForegroundAnimation />
-                </div>
-            </span>
         )
     }
 }

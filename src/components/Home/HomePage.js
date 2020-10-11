@@ -9,23 +9,12 @@ class HomePage extends React.Component {
         super(props);
         this.state = {
             Fish: false,
-            weather: null,
+            weather: this.props.location.state ? this.props.location.state.weather : 'neutralBackground',
             showButton: false
         }
     }
 
-    // toggles the fish at random intervals
-    // Math.random() * (max - min) + min
     componentDidMount() {
-        if (typeof this.props.location.state != 'undefined' || this.props.location.state != null) {
-            if (this.props.location.state.weather == 'undefined' || this.props.location.state.weather == null) {
-                this.setState({ weather: "neutralBackground" })
-            } else
-            this.setState({ weather: this.props.location.state.weather })
-            console.log('this.props.location.state.weather', this.props.location.state.weather)
-        }  else {
-            this.setState({ weather: "neutralBackground" })
-        }
         const rand = Math.random() * (30000 - 15000) + 15000
         let intervalId = setInterval(() => {
             this.setState(prevState => {
