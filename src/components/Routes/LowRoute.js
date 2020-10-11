@@ -8,14 +8,10 @@ import { ChooseExercise } from '../Exercises/ChooseExercise';
 import '../../styles/animation.css';
 
 // all exercises
-import { Breathing, Meditating, Grounding, Stretching, SafePlace, LessStimulation } from '../Exercises/TextBasedExercises';
+import { Breathing, Meditating, Grounding } from '../Exercises/TextBasedExercises';
 import Gratitude from '../Exercises/ReplayGratitude';
 import PositiveMemory from '../Exercises/ReplayPosMemories';
 import LikeAboutSelf from '../Exercises/ReplayLikeAboutSelf';
-import ReplayContent from '../Exercises/ReplayContent';
-import ReplayAnchors from '../Exercises/ReplayAnchors';
-import ReplayCare from '../Exercises/ReplayCare';
-import ChangeSituation from '../SharedComponents/MentalHealthQuestions';
 
 class LowRoute extends React.Component {
 
