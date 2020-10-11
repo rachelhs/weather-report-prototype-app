@@ -7,6 +7,16 @@ import { ChooseExercise } from '../Exercises/ChooseExercise';
 
 import '../../styles/animation.css';
 
+// all exercises
+import { Breathing, Meditating, Grounding, Stretching, SafePlace, LessStimulation } from '../Exercises/TextBasedExercises';
+import Gratitude from '../Exercises/ReplayGratitude';
+import PositiveMemory from '../Exercises/ReplayPosMemories';
+import LikeAboutSelf from '../Exercises/ReplayLikeAboutSelf';
+import ReplayContent from '../Exercises/ReplayContent';
+import ReplayAnchors from '../Exercises/ReplayAnchors';
+import ReplayCare from '../Exercises/ReplayCare';
+import ChangeSituation from '../SharedComponents/MentalHealthQuestions';
+
 class LowRoute extends React.Component {
 
     constructor(props) {
@@ -117,6 +127,21 @@ class LowRoute extends React.Component {
     }
     // goes back to random exercises if user has previously clicked yes
     afterAskAnotherQuestion() { this.state.yesAnotherExercise ? this.setState({ showRandomExercises: true }) : this.setState({ showRandomExercise: false, showFeedbackStatement: true }) }
+    
+    SetExercises = (exercise) => {
+        if (exercise == 'meditating') { return <Meditating buttonClick={this.seenExercise.bind(this)}/> }
+        if (exercise == 'stretching') { return <Stretching buttonClick={this.seenExercise.bind(this)}/> }
+        if (exercise == 'safePlace') { return <SafePlace buttonClick={this.seenExercise.bind(this)}/> }
+        if (exercise == 'grounding') { return <Grounding buttonClick={this.seenExercise.bind(this)}/> }
+        if (exercise == 'breathing') { return <Breathing buttonClick={this.seenExercise.bind(this)}/> }
+        if (exercise == 'changeSituation') { return <ChangeSituation buttonClick={this.seenExercise.bind(this)}/> }
+        if (exercise == 'gratitude') { return <Gratitude buttonClick={this.seenExercise.bind(this)}/> }
+        if (exercise == 'positive') { return <PositiveMemory buttonClick={this.seenExercise.bind(this)} /> }
+        if (exercise === 'selflike') { return <LikeAboutSelf buttonClick={this.seenExercise.bind(this)}/> }
+        if (exercise === 'content') { return <ReplayContent buttonClick={this.seenExercise.bind(this)}/> }
+        if (exercise === 'anchors') { return <ReplayAnchors buttonClick={this.seenExercise.bind(this)}/> }
+        if (exercise === 'selfcare') { return <ReplayCare buttonClick={this.seenExercise.bind(this)}/> }
+    }
 
     render() {
         const randomQuestion = this.state.randQues == 0 ? <PositiveThingQuestion buttonClick={this.answeredRandomQuestion.bind(this)} /> : <HelpedCopeQuestion buttonClick={this.answeredRandomQuestion.bind(this)} />;
@@ -139,7 +164,7 @@ class LowRoute extends React.Component {
                     <CSSTransition in={this.state.showRandomQuestions} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.showRandomExercise()}>{randomQuestion}</CSSTransition>
                     <CSSTransition in={this.state.showRandomExercises} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.askAnotherExerciseQuestion()}>
                         <div>
-                            <div>{SetExercises(this.state.exercise)}</div>
+                            <div>{this.SetExercises(this.state.exercise)}</div>
                             <div className='button-container'>
                                 <button className='next-button-dark' onClick={this.seenExercise}>NEXT</button>
                             </div>

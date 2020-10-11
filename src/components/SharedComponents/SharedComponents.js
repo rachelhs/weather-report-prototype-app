@@ -41,12 +41,11 @@ export class ReasonForFeelingsInput extends React.Component {
         e.preventDefault();
         const user = firebase.auth().currentUser;
         const uid = user.uid;
-        let name = '';
-        database.ref(`users/${uid}/entries`).orderByChild('createdAt').limitToLast(1).on('child_added', (snapshot) => {
-            name = snapshot.key;
-            database.ref(`users/${uid}/entries/${name}`).update({
-                note: this.state.value
-            })
+        let date = moment().format("DD-MM-YYYY");
+        let time = moment().format("kk-mm");
+        database.ref(`users/${uid}/reasonForFeeling/${date}/${time}`).update({
+            reason: this.state.value,
+            remind: "not-asked"
         })
     }
 

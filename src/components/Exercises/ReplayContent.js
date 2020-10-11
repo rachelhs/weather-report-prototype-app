@@ -3,6 +3,7 @@ const firebase = require('firebase/app');
 require('firebase/auth');
 import database from '../../firebase/firebase';
 const data = require('../../data/data.json');
+let listOfContent = [];
 
 // looks through last 30 entries for green and orange emotions that have non empty notes attached -> returns the note
 
@@ -12,54 +13,62 @@ export default class ReplayContent extends React.Component {
         super(props);
 
         this.state = {
-            randomContent: ''
+            randomContent: '',
+            listOfContent: [],
+            arrayIndex: null
         };
 
         this.getRandomContent = this.getRandomContent.bind(this);
     }
 
-    getRandomContent = () => {
+    componentDidMount = () => {
+        this.getRandomContent().then(this.setRandomContent);
+    }
 
-        const user = firebase.auth().currentUser;
-        const uid = user.uid;
-        let listOfKeys = [];
-        let rand = 0;
-        let note = '';
-
-        database.ref(`users/${uid}/entries`)
-        .limitToLast(30)
-        .on('value', (snapshot) => {
-            // get list of keys for each entry
-            snapshot.forEach((childSnapshot) => {
-                // WHEN ROUTES ARE SET UP CHANGE THIS TO childSnapshot.val().route === 'ok' || childSnapshot.val().route === 'high'
-                if(childSnapshot.val().mainWord === 'happy') {
-                listOfKeys.push(childSnapshot.key);
+    getRandomContent() {
+        return new Promise(function(resolve) {
+            listOfContent = [];
+            const user = firebase.auth().currentUser;
+            const uid = user.uid;
+            database.ref(`users/${uid}/content`).on('value', function(snap){
+                for (let key in snap.val()) {
+                    for (let key2 in snap.val()[key]) {
+                        let contentObj = {}
+                        contentObj['date'] = key;
+                        contentObj['time'] = key2;
+                        contentObj['reason'] = snap.val()[key][key2]['reason'];
+                        listOfContent.push(contentObj);
+                    }
                 }
-            })
-            // pick a random entry
-            rand = Math.floor(Math.random() * listOfKeys.length);
-            const randKey = listOfKeys[rand];
-            database.ref(`users/${uid}/entries/${randKey}`)
-            .on('value', (childSnapshot) => {
-                console.log(childSnapshot.val());
-                note = childSnapshot.val().note;
-                this.setState({ randomContent: note });
-
-            })
+                resolve();
+            });
         })
     }
 
-    componentDidMount = () => {
-        this.getRandomContent();
+    setRandomContent = () => {
+        this.setState({listOfContent: listOfContent})
+        let number = this.selectRandomIndex()
+        this.setState({arrayIndex: number}) 
+        let randomContent = this.state.listOfContent[number];
+        this.setState({randomContent: randomContent})
     }
 
-    render() 
-    
-    {
+    selectRandomIndex() {
+        let randomNumber = Math.floor(Math.random()*this.state.listOfContent.length)
+        return randomNumber
+    }
+
+    render() {
         return (
-            <div>
-            <h1 className='info-box-title'>{data[3].shared.contentReplayStatement}</h1>
-            <h1 className='info-box-title'>{this.state.randomContent}</h1>
+            <div className="positive-padding">
+                <h2 className='info-box-title-no-padding'>{data[3].shared.contentReplayStatement}</h2>
+                <div className="gratitudeBox">
+                    { this.state.randomContent && <h3>{this.state.randomContent.date} - {this.state.randomContent.time}</h3> }
+                    { this.state.randomContent && <p>{this.state.randomContent.reason}</p> }
+                </div>
+                <div className='button-container'>
+                    <button className='next-button-dark free-form-submit extra-margin-top' onClick={this.props.buttonClick}>NEXT</button>
+                </div>
             </div>
         )
     }
