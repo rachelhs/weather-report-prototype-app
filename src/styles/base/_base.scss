@@ -18,6 +18,8 @@ and (min-device-width: 319px) and (max-device-width: 736px) {
 
 html {
     font-size: 62.5%;
+    height: 100%;
+    overflow: auto
 }
 
 body {

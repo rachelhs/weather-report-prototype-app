@@ -1,12 +1,17 @@
 import React from 'react';
 import { AnimationsLayered, ReasonForFeelings, ReasonForFeelingsInput, AnotherExerciseQuestion, FeedbackStatement } from '../SharedComponents/SharedComponents';
 import { PositiveThingQuestion, PositiveChangeQuestion } from '../SharedComponents/MentalHealthQuestions';
-import { randomQuestionNumber, chooseAnotherRandomExercise } from '../../actions/route-functions';
+import { chooseAnotherRandomExercise } from '../../actions/route-functions';
 import { CSSTransition } from "react-transition-group";
 import { ChooseExercise } from '../Exercises/ChooseExercise';
 
 import '../../styles/animation.css';
 const data = require('../../data/data.json');
+
+// import exercises
+import { Breathing, Meditating, Grounding } from '../Exercises/TextBasedExercises';
+import Gratitude from '../Exercises/ReplayGratitude';
+import PositiveMemory from '../Exercises/ReplayPosMemories';
 
 class Nothing extends React.Component {
 
@@ -16,9 +21,7 @@ class Nothing extends React.Component {
             route: 'nothing',
             showReasonForFeeling: false,
             knowReasonForFeeling: null,
-            randQues: null,
             exercise: '',
-            randQuesOrExercise: null,
             showrandQuesOrExercise: null,
             showAnotherExerciseQuestion: null,
             neutralAnimation: true,
@@ -40,12 +43,8 @@ class Nothing extends React.Component {
         } else {
             this.setState({ weatherFadeIn: "neutralBackground" });
         }
-        // random function for random questions
-        this.setState({ randQues: randomQuestionNumber(2) });
-        // choose whether to show random questions or exercises
-        this.setState({ randQuesOrExercise: randomQuestionNumber(2) })
         // setting exercise
-        let exercise = ChooseExercise(['breathing', 'meditating', 'grounding', 'gratitude', 'positive', 'selfCare', 'changeSituation']);
+        let exercise = ChooseExercise(['breathing', 'meditating', 'grounding', 'gratitude', 'positive', 'posChange', 'posThing']);
         this.setState({ exercise: exercise });
 
         setTimeout(() => { this.setState({ neutralAnimation: false, nothingFadeIn: true }) }, 500)
@@ -77,14 +76,11 @@ class Nothing extends React.Component {
     // called onexit from ReasonForFeelingsInput component - once the user had clicked submit
     showrandQuesOrExercise() { this.setState({ showrandQuesOrExercise: true }) }
 
-    // called on button submit when user has answered random question in randomQuestion component. Then hides the random question component.
-    answeredRandomQuestion() { this.setState({ showrandQuesOrExercise: false }) }
-
     // called on 'next' button click when user has seen an exercise
-    seenExercise() { this.setState({ showrandQuesOrExercise: false }) }
+    seenExercise() { this.setState({ showrandQuesOrExercise: false, showAnotherExerciseQuestion: true }) }
 
     // called on onexit after a random exercise and asks user if they want another
-    askAnotherExerciseQuestion() { this.setState({ showAnotherExerciseQuestion: true }) }
+    askAnotherExerciseQuestion() { this.setState({ showAnotherExerciseQuestion: true, showrandQuesOrExercise: false }) }
 
     // called when user presses 'yes' or 'no' to another question
     answeredAnotherExerciseQuestion(another) {
@@ -94,7 +90,7 @@ class Nothing extends React.Component {
     // returns a random exercise that isn't the same as the one just seen
     chooseAnotherExercise() {
         console.log('made it here')
-        let exerciseArray = chooseAnotherRandomExercise(['breathing', 'meditating', 'grounding', 'gratitude', 'positive', 'selfCare', 'changeSituation'], this.state.exercise);
+        let exerciseArray = chooseAnotherRandomExercise(['breathing', 'meditating', 'grounding', 'gratitude', 'positive', 'posChange', 'posThing'], this.state.exercise);
         this.setState({ showAnotherExerciseQuestion: false, yesAnotherExercise: true });
         let exercise = ChooseExercise(exerciseArray);
         this.setState({ exercise: exercise });
@@ -103,16 +99,19 @@ class Nothing extends React.Component {
     // goes back to random exercises if user has previously clicked yes
     afterAskAnotherQuestion() { this.state.yesAnotherExercise ? this.setState({ showrandQuesOrExercise: true }) : this.setState({ showrandQuesOrExercise: false, showFeedbackStatement: true }) }
 
+    SetExercises = (exercise) => {
+        if (exercise == 'meditating') { return <Meditating buttonClick={this.askAnotherExerciseQuestion.bind(this)}/> }
+        if (exercise == 'grounding') { return <Grounding buttonClick={this.askAnotherExerciseQuestion.bind(this)}/> }
+        if (exercise == 'breathing') { return <Breathing buttonClick={this.askAnotherExerciseQuestion.bind(this)}/> }
+        if (exercise == 'gratitude') { return <Gratitude buttonClick={this.askAnotherExerciseQuestion.bind(this)}/> }
+        if (exercise == 'positive') { return <PositiveMemory buttonClick={this.askAnotherExerciseQuestion.bind(this)} /> }
+        if (exercise === 'posThing') { return <PositiveThingQuestion buttonClick={this.askAnotherExerciseQuestion.bind(this)}/> }
+        if (exercise === 'posChange') { return <PositiveChangeQuestion buttonClick={this.askAnotherExerciseQuestion.bind(this)}/> }
+
+    }
+
     render() {
-        const randomQuestion = this.state.randQues == 0 ? <PositiveThingQuestion buttonClick={this.answeredRandomQuestion.bind(this)} /> : <PositiveChangeQuestion buttonClick={this.answeredRandomQuestion.bind(this)} />;
-        const questionOrExercise = this.state.randQuesOrExercise == 0 ? randomQuestion :
-        <div>
-            <div>
-            {SetExercises(this.state.exercise)}</div>
-            <div className='button-container'>
-                <button className='next-button-dark' onClick={this.seenExercise.bind(this)}>NEXT</button>
-            </div>
-        </div>;
+        const showQuestionorExercise = this.state.showrandQuesOrExercise ? <div> {this.SetExercises(this.state.exercise)}</div> : ''
         return (
             <div>
                 <CSSTransition in={this.state.neutralAnimation} timeout={4000} classNames="fade-enter-only" unmountOnExit>
@@ -127,10 +126,10 @@ class Nothing extends React.Component {
                     <div className='info-box'>
                         <CSSTransition in={this.state.showReasonForFeeling} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.afterReasonForFeeling()}><ReasonForFeelings onClick={this.answeredReasonKnown.bind(this)} /></CSSTransition>
                         <CSSTransition in={this.state.showReasonInput} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.showrandQuesOrExercise()}><ReasonForFeelingsInput buttonClick={this.answeredReasonInput.bind(this)} /></CSSTransition>
-                        <CSSTransition in={this.state.showrandQuesOrExercise} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.askAnotherExerciseQuestion()}>{questionOrExercise}</CSSTransition>
                         <CSSTransition in={this.state.showAnotherExerciseQuestion} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.afterAskAnotherQuestion()}><div><AnotherExerciseQuestion onClick={this.answeredAnotherExerciseQuestion.bind(this)} /></div></CSSTransition>
                         <CSSTransition in={this.state.showFeedbackStatement} timeout={2000} className="fade" unmountOnExit><FeedbackStatement route={this.state.route} weather={this.state.weatherSymbol}/></CSSTransition>
                     </div>
+                    {showQuestionorExercise}
                 </div>
                 );
             }

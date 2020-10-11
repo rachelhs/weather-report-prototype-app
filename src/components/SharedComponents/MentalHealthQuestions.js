@@ -29,7 +29,7 @@ export class PositiveThingQuestion extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="info-box">
                 <h2 className='info-box-title '> What's one small thing you can do to make yourself feel a bit better?</h2>
                 <p>It could be something like going outside, having your favourite drink or throwing some rubbish away</p>
                 <form onSubmit={this.handlePosSubmit}>
@@ -70,10 +70,10 @@ export class ChangeSituation extends React.Component {
                 <h2 className='info-box-title-top'>{data[3].shared.positiveChange}</h2>
                 <form onSubmit={this.handlePosSubmit}>
                     <input className='free-form-input' type="text" value={this.state.value} onChange={this.handlePosChange} />
-                    <div className='button-container'>
-                        <button className='next-button-dark free-form-submit' onClick={this.props.buttonClick}>NEXT</button>
-                    </div>
                 </form>
+                <div className='button-container'>
+                    <button className='next-button-dark free-form-submit' onClick={this.props.buttonClick}>NEXT</button>
+                </div>
             </div>
         )
     }
@@ -138,10 +138,12 @@ export class PositiveChangeQuestion extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="info-box">
                 <h2 className='info-box-title'>{data[3].shared.positiveChange}</h2>
-                <form className='button-container' onSubmit={this.handlepositiveChangeSubmit}>
-                    <input className='free-form-input-vertical' type="text" value={this.state.value} onChange={this.handlepositiveChange} />
+                <form onSubmit={this.handlepositiveChangeSubmit}>
+                    <div className="flex-center">
+                        <input className='free-form-input-vertical' type="text" value={this.state.value} onChange={this.handlepositiveChange} />
+                    </div>
                     <div className="button-container">
                         <button className='next-button-dark free-form-submit' onClick={this.props.buttonClick}>NEXT</button>
                     </div>
