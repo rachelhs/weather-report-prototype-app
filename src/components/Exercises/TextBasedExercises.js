@@ -109,6 +109,11 @@ export class Grounding extends React.Component {
                     src={this.state.url}
                     className="audioPlayer"
                 />
+                <div className="flex-center">
+                    <div className='back-button-audio'>
+                        <button className='next-button-dark free-form-submit' onClick={this.props.buttonClick}>NEXT</button>
+                    </div>
+                </div>
             </div>
         )
     }
