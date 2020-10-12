@@ -45,7 +45,6 @@ class VeryLowRoute extends React.Component {
             let weatherFadeIn = this.props.location.state.weatherSymbol + "FadeIn"
             this.setState({ weatherFadeIn: weatherFadeIn });
             this.setState({ weatherSymbol: this.props.location.state.weatherSymbol });
-            console.log('props', this.props.location.state.weatherSymbol)
         } else {
             this.setState({ weatherFadeIn: "neutralBackground" });
         }
