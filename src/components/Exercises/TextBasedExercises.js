@@ -66,6 +66,7 @@ export class Breathing extends React.Component {
         return (
             <div className="no-white-overlay">
                 <h2 className='exercises-title'>Breathing Exercise</h2>
+                <p>{data[3].shared.exercises.breathingText}</p>
                 <AudioPlayer
                     autoPlay={false}
                     src={this.state.url}
@@ -126,7 +127,7 @@ export class Stretching extends React.Component {
         return (
             <div className="no-white-overlay">
                 <h2 className='grounding-title'>Stretching</h2>
-                <p>This is a stretching video FINALISE TEXT</p>
+                <p>Stretching can help us to focus on our body and release any tensions that we hold</p>
                 <div className="flex-center">
                     <iframe
                         width="560"
@@ -157,7 +158,7 @@ export class SafePlace extends React.Component {
 
     componentDidMount() {
         const storage = firebase.storage();
-        storage.ref('sounds/grounding.mp3').getDownloadURL()
+        storage.ref('sounds/safeplace.mp3').getDownloadURL()
             .then((url) => {
                 this.setState({ url: url });
             })
@@ -167,7 +168,7 @@ export class SafePlace extends React.Component {
         return (
             <div className="no-white-overlay">
                 <h2 className='exercises-title'>Safe Place Exercise</h2>
-                <p>text here</p>
+                <p>These steps will guide you through a process you can use to imagine a safe place which you can go to anytime - to help calm you and ease your worries</p>
                 <AudioPlayer
                     autoPlay={false}
                     src={this.state.url}

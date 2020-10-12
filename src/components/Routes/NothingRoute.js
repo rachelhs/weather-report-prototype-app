@@ -99,6 +99,7 @@ class Nothing extends React.Component {
         let exerciseArray = chooseAnotherRandomExercise(['breathing', 'meditating', 'grounding', 'gratitude', 'positive', 'posChange', 'posThing'], this.state.exercise);
         this.setState({ showAnotherExerciseQuestion: false, yesAnotherExercise: true });
         let exercise = ChooseExercise(exerciseArray);
+        //let exercise = 'meditating';
         this.setState({ exercise: exercise });
     }
 
