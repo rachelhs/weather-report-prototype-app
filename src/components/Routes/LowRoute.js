@@ -42,7 +42,6 @@ class LowRoute extends React.Component {
             let weatherFadeIn = this.props.location.state.weatherSymbol + "FadeIn"
             this.setState({ weatherFadeIn: weatherFadeIn });
             this.setState({ weatherSymbol: this.props.location.state.weatherSymbol });
-            console.log('props', this.props.location.state.weatherSymbol)
         } else {
             this.setState({ weatherFadeIn: "neutralBackground" });
         }
@@ -114,7 +113,6 @@ class LowRoute extends React.Component {
         let exerciseArray = chooseAnotherRandomExercise(['breathing', 'meditating', 'grounding', 'gratitude', 'positive', 'selflike' ], this.state.exercise);
         this.setState({ showAnotherExerciseQuestion: false, yesAnotherExercise: true });
         let exercise = ChooseExercise(exerciseArray);
-        console.log('exercise', exercise)
         this.setState({ exercise: exercise });
     }
     // goes back to random exercises if user has previously clicked yes
@@ -130,7 +128,6 @@ class LowRoute extends React.Component {
     }
 
     render() {
-        console.log('state exercise', this.state.exercise)
         const randomQuestion = this.state.randQues == 0 ? <PositiveThingQuestion buttonClick={this.answeredRandomQuestion.bind(this)} /> : <HelpedCopeQuestion buttonClick={this.answeredRandomQuestion.bind(this)} />;
         const showQuestionorExercise = this.state.showRandomExercises ? <div> {this.SetExercises(this.state.exercise)}</div> : ''
         return (

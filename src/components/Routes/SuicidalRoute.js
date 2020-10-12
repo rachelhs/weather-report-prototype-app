@@ -33,7 +33,6 @@ class SuicidalRoute extends React.Component {
             let weatherFadeIn = this.props.location.state.weatherSymbol + "FadeIn"
             this.setState({ weatherFadeIn: weatherFadeIn });
             this.setState({ weatherSymbol: this.props.location.state.weatherSymbol });
-            console.log('props', this.props.location.state.weatherSymbol)
         } else {
             this.setState({ weatherFadeIn: "neutralBackground" });
         }
@@ -41,7 +40,6 @@ class SuicidalRoute extends React.Component {
 
         expressedSuicidalRecently(res => {
             res ? this.setState({ expressedRecently: true }) : this.setState({ expressedRecently: false })
-            console.log('expressed recently', this.state.expressedRecently);
         })
         this.threeDayFunction()
 
@@ -64,17 +62,12 @@ class SuicidalRoute extends React.Component {
     decideStart() {
         if (this.state.expressedRecently == true) {
             this.setState({ acknowledge: true })
-            console.log('one')
         }
         else if (this.state.expressedRecently == false && this.state.longerThanThreeDays == true) {
             this.setState({ acknowledge: true })
-            console.log('two')
-
         }
         else if (this.state.longerThanThreeDays == false) {
             this.setState({ howLong: true })
-            console.log('three')
-
         };
     }
 

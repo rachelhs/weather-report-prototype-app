@@ -26,7 +26,6 @@ export class IntroPage extends React.Component {
         let entries = database.ref(`users/${uid}/weatherReports/${date}`);
         entries.on('value', function(snapshot) {
             const numberOfEntries = snapshot.numChildren()
-            console.log('how many entries', snapshot.numChildren())
             if (numberOfEntries >= 3) {
                 history.push('/3-home');
             }

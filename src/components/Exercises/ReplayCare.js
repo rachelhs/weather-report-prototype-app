@@ -41,8 +41,6 @@ export default class ReplyCare extends React.Component {
             snapshot.forEach((childSnapshot) => {
                 listOfKeys.push(childSnapshot.key);
             })
-            console.log('listOfKeys', listOfKeys)
-
             this.setState({listOfCare: listOfKeys}) 
             // pick a random entry
             let rand1 = this.selectRandomIndex();
@@ -61,7 +59,6 @@ export default class ReplyCare extends React.Component {
             })
             database.ref(`users/${uid}/takeCare/${listOfKeys[rand2]}`)
             .on('value', (childSnapshot) => {
-                console.log(childSnapshot.val());
                 let entry2 = childSnapshot.val();
                 this.setState({ randomCare2: entry2 });
             })
@@ -69,8 +66,6 @@ export default class ReplyCare extends React.Component {
     }
 
     render() {
-        console.log('state1', this.state.randomCare1)
-        console.log('state2', this.state.randomCare2)
         return (
             <div className="positive-padding">
                 <h2 className='info-box-title-no-padding'>{data[3].shared.replayCare}</h2>

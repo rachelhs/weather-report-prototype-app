@@ -41,7 +41,6 @@ export class FirstAid extends React.Component {
 
     componentDidMount() {
         const url = window.location.pathname
-        console.log(url)
         if (url === "/home" | url === "/3-home") {
             this.setState({ buttonsDisabled: false })
         }
@@ -72,7 +71,6 @@ export class FirstAid extends React.Component {
 
     toggleCrisisNumber() {
         this.setState({ showCrisisNumber: !this.state.showCrisisNumber })
-        console.log(this.state.showCrisisNumber);
         if (this.state.showCrisisNumber) {
             this.setState({ crisisText: 'MENTAL HEALTH CRISIS TEAM' })
         }
