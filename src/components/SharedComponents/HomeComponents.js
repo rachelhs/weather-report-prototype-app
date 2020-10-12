@@ -172,8 +172,7 @@ export class AnchorsModal extends React.Component {
     }
 
     render() {
-        let randKey = Math.random()
-        const renderedOutput = this.state.listOfAnchors.map((d) => <p key={randKey}>{d.name} : {d.number}</p>);
+        const renderedOutput = this.state.listOfAnchors.map((d) => <p key={d.name}>{d.name} : {d.number}</p>);
         const customStyles = {
             overlay: {zIndex: 1000}
         };
