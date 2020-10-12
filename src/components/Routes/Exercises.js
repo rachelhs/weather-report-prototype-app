@@ -44,7 +44,6 @@ class Exercises extends React.Component {
             let weatherFadeIn = this.props.location.state.weatherSymbol + "FadeIn"
             this.setState({ weatherFadeIn: weatherFadeIn });
             this.setState({ weatherSymbol: this.props.location.state.weatherSymbol });
-            console.log('props', this.props.location.state.weatherSymbol)
         } else {
             this.setState({ weatherFadeIn: "neutralBackground" });
         }
@@ -123,7 +122,6 @@ class Exercises extends React.Component {
 
     // called when user presses 'yes' or 'no' to another question
     answeredAnotherExerciseQuestion(another) {
-        console.log('another', another)
         another ? (this.chooseAnotherExercise()) : this.setState({ showAnotherExerciseQuestion: false, yesAnotherExercise: false })
     }
 
@@ -154,7 +152,6 @@ class Exercises extends React.Component {
     }
 
     render() {
-        // console.log('set exercise', SetExercises(this.state.exercise))
         const randomQuestion = this.state.randQues == 0 ? 
         <PositiveThingQuestion buttonClick={this.answeredRandomQuestion.bind(this)} /> :
         <FriendsLikeQuestion buttonClick={this.answeredRandomQuestion.bind(this)} />;

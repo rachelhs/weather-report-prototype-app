@@ -40,7 +40,6 @@ class Nothing extends React.Component {
             let weatherFadeIn = this.props.location.state.weatherSymbol + "FadeIn"
             this.setState({ weatherFadeIn: weatherFadeIn });
             this.setState({ weatherSymbol: this.props.location.state.weatherSymbol });
-            console.log('props', this.props.location.state.weatherSymbol)
         } else {
             this.setState({ weatherFadeIn: "neutralBackground" });
         }
@@ -95,7 +94,6 @@ class Nothing extends React.Component {
 
     // returns a random exercise that isn't the same as the one just seen
     chooseAnotherExercise() {
-        console.log('made it here')
         let exerciseArray = chooseAnotherRandomExercise(['breathing', 'meditating', 'grounding', 'gratitude', 'positive', 'posChange', 'posThing'], this.state.exercise);
         this.setState({ showAnotherExerciseQuestion: false, yesAnotherExercise: true });
         let exercise = ChooseExercise(exerciseArray);
@@ -117,7 +115,6 @@ class Nothing extends React.Component {
     }
 
     render() {
-        console.log('state exercise', this.state.exercise)
         const showQuestionorExercise = this.state.showrandQuesOrExercise ? <div> {this.SetExercises(this.state.exercise)}</div> : ''
         return (
             <div>
