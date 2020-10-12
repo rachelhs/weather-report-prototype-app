@@ -172,8 +172,8 @@ export class AnchorsModal extends React.Component {
     }
 
     render() {
-        console.log('this.state.listOfAnchors', this.state.listOfAnchors)
-        const renderedOutput = this.state.listOfAnchors.map((d) => <p key={d.name}>{d.name} : {d.number}</p>);
+        let randKey = Math.random()
+        const renderedOutput = this.state.listOfAnchors.map((d) => <p key={randKey}>{d.name} : {d.number}</p>);
         const customStyles = {
             overlay: {zIndex: 1000}
         };
@@ -204,7 +204,7 @@ export class PebblesModal extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            show: null,
+            show: false,
             listOfPebbles: [],
             pebbleToShow: null,
             addButtonClicked: false,
