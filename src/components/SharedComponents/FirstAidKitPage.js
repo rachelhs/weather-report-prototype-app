@@ -80,6 +80,7 @@ export class FirstAidKitPage extends React.Component {
                             <Link className='first-aid-close'
                                 to={{
                                     pathname: '/home',
+                                    state: { weather: this.props.weather }
                                 }}>CLOSE
                     </Link>
 
