@@ -6,9 +6,6 @@ import { chooseAnotherRandomExercise, checkExercises, DoUnavailableExercises, Ge
 import { CSSTransition } from "react-transition-group";
 import { ChooseExercise } from '../Exercises/ChooseExercise';
 
-import '../../styles/animation.css';
-const data = require('../../data/data.json');
-
 // import exercises
 import { Breathing, Meditating, Grounding } from '../Exercises/TextBasedExercises';
 import Gratitude from '../Exercises/ReplayGratitude';
@@ -45,7 +42,7 @@ class Nothing extends React.Component {
         }
 
         // setting exercise
-        let firstExercise;
+        let firstExercise = 'breathing';
         GetUnavailableExercises(['breathing', 'meditating', 'grounding', 'gratitude', 'positive', 'posChange', 'posThing']).then(DoUnavailableExercises).then(function(result) {
             let availableExercises = result
             firstExercise = ChooseExercise(availableExercises)
@@ -97,6 +94,7 @@ class Nothing extends React.Component {
         let exerciseArray = chooseAnotherRandomExercise(['breathing', 'meditating', 'grounding', 'gratitude', 'positive', 'posChange', 'posThing'], this.state.exercise);
         this.setState({ showAnotherExerciseQuestion: false, yesAnotherExercise: true });
         let exercise = ChooseExercise(exerciseArray);
+        //let exercise = 'meditating';
         this.setState({ exercise: exercise });
     }
 

@@ -33,3 +33,22 @@
     border:none;
     background: transparent;
 }
+
+.grateful-text {
+    text-align: left !important;
+}
+
+.analysis-image {
+    width: 350px;
+    margin: -250px auto;
+    display: block;
+
+    @media (max-width: $desktop-breakpoint) {
+        width: 300px;
+    }
+}
+
+.hide-analysis-button {
+    display: flex;
+    margin-top: 245px;
+}

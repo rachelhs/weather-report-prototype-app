@@ -60,12 +60,13 @@
                 "nothing": ["Sometimes we just have to sit with these difficult feelings, and know that they will pass, just like the weather", "You are not your feelings, tomorrow will come. Just because I’m feeling nothing, doesn’t mean I am nothing"],
                 "veryLow": ["Sometimes we just have to sit with these difficult feelings, and know that they will pass, just like the weather", "I won’t say have a good day. Instead I advise you, to have a day. Stay alive, feed yourself well, wear comfortable clothes, and don’t give up on yourself just yet. It’ll get better. Until then, have a day", "Don’t give up, one day you will look back, and be glad you didn’t"],
                 "mediumLow": ["You are not alone in these feelings, many people feel like this at some point in their lives. You can work through this", "Don’t give up, one day you will look back, and be glad you didn’t"],
-                "low": ["You are not alone in these feelings, many people feel like this at some point in their lives. You can work through this", "Don’t give up, one day you will look back, and be glad you didn’t"],
+                "low": ["You are more than your feelings, tomorrow will come", "If the human brain were simple enough to understand, we’d be too simple to understand it", "It is OK to be at a place of struggle. Struggle is another word for growth. The only one who doesn’t struggle is the one who doesn’t grow 'It’s OK to not, be OK'","'This too shall pass' Persian saying","You are not just your thoughts"],
                 "lowWithEnergy": ["'Even the darkest night will end, and the sun will rise' Victor Hugo", "Don’t give up, one day you will look back, and be glad you didn’t","I won’t say have a good day. Instead I advise you, to have a day. Stay alive, feed yourself well, wear comfortable clothes, and don’t give up on yourself just yet. It’ll get better. Until then, have a day"],
                 "suicidal": ["Lots of people have felt like this before. It may seem like things won’t change but all feelings eventually pass.", "Don’t give up, one day you will look back, and be glad you didn’t","I won’t say have a good day. Instead I advise you, to have a day. Stay alive, feed yourself well, wear comfortable clothes, and don’t give up on yourself just yet. It’ll get better. Until then, have a day"]
             },
             "exercises": {
-                "groundingText": "Grounding does what it says on the tin – it literally grounds us. It seeks to place us firmly back in the moment, fully in connection with ourselves and the world around us. Focusing on the senses can really ground us – Sound, Smell, Taste, Sight, Touch and Breathing"
+                "groundingText": "Grounding does what it says on the tin – it literally grounds us. It seeks to place us firmly back in the moment, fully in connection with ourselves and the world around us. Focusing on the senses can really ground us – Sound, Smell, Taste, Sight, Touch and Breathing",
+                "breathingText": "Breathing can help us Relax and Unwind, calm us and centre us. Listen to the soundtrack and breath in and out as the ripples go in and out from the lilypad.  Focus on your breathing – the flow – the ebb – counting in and out. Being aware of how your body feels as the in breathe fills your lungs and the out breathe pushes out the air – through the mouth as if blowing the lilypad"
             }
         }
     },
@@ -158,7 +159,7 @@
         "home": {
             "fish": "Things you’re grateful for",
             "addToFish": "Would you like to add anything to your list?",
-            "anchors": "Here are your anchors / roots",
+            "anchors": "Your anchors",
             "addToAnchors": "Would you like to add an anchor?",
             "pebbles": "Here are your saved positive memories",
             "addToPebbles": "Would you like to add another?"
@@ -169,8 +170,8 @@
             "bluesky": ["Gentle","Neutral","OK","Content","Relaxed","Calm","Nothing","Blocked","Dazed","Stuck"],
             "light-clouds": ["Nothing","Blocked","Dazed","Stuck","Anxious","Neutral","OK","Relaxed","Calm","Confused","Impatient"],
             "grey-cloud": ["Nothing","Blocked","Dazed","Stuck","Anxious","Neutral","OK","Gentle","Isolated","Lonely","Nervous","Uneasy","Stupid","Lazy","Unhappy","Worried","Low"],
-            "purple-rain": ["Anxious","Regret","Scared","Unhappy","Worried","Lonely","Sad","Lost","Miserable","Empty","Hurt","Exhausted","Gentle","Neutral","Relentless","Rejected","Awful","Depressed"],
-            "turquoise-rain": ["Anxious","Distressed","Lost","Miserable","Awful","Crushed","Bleak","Broken","Panic","Desperate","Depressed"],
+            "turquoise-rain": ["Anxious","Regret","Scared","Unhappy","Worried","Lonely","Sad","Lost","Miserable","Empty","Hurt","Exhausted","Gentle","Neutral","Relentless","Rejected","Awful","Depressed"],
+            "purple-rain": ["Anxious","Distressed","Lost","Miserable","Awful","Crushed","Bleak","Broken","Panic","Desperate","Depressed"],
             "tornado": ["Angry","Outraged","Furious","Greed","Jealousy","Risky","Panic","Crushed","Desperate","Broken","Anxious","Depressed","Manic","Overwhelmed","Excited","Adventurous","Energetic"],
             "tsunami": ["Suicidal","Shame","Risky","Panic","Anxious","Angry","Bleak","Broken","Desperate","Worthless","Humiliated","Depressed","Manic","Overwhelmed"]
         },

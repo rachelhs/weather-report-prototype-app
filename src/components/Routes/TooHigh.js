@@ -1,6 +1,6 @@
 import React from 'react';
 import { HowLongHaveYouFeltLikeThis, RiskOfHarmTooHigh, PlanQ, PlanningQ, FeelingsPassStatement, Samaritans, AllRootsWithNext, Crisis, ReasonForFeelings, ReasonForFeelingsInput, FeedbackStatement } from '../SharedComponents/SharedComponents';
-import { SpokenToQ, GettingHelpQ } from '../SharedComponents/MentalHealthQuestions'
+import { SpokenToQ, GettingHelp1, GettingHelp2 } from '../SharedComponents/MentalHealthQuestions'
 import { isLongerThanThreeDays, expressedTooHighRecently } from '../../actions/route-functions';
 import { CSSTransition } from "react-transition-group";
 
@@ -155,17 +155,30 @@ class TooHighRoute extends React.Component {
         this.setState({ showAnchors: false })
     }
 
-    showGettingHelp() {
-        this.setState({ showGettingHelp: true })
+    showGettingHelp2() {
+        this.setState({ showGettingHelp2: true })
     }
 
-    leaveGettingHelpQ(res) {
-        res ? this.setState({ showGettingHelp: false, feedback: true }) : this.setState({ showGettingHelp: false, crisis: true })
+    leaveGettingHelp1(res) {
+        res ? this.setState({ showGettingHelp1: false, feedback: true }) : this.setState({ showGettingHelp1: false, crisis: true })
     }
 
-    actionAfterHelpQ() {
+    leaveGettingHelp2(res) {
+        res ? this.setState({ showGettingHelp2: false, feedback: true }) : this.setState({ showGettingHelp2: false, crisis: true })
+    }
+
+    actionAfterHelp1() {
         if (this.state.feedback) {
-            this.setState({ awareOf: true })
+            this.setState({ showFeedbackStatement: true })
+        }
+        else if (this.state.crisis) {
+            this.setState({ showCrisisTeam: true })
+        }
+    }
+
+    actionAfterHelp2() {
+        if (this.state.feedback) {
+            this.setState({ showFeedbackStatement: true })
         }
         else if (this.state.crisis) {
             this.setState({ showCrisisTeam: true })
@@ -186,7 +199,7 @@ class TooHighRoute extends React.Component {
 
     actionAfterSpokenTo() {
         if (this.state.spoken) {
-            this.setState({ showGettingHelp: true })
+            this.setState({ showGettingHelp1: true })
         }
         else if (this.state.help) {
             this.setState({ showAnchors: true })
@@ -246,8 +259,12 @@ class TooHighRoute extends React.Component {
                     <CSSTransition in={this.state.showFeelingsPass} timeout={2000} onEnter={() => { this.triggerTimeout() }} onExited={() => { this.showCrisisTeam() }} classNames="fade" unmountOnExit><FeelingsPassStatement /></CSSTransition>
                     <CSSTransition in={this.state.showSamaritans} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.showAnchors() }}><Samaritans onClick={this.actionAfterSamaritans.bind(this)} /></CSSTransition>
                     <CSSTransition in={this.state.showCrisisTeam} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.showSamaritans() }}><Crisis onClick={this.leaveCrisis.bind(this)} /></CSSTransition>
-                    <CSSTransition in={this.state.showAnchors} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.showGettingHelp() }}><AllRootsWithNext onClick={this.leaveAnchors.bind(this)} /></CSSTransition>
-                    <CSSTransition in={this.state.showGettingHelp} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterHelpQ() }}><GettingHelpQ onClick={this.leaveGettingHelpQ.bind(this)} /></CSSTransition>
+                    <CSSTransition in={this.state.showAnchors} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.showGettingHelp2() }}><AllRootsWithNext onClick={this.leaveAnchors.bind(this)} /></CSSTransition>
+
+                    <CSSTransition in={this.state.showGettingHelp1} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterHelp1() }}><GettingHelp1 onClick={this.leaveGettingHelp1.bind(this)} /></CSSTransition>
+
+                    <CSSTransition in={this.state.showGettingHelp2} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterHelp2() }}><GettingHelp2 onClick={this.leaveGettingHelp2.bind(this)} /></CSSTransition>
+
                     <CSSTransition in={this.state.haveSpokenQ} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterSpokenTo() }}><SpokenToQ onClick={this.processSpokenToQ.bind(this)} /></CSSTransition>
                     <CSSTransition in={this.state.awareOf} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterReason() }}><ReasonForFeelings onClick={this.processReasonFor.bind(this)} /></CSSTransition>
                     <CSSTransition in={this.state.showNote} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterNote() }}><ReasonForFeelingsInput buttonClick={this.processNote.bind(this)} /></CSSTransition>

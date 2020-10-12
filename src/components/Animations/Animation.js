@@ -13,7 +13,7 @@ import blueskyFadeIn from '../../animations/03_OK_Fade_In.json'
 import bluesky from '../../animations/03_OK_Weather_River.json'
 import blueskyFadeOut from '../../animations/03_OK_River_Fade_Out.json'
 import sunshineFadeIn from '../../animations/02_Happy_River_Fade_In.json'
-import sunshine from '../../animations/02_Happy_Weather_River_v8.json'
+import sunshine from '../../animations/02_High_Weather_River.json'
 import sunshineFadeOut from '../../animations/02_Happy_River_Fade_Out.json'
 import lightCloudsFadeIn from '../../animations/04_Nothing_Fade_In.json'
 import lightClouds from '../../animations/04_Nothing_Weather_River.json'
@@ -142,7 +142,7 @@ class Animation extends Component {
             case 'purple-rainFadeIn':
                 this.setState({ animationData: cloudRainThreatFadeIn })
                 break
-            case 'purple-rainLow':
+            case 'purple-rain':
                 this.setState({ animationData: cloudRainThreat })
                 break
             case 'purple-rainFadeOut':
