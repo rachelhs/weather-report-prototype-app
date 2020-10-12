@@ -61,13 +61,11 @@ export class ReasonForFeelingsInputAndReminder extends React.Component {
         const user = firebase.auth().currentUser;
         const uid = user.uid;
         const url = window.location.pathname;
-        console.log(url)
         database.ref(`users/${uid}/reasonForFeeling/${date}/${this.state.time}`).update({
             reason: this.state.value,
             remind: remind,
         })
         if (remind) {
-            console.log('sais yes to remind', remind)
             database.ref(`users/${uid}/pebbles/${date}/${this.state.time}`).update({
                 reason: this.state.value,
             })
