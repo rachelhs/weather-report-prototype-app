@@ -1,10 +1,11 @@
 import React from 'react';
 import { Acknowledgement, AnimationsLayered, HowLongHaveYouFeltLikeThis, ReasonForFeelings, ReasonForFeelingsInput, AnotherExerciseQuestion, FeedbackStatement, Contact, AskIfHelped } from '../SharedComponents/SharedComponents';
 import { PositiveThingQuestion, SafeQuestion, ContactSupportersQuestion } from '../SharedComponents/MentalHealthQuestions';
-import { FirstAid } from '../SharedComponents/MenuBarComponents';
+import { FirstAidKitPage } from '../SharedComponents/FirstAidKitPage';
 import { isLongerThanThreeDays, chooseAnotherRandomExercise } from '../../actions/route-functions';
 import { CSSTransition } from "react-transition-group";
 import { ChooseExercise } from '../Exercises/ChooseExercise';
+import ReplayAnchors from '../Exercises/ReplayAnchors';
 
 import '../../styles/animation.css';
 
@@ -32,7 +33,7 @@ class VeryLowRoute extends React.Component {
             veryLowFadeIn: false,
             whiteBackground: false,
             animationSpeed: 1,
-            weatherSymbol: null, 
+            weatherSymbol: null,
             weatherFadeIn: null
         }
         this.decideFirstAid = this.decideFirstAid.bind(this);
@@ -51,7 +52,8 @@ class VeryLowRoute extends React.Component {
         // set timeout to say I’m sorry you are feeling like this
         setTimeout(() => { this.setState({ showAcknowledge: false }) }, 10500)
         // random function for random questions
-        let question = ChooseExercise(['supporters', 'smallPos', 'safe']);
+        //let question = ChooseExercise(['supporters', 'smallPos', 'safe']);
+        let question = 'supporters';
         this.setState({ randQues: question });
         // setting exercise
         let exercise = ChooseExercise(['meditating', 'grounding', 'gratitude', 'content', 'stretching']);
@@ -143,12 +145,16 @@ class VeryLowRoute extends React.Component {
 
     afterAnsweredIfHelped() { this.setState({ showAskIfHelped: false }) }
 
+    afterShownAnchors() {
+        this.setState({ showContact: false })
+    }
+
     SetExercises = (exercise) => {
-        if (exercise == 'meditating') { return <Meditating buttonClick={this.askIfHelped.bind(this)}/> }
-        if (exercise == 'grounding') { return <Grounding buttonClick={this.askIfHelped.bind(this)}/> }
-        if (exercise == 'gratitude') { return <Gratitude buttonClick={this.askIfHelped.bind(this)}/> }
+        if (exercise == 'meditating') { return <Meditating buttonClick={this.askIfHelped.bind(this)} /> }
+        if (exercise == 'grounding') { return <Grounding buttonClick={this.askIfHelped.bind(this)} /> }
+        if (exercise == 'gratitude') { return <Gratitude buttonClick={this.askIfHelped.bind(this)} /> }
         if (exercise == 'content') { return <ReplayContent buttonClick={this.askIfHelped.bind(this)} /> }
-        if (exercise == 'stretching') { return <Stretching buttonClick={this.askIfHelped.bind(this)}/> }
+        if (exercise == 'stretching') { return <Stretching buttonClick={this.askIfHelped.bind(this)} /> }
     }
 
     render() {
@@ -170,13 +176,13 @@ class VeryLowRoute extends React.Component {
                     <CSSTransition in={this.state.showReasonForFeeling} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.afterReasonForFeeling()}><ReasonForFeelings onClick={this.answeredReasonKnown.bind(this)} /></CSSTransition>
                     <CSSTransition in={this.state.showReasonInput} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.showRandQuestion()}><ReasonForFeelingsInput buttonClick={this.answeredReasonInput.bind(this)} /></CSSTransition>
                     <CSSTransition in={this.state.showRandomQuestions} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.decideFirstAid()}>{this.state.randQues === 'safe' ? <SafeQuestion onClick={this.answeredSafeQuestion.bind(this)} /> : ((this.state.randQues === 'smallPos') ? <PositiveThingQuestion buttonClick={this.answeredRandomQuestion.bind(this)} /> : <ContactSupportersQuestion onClick={this.answeredContactQuestion.bind(this)} />)}</CSSTransition>
-                    <CSSTransition in={this.state.showFirstAid} timeout={2000} classNames="fade" unmountOnExit>{<FirstAid />}</CSSTransition>
-                    <CSSTransition in={this.state.showContact} timeout={2000} className="fade" unmountOnExit><Contact /></CSSTransition>
+                    <CSSTransition in={this.state.showFirstAid} timeout={2000} classNames="fade" unmountOnExit><FirstAidKitPage /></CSSTransition>
+                    <CSSTransition in={this.state.showContact} timeout={2000} className="fade" unmountOnExit onExited={() => this.showRandomExercise()}><Contact buttonClick={this.afterShownAnchors.bind(this)} /></CSSTransition>
                     <CSSTransition in={this.state.showAskIfHelped} timeout={1000} className="fade" unmountOnExit onExited={() => this.askAnotherExerciseQuestion()}><AskIfHelped exercise={this.state.exercise} onClick={this.afterAnsweredIfHelped.bind(this)} /></CSSTransition>
                     <CSSTransition in={this.state.showAnotherExerciseQuestion} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.afterAskAnotherQuestion()}><div><AnotherExerciseQuestion onClick={this.answeredAnotherExerciseQuestion.bind(this)} /></div></CSSTransition>
-                    <CSSTransition in={this.state.showFeedbackStatement} timeout={2000} className="fade" unmountOnExit><FeedbackStatement route={this.state.route} weather={this.state.weatherSymbol}/></CSSTransition>
+                    <CSSTransition in={this.state.showFeedbackStatement} timeout={2000} className="fade" unmountOnExit><FeedbackStatement route={this.state.route} weather={this.state.weatherSymbol} /></CSSTransition>
                 </div>
-                { showQuestionorExercise }
+                {showQuestionorExercise}
             </div>
         );
     }
