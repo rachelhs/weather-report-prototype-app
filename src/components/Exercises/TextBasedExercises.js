@@ -105,7 +105,7 @@ export class Grounding extends React.Component {
         return (
             <div className="no-white-overlay">
                 <h2 className='exercises-title'>Grounding Exercise</h2>
-                <p>{data[3].shared.exercises.groudingText}</p>
+                <p className='exercises-text'>{data[3].shared.exercises.groundingText}</p>
                 <AudioPlayer
                     autoPlay={false}
                     src={this.state.url}
@@ -126,8 +126,8 @@ export class Stretching extends React.Component {
         return (
             <div className="no-white-overlay">
                 <h2 className='grounding-title'>Stretching</h2>
-                <p>This is a stretching video FINALISE TEXT</p>
-                <div className="flex-center">
+                <p>Stretching can help us to focus on our body and release any tensions that we hold</p>
+                <div className='flex-center green-background'>
                     <iframe
                         width="560"
                         height="315"
@@ -137,7 +137,7 @@ export class Stretching extends React.Component {
                         allowFullScreen>
                     </iframe>
                 </div>
-                <div className="flex-center">
+                <div className='flex-center green-background'>
                     <div className='back-button-stretching'>
                         <button className='next-button-dark free-form-submit' onClick={this.props.buttonClick}>NEXT</button>
                     </div>
@@ -157,7 +157,7 @@ export class SafePlace extends React.Component {
 
     componentDidMount() {
         const storage = firebase.storage();
-        storage.ref('sounds/grounding.mp3').getDownloadURL()
+        storage.ref('sounds/safeplace.mp3').getDownloadURL()
             .then((url) => {
                 this.setState({ url: url });
             })
@@ -167,7 +167,7 @@ export class SafePlace extends React.Component {
         return (
             <div className="no-white-overlay">
                 <h2 className='exercises-title'>Safe Place Exercise</h2>
-                <p>text here</p>
+                <p>These steps will guide you through a process you can use to imagine a safe place which you can go to anytime - to help calm you and ease your worries</p>
                 <AudioPlayer
                     autoPlay={false}
                     src={this.state.url}

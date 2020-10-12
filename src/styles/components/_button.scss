@@ -63,7 +63,14 @@ button:focus {
     width: 100px;
     height: 45px;
     margin: 40px auto;
-    color: white
+    color: white;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+    border-radius: 0.5rem;
+    text-align: center;
+    font-size: 14px;
+    padding: 0 15px 0 15px;
 }
 
 .transparent-button {
@@ -183,8 +190,8 @@ button:focus {
     border: none;
     background-color:white;
     opacity: 90%;
-    bottom: 28%;
-    left: 71%;
+    bottom: 24%;
+    left: 55%;
 }  
 
 .clickablePlant {
