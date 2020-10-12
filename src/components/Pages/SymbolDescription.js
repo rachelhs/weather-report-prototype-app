@@ -19,8 +19,9 @@ export default class SymbolDescription extends React.Component {
 
     render() {
         return (
-            <div className='background-box'>
+            <div>
                 <AnimationsLayered speeds={[0.2]} animations={['neutralTreesNoLily']} />
+                <div className='background-box'></div>
                 <div className='center-vertical'>
                     <div className='info-box-choose'>
                         <h3 className='info-box-text'>{ data[0].regularLogin[3] }</h3>

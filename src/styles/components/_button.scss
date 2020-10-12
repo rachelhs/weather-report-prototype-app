@@ -132,6 +132,10 @@ button:focus {
     margin-top: 100px !important
 }
 
+.extra-side-padding-button {
+    padding: 7px 10px 7px 10px;
+}
+
 .back-button {
     background: transparent;
     border: 1px solid #3a3d7d;
@@ -227,3 +231,11 @@ button:focus {
     border: none;
 }
 
+.max-width-photo-button {
+    max-width: 220px;
+    padding: 5px
+}
+
+.max-width-input {
+    max-width: 97px;
+}
