@@ -142,7 +142,7 @@ class Animation extends Component {
             case 'purple-rainFadeIn':
                 this.setState({ animationData: cloudRainThreatFadeIn })
                 break
-            case 'purple-rainLow':
+            case 'purple-rain':
                 this.setState({ animationData: cloudRainThreat })
                 break
             case 'purple-rainFadeOut':
