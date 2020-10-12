@@ -214,10 +214,10 @@ export class Report extends React.Component {
 
                     {this.state.showAnalysis ? 
                         <div><img className='analysis-image' src={exampleImage} alt="analysis of mood"></img><div className='hide-analysis-button'>
-                        <button className='login-button' type="button" onClick={this.hideAnalysisImage.bind(this)}>HIDE ANALYSIS</button>
+                        <button className='login-button' type="button" onClick={this.hideAnalysisImage.bind(this)}>HIDE</button>
                     </div></div>:
                         <div className="flex-center">
-                            <button className='login-button' type="button" onClick={this.showAnalysisImage.bind(this)}>SHOW ANALYSIS</button>
+                            <button className='login-button' type="button" onClick={this.showAnalysisImage.bind(this)}>SHOW PAST</button>
                         </div>}
                 </ReactModal>
             </span>
