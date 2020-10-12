@@ -134,8 +134,9 @@ export default class SymbolDetailedDescription extends React.Component {
         return (
             <div>
                 {(this.state.report) ? '' :
-                    <div className='background-box'>
+                    <div>
                         <AnimationsLayered speeds={[0.2]} animations={['neutralTreesNoLily']} />
+                        <div className='background-box'></div>
                         <div className='center-vertical'>
                             <div className='info-box-choose info-box-words'>
                                 <h3 className='info-box-text-small-padding'>{data[0].regularLogin[4]}</h3>

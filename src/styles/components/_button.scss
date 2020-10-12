@@ -63,7 +63,14 @@ button:focus {
     width: 100px;
     height: 45px;
     margin: 40px auto;
-    color: white
+    color: white;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+    border-radius: 0.5rem;
+    text-align: center;
+    font-size: 14px;
+    padding: 0 15px 0 15px;
 }
 
 .transparent-button {
@@ -125,6 +132,10 @@ button:focus {
     margin-top: 100px !important
 }
 
+.extra-side-padding-button {
+    padding: 7px 10px 7px 10px;
+}
+
 .back-button {
     background: transparent;
     border: 1px solid #3a3d7d;
@@ -179,8 +190,8 @@ button:focus {
     border: none;
     background-color:white;
     opacity: 90%;
-    bottom: 28%;
-    left: 71%;
+    bottom: 24%;
+    left: 55%;
 }  
 
 .clickablePlant {
@@ -220,3 +231,11 @@ button:focus {
     border: none;
 }
 
+.max-width-photo-button {
+    max-width: 220px;
+    padding: 5px
+}
+
+.max-width-input {
+    max-width: 97px;
+}

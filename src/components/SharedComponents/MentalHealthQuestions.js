@@ -520,7 +520,8 @@ export class AddAnchor extends React.Component {
             nameValue: '',
             anchors: {
                 name: '',
-                number: 0
+                number: 0,
+                value: ''
             }
         };
         this.anchorsSubmit = this.anchorsSubmit.bind(this);
@@ -529,6 +530,9 @@ export class AddAnchor extends React.Component {
     anchorsSubmit = (e) => {
         // stops page refreshing
         e.preventDefault();
+        e.target.reset();
+
+        // this.setState({ value: '' });
         const user = firebase.auth().currentUser;
         const uid = user.uid;
         if (this.state.anchors.name !== ''){
@@ -552,8 +556,8 @@ export class AddAnchor extends React.Component {
         return (
             <div>
                 <form onSubmit={this.anchorsSubmit}>
-                    <input className='free-form-input' type="text" placeholder="name" onChange={this.anchorsChangeName} />
-                    <input className='free-form-input' type="text" placeholder="number" onChange={this.anchorsChangeNumber} />
+                    <input className='free-form-input' type="text" placeholder="NAME" onChange={this.anchorsChangeName} />
+                    <input className='free-form-input' type="text" placeholder="NUMBER" onChange={this.anchorsChangeNumber} />
                     <div className='button-container'>
                         <button className='transparent-button free-form-submit' onClick={this.props.buttonClick}>Add</button>
                     </div>
