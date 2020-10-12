@@ -580,7 +580,6 @@ export class TextWithButton extends React.Component {
     render() {
         return (
             <div>
-                <h1 className='info-box-title'>{this.props.text}</h1>
                 <div className='button-container'>
                     <button className='transparent-button' onClick={(e) => this.props.onClick(true)}>{this.props.buttonText}</button>
                 </div>

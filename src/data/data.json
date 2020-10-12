@@ -158,7 +158,7 @@
         "home": {
             "fish": "Things you’re grateful for",
             "addToFish": "Would you like to add anything to your list?",
-            "anchors": "Here are your anchors / roots",
+            "anchors": "Your anchors",
             "addToAnchors": "Would you like to add an anchor?",
             "pebbles": "Here are your saved positive memories",
             "addToPebbles": "Would you like to add another?"
@@ -169,8 +169,8 @@
             "bluesky": ["Gentle","Neutral","OK","Content","Relaxed","Calm","Nothing","Blocked","Dazed","Stuck"],
             "light-clouds": ["Nothing","Blocked","Dazed","Stuck","Anxious","Neutral","OK","Relaxed","Calm","Confused","Impatient"],
             "grey-cloud": ["Nothing","Blocked","Dazed","Stuck","Anxious","Neutral","OK","Gentle","Isolated","Lonely","Nervous","Uneasy","Stupid","Lazy","Unhappy","Worried","Low"],
-            "purple-rain": ["Anxious","Regret","Scared","Unhappy","Worried","Lonely","Sad","Lost","Miserable","Empty","Hurt","Exhausted","Gentle","Neutral","Relentless","Rejected","Awful","Depressed"],
-            "turquoise-rain": ["Anxious","Distressed","Lost","Miserable","Awful","Crushed","Bleak","Broken","Panic","Desperate","Depressed"],
+            "turquoise-rain": ["Anxious","Regret","Scared","Unhappy","Worried","Lonely","Sad","Lost","Miserable","Empty","Hurt","Exhausted","Gentle","Neutral","Relentless","Rejected","Awful","Depressed"],
+            "purple-rain": ["Anxious","Distressed","Lost","Miserable","Awful","Crushed","Bleak","Broken","Panic","Desperate","Depressed"],
             "tornado": ["Angry","Outraged","Furious","Greed","Jealousy","Risky","Panic","Crushed","Desperate","Broken","Anxious","Depressed","Manic","Overwhelmed","Excited","Adventurous","Energetic"],
             "tsunami": ["Suicidal","Shame","Risky","Panic","Anxious","Angry","Bleak","Broken","Desperate","Worthless","Humiliated","Depressed","Manic","Overwhelmed"]
         },
