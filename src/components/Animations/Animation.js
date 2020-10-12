@@ -151,10 +151,10 @@ class Animation extends Component {
             case 'turquoise-rainFadeIn':
                 this.setState({ animationData: darkCloudsLowFadeIn })
                 break
-            case 'turquoise-rainLow':
+            case 'turquoise-rain':
                 this.setState({ animationData: darkCloudsLow })
                 break
-            case 'turquoise-rainLowFadeOut':
+            case 'turquoise-rainFadeOut':
                 this.setState({ animationData: darkCloudsLowFadeOut })
                 break
             case 'tsunamiFadeIn':
