@@ -3,11 +3,15 @@ import { HowLongHaveYouFeltLikeThis, RiskOfHarmTooHigh, PlanQ, PlanningQ, Feelin
 import { SpokenToQ, GettingHelpQ } from '../SharedComponents/MentalHealthQuestions'
 import { isLongerThanThreeDays, expressedTooHighRecently } from '../../actions/route-functions';
 import { CSSTransition } from "react-transition-group";
-import { SetExercises } from '../Exercises/SetExercises';
+
 import { ChooseExercise } from '../Exercises/ChooseExercise';
 import { AnimationsLayered } from '../SharedComponents/SharedComponents'
 
 import '../../styles/animation.css';
+
+// import exercises
+import { Breathing, Grounding, SafePlace } from '../Exercises/TextBasedExercises';
+import ReplayAnchors from '../Exercises/ReplayAnchors';
 
 class TooHighRoute extends React.Component {
 
@@ -36,7 +40,6 @@ class TooHighRoute extends React.Component {
             let weatherFadeIn = this.props.location.state.weatherSymbol + "FadeIn"
             this.setState({ weatherFadeIn: weatherFadeIn });
             this.setState({ weatherSymbol: this.props.location.state.weatherSymbol });
-            console.log('props', this.props.location.state.weatherSymbol)
         } else {
             this.setState({ weatherFadeIn: "neutralBackground" });
         }
@@ -51,11 +54,10 @@ class TooHighRoute extends React.Component {
 
         expressedTooHighRecently(res => {
             res ? this.setState({ expressedRecently: true }) : this.setState({ expressedRecently: false })
-            console.log('expressed recently', this.state.expressedRecently);
         })
         this.threeDayFunction()
         // setting exercise
-        let randomExercise = ChooseExercise(['breathing', 'grounding', 'lessStimulation', 'safePlace', 'anchors']);
+        let randomExercise = ChooseExercise(['breathing', 'grounding', 'safePlace', 'anchors']);
         this.setState({ randExercise: randomExercise });
         setTimeout(() => { this.decideStart() }, 7500)
     }
@@ -68,7 +70,6 @@ class TooHighRoute extends React.Component {
     threeDayFunction() {
         isLongerThanThreeDays(result => {
             result ? this.setState({ longerThanThreeDays: false }) : (this.setState({ longerThanThreeDays: true }))
-            console.log('three days', result);
         })
     }
 
@@ -202,11 +203,14 @@ class TooHighRoute extends React.Component {
     }
 
     actionAfterReason() {
+        console.log('this.state.exercise', this.state.exercise)
         if (this.state.reason) {
             this.setState({ showNote: true })
         }
         else if (this.state.exercise) {
-            this.setState({ exercises: true })
+            console.log('inside this.state.exercise')
+
+            this.setState({ showRandomExercises: true })
         }
     }
 
@@ -215,18 +219,22 @@ class TooHighRoute extends React.Component {
     }
 
     actionAfterNote() {
-        this.setState({ exercises: true })
+        this.setState({ showRandomExercises: true })
     }
 
     seenExercise() {
-        this.setState({ exercises: false })
+        this.setState({ showRandomExercises: false, showFeedbackStatement: true })
     }
 
-    actionAfterExercises() {
-        this.setState({ showFeedbackStatement: true })
+    SetExercises = (exercise) => {
+        if (exercise == 'safePlace') { return <SafePlace buttonClick={this.seenExercise.bind(this)}/> }
+        if (exercise == 'grounding') { return <Grounding buttonClick={this.seenExercise.bind(this)}/> }
+        if (exercise == 'breathing') { return <Breathing buttonClick={this.seenExercise.bind(this)}/> }
+        if (exercise === 'anchors') { return <ReplayAnchors buttonClick={this.seenExercise.bind(this)}/> }
     }
 
     render() {
+        const Exercise = this.state.showRandomExercises ? <div>{this.SetExercises(this.state.randExercise)}</div> : ''
         return (
             <div>
                 <CSSTransition in={this.state.neutralAnimation} timeout={4000} classNames="fade-enter-only" unmountOnExit>
@@ -238,7 +246,7 @@ class TooHighRoute extends React.Component {
                 <CSSTransition in={this.state.whiteBackground} timeout={2000} classNames="fade" unmountOnExit>
                     <div className='background-box'></div>
                 </CSSTransition>
-                <div className='info-box-landing'>
+                <div className='info-box'>
                     <CSSTransition in={this.state.howLong} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.areYouAtRisk() }}><HowLongHaveYouFeltLikeThis buttonClick={this.answeredHowLong.bind(this)} /></CSSTransition>
                     <CSSTransition in={this.state.areYouAtRisk} timeout={2000} onExited={() => { this.triggerAfterHarm() }} classNames="fade" unmountOnExit><RiskOfHarmTooHigh onClick={this.actionAfterHarm.bind(this)} /></CSSTransition>
                     <CSSTransition in={this.state.showPlanQ} timeout={2000} onExited={() => { this.triggerAfterPlan() }} classNames="fade" unmountOnExit><PlanQ onClick={this.actionAfterPlan.bind(this)} /></CSSTransition>
@@ -251,18 +259,11 @@ class TooHighRoute extends React.Component {
                     <CSSTransition in={this.state.haveSpokenQ} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterSpokenTo() }}><SpokenToQ onClick={this.processSpokenToQ.bind(this)} /></CSSTransition>
                     <CSSTransition in={this.state.awareOf} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterReason() }}><ReasonForFeelings onClick={this.processReasonFor.bind(this)} /></CSSTransition>
                     <CSSTransition in={this.state.showNote} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterNote() }}><ReasonForFeelingsInput buttonClick={this.processNote.bind(this)} /></CSSTransition>
-                    <CSSTransition in={this.state.exercises} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterExercises() }}>
-                        <div>
-                            <div>{SetExercises(this.state.randExercise)}</div>
-                            <div className="flex-center">
-                                <button className='next-button-dark' onClick={this.seenExercise.bind(this)}>NEXT</button>
-                            </div>
-                        </div>
-                    </CSSTransition>
                     <CSSTransition in={this.state.showFeedbackStatement} timeout={2000} className="fade" unmountOnExit>
                         <FeedbackStatement route={this.state.route} weather={this.state.weatherSymbol}/>
                     </CSSTransition>
                 </div>
+                { Exercise }
             </div>
         );
     }

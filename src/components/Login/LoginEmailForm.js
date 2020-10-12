@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { startEmailLogin, passwordReset } from '../../actions/auth'
+import { startEmailLogin } from '../../actions/auth'
 import PropTypes from 'prop-types'
 import '../../styles/components/_button.scss';
 import { CSSTransition } from "react-transition-group";
@@ -8,7 +8,10 @@ import '../../styles/animation.css';
 import Animation from '../Animations/Animation'
 
 export class LoginEmailForm extends React.Component {
-  state = {
+
+  constructor(props){
+    super(props);
+    this.state = {
     error: false,
     loading: false,
     email: '',
@@ -16,11 +19,16 @@ export class LoginEmailForm extends React.Component {
     isPasswordShown: false,
     appIntro: true,
     showLogin: null,
+    showEnterEmail: false
   }
+this.passwordReset = this.passwordReset.bind(this);
+this.triggerTimeout = this.triggerTimeout.bind(this);
+}
 
-    componentDidMount() { 
-        setTimeout( () => { this.setState({ appIntro: false }) }, 3000)
-    }
+triggerTimeout(itemToFadeOut) {
+  const fadeTime = 3000;
+  setTimeout(() => { this.setState({ [itemToFadeOut]: false }) }, fadeTime)
+}
 
   setStateProperty = (value, property) => {
     this.setState(() => {
@@ -50,6 +58,15 @@ export class LoginEmailForm extends React.Component {
     this.setState({ showLogin: true });
   }
 
+  passwordReset = (email) => () => {
+    if(email == ''){
+      this.setState({ showEnterEmail: true });
+    }
+    else {
+    return firebase.auth().sendPasswordResetEmail(email);
+    }
+}
+
   render () {
     const { isPasswordShown } = this.state;
     const { error, loading } = this.state
@@ -59,7 +76,7 @@ export class LoginEmailForm extends React.Component {
       <div className='background-box'>
             <div className='anim-full-height'><Animation speed={0.2} animation={"neutralNoTrees"} /></div>
             <div className='info-box-login'>
-                <CSSTransition in={this.state.appIntro} timeout={1500} classNames="transform-up" appear onExited={() => this.showLoginForm()}>
+                <CSSTransition in={this.state.appIntro} timeout={1000} classNames="transform-up" appear onEntered={() => { this.triggerTimeout('appIntro') }} onExited={() => this.showLoginForm()}>
                     <h1 className='box-layout__title'>WEATHER REPORT</h1>
                 </CSSTransition>
                 <CSSTransition in={this.state.showLogin} timeout={1000} classNames="fade-fast" unmountOnExit>
@@ -73,8 +90,6 @@ export class LoginEmailForm extends React.Component {
                                     type='text'
                                     name='email'
                                     required = '*Required'
-                                    onInput="this.setCustomValidity('')" 
-                                    oninvalid="alert('You must fill out the form!');"
                                     className='form-input'
                                 />
                             </div>
@@ -100,17 +115,14 @@ export class LoginEmailForm extends React.Component {
                             { goBackFunction &&
                             <button className='button button--secondary' onClick={goBackFunction}>Cancel</button> }
                         </form>
-                        {<button className='button button--password-reset' onClick={passwordReset(this.state.email)}>Forgot Password?</button>}               </div>
+                        {<button className='button button--password-reset' onClick={this.passwordReset(this.state.email)}>Forgot Password?</button>}  
+                        {(this.state.showEnterEmail) ? <p className="form__error">Please enter e-mail address then click Forgot Password</p> : ''}
+                        </div>
                 </CSSTransition>
             </div>
         </div>
     )
   }
-}
-
-LoginEmailForm.propTypes = {
-  startEmailLogin: PropTypes.func,
-  goBackFunction: PropTypes.func
 }
 
 const mapDispatchToProps = (dispatch) => ({

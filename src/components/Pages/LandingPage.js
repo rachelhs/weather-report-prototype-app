@@ -17,11 +17,11 @@ export class LandingPage extends React.Component {
         return (
             <div className='background-box'>
                 <AnimationsLayered speeds={[0.2]} animations={['neutralTreesNoLily']} />
-                <div className='info-box-landing'>
+                <div className='info-box'>
                     <CSSTransition in={this.state.showContent} timeout={2000} classNames="fade" appear unmountOnExit>
                         <div>
-                            <h1 className='info-box-text-padding-top'>{ data[0].regularLogin[1] }</h1>
-                            <div className="button-container">
+                            <h1 className='header-text-spacing'>{ data[0].regularLogin[1] }</h1>
+                            <div className="button-container padding-top">
                                 <button className='next-button-dark' onClick={this.onNext}>NEXT</button>
                             </div>
                         </div>

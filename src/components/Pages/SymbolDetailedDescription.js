@@ -66,6 +66,7 @@ export default class SymbolDetailedDescription extends React.Component {
             mainword: this.state.mainWord,
             secondarywords: this.state.secondaryWords,
             createdAt: this.state.createdAt.valueOf(),
+            route: route
         })
         switch (route) {
             case "one":

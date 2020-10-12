@@ -3,16 +3,15 @@ import Lottie from 'react-lottie'
 import sun from '../../animations/sun.json'
 import fish from '../../animations/00_Fish_Still.json'
 import environment from '../../animations/10_Neutral_BG_With_Trees.json'
-import growing from '../../animations/growing'
 import lilypad from '../../animations/Lily_Pad.json'
 import roots from '../../animations/Roots.json'
 import rainbowFadeIn from '../../animations/01_Rainbow_River_Fade_In.json'
 import rainbowFadeOut from '../../animations/01_Rainbow_River_Fade_Out.json'
 import rainbow from '../../animations/01_Rainbow_Weather_River.json'
 import neutralBackground from '../../animations/10_Neutral_River All Assets'
-import blueskyFadeIn from '../../animations/03_OK_Fade In.json'
-import bluesky from '../../animations/03_OK_Weather_River .json'
-import blueskyFadeOut from '../../animations/03_OK_River_Fade Out.json'
+import blueskyFadeIn from '../../animations/03_OK_Fade_In.json'
+import bluesky from '../../animations/03_OK_Weather_River.json'
+import blueskyFadeOut from '../../animations/03_OK_River_Fade_Out.json'
 import sunshineFadeIn from '../../animations/02_Happy_River_Fade_In.json'
 import sunshine from '../../animations/02_Happy_Weather_River_v8.json'
 import sunshineFadeOut from '../../animations/02_Happy_River_Fade_Out.json'
@@ -22,12 +21,12 @@ import lightCloudsFadeOut from '../../animations/04_Nothing_River_Fade_Out.json'
 import greyCloudFadeIn from '../../animations/05_Low_Fade_In.json'
 import greyCloud from '../../animations/05_Low_Weather_River.json'
 import greyCloudFadeOut from '../../animations/05_Low_River_Fade_Out.json'
-import cloudRainThreatFadeIn from '../../animations/06_Medium_Low_Fade_In.json'
-import cloudRainThreat from '../../animations/06_Medium_Low_Weather_River.json'
-import cloudRainThreatFadeOut from '../../animations/06_Medium_Low_River_Fade_Out.json'
-import darkCloudsLowFadeIn from '../../animations/07_Very_Low_Fade_In.json'
-import darkCloudsLow from '../../animations/07_Very_Low_v1.json'
-import darkCloudsLowFadeOut from '../../animations/07_Very_Low_River_Fade_Out.json'
+import darkCloudsLowFadeIn from '../../animations/06_Medium_Low_Fade_In.json'
+import darkCloudsLow from '../../animations/06_Medium_Low_Weather_River.json'
+import darkCloudsLowFadeOut from '../../animations/06_Medium_Low_River_Fade_Out.json'
+import cloudRainThreatFadeIn from '../../animations/07_Very_Low_Fade_In.json'
+import cloudRainThreat from '../../animations/07_Very_Low_v1.json'
+import cloudRainThreatFadeOut from '../../animations/07_Very_Low_River_Fade_Out.json'
 import tornadoFadeIn from '../../animations/08_Low_But_with_Energy_Fade_In.json'
 import tornado from '../../animations/08_Low_But_with_Energy_Weather_River.json'
 import tornadoFadeOut from '../../animations/08_Low_But_with_Energy_River_Fade_Out.json'
@@ -76,9 +75,6 @@ class Animation extends Component {
                 break;
             case 'environment':
                 this.setState({ animationData: environment })
-                break;
-            case 'growing':
-                this.setState({ animationData: growing })
                 break;
             case 'lilypad':
                 this.setState({ animationData: lilypad })
@@ -143,22 +139,22 @@ class Animation extends Component {
             case 'grey-cloudFadeOut':
                 this.setState({ animationData: greyCloudFadeOut })
                 break
-            case 'cloud-rain-threatFadeIn':
+            case 'purple-rainFadeIn':
                 this.setState({ animationData: cloudRainThreatFadeIn })
                 break
-            case 'cloud-rain-threatLow':
+            case 'purple-rainLow':
                 this.setState({ animationData: cloudRainThreat })
                 break
-            case 'cloud-rain-threatFadeOut':
+            case 'purple-rainFadeOut':
                 this.setState({ animationData: cloudRainThreatFadeOut })
                 break
-            case 'dark-cloudsFadeIn':
+            case 'turquoise-rainFadeIn':
                 this.setState({ animationData: darkCloudsLowFadeIn })
                 break
-            case 'dark-cloudsLow':
+            case 'turquoise-rain':
                 this.setState({ animationData: darkCloudsLow })
                 break
-            case 'dark-cloudsLowFadeOut':
+            case 'turquoise-rainFadeOut':
                 this.setState({ animationData: darkCloudsLowFadeOut })
                 break
             case 'tsunamiFadeIn':
@@ -167,7 +163,7 @@ class Animation extends Component {
             case 'tsunami':
                 this.setState({ animationData: tsunami })
                 break
-            case 'tsunami':
+            case 'tsunamiFadeOut':
                 this.setState({ animationData: tsunamiFadeOut })
                 break
             case 'tornadoFadeIn':
