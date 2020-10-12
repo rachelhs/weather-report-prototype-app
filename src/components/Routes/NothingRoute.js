@@ -1,7 +1,8 @@
+
 import React from 'react';
 import { AnimationsLayered, ReasonForFeelings, ReasonForFeelingsInput, AnotherExerciseQuestion, FeedbackStatement } from '../SharedComponents/SharedComponents';
 import { PositiveThingQuestion, PositiveChangeQuestion } from '../SharedComponents/MentalHealthQuestions';
-import { chooseAnotherRandomExercise } from '../../actions/route-functions';
+import { chooseAnotherRandomExercise, checkExercises, DoUnavailableExercises, GetUnavailableExercises } from '../../actions/route-functions';
 import { CSSTransition } from "react-transition-group";
 import { ChooseExercise } from '../Exercises/ChooseExercise';
 
@@ -43,9 +44,14 @@ class Nothing extends React.Component {
         } else {
             this.setState({ weatherFadeIn: "neutralBackground" });
         }
+
         // setting exercise
-        let exercise = ChooseExercise(['breathing', 'meditating', 'grounding', 'gratitude', 'positive', 'posChange', 'posThing']);
-        this.setState({ exercise: exercise });
+        let firstExercise;
+        GetUnavailableExercises(['breathing', 'meditating', 'grounding', 'gratitude', 'positive', 'posChange', 'posThing']).then(DoUnavailableExercises).then(function(result) {
+            let availableExercises = result
+            firstExercise = ChooseExercise(availableExercises)
+        })
+        setTimeout(() => { this.setState({ exercise: firstExercise }) }, 1000)
 
         setTimeout(() => { this.setState({ neutralAnimation: false, nothingFadeIn: true }) }, 500)
         setTimeout(() => {
@@ -111,6 +117,7 @@ class Nothing extends React.Component {
     }
 
     render() {
+        console.log('state exercise', this.state.exercise)
         const showQuestionorExercise = this.state.showrandQuesOrExercise ? <div> {this.SetExercises(this.state.exercise)}</div> : ''
         return (
             <div>
