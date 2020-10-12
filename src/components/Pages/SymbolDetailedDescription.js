@@ -59,7 +59,7 @@ export default class SymbolDetailedDescription extends React.Component {
         let date = this.state.day.format("YYYY-MM-DD")
         let time = moment().format("kk-mm")
         // work out path to route user based on main word 
-        let route = GetKeyByValue(data[10].categories,this.state.mainWord);
+        let route = GetKeyByValue(data[10].categories, this.state.mainWord);
         console.log('route', route)
         database.ref(`users/${uid}/weatherReports/${date}/${time}`).update({
             weather: this.state.weatherSymbol,
@@ -79,13 +79,13 @@ export default class SymbolDetailedDescription extends React.Component {
                 this.props.history.push({
                     pathname: '/2',
                     state: { weatherSymbol: this.state.weatherSymbol }
-                  })
+                })
                 break;
             case "three":
                 this.props.history.push({
                     pathname: '/3',
                     state: { weatherSymbol: this.state.weatherSymbol }
-                  })
+                })
                 break;
             case "four":
                 this.props.history.push({
@@ -166,7 +166,7 @@ export default class SymbolDetailedDescription extends React.Component {
                 }
                 <div>
                     <CSSTransition in={this.state.report} timeout={fadeTime} classNames="fade" unmountOnExit appear><div className='info-box'>
-                        
+                        <h2 className='report-word'>REPORT</h2>
                         <div className='arrow'><Arrow /></div>
                         <TextWithNextSmall text={data[9].onboarding.report} onClick={this.sendData.bind(this)} /></div></CSSTransition>
                 </div>
