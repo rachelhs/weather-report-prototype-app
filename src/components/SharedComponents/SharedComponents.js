@@ -302,8 +302,8 @@ export class ReactFirebaseFileUpload extends React.Component {
         return (
         <div>
             {/* <progress value={this.state.progress} max="100" /> */}
-            <input type="file" onChange={this.handleChange} />
-            <button onClick={this.handleUpload}>{this.state.progress == 0 ? <p>Upload</p> :<p>{"uploading " + this.state.progress + "%"}</p>}</button>
+            <input className="transparent-button" type="file" onChange={this.handleChange} />
+            <button className="next-button-dark" onClick={this.handleUpload}>{this.state.progress == 0 ? <p>Upload</p> :<p>{"uploading " + this.state.progress + "%"}</p>}</button>
             { feedback }
         </div>
         );
