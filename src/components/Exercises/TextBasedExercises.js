@@ -66,7 +66,6 @@ export class Breathing extends React.Component {
         return (
             <div className="no-white-overlay">
                 <h2 className='exercises-title'>Breathing Exercise</h2>
-                <p>{data[3].shared.exercises.breathingText}</p>
                 <AudioPlayer
                     autoPlay={false}
                     src={this.state.url}
@@ -106,7 +105,7 @@ export class Grounding extends React.Component {
         return (
             <div className="no-white-overlay">
                 <h2 className='exercises-title'>Grounding Exercise</h2>
-                <p>{data[3].shared.exercises.groudingText}</p>
+                <p className='exercises-text'>{data[3].shared.exercises.groundingText}</p>
                 <AudioPlayer
                     autoPlay={false}
                     src={this.state.url}
@@ -128,7 +127,7 @@ export class Stretching extends React.Component {
             <div className="no-white-overlay">
                 <h2 className='grounding-title'>Stretching</h2>
                 <p>Stretching can help us to focus on our body and release any tensions that we hold</p>
-                <div className="flex-center">
+                <div className='flex-center green-background'>
                     <iframe
                         width="560"
                         height="315"
@@ -138,7 +137,7 @@ export class Stretching extends React.Component {
                         allowFullScreen>
                     </iframe>
                 </div>
-                <div className="flex-center">
+                <div className='flex-center green-background'>
                     <div className='back-button-stretching'>
                         <button className='next-button-dark free-form-submit' onClick={this.props.buttonClick}>NEXT</button>
                     </div>
