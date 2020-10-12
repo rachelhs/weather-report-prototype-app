@@ -11,12 +11,26 @@ import rainbow from '../../images/weather-symbols/rainbow.svg';
 import lightclouds from '../../images/weather-symbols/light-clouds.svg';
 import tornado from '../../images/weather-symbols/tornado.svg';
 import tsunami from '../../images/weather-symbols/tsunami.svg';
+import { CSSTransition } from "react-transition-group";
 
 export class ChooseSymbolPage extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            fadeOpacityBackground: false
+        }
+    }
+    componentDidMount() {
+       this.setState({ fadeOpacityBackground: true })
+    }
+    
     render() {
         return (
-            <div className='background-box'>
+            <div>
                 <AnimationsLayered speeds={[0.2]} animations={['neutralTreesNoLily']} />
+                <CSSTransition in={this.state.fadeOpacityBackground} timeout={2000} classNames="fade" unmountOnExit>
+                    <div className='background-box'></div>
+                </CSSTransition>
                 <div className='center-vertical'>
                     <div className='info-box-choose'>
                         <h3 className='info-box-text'>{ data[0].regularLogin[2] }</h3>
@@ -56,17 +70,17 @@ export class ChooseSymbolPage extends React.Component {
                             <Link className='symbol-button'
                                 to={{
                                     pathname: '/symbol-description',
-                                    state: { weather: "purple-rain" }
-                                }}><img className='symbol' src={purpleRain}/>
-                            </Link>
+                                    state: { weather: "turquoise-rain" }
+                                }}><img className='symbol' src={turquoiseRain}/>
+                            </Link> 
                         </div>
                         <div className="flex-center">
                             <Link className='symbol-button'
                                 to={{
                                     pathname: '/symbol-description',
-                                    state: { weather: "turquoise-rain" }
-                                }}><img className='symbol' src={turquoiseRain}/>
-                            </Link> 
+                                    state: { weather: "purple-rain" }
+                                }}><img className='symbol' src={purpleRain}/>
+                            </Link>
                             <Link className='symbol-button'
                                 to={{
                                     pathname: '/symbol-description',

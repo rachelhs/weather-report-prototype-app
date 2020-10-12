@@ -59,7 +59,6 @@ export default class Gratitude extends React.Component {
             })
             database.ref(`users/${uid}/grateful/${listOfKeys[rand2]}`)
             .on('value', (childSnapshot) => {
-                console.log(childSnapshot.val());
                 let entry2 = childSnapshot.val();
                 this.setState({ randomGratitude2: entry2 });
             })

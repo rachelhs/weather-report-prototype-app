@@ -32,12 +32,10 @@ export default class SymbolDetailedDescription extends React.Component {
         // check if a weatherReport entry exists
         database.ref(`users/${uid}/weatherReports`).once("value", snapshot => {
             if (snapshot.exists()) {
-                console.log('not new user');
                 this.setState({ newUser: false })
             }
             else {
                 this.setState({ newUser: true })
-                console.log('new user');
             }
         })
     }
@@ -59,8 +57,7 @@ export default class SymbolDetailedDescription extends React.Component {
         let date = this.state.day.format("YYYY-MM-DD")
         let time = moment().format("kk-mm")
         // work out path to route user based on main word 
-        let route = GetKeyByValue(data[10].categories, this.state.mainWord);
-        console.log('route', route)
+        let route = GetKeyByValue(data[10].categories,this.state.mainWord);
         database.ref(`users/${uid}/weatherReports/${date}/${time}`).update({
             weather: this.state.weatherSymbol,
             mainword: this.state.mainWord,
@@ -133,15 +130,13 @@ export default class SymbolDetailedDescription extends React.Component {
     }
 
     render() {
-        console.log('mainWord', this.state.mainWord)
         let time = moment().format("HH-mm")
-        console.log('time', time)
-        console.log('secondaryWords', this.state.secondaryWords)
         return (
             <div>
                 {(this.state.report) ? '' :
-                    <div className='background-box'>
+                    <div>
                         <AnimationsLayered speeds={[0.2]} animations={['neutralTreesNoLily']} />
+                        <div className='background-box'></div>
                         <div className='center-vertical'>
                             <div className='info-box-choose info-box-words'>
                                 <h3 className='info-box-text-small-padding'>{data[0].regularLogin[4]}</h3>
