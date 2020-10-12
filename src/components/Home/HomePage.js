@@ -65,10 +65,6 @@ class HomePage extends React.Component {
     }
 
     render() {
-        console.log('this.state.weather', this.state.weather)
-        console.log('this.state.tornadoFadeOut', this.state.tornadoFadeOut)
-        console.log('this.state.tsunamiFadeOut', this.state.tsunamiFadeOut)
-        console.log('this.state.back to neutal', this.state.backToNeutral)
         let tornadoFadeOut = this.state.tornadoFadeOut ? <AnimationsLayered speeds={[0.8]} animations={['tornadoFadeOut']} /> : ''
         let tsunamiFadeOut = this.state.tsunamiFadeOut ? <AnimationsLayered speeds={[0.8]} animations={['tsunamiFadeOut']} /> : ''
         let backToNeutral = this.state.backToNeutral ? <AnimationsLayered speeds={[0.8]} animations={['neutralBackground']} /> : ''

@@ -76,17 +76,12 @@ class TooHighRoute extends React.Component {
     decideStart() {
         if (this.state.expressedRecently == true) {
             this.setState({ areYouAtRisk: true })
-            console.log('one')
         }
         else if (this.state.expressedRecently == false && this.state.longerThanThreeDays == true) {
             this.setState({ awareOf: true })
-            console.log('two')
-
         }
         else if (this.state.longerThanThreeDays == false) {
             this.setState({ howLong: true })
-            console.log('three')
-
         };
     }
 
@@ -203,13 +198,10 @@ class TooHighRoute extends React.Component {
     }
 
     actionAfterReason() {
-        console.log('this.state.exercise', this.state.exercise)
         if (this.state.reason) {
             this.setState({ showNote: true })
         }
         else if (this.state.exercise) {
-            console.log('inside this.state.exercise')
-
             this.setState({ showRandomExercises: true })
         }
     }
