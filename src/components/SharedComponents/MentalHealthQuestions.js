@@ -482,7 +482,7 @@ export class TakeCareQuestion
 
     render() {
         return (
-            <div>
+            <div className='center-vertical padding-top-always'>
                 <h2 className='info-box-title'>{data[3].shared.takeCareQuestion}</h2>
                 <form className='button-container-vertical' onSubmit={this.handleTakeCareQuestionSubmit}>
                     <input className='free-form-input-vertical' placeholder="1" type="text" onChange={this.handletakeCareOne} />
