@@ -218,31 +218,46 @@ export function GetKeyByValue(object, value) {
     return Object.keys(object).find(key => object[key].includes(value));
 }
 
-// loops through all exercises that may have no data and returns an array of strings of ones that are non empty
-export function availableExercises(cb) {
+export function GetUnavailableExercises(array) {
+    console.log('array', array)
+    const user = firebase.auth().currentUser;
+    const uid = user.uid;
+    return database.ref(`users/${uid}/`).once('value').then(function(snapshot) {
+        return [snapshot, array];
+    });
+    
+}
 
-    const uid = firebase.auth().currentUser.uid;
-    database.ref(`users/${uid}/`).once('value', snapshot => {
-        let exs = [];
-        snapshot.forEach((child) => {
-            let childKey = child.key;
-            if (childKey == 'grateful') {
-                exs.push('gratitude');
-            }
-            else if (childKey == 'takeCare') {
-                exs.push('selfcare');
-            }
-            else if (childKey == 'pebbles') {
-                exs.push('positive');
-            }
-            else if (childKey == 'likeAboutSelf') {
-                exs.push('selflike');
-            }
-            else if (childKey == 'content') {
-                exs.push('content');
-            }
-        })
-        console.log(exs);
-        return exs;
+export function DoUnavailableExercises(values) {
+    var snapshot = values[0];
+    var initialArray = values[1];
+    let unavailable = ['gratitude', 'selfcare', 'positive', 'selflike', 'content', 'posThing'];
+    snapshot.forEach((child) => {
+        let childKey = child.key;
+        switch(childKey) {
+            case 'grateful':
+                unavailable = unavailable.filter(e => e !== 'gratitude');
+                break;
+            case 'takeCare':
+                unavailable = unavailable.filter(e => e !== 'selfcare');
+                break;
+            case 'pebbles':
+                unavailable = unavailable.filter(e => e !== 'positive')
+                break;
+            case 'likeAboutSelf':
+                unavailable = unavailable.filter(e => e !== 'selflike');
+                break;
+            case 'content':
+                unavailable = unavailable.filter(e => e !== 'content');
+                break;
+            case 'positiveThings':
+                unavailable = unavailable.filter(e => e !== 'posThing');
+                break;
+            default:
+        }
     })
+    console.log('unavailable', unavailable)
+    let newArray = initialArray.filter(val => !unavailable.includes(val))
+    console.log('newArray', newArray);
+    return newArray
 }
