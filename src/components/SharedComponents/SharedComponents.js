@@ -298,13 +298,14 @@ export class ReactFirebaseFileUpload extends React.Component {
     };
 
     render() {
-        const feedback = this.state.progress == 100 ? <h2>Thank you for uploading this memory</h2> : <h2></h2>;
+        const feedback = this.state.progress == 100 ? <p>Thank you for uploading this memory</p> : <p></p>;
         return (
-        <div>
-            {/* <progress value={this.state.progress} max="100" /> */}
-            <input className="transparent-button" type="file" onChange={this.handleChange} />
-            <button className="next-button-dark" onClick={this.handleUpload}>{this.state.progress == 0 ? <p>Upload</p> :<p>{"uploading " + this.state.progress + "%"}</p>}</button>
-            { feedback }
+        <div className="button-container-vertical">
+        <input className="max-width-photo-button" type="file" onChange={this.handleChange} />
+        <button className="next-button-dark max-width-input" onClick={this.handleUpload}>
+            {this.state.progress == 0 ? <span>Upload</span> :<span>{this.state.progress + "%"}</span>}
+        </button>
+        { feedback }
         </div>
         );
     }
@@ -580,7 +581,6 @@ export class TextWithButton extends React.Component {
     render() {
         return (
             <div>
-                <h1 className='info-box-title'>{this.props.text}</h1>
                 <div className='button-container'>
                     <button className='transparent-button' onClick={(e) => this.props.onClick(true)}>{this.props.buttonText}</button>
                 </div>
