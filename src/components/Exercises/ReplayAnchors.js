@@ -19,15 +19,15 @@ export default class ReplayAnchors extends React.Component {
     }
 
     getListOfAnchors = () => {
-        return new Promise(function(resolve) {
+        return new Promise(function (resolve) {
             listOfAnchors = [];
             const user = firebase.auth().currentUser;
             const uid = user.uid;
-            database.ref(`users/${uid}/anchors`).on('value', function(snap){
+            database.ref(`users/${uid}/anchors`).on('value', function (snap) {
                 for (let key in snap.val()) {
                     let anchorObj = {}
-                    anchorObj['name'] =  snap.val()[key]['name']
-                    anchorObj['number'] =  snap.val()[key]['number']
+                    anchorObj['name'] = snap.val()[key]['name']
+                    anchorObj['number'] = snap.val()[key]['number']
                     listOfAnchors.push(anchorObj);
                 }
                 resolve();
@@ -37,21 +37,22 @@ export default class ReplayAnchors extends React.Component {
 
 
     setAnchors = () => {
-        this.setState({listOfAnchors: listOfAnchors})
+        this.setState({ listOfAnchors: listOfAnchors })
     }
 
     render() {
         const list = this.state.listOfAnchors
         const listItems = list.map((d) => <p key={d.name}>{d.name} : {d.number}</p>);
         return (
-            <div className='info-box'>
-                <h1 className='info-box-title'>{data[10].home.anchors}</h1>
-                {listItems }
-                <div className='button-container'>
-                    <button className='next-button-dark free-form-submit extra-margin-top' onClick={this.props.buttonClick}>NEXT</button>
+                <div className="positive-padding">
+                    <h1 className='info-box-title'>{data[10].home.anchors}</h1>
+                    <div className="setHeight">
+                        {listItems}
+                    </div>
+                    <div className='button-container'>
+                        <button className='next-button-dark free-form-submit extra-margin-top' onClick={this.props.buttonClick}>NEXT</button>
+                    </div>
                 </div>
-            </div> 
-            
         )
     }
 }

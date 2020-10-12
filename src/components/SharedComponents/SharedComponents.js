@@ -11,6 +11,7 @@ import { CSSTransition } from 'react-transition-group';
 import { storage } from "../../firebase/firebase";
 import { Link } from 'react-router-dom';
 let listOfAnchors = [];
+import ReplayAnchors from '../Exercises/ReplayAnchors';
 
 //Is there anything you are aware of that has made you feel like this QUESTION
 export class ReasonForFeelings extends React.Component {
@@ -387,7 +388,8 @@ export class Contact extends React.Component {
         super(props);
         this.state = {
             showText: true,
-            showAnchors: false
+            showAnchors: false,
+            nextButton: false
         }
 
         this.showText = this.showText.bind(this);
@@ -406,7 +408,7 @@ export class Contact extends React.Component {
         return (
             <div>
                 <CSSTransition in={this.state.showText} timeout={2000} classNames="fade" unmountOnExit appear onExited={() => this.showText()}><h1 className='info-box-title'>{data[6].veryLow.questions.support}</h1></CSSTransition>
-                <CSSTransition in={this.state.showAnchors} timeout={2000} classNames="fade" unmountOnExit><AllRootsLowWithEnergy /></CSSTransition>
+                <CSSTransition in={this.state.showAnchors} timeout={2000} classNames="fade" unmountOnExit><ReplayAnchors buttonClick={this.props.buttonClick} /></CSSTransition>
             </div>
         )
     }

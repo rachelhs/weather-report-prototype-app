@@ -219,7 +219,7 @@ export function GetKeyByValue(object, value) {
 }
 
 // loops through all exercises that may have no data and returns an array of strings of ones that are non empty
-export function availableExercises(cb) {
+export function availableExercises() {
 
     const uid = firebase.auth().currentUser.uid;
     database.ref(`users/${uid}/`).once('value', snapshot => {
