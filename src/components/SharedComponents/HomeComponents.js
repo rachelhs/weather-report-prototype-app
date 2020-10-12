@@ -37,7 +37,7 @@ export class OneGratefulQuestion extends React.Component {
                 <form className='button-container-vertical' onSubmit={this.handlegratefulQuestionSubmit}>
                     <input className='free-form-input-vertical' placeholder="1" type="text" onChange={this.handlegratefulOne} />
                     <div className='button-container'>
-                        <button className='next-button free-form-submit' onClick={this.props.buttonClick}>NEXT</button>
+                        <button className='transparent-button free-form-submit' onClick={this.props.buttonClick}>NEXT</button>
                     </div>
                 </form>
             </div>
@@ -50,7 +50,7 @@ export class FishModal extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            show: null,
+            show: false,
             listOfGrateful: [],
             addButtonClicked: false
         }
@@ -125,7 +125,7 @@ export class AnchorsModal extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            show: null,
+            show: false,
             listOfAnchors: [],
             addButtonClicked: false
         }
@@ -187,8 +187,8 @@ export class AnchorsModal extends React.Component {
                     {this.state.addButtonClicked ?
                     <h3>{data[10].home.addToAnchors}</h3>
                     :
-                    <TextWithButton buttonText='add' text={data[10].home.addToAnchors} onClick={this.toggleAddAnchor.bind(this)} />}
-                    {this.state.toggleAddAnchor ? <AddAnchor /> : ''}
+                    <TextWithButton buttonText='yes' text={data[10].home.addToAnchors} onClick={this.toggleAddAnchor.bind(this)} />}
+                    {this.state.toggleAddAnchor ? [listOfAnchors = [], <AddAnchor />] : ''}
                 </ReactModal>
             </div>
         );
@@ -264,15 +264,11 @@ export class PebblesModal extends React.Component {
             this.setState({arrayIndex: number}) 
             let randomPebble = this.state.listOfPebbles[number];
             this.setState({pebbleToShow: randomPebble})
-            // console.log('random memory', this.state.pebbleToShow)
         }
     }
 
     selectRandomIndex() {
         let randomNumber = Math.floor(Math.random()*this.state.listOfPebbles.length)
-        // console.log('listOfPebbles.length', listOfPebbles.length)
-        // console.log('randomNumber', randomNumber)
-
         return randomNumber
     }
 
@@ -281,8 +277,6 @@ export class PebblesModal extends React.Component {
     }
 
     render() {
-        console.log('random',this.state.arrayIndex)
-        let renderedOutput = this.state.listOfPebbles.map((item, index) => <h1 key={index}>{item}</h1>)
         const customStyles = {
             overlay: {zIndex: 1000}
         };
@@ -304,7 +298,7 @@ export class PebblesModal extends React.Component {
                     { this.state.pebbleToShow && <h3>{this.state.pebbleToShow.reason}</h3> }
                     { photoMemory }
                     <div className="flex-center">
-                        <button className="next-button" onClick={this.selectAnotherMemory.bind(this)}>Look at another memory</button>
+                        <button className="transparent-button" onClick={this.selectAnotherMemory.bind(this)}>Look at another memory</button>
                     </div>
                 </ReactModal>
             </div>

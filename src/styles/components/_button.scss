@@ -13,7 +13,7 @@ button {
     z-index: 101;
     cursor: pointer;
     font-family: 'Quicksand', sans-serif;
-    font-weight: 700;
+    font-weight: 500;
     letter-spacing: 2px;
     font-weight: 400;
     border-radius: 0.5rem;
@@ -73,16 +73,33 @@ button:focus {
     padding: 0 15px 0 15px;
 }
 
-.next-button {
+.transparent-button {
     background: transparent;
-    border: 1px solid #3a3d7d;;
+    border: 1px solid #3a3d7d;
     min-width: 60px;
     color: #3a3d7d;
     margin: 5px;
     text-decoration: none;
     line-height: 35px;
     font-family: 'Quicksand', sans-serif;
-    font-weight: 700;
+    font-weight: 600;
+    letter-spacing: 2px;
+    border-radius: 0.5rem;
+    text-align: center;
+    font-size: 14px;
+    padding: 0 15px 0 15px;
+}
+
+.transparent-button:hover {
+    background: #3a3d7d !important;
+    border: 1px solid #3a3d7d;
+    min-width: 60px;
+    color: white;
+    margin: 5px;
+    text-decoration: none;
+    line-height: 35px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
     letter-spacing: 2px;
     border-radius: 0.5rem;
     text-align: center;
@@ -99,7 +116,7 @@ button:focus {
     margin: 5px;
     text-decoration: none;
     font-family: 'Quicksand', sans-serif;
-    font-weight: 700;
+    font-weight: 500;
     letter-spacing: 2px;
     border-radius: 0.5rem;
     text-align: center;
@@ -107,12 +124,20 @@ button:focus {
     padding: 7px 0 7px 0;
 }
 
+.extra-margin-bottom {
+    margin-bottom: 50px !important
+}
+
+.extra-margin-top {
+    margin-top: 100px !important
+}
+
 .back-button {
-    background: #3a3d7d !important;
-    border: none;
+    background: transparent;
+    border: 1px solid #3a3d7d;
     width: 80px;
     height: 40px;
-    color: white;
+    color: #3a3d7d;
     margin: 5px;
 }
 
@@ -128,6 +153,11 @@ button:focus {
 }
 
 .stack-button {
+    display: block;
+    margin: 10px auto;
+}
+
+.stack-button:hover {
     display: block;
     margin: 10px auto;
 }

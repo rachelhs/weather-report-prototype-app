@@ -10,19 +10,30 @@ export default class Gratitude extends React.Component {
         super(props);
 
         this.state = {
-            randomGratitude: ''
+            randomGratitude1: '',
+            randomGratitude2: '',
+            rand1: null,
+            rand2: null,
+            listOfGrateful: [],
         };
 
         this.getRandomGratitude = this.getRandomGratitude.bind(this);
     }
 
-    getRandomGratitude = () => {
+    componentDidMount = () => {
+        this.getRandomGratitude();
+    }
+    
+    selectRandomIndex() {
+        let randomNumber = Math.floor(Math.random() * this.state.listOfGrateful.length);
+        return randomNumber
+    }
 
+
+    getRandomGratitude = () => {
         const user = firebase.auth().currentUser;
         const uid = user.uid;
         let listOfKeys = [];
-        let rand = 0;
-        let entry = '';
 
         database.ref(`users/${uid}/grateful`)
         .on('value', (snapshot) => {
@@ -30,30 +41,42 @@ export default class Gratitude extends React.Component {
             snapshot.forEach((childSnapshot) => {
                 listOfKeys.push(childSnapshot.key);
             })
+            this.setState({listOfGrateful: listOfKeys}) 
             // pick a random entry
-            rand = Math.floor(Math.random() * listOfKeys.length);
-            const randKey = listOfKeys[rand];
-            database.ref(`users/${uid}/grateful/${randKey}`)
+            let rand1 = this.selectRandomIndex();
+            this.setState({rand1: rand1}) 
+            let rand2 = this.selectRandomIndex();
+            while (rand2 == this.state.rand1) {
+                rand2 = this.selectRandomIndex()
+            } 
+            if (rand2 !== this.state.rand1) {
+                this.setState({rand2: rand2}) 
+            }
+            database.ref(`users/${uid}/grateful/${listOfKeys[rand1]}`)
+            .on('value', (childSnapshot) => {
+                let entry1 = childSnapshot.val();
+                this.setState({ randomGratitude1: entry1 });
+            })
+            database.ref(`users/${uid}/grateful/${listOfKeys[rand2]}`)
             .on('value', (childSnapshot) => {
                 console.log(childSnapshot.val());
-                entry = childSnapshot.val();
-                this.setState({ randomGratitude: entry });
-
+                let entry2 = childSnapshot.val();
+                this.setState({ randomGratitude2: entry2 });
             })
         })
     }
 
-    componentDidMount = () => {
-        this.getRandomGratitude();
-    }
-
-    render() 
-    
-    {
+    render() {
         return (
-            <div>
-            <h1 className='info-box-title'>{data[3].shared.gratitudeReplayStatement}</h1>
-            <h1 className='info-box-title'>{this.state.randomGratitude}</h1>
+            <div className="positive-padding">
+                <h2 className='info-box-title-no-padding'>{data[3].shared.gratitudeReplayStatement}</h2>
+                <div className="gratitudeBox">
+                    <h2>{this.state.randomGratitude1}</h2>
+                    <h2>{this.state.randomGratitude2}</h2>
+                </div>
+                <div className='button-container'>
+                    <button className='next-button-dark free-form-submit extra-margin-top' onClick={this.props.buttonClick}>NEXT</button>
+                </div>
             </div>
         )
     }

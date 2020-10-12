@@ -18,6 +18,8 @@ and (min-device-width: 319px) and (max-device-width: 736px) {
 
 html {
     font-size: 62.5%;
+    height: 100%;
+    overflow: auto
 }
 
 body {
@@ -30,6 +32,7 @@ body {
 p {
     font-family: 'Quicksand', sans-serif;
     font-size: 16px;
+    text-align: center;
 }
 
 h1 {
@@ -42,6 +45,8 @@ h1 {
 h2 {
     font-family: 'Quicksand', sans-serif;
     font-weight: 500;
+    font-size: 19px;
+    text-align: center;
 }
 
 h3 {

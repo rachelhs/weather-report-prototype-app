@@ -37,14 +37,15 @@
             "takeCareQuestion": "What 3 things do you do to take care of yourself and keep well?  It could be things like taking a shower, doing the washing or going for a walk.",
             "enjoyQuestion": "What 3 things do you enjoy?",
             "likeAboutYourselfQuestion": "Sometimes we can forget nice things we like about ourselves. Heres some things you’ve liked about yourself in the past",
-            "gratitudeReplayStatement": "Sometimes our mind plays tricks on us and we forget the wider perspective. Here are some things that you were previously grateful for",
-            "likeReplayStatement": "[CHECK THIS] Recently, you said that this is something you like about yourself",
+            "gratitudeReplayStatement": "Sometimes we forget the bigger picture. Here are some things that you said you were grateful for.",
+            "likeReplayStatement": "Sometimes we can forget nice things we like about ourselves. Here are some things you’ve liked about yourself in the past.",
             "posReplayStatement": "Sometimes we forget we’ve had some great times in our lives, Here are some positive memories from your life",
             "safeQuestion": "Are you keeping yourself safe?",
             "support": "Have you contacted your supporters?",
             "contentReplayStatement": "Sometimes we can forget times where we have felt content and OK. Here are some memories of sometimes from your life that you’ve felt OK to remind you that you can feel this again",
             "reminderQuestion": "Would you like to be reminded of this time in the future?",
             "photoAsk": "Do you want to take a photo?",
+            "replayCare": "Sometimes we forget how to take care of yourself. Here are some previous things that you’ve mentioned that you could do to help yourself.",
             "acknowledge": {
                 "low": "I’m sorry you are feeling like this",
                 "mediumLow": "I’m sorry you are feeling like this",
@@ -62,13 +63,15 @@
                 "low": ["You are not alone in these feelings, many people feel like this at some point in their lives. You can work through this", "Don’t give up, one day you will look back, and be glad you didn’t"],
                 "lowWithEnergy": ["'Even the darkest night will end, and the sun will rise' Victor Hugo", "Don’t give up, one day you will look back, and be glad you didn’t","I won’t say have a good day. Instead I advise you, to have a day. Stay alive, feed yourself well, wear comfortable clothes, and don’t give up on yourself just yet. It’ll get better. Until then, have a day"],
                 "suicidal": ["Lots of people have felt like this before. It may seem like things won’t change but all feelings eventually pass.", "Don’t give up, one day you will look back, and be glad you didn’t","I won’t say have a good day. Instead I advise you, to have a day. Stay alive, feed yourself well, wear comfortable clothes, and don’t give up on yourself just yet. It’ll get better. Until then, have a day"]
+            },
+            "exercises": {
+                "groundingText": "Grounding does what it says on the tin – it literally grounds us. It seeks to place us firmly back in the moment, fully in connection with ourselves and the world around us. Focusing on the senses can really ground us – Sound, Smell, Taste, Sight, Touch and Breathing"
             }
         }
     },
     {
         "mediumLow": {
             "questions": {
-                "posThing": "What's one small thing you can do to make yourself feel a bit better? It could be something like going outside, having your favourite drink or throwing some rubbish away",
                 "friendLike": "What’s one thing a friend would say they like about you?"
             },
             "positiveStatements": ["A feeling is not who you are", "It is ok to rest today"]
@@ -88,8 +91,8 @@
                 "safe": "Are you keeping yourself safe?",
                 "posThing": "What’s one small thing you can do to make yourself feel better?",
                 "contacted": "Have you contacted your supporters?",
-                "support": "It can really help to get some personal or professional help on this",
-                "roots": "Sometimes we forget we have support in our lives Remember you can always talk to someone and there are people who care about you",
+                "support": "It may help to talk to someone you know or to get some professional support",
+                "roots": "Sometimes we forget we have support in our lives. Remember you can always talk to someone and there are people who care about you",
                 "exHelped": "Did this help?"
             }
         }
@@ -123,8 +126,10 @@
                 "pass": "These feelings will pass, however it seems you need to get support now.",
                 "samaritans": "Call 999 or the Samaritans on 116 123 for free or",
                 "help": "That's Good. Are you getting the help you need?",
+                "help2": "Are you getting the help you need?",
                 "crisis": "We think you should call Bristol Mental Health Crisis Team on 0300 555 0334 or visit",
                 "crisis2": "for more support",
+                "afterCrisis": "If the crisis team can't help immediately and you are still at risk please ring 999 or Samaritans",
                 "spoken": "Have you spoken to anyone about how you feel?",
                 "reach": "It could help to reach out to one of your roots"
             }
@@ -164,13 +169,13 @@
             "bluesky": ["Gentle","Neutral","OK","Content","Relaxed","Calm","Nothing","Blocked","Dazed","Stuck"],
             "light-clouds": ["Nothing","Blocked","Dazed","Stuck","Anxious","Neutral","OK","Relaxed","Calm","Confused","Impatient"],
             "grey-cloud": ["Nothing","Blocked","Dazed","Stuck","Anxious","Neutral","OK","Gentle","Isolated","Lonely","Nervous","Uneasy","Stupid","Lazy","Unhappy","Worried","Low"],
-            "cloud-rain-threat": ["Anxious","Regret","Scared","Unhappy","Worried","Lonely","Sad","Lost","Miserable","Empty","Hurt","Exhausted","Gentle","Neutral","Relentless","Rejected","Awful","Depressed"],
-            "dark-clouds": ["Anxious","Distressed","Lost","Miserable","Awful","Crushed","Bleak","Broken","Panic","Desperate","Depressed"],
+            "purple-rain": ["Anxious","Regret","Scared","Unhappy","Worried","Lonely","Sad","Lost","Miserable","Empty","Hurt","Exhausted","Gentle","Neutral","Relentless","Rejected","Awful","Depressed"],
+            "turquoise-rain": ["Anxious","Distressed","Lost","Miserable","Awful","Crushed","Bleak","Broken","Panic","Desperate","Depressed"],
             "tornado": ["Angry","Outraged","Furious","Greed","Jealousy","Risky","Panic","Crushed","Desperate","Broken","Anxious","Depressed","Manic","Overwhelmed","Excited","Adventurous","Energetic"],
             "tsunami": ["Suicidal","Shame","Risky","Panic","Anxious","Angry","Bleak","Broken","Desperate","Worthless","Humiliated","Depressed","Manic","Overwhelmed"]
         },
         "secondaryWords": ["Overwhelmed","Anxious","Depressed","Uneasy","Worried","Careless","Exhausted","Risky","Bleak","Nothing","OK","Dazed","Creative","Calm","Hopeful","Happy","Angry"],
-        "symbols" : ["rainbow", "sunshine", "bluesky", "light-clouds", "grey-cloud", "cloud-rain-threat", "dark-clouds", "tsunami", "tornado"],
+        "symbols" : ["rainbow", "sunshine", "bluesky", "light-clouds", "grey-cloud", "purple-rain", "turquoise-rain", "tsunami", "tornado"],
         "categories": {
             "one":["Invincible","Manic","Over stimulated","Overwhelmed","Flighty","Panic","Careless"],
             "two": ["Ecstatic","Loved or Love","Happy","Adventurous","Excited","Brave","Confident","Playful","Curious","Energetic","Feisty","Hopeful","Creative","Kind","Stimulated","Pleased"],
@@ -179,7 +184,7 @@
             "five": ["Confused","Impatient","Isolated","Lonely","Nervous","Uneasy","Stupid","Lazy","Unhappy","Worried","Regret","Low","Scared","Anxious"],
             "six": ["Sad","Lost","Miserable","Empty","Hurt","Exhausted","Relentless","Rejected","Awful","Distressed","Depressed"],
             "seven": ["Crushed","Bleak","Broken","Desperate","Worthless","Humiliated","Shame","Alienated"],
-            "eight": ["Angry","Outraged","Furious","Greed","Jealousy","Risky","Panic"],
+            "eight": ["Angry","Outraged","Furious","Greed","Jealousy","Risky"],
             "nine": ["Suicidal"]
         }
     },

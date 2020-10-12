@@ -4,9 +4,16 @@ import { PositiveThingQuestion, FriendsLikeQuestion } from '../SharedComponents/
 import { isLongerThanThreeDays, randomQuestionNumber, chooseAnotherRandomExercise } from '../../actions/route-functions';
 import { CSSTransition } from "react-transition-group";
 import { ChooseExercise } from '../Exercises/ChooseExercise';
-import { SetExercises } from '../Exercises/SetExercises';
+
 import '../../styles/animation.css';
 const data = require('../../data/data.json');
+
+// all exercises
+import { Meditating } from '../Exercises/TextBasedExercises';
+import Gratitude from '../Exercises/ReplayGratitude';
+import PositiveMemory from '../Exercises/ReplayPosMemories';
+import LikeAboutSelf from '../Exercises/ReplayLikeAboutSelf';
+import ReplayCare from '../Exercises/ReplayCare';
 
 class MediumLowRoute extends React.Component {
 
@@ -36,6 +43,7 @@ class MediumLowRoute extends React.Component {
 
     // method called as soon as all elements on the page are rendered & changed showAcknowledge to false after 3 seconds. This will hide the statement.
     componentDidMount() {
+
         if (typeof this.props.location.state != 'undefined' || this.props.location.state != null) {
             let weatherFadeIn = this.props.location.state.weatherSymbol + "FadeIn"
             this.setState({ weatherFadeIn: weatherFadeIn });
@@ -52,11 +60,9 @@ class MediumLowRoute extends React.Component {
         const positiveArray = data[4].mediumLow.positiveStatements;
         this.setState({ randPositive: randomQuestionNumber(positiveArray.length) });
         // setting exercise
-        //let exercise = ChooseExercise(['breathing']);
         let exercise = ChooseExercise(['meditating', 'gratitude', 'positive', 'selflike', 'selfcare']);
         this.setState({ exercise: exercise });
         setTimeout(() => { this.setState({ showRandomPositiveStatement: false }) }, 3000)
-
         setTimeout(() => { this.setState({ neutralAnimation: false, mediumLowFadeIn: true }) }, 500)
         setTimeout(() => {
             setInterval(() => {
@@ -81,7 +87,7 @@ class MediumLowRoute extends React.Component {
     }
 
     // Function will fade random positive statement after 3 seconds
-    showThenFade() { setTimeout(() => { this.setState({ showRandomPositiveStatement: false }) }, 3000) }
+    showThenFade() { setTimeout(() => { this.setState({ showRandomPositiveStatement: false }) }, 4000) }
 
     // called from button click on the how long have you been feeling this way component. This then hides the div.
     answeredHowLong() { this.setState({ showHowLong: false }) }
@@ -115,24 +121,19 @@ class MediumLowRoute extends React.Component {
         this.setState({ showRandomExercises: true })
     }
 
-    // called on 'next' button click when user has seen an exercise
-    seenExercise() {
-        this.setState({ showRandomExercises: false })
-    }
-
     // called on onexit after a random exercise and asks user if they want another
     askAnotherExerciseQuestion() {
-        this.setState({ showAnotherExerciseQuestion: true })
+        this.setState({ showAnotherExerciseQuestion: true, showRandomExercises: false })
     }
 
     // called when user presses 'yes' or 'no' to another question
     answeredAnotherExerciseQuestion(another) {
-        console.log('another', another)
         another ? (this.chooseAnotherExercise()) : this.setState({ showAnotherExerciseQuestion: false, yesAnotherExercise: false })
     }
 
     // returns a random exercise that isn't the same as the one just seen
     chooseAnotherExercise() {
+
         let exerciseArray = chooseAnotherRandomExercise(['meditating', 'gratitude', 'positive', 'selflike', 'selfcare'], this.state.exercise);
         this.setState({ showAnotherExerciseQuestion: false, yesAnotherExercise: true });
         let exercise = ChooseExercise(exerciseArray);
@@ -142,8 +143,17 @@ class MediumLowRoute extends React.Component {
     // goes back to random exercises if user has previously clicked yes
     afterAskAnotherQuestion() { this.state.yesAnotherExercise ? this.setState({ showRandomExercises: true }) : this.setState({ showRandomExercise: false, showFeedbackStatement: true }) }
 
+    SetExercises = (exercise) => {
+        if (exercise == 'meditating') { return <Meditating buttonClick={this.askAnotherExerciseQuestion.bind(this)}/> }
+        if (exercise == 'positive') { return <PositiveMemory buttonClick={this.askAnotherExerciseQuestion.bind(this)} /> }
+        if (exercise === 'selflike') { return <LikeAboutSelf buttonClick={this.askAnotherExerciseQuestion.bind(this)}/> }
+        if (exercise === 'selfcare') { return <ReplayCare buttonClick={this.askAnotherExerciseQuestion.bind(this)}/> }
+        if (exercise == 'gratitude') { return <Gratitude buttonClick={this.askAnotherExerciseQuestion.bind(this)}/> }
+    }
+
     render() {
         const randomQuestion = this.state.randQues == 0 ? <PositiveThingQuestion buttonClick={this.answeredRandomQuestion.bind(this)} /> : <FriendsLikeQuestion buttonClick={this.answeredRandomQuestion.bind(this)} />;
+        const showQuestionorExercise = this.state.showRandomExercises ? <div> {this.SetExercises(this.state.exercise)}</div> : ''
         return (
             <div>
                 <CSSTransition in={this.state.neutralAnimation} timeout={4000} classNames="fade-enter-only" unmountOnExit>
@@ -162,10 +172,10 @@ class MediumLowRoute extends React.Component {
                     <CSSTransition in={this.state.showReasonInput} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.showRandQuestion()}><ReasonForFeelingsInput buttonClick={this.answeredReasonInput.bind(this)} /></CSSTransition>
                     <CSSTransition in={this.state.showRandomQuestions} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.showRandomPositiveStatement()}>{randomQuestion}</CSSTransition>
                     <CSSTransition in={this.state.showRandomPositiveStatement} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.showRandomExercise()}><h1 className='info-box-title'>{data[4].mediumLow.positiveStatements[this.state.randPositive]}</h1></CSSTransition>
-                    <CSSTransition in={this.state.showRandomExercises} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.askAnotherExerciseQuestion()}><div className='exercise-container'><div>{SetExercises(this.state.exercise)}</div><button className='next-button-dark' onClick={this.seenExercise.bind(this)}>NEXT</button></div></CSSTransition>
                     <CSSTransition in={this.state.showAnotherExerciseQuestion} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.afterAskAnotherQuestion()}><div><AnotherExerciseQuestion onClick={this.answeredAnotherExerciseQuestion.bind(this)} /></div></CSSTransition>
                     <CSSTransition in={this.state.showFeedbackStatement} timeout={2000} className="fade" unmountOnExit><FeedbackStatement route={this.state.route} weather={this.state.weatherSymbol}/></CSSTransition>
                 </div>
+                { showQuestionorExercise }
             </div>
         );
     }

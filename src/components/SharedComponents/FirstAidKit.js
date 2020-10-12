@@ -3,7 +3,7 @@ const data = require('../../data/data.json');
 import React from 'react';
 import { CSSTransition } from 'react-transition-group';
 import ReactModal from 'react-modal';
-import { SetExercises } from '../Exercises/SetExercises';
+
 import { AllRoots } from '../SharedComponents/SharedComponents';
 
 // First Aid Kit
@@ -91,11 +91,11 @@ export class FirstAidKit extends React.Component {
                     <div><h1 className='info-box-title'>{data[7].firstAid.questions.help}</h1><h1 className='info-box-title'>{data[7].firstAid.questions.need}</h1></div></CSSTransition>
                 <CSSTransition in={this.state.showOptions} timeout={2000} classNames="fade" unmountOnExit>
                     <div className='button-container-vertical'>
-                        <button onClick={this.handleOpenModalGrounding} className='next-button'>Grounding Exercise</button>
-                        <button onClick={this.handleOpenModalRoots} className='next-button'>Reach out to Supporters / Roots</button>
-                        <button onClick={this.handleOpenModalGP} className='next-button'>Reach out to GP / Support Worker</button>
-                        <button onClick={this.handleOpenModalCrisis} className='next-button'>Call Bristol Mental Health Crisis Team: 0300 555 0334</button>
-                        <button onClick={this.handleOpenModal999} className='next-button'>Ring 999 or go to A & E</button>
+                        <button onClick={this.handleOpenModalGrounding} className='transparent-button'>Grounding Exercise</button>
+                        <button onClick={this.handleOpenModalRoots} className='transparent-button'>Reach out to Supporters / Roots</button>
+                        <button onClick={this.handleOpenModalGP} className='transparent-button'>Reach out to GP / Support Worker</button>
+                        <button onClick={this.handleOpenModalCrisis} className='transparent-button'>Call Bristol Mental Health Crisis Team: 0300 555 0334</button>
+                        <button onClick={this.handleOpenModal999} className='transparent-button'>Ring 999 or go to A & E</button>
 
                         <ReactModal
                             isOpen={this.state.showModalGrounding}

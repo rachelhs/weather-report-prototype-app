@@ -21,7 +21,7 @@ export class IntroPage extends React.Component {
     };
 
     reRoute() {
-        const date = moment().format("DD-MM-YYYY");
+        const date = moment().format("YYYY-MM-DD");
         const uid = firebase.auth().currentUser.uid;        // check if they have entered WR more 
         let entries = database.ref(`users/${uid}/weatherReports/${date}`);
         entries.on('value', function(snapshot) {
@@ -51,7 +51,7 @@ export class IntroPage extends React.Component {
         return (
             <div className='container'>
                     <CSSTransition in={this.state.showIntro} timeout={2000} classNames="fade" appear unmountOnExit onExited={() => this.reRoute()}>
-                        <div class="center-vertical">
+                        <div className="center-vertical">
                             <h1>Weather Report</h1>
                         </div>
                     </CSSTransition>
