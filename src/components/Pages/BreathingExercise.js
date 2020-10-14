@@ -39,7 +39,7 @@ export class BreathingExercise extends React.Component {
             <div>
                 <CSSTransition in={this.state.breathing} timeout={2000} classNames="fade" unmountOnExit>
                     <div>
-                        < Breathing buttonClick={this.backButton.bind(this)}/>
+                        <Breathing buttonClick={this.backButton.bind(this)}/>
                     </div>
                 </CSSTransition>
             </div>

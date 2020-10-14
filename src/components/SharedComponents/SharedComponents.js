@@ -545,12 +545,26 @@ export class AllRootsWithNext extends React.Component {
     }
 }
 
-// Generalised piece of text with next buttonß
+// Generalised piece of text with next button
 export class TextWithNext extends React.Component {
     render() {
         return (
             <div>
                 <h1 className='info-box-title'>{this.props.text}</h1>
+                <div className='button-container'>
+                    <button className='next-button-dark' onClick={(e) => this.props.onClick(true)}>NEXT</button>
+                </div>
+            </div>
+        )
+    }
+}
+
+// Generalised piece of text with next button larger text
+export class TextWithNextOnboarding extends React.Component {
+    render() {
+        return (
+            <div>
+                <h1>{this.props.text}</h1>
                 <div className='button-container'>
                     <button className='next-button-dark' onClick={(e) => this.props.onClick(true)}>NEXT</button>
                 </div>

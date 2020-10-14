@@ -6,7 +6,7 @@ import { CSSTransition } from "react-transition-group";
 const data = require('../../data/data.json');
 const firebase = require('firebase/app');
 import exampleImage from '../../images/graph-example.png';
-
+import { history } from '../../routers/AppRouter';
 
 export class Logout extends React.Component {
     startLogout() {
@@ -56,6 +56,8 @@ export class FirstAid extends React.Component {
     clickGrounding() {
         if (this.state.buttonsDisabled) {
             this.setState({ showButtonDisabledMessage: true })
+        } else {
+            history.push('/grounding-exercise');
         }
     }
 
@@ -63,9 +65,7 @@ export class FirstAid extends React.Component {
         if (this.state.buttonsDisabled) {
             this.setState({ showButtonDisabledMessage: true })
         } else {
-            this.props.history.push({
-                pathname: '/breathing-exercise',
-            })
+            history.push('/breathing-exercise');
         }
     }
 
