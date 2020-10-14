@@ -3,6 +3,7 @@ import { AnimationsLayered, SuicidalAcknowledgement, HowLongHaveYouFeltLikeThis,
 import { isLongerThanThreeDays, expressedSuicidalRecently } from '../../actions/route-functions';
 import { SpokenToQ, GettingHelp1, GettingHelp2 } from '../SharedComponents/MentalHealthQuestions';
 import { CSSTransition } from "react-transition-group";
+import { AnchorsWithoutAddOption } from '../SharedComponents/HomeComponents';
 import '../../styles/animation.css';
 const data = require('../../data/data.json');
 
@@ -237,7 +238,7 @@ class SuicidalRoute extends React.Component {
                     <CSSTransition in={this.state.afterCrisisTeam} timeout={2000} classNames="fade" unmountOnExit onEnter={() => { this.triggerTimeout('afterCrisisTeam') }} onExited={() => { this.showSamaritans() }}><h1>{data[8].suicidal.questions.afterCrisis}</h1></CSSTransition>
                     <CSSTransition in={this.state.showCrisisTeam} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.showAfterCrisis() }}><Crisis onClick={this.leaveCrisis.bind(this)} /></CSSTransition>
 
-                    <CSSTransition in={this.state.showAnchors} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.show('showGettingHelp2') }}><AllRootsWithNext onClick={this.leaveAnchors.bind(this)} /></CSSTransition>
+                    <CSSTransition in={this.state.showAnchors} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.show('showGettingHelp2') }}><AnchorsWithoutAddOption onClick={this.leaveAnchors.bind(this)} /></CSSTransition>
 
                     <CSSTransition in={this.state.showGettingHelp1} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterHelp1() }}><GettingHelp1 onClick={this.leaveGettingHelp1.bind(this)} /></CSSTransition>
 

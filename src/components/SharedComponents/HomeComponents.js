@@ -95,13 +95,13 @@ export class FishModal extends React.Component {
     render() {
         let renderedOutput = this.state.listOfGrateful.map((item, index) => <li className="grateful-text" key={index}>{item}</li>)
         const customStyles = {
-            overlay: {zIndex: 1000}
+            overlay: { zIndex: 1000 }
         };
         return (
             <div>
                 {(this.props.fishAppears === true) ?
-                <Button className='clickableFish' variant="primary" onClick={this.handleShow.bind(this)}></Button> 
-                : ''}
+                    <Button className='clickableFish' variant="primary" onClick={this.handleShow.bind(this)}></Button>
+                    : ''}
                 <ReactModal style={customStyles} className='modalPebbles' isOpen={this.state.show} ariaHideApp={false}>
                     <div className="flex-center">
                         <button className='menu-close' type="button" onClick={this.handleClose.bind(this)}>
@@ -112,7 +112,7 @@ export class FishModal extends React.Component {
                     <ul>
                         {renderedOutput}
                     </ul>
-                    {this.state.addButtonClicked ? 
+                    {this.state.addButtonClicked ?
                         <h3>{data[10].home.addToFish}</h3> :
                         <TextWithButton buttonText='Add another' text={data[10].home.addToFish} onClick={this.toggleAddGratitude.bind(this)} />
                     }
@@ -174,7 +174,7 @@ export class AnchorsModal extends React.Component {
     render() {
         const renderedOutput = this.state.listOfAnchors.map((d) => <p key={d.name}>{d.name} : {d.number}</p>);
         const customStyles = {
-            overlay: {zIndex: 1000}
+            overlay: { zIndex: 1000 }
         };
         return (
             <div>
@@ -188,10 +188,72 @@ export class AnchorsModal extends React.Component {
                     <h1>{data[10].home.anchors}</h1>
                     {renderedOutput}
                     {this.state.addButtonClicked ?
-                    <h2>Add another anchor here:</h2>
-                    :
-                    <TextWithButton buttonText='ADD ANCHOR' text={data[10].home.addToAnchors} onClick={this.toggleAddAnchor.bind(this)} />}
+                        <h2>Add another anchor here:</h2>
+                        :
+                        <TextWithButton buttonText='ADD ANCHOR' text={data[10].home.addToAnchors} onClick={this.toggleAddAnchor.bind(this)} />}
                     {this.state.toggleAddAnchor ? [listOfAnchors = [], <AddAnchor />] : ''}
+                </ReactModal>
+            </div>
+        );
+    }
+}
+
+export class AnchorsWithoutAddOption extends React.Component {
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            show: true,
+            listOfAnchors: [],
+            addButtonClicked: false
+        }
+    }
+
+    handleShow = () => {
+        this.setState({
+            show: true,
+        })
+    }
+
+    componentDidMount() {
+        this.getListOfAnchors();
+    }
+
+    getListOfAnchors = () => {
+        listOfAnchors = [];
+        const user = firebase.auth().currentUser;
+        const uid = user.uid;
+
+        database.ref(`users/${uid}/anchors`)
+            .on('value', (snapshot) => {
+                // get list of keys for each entry
+                snapshot.forEach((childSnapshot) => {
+                    let anchorObj = {}
+                    anchorObj['name'] = childSnapshot.val().name;
+                    anchorObj['number'] = childSnapshot.val().number;
+                    listOfAnchors.push(anchorObj);
+                })
+                this.setState({ listOfAnchors: listOfAnchors })
+            })
+    }
+
+    render() {
+        const renderedOutput = this.state.listOfAnchors.map((d) => <p key={d.name}>{d.name} : {d.number}</p>);
+        const customStyles = {
+            overlay: { zIndex: 1000 }
+        };
+        return (
+            <div>
+                <ReactModal style={customStyles} className='modalPebbles' isOpen={this.state.show} ariaHideApp={false}>
+                    <div className="flex-center">
+                    </div>
+                    <h1>{data[8].suicidal.questions.reach}</h1>
+                    {renderedOutput}
+                    <div className='button-container'>
+                        <button className='next-button-dark' type="button" onClick={this.props.onClick}>
+                            NEXT
+                </button>
+                    </div>
                 </ReactModal>
             </div>
         );
@@ -228,11 +290,11 @@ export class PebblesModal extends React.Component {
     }
 
     getListOfPebbles() {
-        return new Promise(function(resolve) {
+        return new Promise(function (resolve) {
             listOfPebbles = [];
             const user = firebase.auth().currentUser;
             const uid = user.uid;
-            database.ref(`users/${uid}/pebbles`).on('value', function(snap){
+            database.ref(`users/${uid}/pebbles`).on('value', function (snap) {
                 for (let key in snap.val()) {
                     for (let key2 in snap.val()[key]) {
                         let pebbleObj = {}
@@ -251,27 +313,27 @@ export class PebblesModal extends React.Component {
     }
 
     setRandomPebble = () => {
-        this.setState({listOfPebbles: listOfPebbles})
+        this.setState({ listOfPebbles: listOfPebbles })
         let number = this.selectRandomIndex()
-        this.setState({arrayIndex: number}) 
+        this.setState({ arrayIndex: number })
         let randomPebble = this.state.listOfPebbles[number];
-        this.setState({pebbleToShow: randomPebble})
+        this.setState({ pebbleToShow: randomPebble })
     }
 
     selectAnotherMemory() {
         let number = this.selectRandomIndex()
         while (number == this.state.arrayIndex) {
             number = this.selectRandomIndex()
-        } 
+        }
         if (number !== this.state.arrayIndex) {
-            this.setState({arrayIndex: number}) 
+            this.setState({ arrayIndex: number })
             let randomPebble = this.state.listOfPebbles[number];
-            this.setState({pebbleToShow: randomPebble})
+            this.setState({ pebbleToShow: randomPebble })
         }
     }
 
     selectRandomIndex() {
-        let randomNumber = Math.floor(Math.random()*this.state.listOfPebbles.length)
+        let randomNumber = Math.floor(Math.random() * this.state.listOfPebbles.length)
         return randomNumber
     }
 
@@ -281,11 +343,11 @@ export class PebblesModal extends React.Component {
 
     render() {
         const customStyles = {
-            overlay: {zIndex: 1000}
+            overlay: { zIndex: 1000 }
         };
         const photoMemory = this.state.pebbleToShow && this.state.pebbleToShow.url ?
-        <img src={this.state.pebbleToShow.url} alt="photo of your recorded memory" width="100%"/>
-        : '';
+            <img src={this.state.pebbleToShow.url} alt="photo of your recorded memory" width="100%" />
+            : '';
         return (
             <div>
                 <Button className='clickablePebble' variant="primary" onClick={this.handleShow.bind(this)}></Button>
@@ -297,9 +359,9 @@ export class PebblesModal extends React.Component {
                         </button>
                     </div>
                     <h1>Pebble Memories</h1>
-                    { this.state.pebbleToShow && <h3>{this.state.pebbleToShow.date} - {this.state.pebbleToShow.time}</h3> }
-                    { this.state.pebbleToShow && <h3>{this.state.pebbleToShow.reason}</h3> }
-                    { photoMemory }
+                    {this.state.pebbleToShow && <h3>{this.state.pebbleToShow.date} - {this.state.pebbleToShow.time}</h3>}
+                    {this.state.pebbleToShow && <h3>{this.state.pebbleToShow.reason}</h3>}
+                    {photoMemory}
                     <div className="flex-center">
                         <button className="transparent-button" onClick={this.selectAnotherMemory.bind(this)}>Look at another memory</button>
                     </div>
