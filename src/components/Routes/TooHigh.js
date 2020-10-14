@@ -3,7 +3,6 @@ import { HowLongHaveYouFeltLikeThis, RiskOfHarmTooHigh, PlanQ, PlanningQ, Feelin
 import { SpokenToQ, GettingHelp1, GettingHelp2 } from '../SharedComponents/MentalHealthQuestions'
 import { isLongerThanThreeDays, expressedTooHighRecently } from '../../actions/route-functions';
 import { CSSTransition } from "react-transition-group";
-
 import { ChooseExercise } from '../Exercises/ChooseExercise';
 import { AnimationsLayered } from '../SharedComponents/SharedComponents'
 
@@ -12,6 +11,7 @@ import '../../styles/animation.css';
 // import exercises
 import { Breathing, Grounding, SafePlace } from '../Exercises/TextBasedExercises';
 import ReplayAnchors from '../Exercises/ReplayAnchors';
+import { AnchorsWithoutAddOption } from '../SharedComponents/HomeComponents';
 
 class TooHighRoute extends React.Component {
 
@@ -259,7 +259,7 @@ class TooHighRoute extends React.Component {
                     <CSSTransition in={this.state.showFeelingsPass} timeout={2000} onEnter={() => { this.triggerTimeout() }} onExited={() => { this.showCrisisTeam() }} classNames="fade" unmountOnExit><FeelingsPassStatement /></CSSTransition>
                     <CSSTransition in={this.state.showSamaritans} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.showAnchors() }}><Samaritans onClick={this.actionAfterSamaritans.bind(this)} /></CSSTransition>
                     <CSSTransition in={this.state.showCrisisTeam} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.showSamaritans() }}><Crisis onClick={this.leaveCrisis.bind(this)} /></CSSTransition>
-                    <CSSTransition in={this.state.showAnchors} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.showGettingHelp2() }}><AllRootsWithNext onClick={this.leaveAnchors.bind(this)} /></CSSTransition>
+                    <CSSTransition in={this.state.showAnchors} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.showGettingHelp2() }}><AnchorsWithoutAddOption onClick={this.leaveAnchors.bind(this)} /></CSSTransition>
 
                     <CSSTransition in={this.state.showGettingHelp1} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterHelp1() }}><GettingHelp1 onClick={this.leaveGettingHelp1.bind(this)} /></CSSTransition>
 
