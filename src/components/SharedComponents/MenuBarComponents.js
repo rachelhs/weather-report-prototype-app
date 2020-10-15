@@ -192,7 +192,7 @@ export class Report extends React.Component {
     isMobileCheck() {
         const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
         if(isMobile) {
-            this.setState({ analysisImage: analysisImageMobile })
+            this.setState({ analysisImage: analysisImageDesktop })
         }
         else {
             this.setState({ analysisImage: analysisImageDesktop })
@@ -228,7 +228,7 @@ export class Report extends React.Component {
                     </div>
                     {this.state.showAnalysis ?
                         <div><img className='analysis-image-desktop' src={this.state.analysisImage} alt="analysis of mood"></img><div className='hide-analysis-button'>
-                            <button className='login-button' type="button" onClick={this.hideAnalysisImage.bind(this)}>HIDE</button>
+                            <button className='login-button-no-margin' type="button" onClick={this.hideAnalysisImage.bind(this)}>HIDE</button>
                         </div></div> :
                         <div className="flex-center">
                             <button className='login-button' type="button" onClick={this.showAnalysisImage.bind(this)}>SHOW PAST</button>
