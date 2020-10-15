@@ -11,6 +11,8 @@ const exclusionArray = [
     '/choosesymbol',
     '/symbol-description',
     '/symbol-more-detail',
+    '/breathing-exercise',
+    '/grounding-exercise',
 ]
 
 export const PrivateRoute = ({ 

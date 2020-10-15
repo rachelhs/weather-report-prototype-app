@@ -103,8 +103,8 @@ class Nothing extends React.Component {
 
     SetExercises = (exercise) => {
         if (exercise == 'meditating') { return <Meditating buttonClick={this.askAnotherExerciseQuestion.bind(this)}/> }
-        if (exercise == 'grounding') { return <Grounding buttonClick={this.askAnotherExerciseQuestion.bind(this)}/> }
-        if (exercise == 'breathing') { return <Breathing buttonClick={this.askAnotherExerciseQuestion.bind(this)}/> }
+        if (exercise == 'grounding') { return <Grounding buttonValue={"NEXT"} buttonClick={this.askAnotherExerciseQuestion.bind(this)}/> }
+        if (exercise == 'breathing') { return <Breathing buttonValue={"NEXT"} buttonClick={this.askAnotherExerciseQuestion.bind(this)}/> }
         if (exercise == 'gratitude') { return <Gratitude buttonClick={this.askAnotherExerciseQuestion.bind(this)}/> }
         if (exercise == 'positive') { return <PositiveMemory buttonClick={this.askAnotherExerciseQuestion.bind(this)} /> }
         if (exercise === 'posThing') { return <PositiveThingQuestion buttonClick={this.askAnotherExerciseQuestion.bind(this)}/> }

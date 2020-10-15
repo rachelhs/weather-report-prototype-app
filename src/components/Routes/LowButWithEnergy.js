@@ -145,7 +145,7 @@ class LowButWithEnergyRoute extends React.Component {
 
     SetExercises = (exercise) => {
         if (exercise == 'meditating') { return <Meditating buttonClick={this.askIfHelped.bind(this)}/> }
-        if (exercise == 'grounding') { return <Grounding buttonClick={this.askIfHelped.bind(this)}/> }
+        if (exercise == 'grounding') { return <Grounding buttonValue={"NEXT"} buttonClick={this.askIfHelped.bind(this)}/> }
         if (exercise == 'gratitude') { return <Gratitude buttonClick={this.askIfHelped.bind(this)}/> }
         if (exercise == 'content') { return <ReplayContent buttonClick={this.askIfHelped.bind(this)} /> }
         if (exercise == 'stretching') { return <Stretching buttonClick={this.askIfHelped.bind(this)}/> }
