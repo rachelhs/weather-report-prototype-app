@@ -10,7 +10,6 @@ require('firebase/auth');
 const firebase = require('firebase/app');
 const data = require('../../data/data.json');
 const fadeTime = 3000;
-let route;
 
 export default class SymbolDetailedDescription extends React.Component {
     constructor(props) {
@@ -28,17 +27,16 @@ export default class SymbolDetailedDescription extends React.Component {
 
     componentDidMount() {
         // get the route as soon as possible - prevents defaulting to landing when onboarding
-        route = GetKeyByValue(data[10].categories, this.state.mainWord);
-        console.log('route', route);
         // check if user is still onboarding - user will have 0 entries at this point if so
         const uid = firebase.auth().currentUser.uid;
         // check if a weatherReport entry exists
+        {/* THIS IS SET TO ALWAYS FALSE BECAUSE IT WAS CAUSING THE INFINITE LOOP */ }
         database.ref(`users/${uid}/weatherReports`).once("value", snapshot => {
             if (snapshot.exists()) {
                 this.setState({ newUser: false })
             }
             else {
-                this.setState({ newUser: true })
+                this.setState({ newUser: false })
             }
         })
     }
@@ -61,7 +59,7 @@ export default class SymbolDetailedDescription extends React.Component {
         let time = moment().format("kk-mm")
         // work out path to route user based on main word
         // moved this into componentDidMount 
-        //let route = GetKeyByValue(data[10].categories,this.state.mainWord);
+        let route = GetKeyByValue(data[10].categories,this.state.mainWord);
         database.ref(`users/${uid}/weatherReports/${date}/${time}`).update({
             weather: this.state.weatherSymbol,
             mainword: this.state.mainWord,
