@@ -74,10 +74,11 @@ triggerTimeout(itemToFadeOut) {
 
     return (
       <div className='background-box'>
+            <div className="background-box"></div>
             <div className='anim-full-height'><Animation speed={0.2} animation={"neutralNoTrees"} /></div>
             <div className='info-box-login'>
                 <CSSTransition in={this.state.appIntro} timeout={1000} classNames="transform-up" appear onEntered={() => { this.triggerTimeout('appIntro') }} onExited={() => this.showLoginForm()}>
-                    <h1 className='box-layout__title'>WEATHER REPORT</h1>
+                    <h2 className='box-layout__title'><b>WEATHER REPORT</b></h2>
                 </CSSTransition>
                 <CSSTransition in={this.state.showLogin} timeout={1000} classNames="fade-fast" unmountOnExit>
                     <div>
