@@ -39,9 +39,15 @@ export class ProjectLandingPage extends React.Component {
                     <h2>If you would like to sign up for testing and feedback please email: info@studiomeineck.com</h2>
                 </div>
                 <div className="flex-container">
-                    <img className="logoImage" src={swctn} alt="image of weather"></img>
-                    <img className="logoImage" src={sm} alt="image of weather"></img>
-                    <img className="logoImage" src={ss} alt="image of weather"></img>
+                    <div className="imageContainer">
+                        <img className="logoImage" src={swctn} alt="image of weather"></img>
+                    </div>
+                    <div className="imageContainer">
+                        <img className="logoImage" src={sm} alt="image of weather"></img>
+                    </div>                    
+                    <div className="imageContainer">
+                        <img className="logoImage" src={ss} alt="image of weather"></img>
+                    </div>
                 </div>
             </div>
 
