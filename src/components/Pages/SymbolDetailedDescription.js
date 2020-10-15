@@ -28,7 +28,7 @@ export default class SymbolDetailedDescription extends React.Component {
 
     componentDidMount() {
         // get the route as soon as possible - prevents defaulting to landing when onboarding
-        route = GetKeyByValue(data[10].categories,this.state.mainWord);
+        route = GetKeyByValue(data[10].categories, this.state.mainWord);
         console.log('route', route);
         // check if user is still onboarding - user will have 0 entries at this point if so
         const uid = firebase.auth().currentUser.uid;
@@ -130,7 +130,7 @@ export default class SymbolDetailedDescription extends React.Component {
     }
 
     showLastPartOnboarding() {
-        {/* THIS IS SET TO ALWAYS FALSE BECAUSE IT WAS CAUSING THE INFINITE LOOP */}
+        {/* THIS IS SET TO ALWAYS FALSE BECAUSE IT WAS CAUSING THE INFINITE LOOP */ }
         this.setState({ report: false });
     }
 
@@ -158,7 +158,9 @@ export default class SymbolDetailedDescription extends React.Component {
                                 </div>
                                 <div className="button-container">
                                     <BackButton />
-                                    {(this.state.newUser) ? <button className='next-button-dark' onClick={this.showLastPartOnboarding.bind(this)}>NEXT</button> : <button className='next-button-dark' onClick={this.sendData.bind(this)}>NEXT</button>}
+                                    <button className='next-button-dark' onClick={this.sendData.bind(this)}>NEXT</button>
+                                    {/* THIS IS SET TO ALWAYS FALSE BECAUSE IT WAS CAUSING THE INFINITE LOOP 
+                                        {(this.state.newUser) ? <button className='next-button-dark' onClick={this.showLastPartOnboarding.bind(this)}>NEXT</button> : <button className='next-button-dark' onClick={this.sendData.bind(this)}>NEXT</button>}*/}
                                 </div>
                             </div>
                         </div>
