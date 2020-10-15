@@ -147,6 +147,15 @@ button:focus {
     margin: 5px;
 }
 
+.back-button:hover {
+    background: #3a3d7d !important;
+    border: 1px solid #3a3d7d;
+    width: 80px;
+    height: 40px;
+    color: white;
+    margin: 5px;
+}
+
 .flex-center {
     display: flex;
     justify-content: center;
