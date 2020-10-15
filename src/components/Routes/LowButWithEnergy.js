@@ -14,6 +14,8 @@ import { Meditating, Grounding, Stretching } from '../Exercises/TextBasedExercis
 import Gratitude from '../Exercises/ReplayGratitude';
 import ReplayContent from '../Exercises/ReplayContent';
 
+const routeExercises = ['meditating', 'grounding', 'gratitude', 'content', 'stretching'];
+
 class LowButWithEnergyRoute extends React.Component {
 
     constructor(props) {
@@ -54,7 +56,7 @@ class LowButWithEnergyRoute extends React.Component {
         let question = ChooseExercise(['supporters', 'smallPos', 'safe']);
         this.setState({ randQues: question });
         // setting exercise
-        let exercise = ChooseExercise(['meditating', 'grounding', 'gratitude', 'content', 'stretching']);
+        let exercise = ChooseExercise(routeExercises);
         this.setState({ exercise: exercise });
 
         setTimeout(() => { this.setState({ neutralAnimation: false, lowButWithEnergyFadeIn: true }) }, 500)
@@ -131,7 +133,7 @@ class LowButWithEnergyRoute extends React.Component {
 
     // returns a random exercise that isn't the same as the one just seen
     chooseAnotherExercise() {
-        let exerciseArray = chooseAnotherRandomExercise(['meditating', 'grounding', 'gratitude', 'content', 'stretching'], this.state.exercise);
+        let exerciseArray = chooseAnotherRandomExercise(routeExercises, this.state.exercise);
         this.setState({ showAnotherExerciseQuestion: false, yesAnotherExercise: true });
         let exercise = ChooseExercise(exerciseArray);
         this.setState({ exercise: exercise });
