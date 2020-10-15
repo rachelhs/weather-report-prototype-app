@@ -5,7 +5,8 @@ import ReportPhoto from '../../images/weather-symbols-no-border/dark-clouds.png'
 import { CSSTransition } from "react-transition-group";
 const data = require('../../data/data.json');
 const firebase = require('firebase/app');
-import exampleImage from '../../images/graph-example.png';
+import analysisImageDesktop from '../../images/REPORT-DESKTOP.svg';
+import analysisImageMobile from '../../images/REPORT-MOBILE.svg';
 import { history } from '../../routers/AppRouter';
 
 export class Logout extends React.Component {
@@ -176,11 +177,27 @@ export class Report extends React.Component {
         super(props);
         this.state = {
             showReport: false,
+            analysisImage: null
         }
+    }
+
+    componentDidMount() {
+        this.isMobileCheck();
     }
 
     handleOpenModalReport() { this.setState({ showReport: true }) }
     handleCloseModalReport() { this.setState({ showReport: false }) }
+
+    // checks if user is using a mobile
+    isMobileCheck() {
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        if(isMobile) {
+            this.setState({ analysisImage: analysisImageMobile })
+        }
+        else {
+            this.setState({ analysisImage: analysisImageDesktop })
+        }
+    }
 
     showAnalysisImage() {
         this.setState({ showAnalysis: true });
@@ -199,7 +216,7 @@ export class Report extends React.Component {
                 <button onClick={this.handleOpenModalReport.bind(this)} className="button--link menu-text">REPORT</button>
                 <ReactModal style={customStyles} className='modalMenu' isOpen={this.state.showReport} ariaHideApp={false}>
                     <div className="flex-center">
-                        <button className='menu-close' type="button" onClick={this.handleCloseModalReport.bind(this)}>
+                        <button className='menu-close-report' type="button" onClick={this.handleCloseModalReport.bind(this)}>
                             Back to Home
                         </button>
                     </div>
@@ -209,11 +226,10 @@ export class Report extends React.Component {
                     <div className="flex-center">
                         <img src={ReportPhoto} alt="image of weather"></img>
                     </div>
-
-                    {this.state.showAnalysis ? 
-                        <div><img className='analysis-image' src={exampleImage} alt="analysis of mood"></img><div className='hide-analysis-button'>
-                        <button className='login-button' type="button" onClick={this.hideAnalysisImage.bind(this)}>HIDE</button>
-                    </div></div>:
+                    {this.state.showAnalysis ?
+                        <div><img className='analysis-image-desktop' src={this.state.analysisImage} alt="analysis of mood"></img><div className='hide-analysis-button'>
+                            <button className='login-button' type="button" onClick={this.hideAnalysisImage.bind(this)}>HIDE</button>
+                        </div></div> :
                         <div className="flex-center">
                             <button className='login-button' type="button" onClick={this.showAnalysisImage.bind(this)}>SHOW PAST</button>
                         </div>}
