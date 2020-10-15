@@ -27,7 +27,7 @@ export default class SymbolDetailedDescription extends React.Component {
             this.setState({ secondaryWords: this.state.secondaryWords })
         } else {
             this.setState({ secondaryWords: joined })
-        }  
+        }
     }
 
     sendData() {
@@ -35,14 +35,14 @@ export default class SymbolDetailedDescription extends React.Component {
         const uid = user.uid;
         let date = this.state.day.format("YYYY-MM-DD")
         // work out path to route user based on main word 
-        let route = GetKeyByValue(data[10].categories,this.state.mainWord);
+        let route = GetKeyByValue(data[10].categories, this.state.mainWord);
         database.ref(`users/${uid}/weatherReports/${date}/${this.state.createdAt.valueOf()}`).update({
             weather: this.state.weatherSymbol,
             mainword: this.state.mainWord,
             secondarywords: this.state.secondaryWords,
             createdAt: this.state.createdAt.valueOf(),
         })
-        switch(route) {
+        switch (route) {
             case "one":
                 this.props.history.push('/1');
                 break;
@@ -57,16 +57,16 @@ export default class SymbolDetailedDescription extends React.Component {
                 break;
             case "five":
                 this.props.history.push('/5');
-                break; 
+                break;
             case "six":
                 this.props.history.push('/6');
-                break; 
+                break;
             case "seven":
                 this.props.history.push('/7');
-                break; 
+                break;
             case "eight":
                 this.props.history.push('/8');
-                break; 
+                break;
             case "nine":
                 this.props.history.push('9');
                 break;
@@ -78,27 +78,31 @@ export default class SymbolDetailedDescription extends React.Component {
     render() {
         console.log('secondaryWords', this.state.secondaryWords)
         return (
-            <div className='background-box'>
-                <AnimationsLayered speeds={[0]} animations={['neutralBackground']} />
-                <div className='info-box-landing info-box-words'>
-                    <h3 className='info-box-text-small-padding'>{ data[0].regularLogin[4] }</h3>
-                    <div className='word-grid'>
-                        {data[10].secondaryWords.map((word) => (
-                            <div className='words' key={word}>
-                                <button
-                                    className={this.state.secondaryWords.includes(word) ? 'active-symbol-button-border' : 'symbol-button-border'}
-                                    onClick={(e) => { this.addWords({word})}}>
-                                    {word}
-                                </button>
+            <div>
+                <AnimationsLayered speeds={[0.2]} animations={['neutralTreesNoLily']} />
+                <div className='background-box'>
+                    <div className='center-vertical'>
+                        <div className='info-box-landing info-box-words'>
+                            <h3 className='info-box-text-small-padding'>{data[0].regularLogin[4]}</h3>
+                            <div className='word-grid'>
+                                {data[10].secondaryWords.map((word) => (
+                                    <div className='words' key={word}>
+                                        <button
+                                            className={this.state.secondaryWords.includes(word) ? 'active-symbol-button-border' : 'symbol-button-border'}
+                                            onClick={(e) => { this.addWords({ word }) }}>
+                                            {word}
+                                        </button>
+                                    </div>
+                                ))}
                             </div>
-                        ))}
-                    </div>
-                    <div className="button-container">
-                        <BackButton/>
-                        <button className='next-button' onClick={this.sendData.bind(this)}>Next</button>
+                            <div className="button-container">
+                                <BackButton />
+                                <button className='next-button-dark' onClick={this.sendData.bind(this)}>Next</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>  
+            </div>
         )
     }
 }
