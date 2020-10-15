@@ -25,6 +25,8 @@ import IntroPage from '../components/Pages/IntroPage'
 import BreathingExercise from '../components/Pages/BreathingExercise'
 import GroundingExercise from '../components/Pages/GroundingExercise'
 import Exercises from '../components/Routes/Exercises'
+import ProjectLandingPage from '../components/Pages/ProjectPage'
+
 
 export const history = createHistory();
 
@@ -32,7 +34,9 @@ const AppRouter = () => (
     <Router history={history}>
         <div>
             <Switch>
-                <PublicRoute path="/" component={ LoginEmailForm } exact={true} />
+                <PublicRoute path="/" component={ ProjectLandingPage } exact={true} />
+                <PublicRoute path="/login" component={ LoginEmailForm }/>
+                <PrivateRoute path="/project" component={ ProjectLandingPage} />
                 <PrivateRoute path="/intro" component={ IntroPage }/>
                 <PrivateRoute path="/landing" component={ LandingPage }/>
                 <PrivateRoute path="/home" component={ HomePage }/>
