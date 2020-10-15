@@ -32,7 +32,7 @@ export class GroundingExercise extends React.Component {
             <div>
                 <CSSTransition in={this.state.grounding} timeout={2000} classNames="fade" unmountOnExit>
                     <div>
-                        <Grounding buttonClick={this.backButton.bind(this)}/>
+                        <Grounding buttonValue={"Home"} buttonClick={this.backButton.bind(this)}/>
                     </div>
                 </CSSTransition>
             </div>

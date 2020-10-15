@@ -233,8 +233,8 @@ class TooHighRoute extends React.Component {
 
     SetExercises = (exercise) => {
         if (exercise == 'safePlace') { return <SafePlace buttonClick={this.seenExercise.bind(this)}/> }
-        if (exercise == 'grounding') { return <Grounding buttonClick={this.seenExercise.bind(this)}/> }
-        if (exercise == 'breathing') { return <Breathing buttonClick={this.seenExercise.bind(this)}/> }
+        if (exercise == 'grounding') { return <Grounding buttonValue={"NEXT"} buttonClick={this.seenExercise.bind(this)}/> }
+        if (exercise == 'breathing') { return <Breathing buttonValue={"NEXT"} buttonClick={this.seenExercise.bind(this)}/> }
         if (exercise === 'anchors') { return <ReplayAnchors buttonClick={this.seenExercise.bind(this)}/> }
     }
 
