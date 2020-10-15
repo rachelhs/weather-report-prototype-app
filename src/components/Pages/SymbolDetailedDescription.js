@@ -125,12 +125,13 @@ export default class SymbolDetailedDescription extends React.Component {
                 })
                 break;
             default:
-                this.props.history.push('/landing');
+                this.props.history.push('/home');
         }
     }
 
     showLastPartOnboarding() {
-        this.setState({ report: true });
+        {/* THIS IS SET TO ALWAYS FALSE BECAUSE IT WAS CAUSING THE INFINITE LOOP */}
+        this.setState({ report: false });
     }
 
     render() {
