@@ -48,9 +48,21 @@
     }
 }
 
+.analysis-image-desktop {
+    width: 100vw;
+    top: 0;
+    left: 0;
+    position: absolute;
+}
+
 .hide-analysis-button {
     display: flex;
-    margin-top: 245px;
+    margin-top: 200px;
+
+    @media (max-width: $desktop-breakpoint) {
+        margin-top: 400px;
+    }
+
 }
 
 .modalPebbles-in-world {
