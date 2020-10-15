@@ -359,12 +359,18 @@ export class PebblesModal extends React.Component {
                         </button>
                     </div>
                     <h1>Pebble Memories</h1>
-                    {this.state.pebbleToShow && <h3>{this.state.pebbleToShow.date} - {this.state.pebbleToShow.time}</h3>}
-                    {this.state.pebbleToShow && <h3>{this.state.pebbleToShow.reason}</h3>}
-                    {photoMemory}
-                    <div className="flex-center">
-                        <button className="transparent-button" onClick={this.selectAnotherMemory.bind(this)}>Look at another memory</button>
-                    </div>
+                    {this.state.listOfPebbles.length == 0 ?
+                        <h2>Use the app more to save positive memories</h2>
+                    :
+                    <span>
+                        {this.state.pebbleToShow && <h3>{this.state.pebbleToShow.date} - {this.state.pebbleToShow.time}</h3>}
+                        {this.state.pebbleToShow && <h3>{this.state.pebbleToShow.reason}</h3>}
+                        {photoMemory}
+                        <div className="flex-center">
+                            <button className="transparent-button" onClick={this.selectAnotherMemory.bind(this)}>Look at another memory</button>
+                        </div>
+                    </span>
+                    }
                 </ReactModal>
             </div>
         );
