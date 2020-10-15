@@ -24,7 +24,7 @@ export class ProjectLandingPage extends React.Component {
                         <h2 className="titleProject">MY WEATHER REPORT</h2>
                     </div>
                     <div className="floatRight vertical-center">
-                        <Link className="linkTextProjectPage" to={{ pathname: '/login' }}>LOGIN</Link>
+                        <Link className="linkTextProjectPage" to={{ pathname: '/login' }}>LOG IN</Link>
                     </div>
                 </header>
                 <div className="video-container">
