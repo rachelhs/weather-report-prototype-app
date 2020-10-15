@@ -75,6 +75,21 @@ button:focus {
     padding: 0 15px 0 15px;
 }
 
+.login-button-no-margin {
+    background: #3a3d7d !important;
+    border: none;
+    width: 100px;
+    height: 45px;
+    color: white;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+    border-radius: 0.5rem;
+    text-align: center;
+    font-size: 14px;
+    padding: 0 15px 0 15px;
+}
+
 .transparent-button {
     background: transparent;
     border: 1px solid #3a3d7d;
