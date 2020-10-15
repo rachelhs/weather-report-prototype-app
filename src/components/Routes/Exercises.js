@@ -140,8 +140,8 @@ class Exercises extends React.Component {
         if (exercise == 'meditating') { return <Meditating buttonClick={this.seenExercise.bind(this)}/> }
         if (exercise == 'stretching') { return <Stretching buttonClick={this.seenExercise.bind(this)}/> }
         if (exercise == 'safePlace') { return <SafePlace buttonClick={this.seenExercise.bind(this)}/> }
-        if (exercise == 'grounding') { return <Grounding buttonClick={this.seenExercise.bind(this)}/> }
-        if (exercise == 'breathing') { return <Breathing buttonClick={this.seenExercise.bind(this)}/> }
+        if (exercise == 'grounding') { return <Grounding buttonValue={"NEXT"} buttonClick={this.seenExercise.bind(this)}/> }
+        if (exercise == 'breathing') { return <Breathing buttonValue={"NEXT"} buttonClick={this.seenExercise.bind(this)}/> }
         if (exercise == 'changeSituation') { return <ChangeSituation buttonClick={this.seenExercise.bind(this)}/> }
         if (exercise == 'gratitude') { return <Gratitude buttonClick={this.seenExercise.bind(this)}/> }
         if (exercise == 'positive') { return <PositiveMemory buttonClick={this.seenExercise.bind(this)} /> }
