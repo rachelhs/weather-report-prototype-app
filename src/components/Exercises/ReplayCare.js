@@ -74,7 +74,7 @@ export default class ReplyCare extends React.Component {
                     <p>{this.state.randomCare2}</p>
                 </div>
                 <div className='button-container'>
-                    <button className='next-button-dark free-form-submit extra-margin-top' onClick={this.props.buttonClick}>NEXT</button>
+                <button className='next-button-dark free-form-submit extra-margin-top' onClick={this.props.buttonClick}>NEXT</button>
                 </div>
             </div>
         )

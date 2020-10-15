@@ -11,6 +11,9 @@ import { Breathing, Meditating, Grounding } from '../Exercises/TextBasedExercise
 import Gratitude from '../Exercises/ReplayGratitude';
 import PositiveMemory from '../Exercises/ReplayPosMemories';
 
+const routeExercises = ['breathing', 'meditating', 'grounding', 'gratitude', 'positive'];
+let firstExercise = 'breathing';
+
 class Nothing extends React.Component {
 
     constructor(props) {
@@ -42,12 +45,13 @@ class Nothing extends React.Component {
         }
 
         // setting exercise
-        let firstExercise = 'breathing';
-        GetUnavailableExercises(['breathing', 'meditating', 'grounding', 'gratitude', 'positive', 'posChange', 'posThing']).then(DoUnavailableExercises).then(function(result) {
+        GetUnavailableExercises(routeExercises).then(DoUnavailableExercises).then(function(result) {
             let availableExercises = result
             firstExercise = ChooseExercise(availableExercises)
         })
-        setTimeout(() => { this.setState({ exercise: firstExercise }) }, 1000)
+        console.log('this.state.exercise', this.state.exercise );
+
+        setTimeout(() => { this.setState({ exercise: firstExercise }) }, 2000)
 
         setTimeout(() => { this.setState({ neutralAnimation: false, nothingFadeIn: true }) }, 500)
         setTimeout(() => {
@@ -91,7 +95,7 @@ class Nothing extends React.Component {
 
     // returns a random exercise that isn't the same as the one just seen
     chooseAnotherExercise() {
-        let exerciseArray = chooseAnotherRandomExercise(['breathing', 'meditating', 'grounding', 'gratitude', 'positive', 'posChange', 'posThing'], this.state.exercise);
+        let exerciseArray = chooseAnotherRandomExercise(routeExercises, this.state.exercise);
         this.setState({ showAnotherExerciseQuestion: false, yesAnotherExercise: true });
         let exercise = ChooseExercise(exerciseArray);
         //let exercise = 'meditating';

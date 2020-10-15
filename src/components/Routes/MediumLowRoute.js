@@ -15,6 +15,8 @@ import PositiveMemory from '../Exercises/ReplayPosMemories';
 import LikeAboutSelf from '../Exercises/ReplayLikeAboutSelf';
 import ReplayCare from '../Exercises/ReplayCare';
 
+const routeExercises = ['meditating', 'gratitude', 'positive', 'selflike'];
+
 class MediumLowRoute extends React.Component {
 
     constructor(props) {
@@ -59,7 +61,7 @@ class MediumLowRoute extends React.Component {
         const positiveArray = data[4].mediumLow.positiveStatements;
         this.setState({ randPositive: randomQuestionNumber(positiveArray.length) });
         // setting exercise
-        let exercise = ChooseExercise(['meditating', 'gratitude', 'positive', 'selflike', 'selfcare']);
+        let exercise = ChooseExercise(routeExercises);
         this.setState({ exercise: exercise });
         setTimeout(() => { this.setState({ showRandomPositiveStatement: false }) }, 3000)
         setTimeout(() => { this.setState({ neutralAnimation: false, mediumLowFadeIn: true }) }, 500)
@@ -133,7 +135,7 @@ class MediumLowRoute extends React.Component {
     // returns a random exercise that isn't the same as the one just seen
     chooseAnotherExercise() {
 
-        let exerciseArray = chooseAnotherRandomExercise(['meditating', 'gratitude', 'positive', 'selflike', 'selfcare'], this.state.exercise);
+        let exerciseArray = chooseAnotherRandomExercise(routeExercises, this.state.exercise);
         this.setState({ showAnotherExerciseQuestion: false, yesAnotherExercise: true });
         let exercise = ChooseExercise(exerciseArray);
         this.setState({ exercise: exercise });
