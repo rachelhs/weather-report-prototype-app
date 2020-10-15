@@ -197,7 +197,7 @@ export class Report extends React.Component {
     isMobileCheck() {
         const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
         if(isMobile) {
-            this.setState({ analysisImage: analysisImageMobile })
+            this.setState({ analysisImage: analysisImageDesktop })
         }
         else {
             this.setState({ analysisImage: analysisImageDesktop })

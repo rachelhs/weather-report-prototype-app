@@ -117,7 +117,7 @@ export class FishModal extends React.Component {
                             <h3>{data[10].home.addToFish}</h3> :
                             <TextWithButton buttonText='Add another' text={data[10].home.addToFish} onClick={this.toggleAddGratitude.bind(this)} />
                         }
-                        {this.state.toggleAddGratitude ? <OneGratefulQuestion /> : ''}
+                        {this.state.toggleAddGratitude ? [listOfGrateful = [], <OneGratefulQuestion /> ]: ''}
                     </div>
                 </ReactModal>
             </div>
