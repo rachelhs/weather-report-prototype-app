@@ -564,7 +564,7 @@ export class TextWithNextOnboarding extends React.Component {
     render() {
         return (
             <div>
-                <h1>{this.props.text}</h1>
+                <h1 className='info-box-title'>{this.props.text}</h1>
                 <div className='button-container'>
                     <button className='next-button-dark' onClick={(e) => this.props.onClick(true)}>NEXT</button>
                 </div>
