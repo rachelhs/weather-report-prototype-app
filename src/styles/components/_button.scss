@@ -55,21 +55,23 @@ button:focus {
     margin: 0 auto;
     display: flex;
     background: none;
+    letter-spacing: 0px;
+    font-weight: 400;
 }
 
 .login-button {
     background: #3a3d7d !important;
     border: none;
-    width: 100px;
-    height: 45px;
-    margin: 40px auto;
+    width: 85px;
+    height: 40px;
+    margin: 30px auto;
     color: white;
     font-family: 'Quicksand', sans-serif;
-    font-weight: 700;
+    font-weight: 500;
     letter-spacing: 2px;
     border-radius: 0.5rem;
     text-align: center;
-    font-size: 14px;
+    font-size: 17px;
     padding: 0 15px 0 15px;
 }
 
@@ -135,7 +137,7 @@ button:focus {
     letter-spacing: 2px;
     border-radius: 0.5rem;
     text-align: center;
-    font-size: 14px;
+    font-size: 15px;
     padding: 7px 0 7px 0;
 }
 
@@ -157,6 +159,15 @@ button:focus {
     width: 80px;
     height: 40px;
     color: #3a3d7d;
+    margin: 5px;
+}
+
+.back-button:hover {
+    background: #3a3d7d !important;
+    border: 1px solid #3a3d7d;
+    width: 80px;
+    height: 40px;
+    color: white;
     margin: 5px;
 }
 
