@@ -103,20 +103,22 @@ export class FishModal extends React.Component {
                     <Button className='clickableFish' variant="primary" onClick={this.handleShow.bind(this)}></Button>
                     : ''}
                 <ReactModal style={customStyles} className='modalPebbles' isOpen={this.state.show} ariaHideApp={false}>
-                    <div className="flex-center">
-                        <button className='menu-close' type="button" onClick={this.handleClose.bind(this)}>
-                            CLOSE
-                        </button>
+                    <div className="modal-info-box">
+                        <div className="flex-center">
+                            <button className='menu-close' type="button" onClick={this.handleClose.bind(this)}>
+                                CLOSE
+                            </button>
+                        </div>
+                        <h1>{data[10].home.fish}</h1>
+                        <ul>
+                            {renderedOutput}
+                        </ul>
+                        {this.state.addButtonClicked ?
+                            <h3>{data[10].home.addToFish}</h3> :
+                            <TextWithButton buttonText='Add another' text={data[10].home.addToFish} onClick={this.toggleAddGratitude.bind(this)} />
+                        }
+                        {this.state.toggleAddGratitude ? <OneGratefulQuestion /> : ''}
                     </div>
-                    <h1>{data[10].home.fish}</h1>
-                    <ul>
-                        {renderedOutput}
-                    </ul>
-                    {this.state.addButtonClicked ?
-                        <h3>{data[10].home.addToFish}</h3> :
-                        <TextWithButton buttonText='Add another' text={data[10].home.addToFish} onClick={this.toggleAddGratitude.bind(this)} />
-                    }
-                    {this.state.toggleAddGratitude ? <OneGratefulQuestion /> : ''}
                 </ReactModal>
             </div>
         );
