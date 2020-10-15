@@ -162,9 +162,14 @@ export class Menu extends React.Component {
                     </div>
 
                     <h1>WHAT IS WEATHER REPORT?</h1>
-                    <p>{data[11].menu.wrDescription}</p>
-                    <h1>ACCESSIBILITY</h1>
-                    <p>{data[11].menu.accessibility}</p>
+                    <p>This is a tool to help you log how you're feeling, notice patterns in your mood and lead yourself through a process of self reflection. You’re the best person to understand how you’re feeling, this is just a process to help you, help yourself.</p>
+                    <p>The language around expressing how you feel can be difficult, layered and complex, so sometimes a metaphor can help. We all have some idea of what someone means when they say they feel “stormy”. Weather Report uses this metaphor of inner weather to help you express how you feel.</p>
+                    <h1>HOW TO USE</h1>
+                    <p>You will be asked to enter your inner weather (how you are feeling) when you open the app. You can do this up to 3 times a day.</p>
+                    <p>On the home page there are also roots which represent your support network, pebbles that represent positive memories and occasionally a fish that keeps a list of things you are grateful for. You can click on the white circles over the image to access these.</p>
+                    <p>The more information you input, the more you’ll get out, with more positive memories, prompts and history to reflect upon.</p>
+                    <h1>FEEDBACK</h1>
+                    <p>This is the first version of this tool and we’d love to hear how you’ve used it and what you think. Get in touch with <a href="mailto:info@studiomeineck.com">Studio Meineck</a> to share your thoughts.</p>
                     <Logout />
                 </ReactModal>
             </span>
