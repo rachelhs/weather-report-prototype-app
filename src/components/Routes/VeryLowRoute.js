@@ -51,8 +51,7 @@ class VeryLowRoute extends React.Component {
         // set timeout to say I’m sorry you are feeling like this
         setTimeout(() => { this.setState({ showAcknowledge: false }) }, 10500)
         // random function for random questions
-        let question = 'supporters';
-        // let question = ChooseExercise(['supporters', 'smallPos', 'safe']);
+        let question = ChooseExercise(['supporters', 'smallPos', 'safe']);
         this.setState({ randQues: question });
         // setting exercise
         let exercise = ChooseExercise(['meditating', 'grounding', 'gratitude', 'content', 'stretching']);
