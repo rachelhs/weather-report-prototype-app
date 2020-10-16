@@ -45,31 +45,58 @@ export default class SymbolDetailedDescription extends React.Component {
         })
         switch (route) {
             case "one":
-                this.props.history.push('/1');
+                this.props.history.push({
+                    pathname: '/1',
+                    state: { weatherSymbol: this.state.weatherSymbol }
+                })
                 break;
             case "two":
-                this.props.history.push('/3');
+                this.props.history.push({
+                    pathname: '/2',
+                    state: { weatherSymbol: this.state.weatherSymbol }
+                })
                 break;
             case "three":
-                this.props.history.push('/3');
+                this.props.history.push({
+                    pathname: '/3',
+                    state: { weatherSymbol: this.state.weatherSymbol }
+                })
                 break;
             case "four":
-                this.props.history.push('/4');
+                this.props.history.push({
+                    pathname: '/4',
+                    state: { weatherSymbol: this.state.weatherSymbol }
+                })
                 break;
             case "five":
-                this.props.history.push('/5');
+                this.props.history.push({
+                    pathname: '/5',
+                    state: { weatherSymbol: this.state.weatherSymbol }
+                })
                 break;
             case "six":
-                this.props.history.push('/6');
+                this.props.history.push({
+                    pathname: '/6',
+                    state: { weatherSymbol: this.state.weatherSymbol }
+                })
                 break;
             case "seven":
-                this.props.history.push('/7');
+                this.props.history.push({
+                    pathname: '/7',
+                    state: { weatherSymbol: this.state.weatherSymbol }
+                })
                 break;
             case "eight":
-                this.props.history.push('/8');
+                this.props.history.push({
+                    pathname: '/8',
+                    state: { weatherSymbol: this.state.weatherSymbol }
+                })
                 break;
             case "nine":
-                this.props.history.push('9');
+                this.props.history.push({
+                    pathname: '/9',
+                    state: { weatherSymbol: this.state.weatherSymbol }
+                })
                 break;
             default:
                 this.props.history.push('/landing');
