@@ -41,6 +41,7 @@ export default class SymbolDetailedDescription extends React.Component {
             mainword: this.state.mainWord,
             secondarywords: this.state.secondaryWords,
             createdAt: this.state.createdAt.valueOf(),
+            route: route
         })
         switch (route) {
             case "one":
@@ -76,7 +77,7 @@ export default class SymbolDetailedDescription extends React.Component {
     }
 
     render() {
-        console.log('secondaryWords', this.state.secondaryWords)
+        let time = moment().format("HH-mm")
         return (
             <div>
                 <AnimationsLayered speeds={[0.2]} animations={['neutralTreesNoLily']} />
@@ -90,8 +91,8 @@ export default class SymbolDetailedDescription extends React.Component {
                                         <button
                                             className={this.state.secondaryWords.includes(word) ? 'active-symbol-button-border' : 'symbol-button-border'}
                                             onClick={(e) => { this.addWords({ word }) }}>
-                                            {word}
-                                        </button>
+                                            {word.toUpperCase()}
+                                            </button>
                                     </div>
                                 ))}
                             </div>
