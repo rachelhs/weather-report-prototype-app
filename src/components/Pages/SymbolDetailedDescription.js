@@ -36,6 +36,7 @@ export default class SymbolDetailedDescription extends React.Component {
         let date = this.state.day.format("YYYY-MM-DD")
         // work out path to route user based on main word 
         let route = GetKeyByValue(data[10].categories, this.state.mainWord);
+        console.log(route);
         database.ref(`users/${uid}/weatherReports/${date}/${this.state.createdAt.valueOf()}`).update({
             weather: this.state.weatherSymbol,
             mainword: this.state.mainWord,
@@ -44,7 +45,7 @@ export default class SymbolDetailedDescription extends React.Component {
             route: route
         })
         switch (route) {
-            case "one":
+             case "one":
                 this.props.history.push({
                     pathname: '/1',
                     state: { weatherSymbol: this.state.weatherSymbol }
@@ -98,8 +99,8 @@ export default class SymbolDetailedDescription extends React.Component {
                     state: { weatherSymbol: this.state.weatherSymbol }
                 })
                 break;
-            default:
-                this.props.history.push('/landing');
+            // default:
+            //     this.props.history.push('/landing');
         }
     }
 
