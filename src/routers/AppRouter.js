@@ -38,7 +38,6 @@ const AppRouter = () => (
 -               <PublicRoute path="/login" component={ LoginEmailForm }/>
                 <PrivateRoute path="/project" component={ ProjectLandingPage} />
                 <PrivateRoute path="/intro" component={ IntroPage }/>
-                <PrivateRoute path="/landing" component={ LandingPage }/>
                 <PrivateRoute path="/home" component={ HomePage }/>
                 <PrivateRoute path="/3-home" component={ ThreeHomePage }/>
                 <PrivateRoute path="/choosesymbol" component={ChooseSymbolPage}/>
@@ -54,6 +53,7 @@ const AppRouter = () => (
                 <PrivateRoute path="/7" component={ VeryLowRoute } />
                 <PrivateRoute path="/8" component={ LowButWithEnergyRoute } />
                 <PrivateRoute path="/9" component={ SuicidalRoute } />
+                <PrivateRoute path="/landing" component={ LandingPage }/>
                 <PrivateRoute path="/breathing-exercise" component={ BreathingExercise } />
                 <PrivateRoute path="/grounding-exercise" component={ GroundingExercise } />
                 <PrivateRoute path="/test" component={ Exercises }/>
