@@ -3,9 +3,13 @@ import moment from 'moment';
 import database from '../../firebase/firebase';
 import { AnimationsLayered } from '../SharedComponents/SharedComponents';
 import { BackButton, GetKeyByValue } from '../../actions/route-functions';
+import { CSSTransition } from "react-transition-group";
+import { TextWithNextSmall } from '../SharedComponents/SharedComponents';
+import Arrow from '../Animations/Arrow';
 require('firebase/auth');
 const firebase = require('firebase/app');
 const data = require('../../data/data.json');
+const fadeTime = 3000;
 
 export default class SymbolDetailedDescription extends React.Component {
     constructor(props) {
@@ -16,7 +20,23 @@ export default class SymbolDetailedDescription extends React.Component {
             secondaryWords: [],
             day: moment(),
             createdAt: props.entry ? moment(props.entry.createdAt) : moment(),
+            newUser: false,
+            report: false
         }
+    }
+
+    componentDidMount() {
+        // check if user is still onboarding - user will have 0 entries at this point if so
+        const uid = firebase.auth().currentUser.uid;
+        // check if a weatherReport entry exists
+        database.ref(`users/${uid}/weatherReports`).once("value", snapshot => {
+            if (snapshot.exists()) {
+                this.setState({ newUser: false })
+            }
+            else {
+                this.setState({ newUser: true })
+            }
+        })
     }
 
     addWords(word) {
@@ -34,10 +54,10 @@ export default class SymbolDetailedDescription extends React.Component {
         const user = firebase.auth().currentUser;
         const uid = user.uid;
         let date = this.state.day.format("YYYY-MM-DD")
+        let time = moment().format("kk-mm")
         // work out path to route user based on main word 
-        let route = GetKeyByValue(data[10].categories, this.state.mainWord);
-        console.log(route);
-        database.ref(`users/${uid}/weatherReports/${date}/${this.state.createdAt.valueOf()}`).update({
+        let route = GetKeyByValue(data[10].categories,this.state.mainWord);
+        database.ref(`users/${uid}/weatherReports/${date}/${time}`).update({
             weather: this.state.weatherSymbol,
             mainword: this.state.mainWord,
             secondarywords: this.state.secondaryWords,
@@ -45,7 +65,7 @@ export default class SymbolDetailedDescription extends React.Component {
             route: route
         })
         switch (route) {
-             case "one":
+            case "one":
                 this.props.history.push({
                     pathname: '/1',
                     state: { weatherSymbol: this.state.weatherSymbol }
@@ -99,37 +119,50 @@ export default class SymbolDetailedDescription extends React.Component {
                     state: { weatherSymbol: this.state.weatherSymbol }
                 })
                 break;
-            // default:
-            //     this.props.history.push('/landing');
+            default:
+                this.props.history.push('/landing');
         }
+    }
+
+    showLastPartOnboarding() {
+        this.setState({ report: true });
     }
 
     render() {
         let time = moment().format("HH-mm")
         return (
             <div>
-                <AnimationsLayered speeds={[0.2]} animations={['neutralTreesNoLily']} />
-                <div className='background-box'>
-                    <div className='center-vertical'>
-                        <div className='info-box-choose info-box-words'>
-                            <h3 className='info-box-text-small-padding'>{data[0].regularLogin[4]}</h3>
-                            <div className='word-grid'>
-                                {data[10].secondaryWords.map((word) => (
-                                    <div className='words' key={word}>
-                                        <button
-                                            className={this.state.secondaryWords.includes(word) ? 'active-symbol-button-border' : 'symbol-button-border'}
-                                            onClick={(e) => { this.addWords({ word }) }}>
-                                            {word.toUpperCase()}
+                {(this.state.report) ? '' :
+                    <div>
+                        <AnimationsLayered speeds={[0.2]} animations={['neutralTreesNoLily']} />
+                        <div className='background-box'></div>
+                        <div className='center-vertical'>
+                            <div className='info-box-choose info-box-words'>
+                                <h3 className='info-box-text-small-padding'>{data[0].regularLogin[4]}</h3>
+                                <div className='word-grid'>
+                                    {data[10].secondaryWords.map((word) => (
+                                        <div className='words' key={word}>
+                                            <button
+                                                className={this.state.secondaryWords.includes(word) ? 'active-symbol-button-border' : 'symbol-button-border'}
+                                                onClick={(e) => { this.addWords({ word }) }}>
+                                                {word.toUpperCase()}
                                             </button>
-                                    </div>
-                                ))}
-                            </div>
-                            <div className="button-container">
-                                <BackButton />
-                                <button className='next-button-dark' onClick={this.sendData.bind(this)}>Next</button>
+                                        </div>
+                                    ))}
+                                </div>
+                                <div className="button-container">
+                                    <BackButton />
+                                    {(this.state.newUser) ? <button className='next-button-dark' onClick={this.showLastPartOnboarding.bind(this)}>NEXT</button> : <button className='next-button-dark' onClick={this.sendData.bind(this)}>NEXT</button>}
+                                </div>
                             </div>
                         </div>
                     </div>
+                }
+                <div>
+                    <CSSTransition in={this.state.report} timeout={fadeTime} classNames="fade" unmountOnExit appear><div className='info-box'>
+                        <h2 className='report-word'>REPORT</h2>
+                        <div className='arrow'><Arrow /></div>
+                        <TextWithNextSmall text={data[9].onboarding.report} onClick={this.sendData.bind(this)} /></div></CSSTransition>
                 </div>
             </div>
         )

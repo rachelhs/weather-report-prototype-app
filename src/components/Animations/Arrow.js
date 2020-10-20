@@ -19,8 +19,8 @@ class Arrow extends React.Component {
             <Lottie options={defaultOptions}
                 speed={this.props.speed}
                 isPaused={this.props.isPaused}
-                width={100}
-                height={100}
+                width={80}
+                height={80}
             />
         )
     }
