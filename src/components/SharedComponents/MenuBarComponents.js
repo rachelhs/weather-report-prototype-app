@@ -1,13 +1,22 @@
 import React from 'react';
 import ReactModal from 'react-modal';
 import firstAid from '../../images/first-aid-icon.svg';
-import ReportPhoto from '../../images/weather-symbols-no-border/dark-clouds.png';
 import { CSSTransition } from "react-transition-group";
 const data = require('../../data/data.json');
 const firebase = require('firebase/app');
-import analysisImageDesktop from '../../images/REPORT-DESKTOP.svg';
-import analysisImageMobile from '../../images/REPORT-MOBILE.svg';
 import { history } from '../../routers/AppRouter';
+import moment from 'moment';
+import database from '../../firebase/firebase';
+
+import bluesky from '../../images/weather-symbols-no-border/bluesky.png';
+import cloudRainThreat from '../../images/weather-symbols-no-border/cloud-rain-threat.png';
+import darkClouds from '../../images/weather-symbols-no-border/dark-clouds.png';
+import greyCloud from '../../images/weather-symbols-no-border/grey-cloud.png';
+import lightClouds from '../../images/weather-symbols-no-border/light-clouds.png';
+import rainbow from '../../images/weather-symbols-no-border/rainbow.png';
+import sunshine from '../../images/weather-symbols-no-border/sunshine.png';
+import tornado from '../../images/weather-symbols-no-border/tornado.png';
+import tsunami from '../../images/weather-symbols-no-border/tsunami.png';
 
 export class Logout extends React.Component {
     startLogout() {
@@ -182,34 +191,54 @@ export class Report extends React.Component {
         super(props);
         this.state = {
             showReport: false,
-            analysisImage: null
+            date: null,
+            weather: greyCloud,
+            mainWord: null,
+            secondWord: null,
+            thirdWord: null
         }
+        this.getWeatherData = this.getWeatherData.bind(this);
     }
 
     componentDidMount() {
-        this.isMobileCheck();
+        const date = moment().format("Do MMMM");
+        this.setState({ date });
+        this.getWeatherData();
     }
 
     handleOpenModalReport() { this.setState({ showReport: true }) }
     handleCloseModalReport() { this.setState({ showReport: false }) }
 
-    // checks if user is using a mobile
-    isMobileCheck() {
-        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-        if(isMobile) {
-            this.setState({ analysisImage: analysisImageDesktop })
-        }
-        else {
-            this.setState({ analysisImage: analysisImageDesktop })
-        }
-    }
-
-    showAnalysisImage() {
-        this.setState({ showAnalysis: true });
-    }
-
-    hideAnalysisImage() {
-        this.setState({ showAnalysis: false })
+    getWeatherData() {
+        const uid = firebase.auth().currentUser.uid;
+        database.ref(`users/${uid}/weatherReports`)
+            .limitToLast(1)
+            .once('value', (snapshot) => {
+                // get most recent report date
+                let reportDate = Object.keys(snapshot.val())[0];
+                snapshot.forEach((child) => {
+                    // get most recent report time
+                    let reportTime = Object.keys(child.val())[0];
+                    database.ref(`users/${uid}/weatherReports/${reportDate}/${reportTime}`).once('value', (childSnap) => {
+                        let weatherSymbol = childSnap.val().weather;
+                        switch (weatherSymbol) {
+                            case "dark-clouds":
+                                weatherSymbol = 'darkClouds';
+                                break;
+                            case "cloud-rain-threat":
+                                weatherSymbol = 'cloudRainThreat';
+                                break;
+                            case "grey-cloud":
+                                weatherSymbol = 'greyCloud';
+                                break;
+                            case "light-clouds":
+                                weatherSymbol = 'lightClouds';
+                                break;
+                        }
+                        this.setState({ weather: weatherSymbol })
+                    })
+                })
+            })
     }
 
     render() {
@@ -227,19 +256,15 @@ export class Report extends React.Component {
                     </div>
 
                     <h1>TODAY</h1>
-                    <h3>13th October</h3>
+                    <h3>{this.state.date}</h3>
                     <div className="flex-center">
-                        <img src={ReportPhoto} alt="image of weather"></img>
+                        <img src={this.state.weather} alt="image of weather"></img>
                     </div>
-                    {this.state.showAnalysis ?
-                        <div><img className='analysis-image-desktop' src={this.state.analysisImage} alt="analysis of mood"></img><div className='hide-analysis-button'>
-                            <button className='login-button' type="button" onClick={this.hideAnalysisImage.bind(this)}>HIDE</button>
-                        </div></div> :
-                        <div className="flex-center">
-                            <button className='login-button' type="button" onClick={this.showAnalysisImage.bind(this)}>SHOW PAST</button>
-                        </div>}
                 </ReactModal>
             </span>
         )
     }
 }
+
+
+
