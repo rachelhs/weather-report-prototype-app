@@ -8,13 +8,13 @@ import { history } from '../../routers/AppRouter';
 import moment from 'moment';
 import database from '../../firebase/firebase';
 
-import bluesky from '../../images/weather-symbols-no-border/bluesky.png';
-import cloudRainThreat from '../../images/weather-symbols-no-border/cloud-rain-threat.png';
-import darkClouds from '../../images/weather-symbols-no-border/dark-clouds.png';
-import greyCloud from '../../images/weather-symbols-no-border/grey-cloud.png';
-import lightClouds from '../../images/weather-symbols-no-border/light-clouds.png';
 import rainbow from '../../images/weather-symbols-no-border/rainbow.png';
 import sunshine from '../../images/weather-symbols-no-border/sunshine.png';
+import bluesky from '../../images/weather-symbols-no-border/bluesky.png';
+import lightClouds from '../../images/weather-symbols-no-border/light-clouds.png';
+import greyCloud from '../../images/weather-symbols-no-border/grey-cloud.png';
+import purpleRain from '../../images/weather-symbols-no-border/cloud-rain-threat.png';
+import turquoiseRain from '../../images/weather-symbols-no-border/dark-clouds.png';
 import tornado from '../../images/weather-symbols-no-border/tornado.png';
 import tsunami from '../../images/weather-symbols-no-border/tsunami.png';
 
@@ -192,7 +192,7 @@ export class Report extends React.Component {
         this.state = {
             showReport: false,
             date: null,
-            weather: greyCloud,
+            weather: null,
             mainWord: null,
             secondWord: null,
             thirdWord: null
@@ -211,6 +211,8 @@ export class Report extends React.Component {
 
     getWeatherData() {
         const uid = firebase.auth().currentUser.uid;
+        let weatherSymbol = null;
+        let reportTime = null;
         database.ref(`users/${uid}/weatherReports`)
             .limitToLast(1)
             .once('value', (snapshot) => {
@@ -218,25 +220,30 @@ export class Report extends React.Component {
                 let reportDate = Object.keys(snapshot.val())[0];
                 snapshot.forEach((child) => {
                     // get most recent report time
-                    let reportTime = Object.keys(child.val())[0];
-                    database.ref(`users/${uid}/weatherReports/${reportDate}/${reportTime}`).once('value', (childSnap) => {
-                        let weatherSymbol = childSnap.val().weather;
-                        switch (weatherSymbol) {
-                            case "dark-clouds":
-                                weatherSymbol = 'darkClouds';
-                                break;
-                            case "cloud-rain-threat":
-                                weatherSymbol = 'cloudRainThreat';
-                                break;
-                            case "grey-cloud":
-                                weatherSymbol = 'greyCloud';
-                                break;
-                            case "light-clouds":
-                                weatherSymbol = 'lightClouds';
-                                break;
-                        }
-                        this.setState({ weather: weatherSymbol })
+                    let length = Object.keys(child.val()).length;
+                    // if 3rd report of the day
+                    if(length >= 3) {
+                        reportTime = Object.keys(child.val())[2];
+                    }
+                    // if 2nd report of the day
+                    else if (length == 2) {
+                        reportTime = Object.keys(child.val())[1];
+                    }
+                    // if 1st report of the day
+                    else {
+                        reportTime = Object.keys(child.val())[0];
+
+                    }
                     })
+                    database.ref(`users/${uid}/weatherReports/${reportDate}/${reportTime}`).once('value', (childSnap) => {
+                        weatherSymbol = childSnap.val().weather;
+                        let mainWord = childSnap.val().mainword;
+                        let secondWord = childSnap.val().secondarywords[0];
+                        let thirdWord = childSnap.val().secondarywords[1];
+                        this.setState({ secondWord: secondWord })
+                        this.setState({ thirdWord: thirdWord })
+                        this.setState({ mainWord: mainWord })
+                        this.setState({ weather: weatherSymbol })
                 })
             })
     }
@@ -258,8 +265,19 @@ export class Report extends React.Component {
                     <h1>TODAY</h1>
                     <h3>{this.state.date}</h3>
                     <div className="flex-center">
-                        <img src={this.state.weather} alt="image of weather"></img>
+                        {this.state.weather == 'bluesky' && <img src={bluesky} alt="image of blue sky"></img>}
+                        {this.state.weather == 'turquoise' && <img src={turquoiseRain} alt="image of threatening rain clouds"></img>}
+                        {this.state.weather == 'purple-rain' && <img src={purpleRain} alt="image of dark clouds"></img>}
+                        {this.state.weather == 'grey-cloud' && <img src={greyCloud} alt="image of grey clouds"></img>}
+                        {this.state.weather == 'light-clouds' && <img src={lightClouds} alt="image of light cloud"></img>}
+                        {this.state.weather == 'rainbow' && <img src={rainbow} alt="image of a rainbow"></img>}
+                        {this.state.weather == 'sunshine' && <img src={sunshine} alt="image of sunshine"></img>}
+                        {this.state.weather == 'tornado' && <img src={tornado} alt="image of a tornado"></img>}
+                        {this.state.weather == 'tsunami' && <img src={tsunami} alt="image of a tsunami"></img>}
                     </div>
+                    <h1>{this.state.mainWord}</h1>
+                    <h3>{this.state.secondWord}</h3>
+                    <h3>{this.state.thirdWord}</h3>
                 </ReactModal>
             </span>
         )
