@@ -1,3 +1,4 @@
+const firebase = require('firebase/app')
 import React from 'react'
 import { connect } from 'react-redux'
 import { startEmailLogin } from '../../actions/auth'
@@ -8,27 +9,27 @@ import '../../styles/animation.css';
 import Animation from '../Animations/Animation'
 
 export class LoginEmailForm extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            error: false,
+            loading: false,
+            email: '',
+            password: '',
+            isPasswordShown: false,
+            appIntro: true,
+            showLogin: null,
+            showEnterEmail: false,
+            showForgotPassword: false
+        }
+        this.passwordReset = this.passwordReset.bind(this);
+        this.triggerTimeout = this.triggerTimeout.bind(this);
+    }
 
-  constructor(props){
-    super(props);
-    this.state = {
-    error: false,
-    loading: false,
-    email: '',
-    password: '',
-    isPasswordShown: false,
-    appIntro: true,
-    showLogin: null,
-    showEnterEmail: false
+  triggerTimeout(itemToFadeOut) {
+    const fadeTime = 3000;
+    setTimeout(() => { this.setState({ [itemToFadeOut]: false }) }, fadeTime)
   }
-this.passwordReset = this.passwordReset.bind(this);
-this.triggerTimeout = this.triggerTimeout.bind(this);
-}
-
-triggerTimeout(itemToFadeOut) {
-  const fadeTime = 3000;
-  setTimeout(() => { this.setState({ [itemToFadeOut]: false }) }, fadeTime)
-}
 
   setStateProperty = (value, property) => {
     this.setState(() => {
@@ -56,6 +57,10 @@ triggerTimeout(itemToFadeOut) {
 
   showLoginForm = () => {
     this.setState({ showLogin: true });
+  }
+
+  showForgottenPassword() {
+    this.setState({ showForgotPassword: true });
   }
 
   passwordReset = (email) => () => {
@@ -94,14 +99,18 @@ triggerTimeout(itemToFadeOut) {
                                     className='form-input'
                                 />
                             </div>
-                            <div className="wrap-input100 validate-input">
+                            { this.state.for}
+                            <div className={this.state.showForgotPassword ? 'wrap-reset-password-text validate-input' : 'button-display-none'}>
+                                <b><p>Enter your email and click Reset Password</p></b>
+                            </div>
+                            <div className={this.state.showForgotPassword ? 'button-display-none' : 'wrap-input100 validate-input'}>
                                 <input
                                     onChange={(ev) => this.setStateProperty(ev.target.value, 'password')}
                                     placeholder='Password*'
                                     aria-label='Password'
                                     type={isPasswordShown ? "text" : "password"}
                                     name='password'
-                                    required = '*Required'
+                                    // required = '*Required'
                                     className='form-input validate-input'
                                 />
                                 <i
@@ -109,16 +118,19 @@ triggerTimeout(itemToFadeOut) {
                                     onClick={this.togglePasswordVisiblity}
                                 />
                             </div>
-                            { error && <p className='form__error'>{error}</p> }
-                            <button type='submit' className='button login-button' disabled={loading}>
+                            <div className={this.state.showForgotPassword ? 'button-display-none' : ''}>
+                                { error && <p className='form__error'>{error}</p> }
+                            </div>
+                            <button type='submit' className={this.state.showForgotPassword ? 'button-display-none' : 'button login-button'} disabled={loading}>
                                 { loading ? '...' : 'NEXT' }
                             </button>
+                            {<button className={this.state.showForgotPassword ? 'button reset-password-button' : 'button-display-none' }  onClick={this.passwordReset(this.state.email)}>Reset Password</button>}  
                             { goBackFunction &&
                             <button className='button button--secondary' onClick={goBackFunction}>Cancel</button> }
                         </form>
-                        {<button className='button button--password-reset' onClick={this.passwordReset(this.state.email)}>Forgot Password?</button>}  
-                        {(this.state.showEnterEmail) ? <p className="form__error">Please enter e-mail address then click Forgot Password</p> : ''}
-                        </div>
+                        {<button className={this.state.showForgotPassword ? 'button-display-none' : 'button button--password-reset'} onClick={this.showForgottenPassword.bind(this)}>Forgot Password?</button>}  
+                        {<p className={this.state.showForgotPassword ? '' : 'button-display-none'}>If you are having any further problems, please email <a href="info@studiomeineck.com">info@studiomeineck.com</a></p>}  
+                    </div>
                 </CSSTransition>
             </div>
         </div>
