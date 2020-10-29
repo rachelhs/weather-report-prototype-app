@@ -8,6 +8,8 @@ import { CSSTransition } from "react-transition-group";
 import '../../styles/animation.css';
 import Animation from '../Animations/Animation'
 
+let message = ""; 
+
 export class LoginEmailForm extends React.Component {
     constructor(props){
         super(props);
@@ -63,14 +65,22 @@ export class LoginEmailForm extends React.Component {
     this.setState({ showForgotPassword: true });
   }
 
-  passwordReset = (email) => () => {
-    if(email == ''){
-      this.setState({ showEnterEmail: true });
+    passwordReset = (email) => () => {
+        firebase.auth().sendPasswordResetEmail(email)
+            .then(function() {
+                console.log('Password reset email sent successfully')
+                message = "Email Sent"
+
+                // this.setState({ message: "Email sent" });
+            })
+            .catch(function(error) {
+                console.log('general', error.message);
+                message = "There has been an error, please try again"
+                // this.setState({ message: "There," });
+            });
     }
-    else {
-    return firebase.auth().sendPasswordResetEmail(email);
-    }
-}
+
+
 
   render () {
     const { isPasswordShown } = this.state;
@@ -91,7 +101,7 @@ export class LoginEmailForm extends React.Component {
                             <div className="wrap-input100">
                                 <input
                                     onChange={(ev) => this.setStateProperty(ev.target.value, 'email')}
-                                    placeholder='Username*'
+                                    placeholder={this.state.showForgotPassword ? 'Enter your email address here' : 'Username*' }
                                     aria-label='Email'
                                     type='text'
                                     name='email'
@@ -99,10 +109,7 @@ export class LoginEmailForm extends React.Component {
                                     className='form-input'
                                 />
                             </div>
-                            { this.state.for}
-                            <div className={this.state.showForgotPassword ? 'wrap-reset-password-text validate-input' : 'button-display-none'}>
-                                <b><p>Enter your email and click Reset Password</p></b>
-                            </div>
+                            {this.state.showForgotPassword ? message : ''}
                             <div className={this.state.showForgotPassword ? 'button-display-none' : 'wrap-input100 validate-input'}>
                                 <input
                                     onChange={(ev) => this.setStateProperty(ev.target.value, 'password')}
