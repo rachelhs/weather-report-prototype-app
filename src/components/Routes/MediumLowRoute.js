@@ -15,7 +15,7 @@ import PositiveMemory from '../Exercises/ReplayPosMemories';
 import LikeAboutSelf from '../Exercises/ReplayLikeAboutSelf';
 import ReplayCare from '../Exercises/ReplayCare';
 
-const routeExercises = ['meditating', 'gratitude', 'positive', 'selflike'];
+const routeExercises = ['meditating', 'gratitude', 'positive', 'selflike', 'selfcare'];
 let firstExercise = 'meditating';
 let availableExercises;
 
