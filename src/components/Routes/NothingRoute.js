@@ -2,7 +2,7 @@
 import React from 'react';
 import { AnimationsLayered, ReasonForFeelings, ReasonForFeelingsInput, AnotherExerciseQuestion, FeedbackStatement } from '../SharedComponents/SharedComponents';
 import { PositiveThingQuestion, PositiveChangeQuestion } from '../SharedComponents/MentalHealthQuestions';
-import { chooseAnotherRandomExercise, checkExercises, DoUnavailableExercises, GetUnavailableExercises } from '../../actions/route-functions';
+import { chooseAnotherRandomExercise, DoUnavailableExercises, GetUnavailableExercises } from '../../actions/route-functions';
 import { CSSTransition } from "react-transition-group";
 import { ChooseExercise } from '../Exercises/ChooseExercise';
 
