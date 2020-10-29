@@ -1,7 +1,7 @@
 import React from 'react';
 import { Acknowledgement, AnimationsLayered, HowLongHaveYouFeltLikeThis, ReasonForFeelings, ReasonForFeelingsInput, AnotherExerciseQuestion, FeedbackStatement } from '../SharedComponents/SharedComponents';
 import { PositiveThingQuestion, HelpedCopeQuestion } from '../SharedComponents/MentalHealthQuestions'
-import { isLongerThanThreeDays, randomQuestionNumber, chooseAnotherRandomExercise, DoUnavailableExercises, GetUnavailableExercises  } from '../../actions/route-functions';
+import { isLongerThanThreeDays, randomQuestionNumber, chooseAnotherRandomExercise, DoUnavailableExercises, GetUnavailableExercises } from '../../actions/route-functions';
 import { CSSTransition } from "react-transition-group";
 import { ChooseExercise } from '../Exercises/ChooseExercise';
 
@@ -30,7 +30,7 @@ class LowRoute extends React.Component {
             knowReasonForFeeling: null,
             randQues: 0,
             showRandomExercises: null,
-            exercise: '',
+            exercise: 'meditating',
             availableExercises: [],
             exerciseArray: routeExercises,
             neutralAnimation: true,
