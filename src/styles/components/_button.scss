@@ -59,6 +59,25 @@ button:focus {
     font-weight: 400;
 }
 
+.button-display-none {
+    display: none;
+}
+
+.reset-password-button {
+    background: #3a3d7d !important;
+    border: none;
+    height: 40px;
+    margin: 30px auto;
+    color: white;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 500;
+    letter-spacing: 2px;
+    border-radius: 0.5rem;
+    text-align: center;
+    font-size: 15px;
+    padding: 0 15px 0 15px; 
+}
+
 .login-button {
     background: #3a3d7d !important;
     border: none;
