@@ -266,7 +266,7 @@ export class ReactFirebaseFileUpload extends React.Component {
         const user = firebase.auth().currentUser;
         const uid = user.uid;
         let date = moment().format("DD-MM-YYYY");
-        const uploadTask = storage.ref(`images/${this.state.image.name}`).put(this.state.image);
+        const uploadTask = storage.ref(`images/${uid}/${this.state.image.name}`).put(this.state.image);
         uploadTask.on(
             "state_changed",
             snapshot => {
@@ -280,7 +280,7 @@ export class ReactFirebaseFileUpload extends React.Component {
             },
             () => {
                 storage
-                .ref("images")
+                .ref(`images/${uid}`)
                 .child(this.state.image.name)
                 .getDownloadURL()
                 .then(url => {
