@@ -14,8 +14,7 @@ import { Meditating, Grounding, Stretching } from '../Exercises/TextBasedExercis
 import Gratitude from '../Exercises/ReplayGratitude';
 import ReplayContent from '../Exercises/ReplayContent';
 
-//const routeExercises = ['meditating', 'grounding', 'gratitude', 'content', 'stretching'];
-const routeExercises = ['gratitude'];
+const routeExercises = ['meditating', 'grounding', 'gratitude', 'content', 'stretching'];
 
 class LowButWithEnergyRoute extends React.Component {
 
