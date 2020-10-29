@@ -22,7 +22,6 @@ export default class Gratitude extends React.Component {
     }
 
     componentDidMount = () => {
-        console.log('gratitue replay component');
         this.getRandomGratitude();
     }
 

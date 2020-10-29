@@ -15,8 +15,7 @@ import PositiveMemory from '../Exercises/ReplayPosMemories';
 import LikeAboutSelf from '../Exercises/ReplayLikeAboutSelf';
 import ReplayCare from '../Exercises/ReplayCare';
 
-//const routeExercises = ['meditating', 'gratitude', 'positive', 'selflike'];
-const routeExercises = ['gratitude'];
+const routeExercises = ['meditating', 'gratitude', 'positive', 'selflike'];
 
 class MediumLowRoute extends React.Component {
 

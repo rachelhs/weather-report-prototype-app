@@ -14,7 +14,8 @@ import { Meditating, Grounding, Stretching } from '../Exercises/TextBasedExercis
 import Gratitude from '../Exercises/ReplayGratitude';
 import ReplayContent from '../Exercises/ReplayContent';
 
-const routeExercises = ['meditating', 'grounding', 'gratitude', 'content', 'stretching'];
+//const routeExercises = ['meditating', 'grounding', 'gratitude', 'content', 'stretching'];
+const routeExercises = ['gratitude'];
 
 class LowButWithEnergyRoute extends React.Component {
 
@@ -172,7 +173,7 @@ class LowButWithEnergyRoute extends React.Component {
                     <CSSTransition in={this.state.showReasonForFeeling} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.afterReasonForFeeling()}><ReasonForFeelings onClick={this.answeredReasonKnown.bind(this)} /></CSSTransition>
                     <CSSTransition in={this.state.showReasonInput} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.showRandQuestion()}><ReasonForFeelingsInput buttonClick={this.answeredReasonInput.bind(this)} /></CSSTransition>
                     <CSSTransition in={this.state.showRandomQuestions} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.decideFirstAid()}>{this.state.randQues === 'safe' ? <SafeQuestion onClick={this.answeredSafeQuestion.bind(this)} /> : ((this.state.randQues === 'smallPos') ? <PositiveThingQuestion buttonClick={this.answeredRandomQuestion.bind(this)} /> : <ContactSupportersQuestion onClick={this.answeredContactQuestion.bind(this)} />)}</CSSTransition>
-                    <CSSTransition in={this.state.showFirstAid} timeout={2000} classNames="fade" unmountOnExit>{<FirstAidKitPage weather={this.props.location.state.weatherSymbol} />}</CSSTransition>
+                    <CSSTransition in={this.state.showFirstAid} timeout={2000} classNames="fade" unmountOnExit>{<FirstAidKitPage weather={this.state.weatherSymbol} />}</CSSTransition>
                     <CSSTransition in={this.state.showContact} timeout={2000} className="fade" unmountOnExit><Contact /></CSSTransition>
                     <CSSTransition in={this.state.showAskIfHelped} timeout={1000} className="fade" unmountOnExit onExited={() => this.askAnotherExerciseQuestion()}><AskIfHelped exercise={this.state.exercise} onClick={this.afterAnsweredIfHelped.bind(this)} /></CSSTransition>
                     <CSSTransition in={this.state.showAnotherExerciseQuestion} timeout={2000} classNames="fade" unmountOnExit onExited={() => this.afterAskAnotherQuestion()}><div><AnotherExerciseQuestion onClick={this.answeredAnotherExerciseQuestion.bind(this)} /></div></CSSTransition>
