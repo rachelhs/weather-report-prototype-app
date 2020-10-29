@@ -11,7 +11,7 @@ import { Breathing, Meditating, Grounding } from '../Exercises/TextBasedExercise
 import Gratitude from '../Exercises/ReplayGratitude';
 import PositiveMemory from '../Exercises/ReplayPosMemories';
 
-const routeExercises = ['breathing', 'meditating', 'grounding', 'gratitude', 'positive'];
+const routeExercises = ['breathing', 'meditating', 'grounding', 'gratitude', 'positive', 'posThing', 'posChange'];
 let firstExercise = 'breathing';
 let availableExercises;
 
