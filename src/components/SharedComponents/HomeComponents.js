@@ -369,7 +369,8 @@ export class PebblesModal extends React.Component {
                         {this.state.pebbleToShow && <h3>{this.state.pebbleToShow.reason}</h3>}
                         {photoMemory}
                         <div className="flex-center">
-                            <button className="transparent-button" onClick={this.selectAnotherMemory.bind(this)}>Look at another memory</button>
+                        {/* only show look at another memory button when there are more than 1 pebbles saved */}
+                            {(this.state.listOfPebbles.length > 1) && <button className="transparent-button" onClick={this.selectAnotherMemory.bind(this)}>Look at another memory</button>}
                         </div>
                     </span>
                     }
