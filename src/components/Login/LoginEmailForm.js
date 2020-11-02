@@ -8,8 +8,6 @@ import { CSSTransition } from "react-transition-group";
 import '../../styles/animation.css';
 import Animation from '../Animations/Animation'
 
-let message = ""; 
-
 export class LoginEmailForm extends React.Component {
     constructor(props){
         super(props);
@@ -22,62 +20,64 @@ export class LoginEmailForm extends React.Component {
             appIntro: true,
             showLogin: null,
             showEnterEmail: false,
-            showForgotPassword: false
+            showForgotPassword: false,
+            resetSuccess: false,
+            message: ""
         }
-        this.passwordReset = this.passwordReset.bind(this);
         this.triggerTimeout = this.triggerTimeout.bind(this);
     }
 
-  triggerTimeout(itemToFadeOut) {
-    const fadeTime = 3000;
-    setTimeout(() => { this.setState({ [itemToFadeOut]: false }) }, fadeTime)
-  }
+    triggerTimeout(itemToFadeOut) {
+        const fadeTime = 3000;
+        setTimeout(() => { this.setState({ [itemToFadeOut]: false }) }, fadeTime)
+    }
 
-  setStateProperty = (value, property) => {
-    this.setState(() => {
-      const state = {}
-      state[property] = value
-      return state
-    })
-  }
+    setStateProperty = (value, property) => {
+        this.setState(() => {
+        const state = {}
+        state[property] = value
+        return state
+        })
+    }
 
-  onFormSubmit = (ev) => {
-    ev.preventDefault()
-    const { email, password } = this.state
-    this.setState(() => ({ loading: true }))
+    onFormSubmit = (ev) => {
+        ev.preventDefault()
+        const { email, password } = this.state
+        this.setState(() => ({ loading: true }))
+        this.props.startEmailLogin(email, password).catch((fail) => {
+            const error = 'Invalid email and/or password.'
+            this.setState(() => ({ error, loading: false }))
+        })
+    }
 
-    this.props.startEmailLogin(email, password).catch((fail) => {
-      const error = 'Invalid email and/or password.'
-      this.setState(() => ({ error, loading: false }))
-    })
-  }
+    togglePasswordVisiblity = () => {
+        const { isPasswordShown } = this.state;
+        this.setState({ isPasswordShown: !isPasswordShown });
+    };
 
-  togglePasswordVisiblity = () => {
-    const { isPasswordShown } = this.state;
-    this.setState({ isPasswordShown: !isPasswordShown });
-  };
+    showLoginForm = () => {
+        this.setState({ showLogin: true });
+    }
 
-  showLoginForm = () => {
-    this.setState({ showLogin: true });
-  }
+    showForgottenPassword() {
+        this.setState({ showForgotPassword: true, message: '' });
+    }
 
-  showForgottenPassword() {
-    this.setState({ showForgotPassword: true });
-  }
+    emailSent() {
+        this.setState({ resetSuccess: false, showForgotPassword: false });
+    }
 
-    passwordReset = (email) => () => {
+    passwordReset = (email) => {
         firebase.auth().sendPasswordResetEmail(email)
-            .then(function() {
-                console.log('Password reset email sent successfully')
-                message = "Email Sent"
-
-                // this.setState({ message: "Email sent" });
-            })
-            .catch(function(error) {
-                console.log('general', error.message);
-                message = "There has been an error, please try again"
-                // this.setState({ message: "There," });
-            });
+        .then(() => {
+            this.setState(() => ({ resetSuccess: true }))
+        })
+        .catch((error) => {
+            if (email.length > 1) {
+                this.setState(() => ({ message: 'There has been a problem, please try again' }))
+            }
+            this.setState(() => ({ resetSuccess: false }))
+        });
     }
 
 
@@ -109,7 +109,8 @@ export class LoginEmailForm extends React.Component {
                                     className='form-input'
                                 />
                             </div>
-                            {this.state.showForgotPassword ? message : ''}
+                            <p className={this.state.showForgotPassword && !this.state.resetSuccess ? 'error-message-text' : 'button-display-none'}>{this.state.showForgotPassword ? this.state.message : ''}</p>
+                            <p className={this.state.resetSuccess ? 'error-message-text' : 'button-display-none'}>{this.state.resetSuccess ? 'Password Reset Email Sent' : ''}</p>
                             <div className={this.state.showForgotPassword ? 'button-display-none' : 'wrap-input100 validate-input'}>
                                 <input
                                     onChange={(ev) => this.setStateProperty(ev.target.value, 'password')}
@@ -125,13 +126,17 @@ export class LoginEmailForm extends React.Component {
                                     onClick={this.togglePasswordVisiblity}
                                 />
                             </div>
-                            <div className={this.state.showForgotPassword ? 'button-display-none' : ''}>
+                            {/* <div className={this.state.showForgotPassword ? 'button-display-none' : ''}>
                                 { error && <p className='form__error'>{error}</p> }
-                            </div>
+                            </div> */}
                             <button type='submit' className={this.state.showForgotPassword ? 'button-display-none' : 'button login-button'} disabled={loading}>
                                 { loading ? '...' : 'NEXT' }
                             </button>
-                            {<button className={this.state.showForgotPassword ? 'button reset-password-button' : 'button-display-none' }  onClick={this.passwordReset(this.state.email)}>Reset Password</button>}  
+                            {this.state.resetSuccess == false ?
+                                <button className={this.state.showForgotPassword ? 'button reset-password-button' : 'button-display-none' } onClick={() => this.passwordReset(this.state.email)}>Reset Password</button>  
+                            :
+                                <button className={this.state.showForgotPassword ? 'button reset-password-button' : 'button-display-none' }  onClick={() => this.emailSent()}>Back to Login</button>
+                            }  
                             { goBackFunction &&
                             <button className='button button--secondary' onClick={goBackFunction}>Cancel</button> }
                         </form>
