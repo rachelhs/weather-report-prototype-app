@@ -43,17 +43,19 @@ firebase.auth().onAuthStateChanged((user) => {
     }
 
     // logs user out automatically after 30 minutes
-    let userSessionTimeout = null;
-    if (user === null && userSessionTimeout) {
-        clearTimeout(userSessionTimeout);
-        userSessionTimeout = null;
-      } else {
-        user.getIdTokenResult().then((idTokenResult) => {
-          const authTime = idTokenResult.claims.auth_time * 1000;
-          const sessionDurationInMilliseconds = 30 * 60 * 1000; // half an hour
-          const expirationInMilliseconds = sessionDurationInMilliseconds - (Date.now() - authTime);
-          userSessionTimeout = setTimeout(() => firebase.auth().signOut(), expirationInMilliseconds);
-        });
-      }
+    // glitchy
+
+    // let userSessionTimeout = null;
+    // if (user === null && userSessionTimeout) {
+    //     clearTimeout(userSessionTimeout);
+    //     userSessionTimeout = null;
+    //   } else {
+    //     user.getIdTokenResult().then((idTokenResult) => {
+    //       const authTime = idTokenResult.claims.auth_time * 1000;
+    //       const sessionDurationInMilliseconds = 30 * 60 * 1000; // half an hour
+    //       const expirationInMilliseconds = sessionDurationInMilliseconds - (Date.now() - authTime);
+    //       userSessionTimeout = setTimeout(() => firebase.auth().signOut(), expirationInMilliseconds);
+    //     });
+    //   }
 
 });

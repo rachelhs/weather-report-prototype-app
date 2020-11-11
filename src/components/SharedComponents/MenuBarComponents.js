@@ -179,6 +179,7 @@ export class Menu extends React.Component {
                     <p>The more information you input, the more you’ll get out, with more positive memories, prompts and history to reflect upon.</p>
                     <h1>FEEDBACK</h1>
                     <p>This is the first version of this tool and we’d love to hear how you’ve used it and what you think. Get in touch with <a href="mailto:info@studiomeineck.com">Studio Meineck</a> to share your thoughts.</p>
+                    <p>You need to log out and back in - to update your inner weather</p>
                     <Logout />
                 </ReactModal>
             </span>
@@ -278,6 +279,8 @@ export class Report extends React.Component {
                     <h1>{this.state.mainWord}</h1>
                     <h3>{this.state.secondWord}</h3>
                     <h3>{this.state.thirdWord}</h3>
+                    <br />
+                    <h3>We are still developing this part of the tool. It would be great to hear your ideas in the feedback</h3>
                 </ReactModal>
             </span>
         )
