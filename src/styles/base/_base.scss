@@ -17,6 +17,9 @@ body {
     background-color: white;
     color: $dark-purple;
     line-height: 1.6;
+    min-height: 100vh;
+    /* mobile viewport bug fix */
+    min-height: -webkit-fill-available;
 }
 
 p {
