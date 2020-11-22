@@ -13,7 +13,9 @@ Read more on our <a href="https://myweatherreport.org/"> website </a>
 </div>
 
 
-## 🤖 Technologies ![](https://img.shields.io/badge/Developed by-Ellie Foreman & Rachel Smith-informational?style=flat&logo=<LOGO_NAME>&logoColor=white&color=teal) 
+## 🤖 Technologies 
+
+![](https://img.shields.io/badge/Developed by-Ellie Foreman & Rachel Smith-informational?style=flat&logo=<LOGO_NAME>&logoColor=white&color=teal) 
 
 
 * [React](https://reactjs.org/)
