@@ -8,14 +8,9 @@ The project was funded by the South West Creative Technology Network to use auto
 
 Read more on our <a href="https://myweatherreport.org/"> website </a>
 
-<div style="padding-top: 0; margin-top: 0">
-    <iframe src="https://player.vimeo.com/video/468571472" width="500" height="450" frameBorder="0" allow="autoplay; fullscreen" allowFullScreen></iframe>
-</div>
 
-
-## 🤖 Technologies ![](https://img.shields.io/badge/Developed by-Ellie Foreman & Rachel Smith-informational?style=flat&logo=<LOGO_NAME>&logoColor=white&color=teal) 
-
-
+## 🤖 Technologies [![Generic badge](https://img.shields.io/badge/Developed by-Rachel Smith & Rachel Smith-teal.svg)](https://shields.io/)
+	
 * [React](https://reactjs.org/)
 * [Lottie](https://airbnb.io/lottie/#/) animation
 * [react-transition-group](https://reactcommunity.org/react-transition-group/) to aid transitions
