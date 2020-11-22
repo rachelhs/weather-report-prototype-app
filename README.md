@@ -8,7 +8,6 @@ The project was funded by the South West Creative Technology Network to use auto
 
 Read more on our <a href="https://myweatherreport.org/"> website </a>
 
-
 ## 🤖 Technologies [![Generic badge](https://img.shields.io/badge/Developed by-Rachel Smith & Rachel Smith-teal.svg)](https://shields.io/)
 	
 * [React](https://reactjs.org/)
