@@ -8,6 +8,8 @@ My weather report is a web based browser tool for monitoring your inner weather,
 The project was funded by the South West Creative Technology Network to use automotive technologies and research to develop creative tools. The multidisciplinary team co-created the tool with men from the Hope Project run by Second Step.
 
 Read more on our <a href="https://myweatherreport.org/"> website </a>
+
+## 🤖 Technologies 
 	
 * [React](https://reactjs.org/)
 * [Lottie](https://airbnb.io/lottie/#/) animation
