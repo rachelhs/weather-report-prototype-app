@@ -1,5 +1,6 @@
 # Weather Report Prototype App
 
+Developed by Rachel Smith & Ellie Foreman
 ## About 
 
 My weather report is a web based browser tool for monitoring your inner weather, tracking these moods over time and noticing patterns. It is a self reflection tool primarily aimed at men from 35- 55 to address the two decade high in england and wales of men taking their lives.
@@ -7,8 +8,6 @@ My weather report is a web based browser tool for monitoring your inner weather,
 The project was funded by the South West Creative Technology Network to use automotive technologies and research to develop creative tools. The multidisciplinary team co-created the tool with men from the Hope Project run by Second Step.
 
 Read more on our <a href="https://myweatherreport.org/"> website </a>
-
-## 🤖 Technologies [![Generic badge](https://img.shields.io/badge/Developed by-Rachel Smith & Rachel Smith-teal.svg)](https://shields.io/)
 	
 * [React](https://reactjs.org/)
 * [Lottie](https://airbnb.io/lottie/#/) animation
