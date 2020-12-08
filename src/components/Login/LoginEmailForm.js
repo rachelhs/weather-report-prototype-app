@@ -126,9 +126,9 @@ export class LoginEmailForm extends React.Component {
                                     onClick={this.togglePasswordVisiblity}
                                 />
                             </div>
-                            {/* <div className={this.state.showForgotPassword ? 'button-display-none' : ''}>
+                            <div className={this.state.showForgotPassword ? 'button-display-none' : ''}>
                                 { error && <p className='form__error'>{error}</p> }
-                            </div> */}
+                            </div>
                             <button type='submit' className={this.state.showForgotPassword ? 'button-display-none' : 'button login-button'} disabled={loading}>
                                 { loading ? '...' : 'NEXT' }
                             </button>
