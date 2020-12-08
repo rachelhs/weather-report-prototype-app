@@ -118,7 +118,7 @@ export class LoginEmailForm extends React.Component {
                                     aria-label='Password'
                                     type={isPasswordShown ? "text" : "password"}
                                     name='password'
-                                    // required = '*Required'
+                                    required = '*Required'
                                     className='form-input validate-input'
                                 />
                                 <i
